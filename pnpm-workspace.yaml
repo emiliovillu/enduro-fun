@@ -1,0 +1,21 @@
+packages:
+  - apps/*
+  - packages/*
+
+# UNA versión por dependencia compartida para TODO el monorepo.
+catalog:
+  zod: ^4.1.0
+  # pino: ^9.9.0  # T0.1: sin consumidor todavía (ningún script propio loguea);
+  # se reintroduce en la primera tarea de F0 que añada un script de build/tooling.
+  react: 19.2.0
+  react-dom: 19.2.0
+  typescript: ~5.9.0
+  vitest: ^4.1.10
+  '@vitest/eslint-plugin': ^1.6.23
+  eslint-config-next: ^16.2.10
+  next: ^16.2.10
+
+onlyBuiltDependencies:
+  - lefthook
+  - sharp
+  - unrs-resolver

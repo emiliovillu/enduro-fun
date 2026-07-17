@@ -1,0 +1,19 @@
+pnpm-lock.yaml
+dist
+.next
+out
+coverage
+# Next.js reescribe este fichero en cada build/dev con su propio estilo — no es
+# nuestro para formatear.
+apps/web/next-env.d.ts
+
+# Documentación del arnés y del proyecto: prosa mantenida a mano (o por las
+# skills bootstrap/dev-loop) con su propio formato, no gobernada por Prettier.
+# planning.md en particular NUNCA se toca desde el implementer (guard-planning).
+.claude/
+docs/
+/*.md
+!/README.md
+LICENSE
+skills-lock.json
+deploy.env

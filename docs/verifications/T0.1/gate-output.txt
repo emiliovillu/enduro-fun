@@ -1,0 +1,59 @@
+
+> endurofun@ gate /Users/personal/Developer/enduro-fun
+> pnpm lint && pnpm typecheck && pnpm format:check && pnpm knip && pnpm readme:status:check && pnpm test
+
+
+> endurofun@ lint /Users/personal/Developer/enduro-fun
+> eslint .
+
+
+/Users/personal/Developer/enduro-fun/eslint.config.ts
+   30:3   warning  Caution: `tseslint` also has a named export `configs`. Check if you meant to write `import {configs} from 'typescript-eslint'` instead  import-x/no-named-as-default-member
+   31:3   warning  Caution: `tseslint` also has a named export `configs`. Check if you meant to write `import {configs} from 'typescript-eslint'` instead  import-x/no-named-as-default-member
+  107:15  warning  Caution: `tseslint` also has a named export `configs`. Check if you meant to write `import {configs} from 'typescript-eslint'` instead  import-x/no-named-as-default-member
+
+/Users/personal/Developer/enduro-fun/scripts/readme-status.mjs
+  141:23  warning  Caution: `prettier` also has a named export `resolveConfig`. Check if you meant to write `import {resolveConfig} from 'prettier'` instead  import-x/no-named-as-default-member
+  142:20  warning  Caution: `prettier` also has a named export `format`. Check if you meant to write `import {format} from 'prettier'` instead                import-x/no-named-as-default-member
+
+✖ 5 problems (0 errors, 5 warnings)
+
+
+> endurofun@ typecheck /Users/personal/Developer/enduro-fun
+> pnpm -r --parallel typecheck
+
+(node:76661) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Scope: 2 of 3 workspace projects
+apps/web typecheck$ tsc --noEmit
+packages/core typecheck$ tsc --noEmit
+apps/web typecheck: Done
+packages/core typecheck: Done
+
+> endurofun@ format:check /Users/personal/Developer/enduro-fun
+> prettier --check .
+
+Checking formatting...
+All matched files use Prettier code style!
+
+> endurofun@ knip /Users/personal/Developer/enduro-fun
+> knip
+
+
+> endurofun@ readme:status:check /Users/personal/Developer/enduro-fun
+> node scripts/readme-status.mjs --check
+
+readme:status — la tabla del README coincide con planning.md ✓
+
+> endurofun@ test /Users/personal/Developer/enduro-fun
+> vitest run --project '*:unit'
+
+
+ RUN  v4.1.10 /Users/personal/Developer/enduro-fun
+
+
+ Test Files  1 passed (1)
+      Tests  3 passed (3)
+   Start at  19:43:16
+   Duration  156ms (transform 17ms, setup 0ms, import 47ms, tests 3ms, environment 0ms)
+

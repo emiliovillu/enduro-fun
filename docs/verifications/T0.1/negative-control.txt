@@ -1,0 +1,74 @@
+=== typecheck (expect FAIL) ===
+(node:77165) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+> @app/web@ typecheck /Users/personal/Developer/enduro-fun/apps/web
+> tsc --noEmit
+
+src/app/page.tsx(8,3): error TS2353: Object literal may only specify known properties, and 'name' does not exist in type '{ fullName: string; email: string; location: { address: string; lat: number; lng: number; }; social: { instagram: string; }; }'.
+src/app/page.tsx(17,57): error TS2339: Property 'name' does not exist on type '{ fullName: string; email: string; location: { address: string; lat: number; lng: number; }; social: { instagram: string; }; }'.
+/Users/personal/Developer/enduro-fun/apps/web:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @app/web@ typecheck: `tsc --noEmit`
+Exit status 2
+EXIT: 0
+=== build (expect FAIL) ===
+(node:77193) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+> @app/web@ build /Users/personal/Developer/enduro-fun/apps/web
+> next build
+
+▲ Next.js 16.2.10 (Turbopack)
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 1027ms
+  Running TypeScript ...
+Failed to type check.
+
+./src/app/page.tsx:8:3
+Type error: Object literal may only specify known properties, and 'name' does not exist in type '{ fullName: string; email: string; location: { address: string; lat: number; lng: number; }; social: { instagram: string; }; }'.
+
+  [90m 6 |[0m [90m// control negativo).[0m
+  [90m 7 |[0m [36mconst[0m company: [33mCompany[0m = {
+[31m[1m>[0m [90m 8 |[0m   name: [32m'EnduroFun'[0m,
+  [90m   |[0m   [31m[1m^[0m
+  [90m 9 |[0m   email: [32m'hola@endurofun.eu'[0m,
+  [90m10 |[0m   location: { address: [32m'Álora, Málaga'[0m, lat: [35m36.8299[0m, lng: -[35m4.7106[0m },
+  [90m11 |[0m   social: { instagram: [32m'https://instagram.com/endurofun'[0m },
+Next.js build worker exited with code: 1 and signal: null
+/Users/personal/Developer/enduro-fun/apps/web:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @app/web@ build: `next build`
+Exit status 1
+EXIT: 0
+=== typecheck after revert (expect PASS) ===
+(node:77230) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+> @app/web@ typecheck /Users/personal/Developer/enduro-fun/apps/web
+> tsc --noEmit
+
+=== build after revert (expect PASS) ===
+(node:77250) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+> @app/web@ build /Users/personal/Developer/enduro-fun/apps/web
+> next build
+
+▲ Next.js 16.2.10 (Turbopack)
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 1037ms
+  Running TypeScript ...
+  Finished TypeScript in 928ms ...
+  Collecting page data using 4 workers ...
+  Generating static pages using 4 workers (0/3) ...
+✓ Generating static pages using 4 workers (3/3) in 202ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+└ ○ /_not-found
+
+
+○  (Static)  prerendered as static content
+

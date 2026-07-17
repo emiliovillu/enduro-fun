@@ -37,3 +37,12 @@
   - `pnpm readme:status:check` no se ha podido ejecutar todavía (no existe `package.json` raíz — lo crea T0.1); la tabla «Estado global» de `planning.md` se validó a mano contra la regex de `scripts/readme-status.mjs`.
 - **Licencia**: AGPL-3.0, repo público (`github.com/emiliovillu/enduro-fun`, remote ya configurado).
 - Próxima tarea elegible: **T0.1**.
+
+## 2026-07-17 · T0.1 cerrada — PASS
+- Coste: $0 (vs estimado $0) · Ciclos verifier: 1 · Tests: 3 · Commit: (pendiente, ver siguiente) · Evidencia: docs/verifications/T0.1/
+- Decisiones no obvias que las siguientes tareas deben heredar:
+  - `pino` retirado del catalog de `pnpm-workspace.yaml` (comentado): no hay ningún script propio nuevo que loguee todavía — se reintroduce en la primera tarea de F0 que añada uno (`knip` lo marcaría como dep sin uso si se deja activo sin consumidor).
+  - `.prettierignore` usa `/*.md` + `!/README.md` en la raíz (glob general) en vez de listar ficheros uno a uno — cualquier `.md` nuevo en la raíz (`CONTRIBUTING.md`, etc.) queda excluido de Prettier automáticamente salvo que se quiera lo contrario.
+  - `apps/web/tsconfig.json` incluye `next.config.ts` explícitamente en `include` (no un catch-all `**/*.ts`) — cualquier fichero `.ts` nuevo en la raíz de `apps/web` (fuera de `src`/`test`) necesita añadirse a mano a `include` o quedará fuera del typecheck del gate.
+  - Rareza de Next.js (no defecto de esta tarea): `next-env.d.ts` referencia `.next/types/routes.d.ts`, que solo existe tras un `pnpm build` (o `next dev`). Un `pnpm lint`/`pnpm gate` en un checkout limpio sin build previo falla con `import-x/no-unresolved` en ese fichero. CI (T0.3/futuро pipeline) debe correr `pnpm build` antes de `pnpm gate`, o `pnpm gate` antes de cualquier `rm -rf .next` manual.
+- Deuda anotada: — (todos los hallazgos de code-review/simplify se arreglaron en la propia tarea: `.prettierignore` general, `apps/web/tsconfig.json` sin catch-all; el resto de hallazgos fueron descartados como no accionables o falsos positivos con justificación).

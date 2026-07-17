@@ -26,15 +26,15 @@
 
 El corazón de F0 aquí es distinto del template estándar: no hay base de datos ni servidor que levantar. Lo que debe quedar operativo al cerrar F0 es el **esqueleto estático + i18n + el pipeline de deploy**, sin ninguna página de contenido real todavía (eso es F1/F2).
 
-#### T0.1 · Monorepo y esqueleto de proyecto (adaptado, sin DB/worker)
+#### T0.1 · Monorepo y esqueleto de proyecto (adaptado, sin DB/worker) [x] 2026-07-17 — PASS, ver docs/verifications/T0.1/
 - **Depende de**: —
 - **Entrega**: pnpm workspaces con `apps/web` (Next.js App Router + Tailwind v4 CSS-first, `output: 'export'` desde el día 1) y `packages/core` (contratos Zod para el contenido: paquete, review, datos de empresa — ver PRD §7). **Sin** `packages/db` ni `apps/worker` (PRD §6.2/§6.3: proyecto sin base de datos ni trabajo asíncrono). tsconfig/eslint/prettier compartidos; pino para logging de scripts de build/tooling (no hay servidor de producción que loguee requests). `pnpm gate` operativo (lint && typecheck && format:check && knip && readme:status:check && test). Página raíz mínima ("Hello EnduroFun").
   - **Desviación del T0.1 canónico**: sin `/api/health` — `output: 'export'` no soporta route handlers; la verificación de "vivo" se hace sirviendo el HTML estático generado, no con un healthcheck HTTP.
 - **Subtareas**:
-  - [ ] Workspaces + tsconfig/eslint/prettier compartidos
-  - [ ] `apps/web` con Next.js App Router, Tailwind v4, `output: 'export'` configurado
-  - [ ] `packages/core` con esquemas Zod mínimos (placeholder de paquete/review/empresa)
-  - [ ] `pnpm gate` completo y verde
+  - [x] Workspaces + tsconfig/eslint/prettier compartidos
+  - [x] `apps/web` con Next.js App Router, Tailwind v4, `output: 'export'` configurado
+  - [x] `packages/core` con esquemas Zod mínimos (placeholder de paquete/review/empresa)
+  - [x] `pnpm gate` completo y verde
 - **Verificación**: `pnpm build` genera `apps/web/out/index.html` sin errores; `pnpm gate` en verde; servir `out/` con un servidor estático local (`npx serve out` o equivalente) y comprobar en el navegador que la página raíz carga; romper a propósito un tipo de `packages/core` rompe la compilación de `apps/web` (control negativo).
 
 #### T0.2 · i18n estático (EN/ES/DE)
