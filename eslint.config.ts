@@ -23,6 +23,9 @@ export default defineConfig(
     '**/coverage/**',
     '**/playwright-report/**',
     '**/test-results/**',
+    // Espejo de solo lectura de Claude Design (regenerado por DesignSync): no
+    // pertenece a ningún tsconfig del monorepo y no se edita ni se lintea.
+    'docs/design-system/**',
   ]),
 
   // ── 2. Base typed para TODO el código TS ─────────────────────────────────
@@ -48,7 +51,11 @@ export default defineConfig(
   importX.flatConfigs.typescript,
   {
     settings: {
-      'import-x/resolver-next': [createTypeScriptImportResolver()],
+      'import-x/resolver-next': [
+        createTypeScriptImportResolver({
+          project: ['tsconfig.json', 'apps/*/tsconfig.json', 'packages/*/tsconfig.json'],
+        }),
+      ],
     },
     rules: {
       'import-x/no-cycle': 'error',

@@ -1,8 +1,15 @@
 {
   "$schema": "https://unpkg.com/knip@5/schema.json",
+  "ignore": ["docs/design-system/**"],
+  "ignoreDependencies": [
+    "shadcn" // CLI de scaffolding (npx shadcn add ...), no se importa nunca en runtime
+  ],
   "workspaces": {
     ".": { "entry": ["scripts/**/*.{ts,mjs}"] },
-    "apps/web": {},
+    // components/ui/** es el inventario del design system (espejo 1:1 de Claude
+    // Design, TD.*): sus exports son la API pública que consumirán los wrappers
+    // de dominio de fases futuras, no dead code aunque hoy solo los use /design-system.
+    "apps/web": { "entry": ["src/components/ui/**/*.{ts,tsx}"] },
     "packages/*": {}
   }
 }

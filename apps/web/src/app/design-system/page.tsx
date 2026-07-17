@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Button } from '@/components/ui/button';
 
 export const metadata: Metadata = {
   title: 'Design system — EnduroFun',
@@ -63,6 +64,17 @@ const SPACING_STEPS = [
   { label: 'space-8 / 32', className: 'w-8' },
   { label: 'space-12 / 48', className: 'w-12' },
   { label: 'space-20 / 80', className: 'w-20' },
+];
+
+const BUTTON_ROWS: {
+  variant: 'primary' | 'secondary' | 'ghost' | 'outline';
+  label: string;
+  wrapperClassName?: string;
+}[] = [
+  { variant: 'primary', label: 'Book now' },
+  { variant: 'secondary', label: 'Enquire' },
+  { variant: 'ghost', label: 'Learn more' },
+  { variant: 'outline', label: 'On dark', wrapperClassName: 'rounded-lg bg-bg-inverse p-4' },
 ];
 
 function SectionHeading({ children }: { children: React.ReactNode }) {
@@ -192,6 +204,32 @@ export default function DesignSystemPage() {
           >
             <div className={`h-3.5 bg-accent-primary ${s.className}`} />
             {s.label}
+          </div>
+        ))}
+      </div>
+
+      <SectionHeading>Componentes</SectionHeading>
+
+      <SubHeading>Button — variantes × tamaños</SubHeading>
+      <p className="mb-4 text-small text-text-secondary">
+        Referencia: <code className="font-mono">docs/design-system/components/buttons/</code>.
+        Estado press = <code className="font-mono">scale(.96)</code> sin cambio de color; hover un
+        tono más oscuro.
+      </p>
+      <div className="flex flex-col gap-6">
+        {BUTTON_ROWS.map((row) => (
+          <div
+            key={row.variant}
+            className={`flex flex-wrap items-center gap-3 ${row.wrapperClassName ?? ''}`}
+          >
+            {(['sm', 'md', 'lg'] as const).map((size) => (
+              <Button key={size} variant={row.variant} size={size}>
+                {row.label}
+              </Button>
+            ))}
+            <Button variant={row.variant} size="md" disabled>
+              {row.label}
+            </Button>
           </div>
         ))}
       </div>
