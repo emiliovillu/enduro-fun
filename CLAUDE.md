@@ -1,6 +1,6 @@
-# {{PROJECT_NAME}}
+# EnduroFun
 
-{{PROJECT_DESC}}. El desarrollo lo ejecuta un **bucle autónomo de agentes** gobernado por la skill `dev-loop`.
+Web de marketing multilingüe (EN/ES/DE) para EnduroFun, empresa de rutas guiadas de enduro en la provincia de Málaga (base en Álora). El desarrollo lo ejecuta un **bucle autónomo de agentes** gobernado por la skill `dev-loop`.
 
 > **Si no existen `PRD.md` y `planning.md`, este repo es todavía el template sin arrancar: el punto de entrada es `/bootstrap`** (genera el PRD, el planning y rellena los placeholders). No inventes tareas sin planning.
 
@@ -12,11 +12,11 @@
 | `planning.md` | **La fuente de verdad del estado del desarrollo**: fases F0–Fn + TD (design system) → tareas con `Depende de` + Verificación observable. Las reglas de trabajo del final son vinculantes |
 | `.claude/skills/{testing,backend,frontend,deploy}` | CÓMO se desarrolla, testea y despliega. Cada SKILL.md tiene una tabla de decisión → reference a leer ANTES de escribir código |
 | `research/` | Informes que respaldan el PRD (solo consulta, no editar) |
-| `docs/design-system/` | Espejo de solo-lectura del proyecto de Claude Design del producto ({{CLAUDE_DESIGN_URL}}) — la fuente de verdad visual. Se regenera con la tool `DesignSync`; JAMÁS se edita a mano |
+| `docs/design-system/` | Espejo de solo-lectura del proyecto de Claude Design del producto (https://claude.ai/design/p/8ee30e13-2372-49e4-ba6f-2692bc1a6af5) — la fuente de verdad visual. Se regenera con la tool `DesignSync`; JAMÁS se edita a mano |
 | `docs/mockups/` | Mockups/wireframes de referencia generados en el bootstrap |
 | `docs/verifications/<TASK-ID>/` | Evidencia de cierre de cada tarea (report.md + capturas/outputs) |
 | `docs/dev-loop/journal.md` | Diario del bucle: qué se cerró/bloqueó, cuándo, coste, rarezas |
-| `README.md` + `<paquete>/README.md` | La cara pública del proyecto ({{LICENSE}}). Su tabla de estado se **genera** desde `planning.md` con `pnpm readme:status` y el gate la verifica; la prosa se revisa al cerrar cada fase |
+| `README.md` + `<paquete>/README.md` | La cara pública del proyecto (AGPL-3.0, repo público). Su tabla de estado se **genera** desde `planning.md` con `pnpm readme:status` y el gate la verifica; la prosa se revisa al cerrar cada fase |
 
 **Jerarquía cuando algo contradiga algo**: PRD/planning > skills propias (testing/backend/frontend/deploy) > skills externas > costumbre. Si una pieza no encaja en las skills propias, o está mal planteada o la skill necesita actualización deliberada — nunca las dos cosas en silencio.
 
@@ -51,6 +51,6 @@ Antes de tocar nada: (1) `git log --oneline -5`, (2) estado de `planning.md` (pr
 - Código, identificadores y mensajes de commit en inglés; docs del proyecto, UI y comunicación en español.
 - Commits solo en verde (gate local), como mínimo uno por tarea cerrada: `T<ID>: <resumen imperativo>`. **El bucle puede hacer `git push` a `main`** una vez el gate pasa — publicar el progreso es parte del ciclo, no una decisión aparte. El hook `guard-planning` protege `planning.md` a nivel de harness.
 - **Ningún secreto en el árbol.** Las credenciales reales viven solo en `.env` / `.env.test.local` (gitignored) o en el `.env` del VPS. Todo lo que parezca una clave en un fichero committeado debe ser un literal de test evidente (`test-…-not-a-secret`).
-- Stack y scripts canónicos: los define la skill backend (`references/tooling.md` §8) + testing (`stack-setup.md` §6). `pnpm gate` es el único script propiedad del arnés.
-- Despliegue y operación de producción: SIEMPRE vía la skill `deploy` (autodetecta si corre en el VPS o en desarrollo). La configuración vive en `deploy.env`.
+- Stack y scripts canónicos: los define la skill backend (`references/tooling.md` §8) + testing (`stack-setup.md` §6). `pnpm gate` es el único script propiedad del arnés. **Desviación de este proyecto** (PRD §1/§6, planning cabecera): sin Postgres/Drizzle ni `packages/db`, sin `apps/worker` — es una web estática (`output: 'export'`), no aplica.
+- Despliegue y operación de producción: SIEMPRE vía la skill `deploy` (autodetecta si corre en el VPS o en desarrollo) — **salvo en este proyecto**: no hay VPS, se despliega en Cloudflare Pages vía CI (push a `main`); la skill `deploy` y `deploy.env` no se usan (ver PRD §10, planning T0.3).
 - Los `[verificar]` del PRD se cierran en la tarea que los nombra y se anotan en PRD y planning.
