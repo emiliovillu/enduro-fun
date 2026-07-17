@@ -1,1 +1,265 @@
 @import 'tailwindcss';
+
+/* Único tema del producto (PRD/planning §TD): sin light/dark toggle, sin overrides
+   por atributo — todo el volcado vive directamente en :root. */
+
+/* ── 1) Valores crudos: VERBATIM de docs/design-system/tokens/*.css ─────────── */
+:root {
+  /* -- brand ramp, from logo (sunset gradient + charcoal) -- tokens/colors.css -- */
+  --red-700: #7a1f1a;
+  --red-600: #a3241f;
+  --red-500: #c62b28;
+  --red-400: #e1382c;
+  --orange-600: #d1590f;
+  --orange-500: #e8791e;
+  --orange-400: #f2932c;
+  --amber-500: #f5a623;
+  --amber-400: #fbc02d;
+  --amber-300: #ffd45e;
+  --charcoal-900: #1c1c1e;
+  --charcoal-800: #28282b;
+  --charcoal-700: #38383c;
+  --charcoal-600: #4d4d52;
+  --charcoal-500: #6a6a70;
+  --sand-100: #faf6f0;
+  --sand-200: #f3ecdf;
+  --sand-300: #e8dcc6;
+  --dust-400: #c9bfa8;
+  --white: #ffffff;
+  --black: #000000;
+
+  /* semantic */
+  --bg-canvas: var(--sand-100);
+  --bg-canvas-alt: var(--sand-200);
+  --bg-inverse: var(--charcoal-900);
+  --surface-card: var(--white);
+  --surface-card-inverse: var(--charcoal-800);
+  --border-subtle: var(--sand-300);
+  --border-strong: var(--charcoal-700);
+  --text-primary: var(--charcoal-900);
+  --text-secondary: var(--charcoal-600);
+  --text-on-dark: var(--sand-100);
+  --text-on-dark-secondary: #b8b5ae;
+  --text-inverse: var(--white);
+  --accent-primary: var(--orange-500);
+  --accent-primary-hover: var(--orange-600);
+  --accent-primary-active: #b34a0c;
+  --accent-secondary: var(--red-500);
+  --accent-secondary-hover: var(--red-600);
+  --accent-amber: var(--amber-500);
+  --link: var(--red-500);
+  --link-hover: var(--red-600);
+  --focus-ring: var(--amber-500);
+  --gradient-sunset: linear-gradient(
+    90deg,
+    var(--red-500) 0%,
+    var(--orange-500) 55%,
+    var(--amber-400) 100%
+  );
+  --gradient-sunset-vertical: linear-gradient(
+    180deg,
+    var(--amber-400) 0%,
+    var(--orange-500) 55%,
+    var(--red-600) 100%
+  );
+  --gradient-scrim: linear-gradient(180deg, rgba(28, 28, 30, 0) 0%, rgba(28, 28, 30, 0.75) 100%);
+  --success: #3f7d4f;
+  --warning: var(--amber-500);
+  --danger: #b3261e;
+
+  /* -- tokens/typography.css (verbatim; el mapeo self-hosted vive en @theme inline) --
+     gotcha --font-display/--font-body/--font-mono: mismo namespace reservado que
+     Tailwind usa para las clases font-display/font-body/font-mono (mismo riesgo
+     de var() circular y colisión de capas que --shadow-* y --radius-* abajo) —
+     se vuelcan bajo el sufijo -src y el nombre canónico se conserva SOLO en el
+     mapeo de @theme inline. */
+  --font-display-src: 'Oswald', 'Arial Narrow', sans-serif;
+  --font-body-src: 'Inter', -apple-system, 'Segoe UI', sans-serif;
+  --font-mono-src: ui-monospace, 'SF Mono', Consolas, monospace;
+  --fs-display-xl: clamp(2.75rem, 6vw, 5.25rem);
+  --fs-display-lg: clamp(2.25rem, 4.5vw, 3.75rem);
+  --fs-display-md: clamp(1.75rem, 3vw, 2.5rem);
+  --fs-h3: 1.5rem;
+  --fs-h4: 1.25rem;
+  --fs-lead: 1.25rem;
+  --fs-body: 1.0625rem;
+  --fs-small: 0.9375rem;
+  --fs-caption: 0.8125rem;
+  --fs-eyebrow: 0.8125rem;
+  --lh-tight: 1.05;
+  --lh-heading: 1.15;
+  --lh-body: 1.6;
+  --ls-display: 0.01em;
+  --ls-eyebrow: 0.14em;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  /* -- tokens/spacing.css (verbatim) -- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-32: 128px;
+  --ds-radius-sm: 6px;
+  --ds-radius-md: 10px;
+  --ds-radius-lg: 16px;
+  --ds-radius-xl: 24px;
+  --ds-radius-pill: 999px;
+  --container-max: 1200px;
+  --container-pad: 24px;
+
+  /* gotcha --shadow-*: el DS nombra sus sombras --shadow-*, namespace que @theme
+     usa para las clases `shadow-*` — volcarlas tal cual crearía un var() circular
+     (@theme inline referenciaría una propiedad de su propio nombre). Se vuelcan
+     bajo --elevation-* y --shadow-* se conserva como nombre de CLASE en el mapeo. */
+  --elevation-sm: 0 1px 2px rgba(28, 28, 30, 0.08);
+  --elevation-md: 0 4px 16px rgba(28, 28, 30, 0.12);
+  --elevation-lg: 0 16px 40px rgba(28, 28, 30, 0.18);
+  --elevation-inset: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast: 150ms;
+  --dur-base: 240ms;
+  --dur-slow: 400ms;
+}
+
+/* ── 2) Mapeo a Tailwind: naming 1:1 con el DS ──────────────────────────────── */
+@theme inline {
+  /* colores: ramp cruda */
+  --color-red-700: var(--red-700);
+  --color-red-600: var(--red-600);
+  --color-red-500: var(--red-500);
+  --color-red-400: var(--red-400);
+  --color-orange-600: var(--orange-600);
+  --color-orange-500: var(--orange-500);
+  --color-orange-400: var(--orange-400);
+  --color-amber-500: var(--amber-500);
+  --color-amber-400: var(--amber-400);
+  --color-amber-300: var(--amber-300);
+  --color-charcoal-900: var(--charcoal-900);
+  --color-charcoal-800: var(--charcoal-800);
+  --color-charcoal-700: var(--charcoal-700);
+  --color-charcoal-600: var(--charcoal-600);
+  --color-charcoal-500: var(--charcoal-500);
+  --color-sand-100: var(--sand-100);
+  --color-sand-200: var(--sand-200);
+  --color-sand-300: var(--sand-300);
+  --color-dust-400: var(--dust-400);
+  --color-white: var(--white);
+  --color-black: var(--black);
+
+  /* colores: semánticos */
+  --color-bg-canvas: var(--bg-canvas);
+  --color-bg-canvas-alt: var(--bg-canvas-alt);
+  --color-bg-inverse: var(--bg-inverse);
+  --color-surface-card: var(--surface-card);
+  --color-surface-card-inverse: var(--surface-card-inverse);
+  --color-border-subtle: var(--border-subtle);
+  --color-border-strong: var(--border-strong);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-on-dark: var(--text-on-dark);
+  --color-text-on-dark-secondary: var(--text-on-dark-secondary);
+  --color-text-inverse: var(--text-inverse);
+  --color-accent-primary: var(--accent-primary);
+  --color-accent-primary-hover: var(--accent-primary-hover);
+  --color-accent-primary-active: var(--accent-primary-active);
+  --color-accent-secondary: var(--accent-secondary);
+  --color-accent-secondary-hover: var(--accent-secondary-hover);
+  --color-accent-amber: var(--accent-amber);
+  --color-link: var(--link);
+  --color-link-hover: var(--link-hover);
+  --color-focus-ring: var(--focus-ring);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+
+  /* gradientes: namespace de background-image → clases bg-gradient-* */
+  --background-image-gradient-sunset: var(--gradient-sunset);
+  --background-image-gradient-sunset-vertical: var(--gradient-sunset-vertical);
+  --background-image-gradient-scrim: var(--gradient-scrim);
+
+  /* radios: el DS los nombra --radius-*, mismo namespace reservado que Tailwind
+     usa para `rounded-*` — mismo gotcha que --shadow-*, se vuelcan bajo --ds-radius-*
+     en :root y se mapean aquí para evitar el var() circular. */
+  --radius-sm: var(--ds-radius-sm);
+  --radius-md: var(--ds-radius-md);
+  --radius-lg: var(--ds-radius-lg);
+  --radius-xl: var(--ds-radius-xl);
+  --radius-pill: var(--ds-radius-pill);
+
+  /* sombras/elevación */
+  --shadow-sm: var(--elevation-sm);
+  --shadow-md: var(--elevation-md);
+  --shadow-lg: var(--elevation-lg);
+  --shadow-inset: var(--elevation-inset);
+
+  /* espaciado: la escala del DS (4px base) coincide con la escala numérica por
+     defecto de Tailwind (n × 4px) — space-1..32 = p-1..32/gap-1..32 nativos, sin
+     redefinir. container-max/container-pad son los únicos tokens sin equivalente. */
+  --container-max: var(--container-max);
+  --container-pad: var(--container-pad);
+
+  /* tipografía: display/body self-hosted (next/font/local, inyectadas en layout.tsx
+     como --font-app-display/--font-app-body); mono queda en fuentes de sistema.
+     Nombres canónicos (font-display/font-body/font-mono) SOLO viven aquí — ver
+     gotcha en :root arriba. */
+  --font-display: var(--font-app-display), 'Arial Narrow', sans-serif;
+  --font-body: var(--font-app-body), -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: var(--font-mono-src);
+
+  --text-display-xl: var(--fs-display-xl);
+  --text-display-lg: var(--fs-display-lg);
+  --text-display-md: var(--fs-display-md);
+  --text-h3: var(--fs-h3);
+  --text-h4: var(--fs-h4);
+  --text-lead: var(--fs-lead);
+  --text-body: var(--fs-body);
+  --text-small: var(--fs-small);
+  --text-caption: var(--fs-caption);
+  --text-eyebrow: var(--fs-eyebrow);
+
+  --font-weight-regular: var(--fw-regular);
+  --font-weight-medium: var(--fw-medium);
+  --font-weight-semibold: var(--fw-semibold);
+  --font-weight-bold: var(--fw-bold);
+
+  --tracking-eyebrow: var(--ls-eyebrow);
+
+  --ease-standard: var(--ease-standard);
+}
+
+/* prefers-reduced-motion: toda animación de atención se apaga; el estado sigue
+   visible por color/badge (nunca solo por movimiento) — sin componentes con
+   animación de atención todavía en TD.1. */
+
+/* ── 3) Base mínima ─────────────────────────────────────────────────────────── */
+@layer base {
+  * {
+    @apply border-border-subtle;
+  }
+  body {
+    @apply bg-bg-canvas text-text-primary font-body;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-display {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: var(--ls-display);
+    line-height: var(--lh-heading);
+    font-weight: var(--fw-semibold);
+  }
+}

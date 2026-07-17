@@ -73,7 +73,7 @@ Gaps conocidos ya identificados: el DS **no define `Input`/`Textarea`** (el inve
 
 Se intercala tras T0.1 y antes de continuar F0 (T0.2 gana dependencia de orden sobre TD.7). Coste de la fase: $0.
 
-#### TD.1 · Tokens del DS, fuentes y showcase `/design-system`
+#### TD.1 · Tokens del DS, fuentes y showcase `/design-system` [x] 2026-07-17 — PASS, ver docs/verifications/TD.1/
 - **Depende de**: T0.1
 - **Entrega**: espejo inicial regenerado en `docs/design-system/` (vía `DesignSync` sobre el proyecto `8ee30e13-2372-49e4-ba6f-2692bc1a6af5`); `globals.css` con los tokens de `tokens/*.css` volcados verbatim en los 3 bloques canónicos de Tailwind v4 (`:root`+overrides, `@theme inline {}`, `@layer base {}`); gotcha `--shadow-*` del DS resuelto renombrando a `--elevation-*` en `:root`/`@theme` si aplica. Fuentes Oswald (display) e Inter (body) self-hosted (0 requests a Google Fonts CDN — el DS actual las carga por `@import`, aquí se descargan los `.woff2` y se sirven localmente). Página `/design-system` con specimens de colores (brand/gradient/neutral/sand/semantic), tipografía (display/body/eyebrow) y espaciado/radios.
 - **Verificación**: `/design-system` en navegador muestra los specimens; comparación visual contra las guidelines del espejo (`colors-*.card.html`, `type-*.card.html`, `spacing-*.card.html`) sin desviaciones perceptibles; cero requests de red a `fonts.googleapis.com` en el panel de red del navegador.

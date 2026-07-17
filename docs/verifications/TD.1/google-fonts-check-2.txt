@@ -1,0 +1,3 @@
+[80386.340] GET https://fonts.gstatic.com/s/oswald/v57/TK3iWkUHHAIjg752GT8Gl-1PKw.woff2 (Font) 200
+[80386.374] GET https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2 (Font) 200
+[80386.460] GET https://fonts.gstatic.com/s/oswald/v57/TK3iWkUHHAIjg752GT8Gl-1PKw.woff2 (Font) 200

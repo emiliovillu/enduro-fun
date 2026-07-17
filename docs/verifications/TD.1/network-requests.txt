@@ -1,0 +1,15 @@
+[B22DF30150BE1CF8FCA66849FCDB1320] GET http://localhost:4173/design-system (Document) 200
+[80381.42] GET http://localhost:4173/_next/static/media/inter_400-s.p.2qdljeg3s-lsl.woff2 (Font) 304
+[80381.43] GET http://localhost:4173/_next/static/media/inter_500-s.p.1d14jwmkqqa0f.woff2 (Font) 304
+[80381.44] GET http://localhost:4173/_next/static/media/inter_600-s.p.2dov6rjg62vru.woff2 (Font) 304
+[80381.45] GET http://localhost:4173/_next/static/media/inter_700-s.p.4421omqeymgmp.woff2 (Font) 304
+[80381.46] GET http://localhost:4173/_next/static/media/oswald_400-s.p.13ei9xnsmv81c.woff2 (Font) 304
+[80381.47] GET http://localhost:4173/_next/static/media/oswald_500-s.p.1r1tfvsdc503p.woff2 (Font) 304
+[80381.48] GET http://localhost:4173/_next/static/media/oswald_600-s.p.2s9_tnruh4e-7.woff2 (Font) 304
+[80381.49] GET http://localhost:4173/_next/static/media/oswald_700-s.p.3lxihg9xyecvo.woff2 (Font) 304
+[80381.50] GET http://localhost:4173/_next/static/chunks/0xtgxzd2w6xim.css (Stylesheet) 304
+[80381.51] GET http://localhost:4173/_next/static/chunks/3k5d_dr6qf9y6.js (Script) 304
+[80381.52] GET http://localhost:4173/_next/static/chunks/11sb_owiho490.js (Script) 304
+[80381.53] GET http://localhost:4173/_next/static/chunks/3h7rphluc4147.js (Script) 304
+[80381.54] GET http://localhost:4173/_next/static/chunks/turbopack-19fgnigb80q9n.js (Script) 304
+[80381.55] GET http://localhost:4173/_next/static/chunks/08k49p3c88b2r.js (Script) 304
