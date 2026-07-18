@@ -46,7 +46,7 @@ El corazón de F0 aquí es distinto del template estándar: no hay base de datos
   - [ ] Redirección estática de `/` a `/en/`
   - [ ] Esquema Zod de mensajes que exige las 3 claves
 - **Playwright permanente**: `apps/web/e2e/i18n.spec.ts` — navegar a `/`, `/es/`, `/de/` y comprobar que cada una sirve el idioma correcto; quitar una clave de `de.json` a propósito rompe el build (control negativo, se prueba con un test que invoca `pnpm build` sobre un fixture, no en Playwright).
-- **Verificación**: `pnpm build` genera `out/en/index.html`, `out/es/index.html`, `out/de/index.html`; abrir `/` en el navegador estático local redirige a `/en/`; editar un mensaje y comprobar que aparece traducido en los 3 idiomas tras rebuild.
+- **Verificación**: `pnpm build` genera `out/en/index.html`, `out/es/index.html`, `out/de/index.html`; abrir `/` en el navegador estático local redirige a `/en/`; editar un mensaje y comprobar que aparece traducido en los 3 idiomas tras rebuild. **Añadido por ajuste de alcance de TD.3** (ver journal 2026-07-17): con `LanguageSwitcher` ya construido (TD.3, vía TD.7), verificar aquí que clicar cada opción del switcher navega realmente a `/en`, `/es`, `/de` sobre una página con el componente montado.
 
 #### T0.3 · Pipeline de deploy en Cloudflare Pages ⚠
 - **Depende de**: T0.1
@@ -83,11 +83,11 @@ Se intercala tras T0.1 y antes de continuar F0 (T0.2 gana dependencia de orden s
 - **Entrega**: `Button` en `apps/web/src/components/ui/` generado con shadcn sobre Base UI, ajustado 1:1 al espejo (`components/buttons/Button.jsx`/`.d.ts`/`.prompt.md`): mismas variantes (`primary`/`secondary`/`outline`/`ghost`), mismos tamaños, estado press con `scale(.96)` (PRD/DS: sin cambio de color en press), hover un paso más oscuro; sección nueva en `/design-system`.
 - **Verificación**: comparación en navegador contra `buttons.card.html` del espejo: variantes y estados hover/focus/disabled/press fieles; operable por rol y accessible name.
 
-#### TD.3 · Resto de primitivas del inventario (feedback, navegación, media)
+#### TD.3 · Resto de primitivas del inventario (feedback, navegación, media) [x] 2026-07-18 — PASS, ver docs/verifications/TD.3/
 - **Depende de**: TD.2
 - **Entrega**: `Badge` (feedback), `Header`/`Footer`/`LanguageSwitcher` (navigation — nav de 5 enlaces, selector EN/ES/DE persistente vía la ruta actual, CTA de contacto siempre visible), `Icon` (glifos inline estilo Lucide sustituidos, sin librería de iconos) e `Icon`-dependiente `MapEmbed` (placeholder de iframe de Google Maps, ver TD nota abajo), mismo estándar que TD.2; secciones en `/design-system`.
 - **Nota `MapEmbed`**: en TD se construye fiel al placeholder del DS; el iframe real de Google Maps (con API key, PRD §9.1) se conecta en la tarea de Contact (F1), no aquí.
-- **Verificación**: comparación contra sus specimens del espejo en la única identidad visual del DS; `Header`/`Footer`/`LanguageSwitcher` operables por teclado; `LanguageSwitcher` cambia entre las rutas `/en|es|de` generadas en T0.2.
+- **Verificación**: comparación contra sus specimens del espejo en la única identidad visual del DS; `Header`/`Footer`/`LanguageSwitcher` operables por teclado; `LanguageSwitcher` renderiza los 3 idiomas (EN/ES/DE) con hrefs `/en`/`/es`/`/de` fieles al espejo. **Nota de alcance** (ajuste menor, ver journal 2026-07-17): el cambio REAL entre rutas `/en|es|de` no se puede verificar aquí — T0.2 (que las genera) está ordenado DESPUÉS de toda la fase TD (depende de TD.7 por convención), así que en TD.3 esas rutas todavía no existen. Esa verificación end-to-end se traslada a T0.2, que ya tendrá `LanguageSwitcher` disponible por construirse después de TD.7.
 
 #### TD.4 · Gaps: Input/Textarea + subida a Claude Design
 - **Depende de**: TD.3

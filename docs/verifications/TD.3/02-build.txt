@@ -1,0 +1,26 @@
+
+> endurofun@ build /Users/personal/Developer/enduro-fun
+> pnpm -r build
+
+(node:98632) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Scope: 2 of 3 workspace projects
+apps/web build$ next build
+apps/web build: ▲ Next.js 16.2.10 (Turbopack)
+apps/web build:   Creating an optimized production build ...
+apps/web build: ✓ Compiled successfully in 1212ms
+apps/web build:   Running TypeScript ...
+apps/web build:   Finished TypeScript in 1269ms ...
+apps/web build:   Collecting page data using 5 workers ...
+apps/web build:   Generating static pages using 5 workers (0/4) ...
+apps/web build:   Generating static pages using 5 workers (1/4) 
+apps/web build:   Generating static pages using 5 workers (2/4) 
+apps/web build:   Generating static pages using 5 workers (3/4) 
+apps/web build: ✓ Generating static pages using 5 workers (4/4) in 248ms
+apps/web build:   Finalizing page optimization ...
+apps/web build: Route (app)
+apps/web build: ┌ ○ /
+apps/web build: ├ ○ /_not-found
+apps/web build: └ ○ /design-system
+apps/web build: ○  (Static)  prerendered as static content
+apps/web build: Done

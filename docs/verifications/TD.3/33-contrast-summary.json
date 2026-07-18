@@ -1,0 +1,68 @@
+[
+  {
+    "label": "Badge:Beginner friendly",
+    "fg": "rgb(28, 28, 30)",
+    "bg": "rgb(243, 236, 223)",
+    "ratio": "14.48"
+  },
+  {
+    "label": "Badge:Intermediate",
+    "fg": "rgb(28, 28, 30)",
+    "bg": "rgb(245, 166, 35)",
+    "ratio": "8.39"
+  },
+  {
+    "label": "Badge:Most popular",
+    "fg": "rgb(255, 255, 255)",
+    "bg": "rgb(198, 43, 40)",
+    "ratio": "5.56"
+  },
+  {
+    "label": "Badge:On photo",
+    "fg": "rgb(250, 246, 240)",
+    "bg": "rgb(40, 40, 43)",
+    "ratio": "13.65"
+  },
+  {
+    "label": "LanguageSwitcher active:EN",
+    "fg": "rgb(255, 255, 255)",
+    "bg": "rgb(232, 121, 30)",
+    "ratio": "2.92"
+  },
+  {
+    "label": "LanguageSwitcher active:ES",
+    "fg": "rgb(255, 255, 255)",
+    "bg": "rgb(232, 121, 30)",
+    "ratio": "2.92"
+  },
+  {
+    "label": "LanguageSwitcher active:EN",
+    "fg": "rgb(255, 255, 255)",
+    "bg": "rgb(232, 121, 30)",
+    "ratio": "2.92"
+  },
+  {
+    "label": "LanguageSwitcher active:EN",
+    "fg": "rgb(255, 255, 255)",
+    "bg": "rgb(232, 121, 30)",
+    "ratio": "2.92"
+  },
+  {
+    "label": "Header active nav:Packages",
+    "fg": "rgb(245, 166, 35)",
+    "bg": "rgb(28,28,30)",
+    "ratio": "8.39"
+  },
+  {
+    "label": "Header CTA button:Contact (INVALID selector, matched nav link not the Button — see corrected entry below)",
+    "fg": "rgb(184, 181, 174)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "ratio": "10.26"
+  },
+  {
+    "label": "Header CTA button:Contact (corrected — data-slot=button)",
+    "fg": "rgb(255, 255, 255)",
+    "bg": "rgb(232, 121, 30)",
+    "ratio": "2.92"
+  }
+]

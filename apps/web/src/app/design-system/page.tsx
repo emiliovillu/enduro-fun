@@ -1,5 +1,11 @@
 import type { Metadata } from 'next';
+import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { Footer } from '@/components/ui/footer';
+import { Header } from '@/components/ui/header';
+import { Icon, type IconName } from '@/components/ui/icon';
+import { LanguageSwitcher } from '@/components/ui/language-switcher';
+import { MapEmbed } from '@/components/ui/map-embed';
 
 export const metadata: Metadata = {
   title: 'Design system — EnduroFun',
@@ -75,6 +81,25 @@ const BUTTON_ROWS: {
   { variant: 'secondary', label: 'Enquire' },
   { variant: 'ghost', label: 'Learn more' },
   { variant: 'outline', label: 'On dark', wrapperClassName: 'rounded-lg bg-bg-inverse p-4' },
+];
+
+const BADGE_ROWS: { tone: 'neutral' | 'amber' | 'red' | 'dark'; label: string }[] = [
+  { tone: 'neutral', label: 'Beginner friendly' },
+  { tone: 'amber', label: 'Intermediate' },
+  { tone: 'red', label: 'Most popular' },
+  { tone: 'dark', label: 'On photo' },
+];
+
+const ICON_NAMES: IconName[] = [
+  'mail',
+  'map-pin',
+  'instagram',
+  'bike',
+  'phone',
+  'globe',
+  'menu',
+  'x',
+  'chevronDown',
 ];
 
 function SectionHeading({ children }: { children: React.ReactNode }) {
@@ -232,6 +257,75 @@ export default function DesignSystemPage() {
             </Button>
           </div>
         ))}
+      </div>
+
+      <SubHeading>Badge — tonos</SubHeading>
+      <p className="mb-4 text-small text-text-secondary">
+        Referencia: <code className="font-mono">docs/design-system/components/feedback/</code>.
+      </p>
+      <div className="flex flex-wrap items-center gap-3 rounded-lg bg-bg-canvas-alt p-4">
+        {BADGE_ROWS.map((b) => (
+          <Badge key={b.tone} tone={b.tone}>
+            {b.label}
+          </Badge>
+        ))}
+      </div>
+
+      <SubHeading>Icon — set inline estilo Lucide</SubHeading>
+      <p className="mb-4 text-small text-text-secondary">
+        Referencia: <code className="font-mono">docs/design-system/components/media/</code>. Sin
+        librería de iconos: SVG inline generado a partir de un mapa de paths.
+      </p>
+      <div className="flex flex-wrap gap-6 rounded-lg bg-bg-canvas-alt p-6 text-accent-secondary">
+        {ICON_NAMES.map((name) => (
+          <div key={name} className="flex flex-col items-center gap-1.5">
+            <Icon name={name} size={24} />
+            <span className="font-mono text-caption text-text-secondary">{name}</span>
+          </div>
+        ))}
+      </div>
+
+      <SubHeading>MapEmbed — placeholder</SubHeading>
+      <p className="mb-4 text-small text-text-secondary">
+        Placeholder fiel al espejo; el iframe real de Google Maps se conecta en la tarea de Contact
+        (F1).
+      </p>
+      <div className="flex flex-wrap gap-6">
+        <div className="w-full max-w-md">
+          <MapEmbed label="Álora, Málaga" />
+        </div>
+        <div className="w-70">
+          <MapEmbed label="Álora, Málaga" compact />
+        </div>
+      </div>
+
+      <SubHeading>LanguageSwitcher — EN / ES / DE</SubHeading>
+      <p className="mb-4 text-small text-text-secondary">
+        Enlaces reales <code className="font-mono">/en</code>,{' '}
+        <code className="font-mono">/es</code>, <code className="font-mono">/de</code>. Sin lógica
+        de detección de ruta activa todavía (T0.2 la aporta) —{' '}
+        <code className="font-mono">activeLocale</code> es opcional.
+      </p>
+      <div className="flex flex-wrap items-center gap-4">
+        <LanguageSwitcher activeLocale="en" />
+        <div className="rounded-lg bg-bg-inverse p-4">
+          <LanguageSwitcher activeLocale="es" dark />
+        </div>
+      </div>
+
+      <SubHeading>Header</SubHeading>
+      <p className="mb-4 text-small text-text-secondary">
+        Referencia: <code className="font-mono">docs/design-system/components/navigation/</code>.
+        Nav de 5 enlaces (Home/Packages/About/Contact/Reviews), LanguageSwitcher y CTA de contacto
+        siempre visible.
+      </p>
+      <div className="overflow-hidden rounded-lg">
+        <Header active="packages" activeLocale="en" />
+      </div>
+
+      <SubHeading>Footer</SubHeading>
+      <div className="overflow-hidden rounded-lg">
+        <Footer activeLocale="en" />
       </div>
     </main>
   );

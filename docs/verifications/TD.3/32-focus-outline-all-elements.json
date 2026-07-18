@@ -1,0 +1,322 @@
+[
+  {
+    "scope": "header",
+    "tag": "A",
+    "text": "EnduroFun",
+    "href": "/",
+    "outlineStyle": "solid",
+    "outlineColor": "rgb(245, 166, 35)",
+    "outlineWidth": "2px",
+    "focusVisible": true
+  },
+  {
+    "scope": "header",
+    "tag": "A",
+    "text": "Home",
+    "href": "/",
+    "outlineStyle": "solid",
+    "outlineColor": "rgb(184, 181, 174)",
+    "outlineWidth": "2px",
+    "focusVisible": true
+  },
+  {
+    "scope": "header",
+    "tag": "A",
+    "text": "Packages",
+    "href": "/packages",
+    "outlineStyle": "solid",
+    "outlineColor": "rgb(245, 166, 35)",
+    "outlineWidth": "2px",
+    "focusVisible": true
+  },
+  {
+    "scope": "header",
+    "tag": "A",
+    "text": "About",
+    "href": "/about",
+    "outlineStyle": "solid",
+    "outlineColor": "rgb(184, 181, 174)",
+    "outlineWidth": "2px",
+    "focusVisible": true
+  },
+  {
+    "scope": "header",
+    "tag": "A",
+    "text": "Contact",
+    "href": "/contact",
+    "outlineStyle": "solid",
+    "outlineColor": "rgb(184, 181, 174)",
+    "outlineWidth": "2px",
+    "focusVisible": true
+  },
+  {
+    "scope": "header",
+    "tag": "A",
+    "text": "Reviews",
+    "href": "/reviews",
+    "outlineStyle": "solid",
+    "outlineColor": "rgb(184, 181, 174)",
+    "outlineWidth": "2px",
+    "focusVisible": true
+  },
+  {
+    "scope": "header",
+    "tag": "A",
+    "text": "EN",
+    "href": "/en",
+    "outlineStyle": "solid",
+    "outlineColor": "rgb(255, 255, 255)",
+    "outlineWidth": "2px",
+    "focusVisible": true
+  },
+  {
+    "scope": "header",
+    "tag": "A",
+    "text": "ES",
+    "href": "/es",
+    "outlineStyle": "solid",
+    "outlineColor": "rgb(184, 181, 174)",
+    "outlineWidth": "2px",
+    "focusVisible": true
+  },
+  {
+    "scope": "header",
+    "tag": "A",
+    "text": "DE",
+    "href": "/de",
+    "outlineStyle": "solid",
+    "outlineColor": "rgb(184, 181, 174)",
+    "outlineWidth": "2px",
+    "focusVisible": true
+  },
+  {
+    "scope": "header",
+    "tag": "A",
+    "text": "Contact",
+    "href": "/contact",
+    "outlineStyle": "solid",
+    "outlineColor": "rgb(255, 255, 255)",
+    "outlineWidth": "3px",
+    "focusVisible": true
+  },
+  {
+    "scope": "footer",
+    "tag": "A",
+    "text": "Home",
+    "href": "/",
+    "outlineStyle": "solid",
+    "outlineColor": "rgb(184, 181, 174)",
+    "outlineWidth": "2px",
+    "focusVisible": true
+  },
+  {
+    "scope": "footer",
+    "tag": "A",
+    "text": "Packages",
+    "href": "/packages",
+    "outlineStyle": "solid",
+    "outlineColor": "rgb(184, 181, 174)",
+    "outlineWidth": "2px",
+    "focusVisible": true
+  },
+  {
+    "scope": "footer",
+    "tag": "A",
+    "text": "About",
+    "href": "/about",
+    "outlineStyle": "solid",
+    "outlineColor": "rgb(184, 181, 174)",
+    "outlineWidth": "2px",
+    "focusVisible": true
+  },
+  {
+    "scope": "footer",
+    "tag": "A",
+    "text": "Reviews",
+    "href": "/reviews",
+    "outlineStyle": "solid",
+    "outlineColor": "rgb(184, 181, 174)",
+    "outlineWidth": "2px",
+    "focusVisible": true
+  },
+  {
+    "scope": "footer",
+    "tag": "A",
+    "text": "Contact",
+    "href": "/contact",
+    "outlineStyle": "solid",
+    "outlineColor": "rgb(184, 181, 174)",
+    "outlineWidth": "2px",
+    "focusVisible": true
+  },
+  {
+    "scope": "footer",
+    "tag": "A",
+    "text": "info@endurofun.eu",
+    "href": "mailto:info@endurofun.eu",
+    "outlineStyle": "solid",
+    "outlineColor": "rgb(184, 181, 174)",
+    "outlineWidth": "2px",
+    "focusVisible": true
+  },
+  {
+    "scope": "footer",
+    "tag": "A",
+    "text": "@endurofun_oficial",
+    "href": "https://www.instagram.com/endurofun_oficial",
+    "outlineStyle": "solid",
+    "outlineColor": "rgb(184, 181, 174)",
+    "outlineWidth": "2px",
+    "focusVisible": true
+  },
+  {
+    "scope": "footer",
+    "tag": "A",
+    "text": "EN",
+    "href": "/en",
+    "outlineStyle": "solid",
+    "outlineColor": "rgb(255, 255, 255)",
+    "outlineWidth": "2px",
+    "focusVisible": true
+  },
+  {
+    "scope": "footer",
+    "tag": "A",
+    "text": "ES",
+    "href": "/es",
+    "outlineStyle": "solid",
+    "outlineColor": "rgb(184, 181, 174)",
+    "outlineWidth": "2px",
+    "focusVisible": true
+  },
+  {
+    "scope": "footer",
+    "tag": "A",
+    "text": "DE",
+    "href": "/de",
+    "outlineStyle": "solid",
+    "outlineColor": "rgb(184, 181, 174)",
+    "outlineWidth": "2px",
+    "focusVisible": true
+  },
+  {
+    "scope": "language-switcher-standalone-0",
+    "tag": "A",
+    "text": "EN",
+    "href": "/en",
+    "outlineStyle": "solid",
+    "outlineColor": "rgb(255, 255, 255)",
+    "outlineWidth": "2px",
+    "focusVisible": true
+  },
+  {
+    "scope": "language-switcher-standalone-0",
+    "tag": "A",
+    "text": "ES",
+    "href": "/es",
+    "outlineStyle": "solid",
+    "outlineColor": "rgb(77, 77, 82)",
+    "outlineWidth": "2px",
+    "focusVisible": true
+  },
+  {
+    "scope": "language-switcher-standalone-0",
+    "tag": "A",
+    "text": "DE",
+    "href": "/de",
+    "outlineStyle": "solid",
+    "outlineColor": "rgb(77, 77, 82)",
+    "outlineWidth": "2px",
+    "focusVisible": true
+  },
+  {
+    "scope": "language-switcher-standalone-1",
+    "tag": "A",
+    "text": "EN",
+    "href": "/en",
+    "outlineStyle": "solid",
+    "outlineColor": "rgb(184, 181, 174)",
+    "outlineWidth": "2px",
+    "focusVisible": true
+  },
+  {
+    "scope": "language-switcher-standalone-1",
+    "tag": "A",
+    "text": "ES",
+    "href": "/es",
+    "outlineStyle": "solid",
+    "outlineColor": "rgb(255, 255, 255)",
+    "outlineWidth": "2px",
+    "focusVisible": true
+  },
+  {
+    "scope": "language-switcher-standalone-1",
+    "tag": "A",
+    "text": "DE",
+    "href": "/de",
+    "outlineStyle": "solid",
+    "outlineColor": "rgb(184, 181, 174)",
+    "outlineWidth": "2px",
+    "focusVisible": true
+  },
+  {
+    "scope": "language-switcher-standalone-2",
+    "tag": "A",
+    "text": "EN",
+    "href": "/en",
+    "outlineStyle": "solid",
+    "outlineColor": "rgb(255, 255, 255)",
+    "outlineWidth": "2px",
+    "focusVisible": true
+  },
+  {
+    "scope": "language-switcher-standalone-2",
+    "tag": "A",
+    "text": "ES",
+    "href": "/es",
+    "outlineStyle": "solid",
+    "outlineColor": "rgb(184, 181, 174)",
+    "outlineWidth": "2px",
+    "focusVisible": true
+  },
+  {
+    "scope": "language-switcher-standalone-2",
+    "tag": "A",
+    "text": "DE",
+    "href": "/de",
+    "outlineStyle": "solid",
+    "outlineColor": "rgb(184, 181, 174)",
+    "outlineWidth": "2px",
+    "focusVisible": true
+  },
+  {
+    "scope": "language-switcher-standalone-3",
+    "tag": "A",
+    "text": "EN",
+    "href": "/en",
+    "outlineStyle": "solid",
+    "outlineColor": "rgb(255, 255, 255)",
+    "outlineWidth": "2px",
+    "focusVisible": true
+  },
+  {
+    "scope": "language-switcher-standalone-3",
+    "tag": "A",
+    "text": "ES",
+    "href": "/es",
+    "outlineStyle": "solid",
+    "outlineColor": "rgb(184, 181, 174)",
+    "outlineWidth": "2px",
+    "focusVisible": true
+  },
+  {
+    "scope": "language-switcher-standalone-3",
+    "tag": "A",
+    "text": "DE",
+    "href": "/de",
+    "outlineStyle": "solid",
+    "outlineColor": "rgb(184, 181, 174)",
+    "outlineWidth": "2px",
+    "focusVisible": true
+  }
+]
