@@ -1,0 +1,2 @@
+<meta http-equiv="refresh" content="0; url=/en/"/>
+<a class="text-accent-primary underline underline-offset-2" href="/en/">the English site</a>

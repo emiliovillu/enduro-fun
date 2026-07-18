@@ -37,14 +37,14 @@ El corazón de F0 aquí es distinto del template estándar: no hay base de datos
   - [x] `pnpm gate` completo y verde
 - **Verificación**: `pnpm build` genera `apps/web/out/index.html` sin errores; `pnpm gate` en verde; servir `out/` con un servidor estático local (`npx serve out` o equivalente) y comprobar en el navegador que la página raíz carga; romper a propósito un tipo de `packages/core` rompe la compilación de `apps/web` (control negativo).
 
-#### T0.2 · i18n estático (EN/ES/DE)
+#### T0.2 · i18n estático (EN/ES/DE) [x] 2026-07-18 — PASS, ver docs/verifications/T0.2/
 - **Depende de**: T0.1; orden: TD.7 (por convención — ninguna tarea de F0 posterior a T0.1 se construye antes de que cierre la fase TD, aunque esta tarea en concreto no consuma componentes visuales)
-- **Entrega**: rutas localizadas `/en/...`, `/es/...`, `/de/...` generadas vía `generateStaticParams` para las 3 páginas placeholder existentes; `/` (raíz) es un `index.html` estático con redirección fija a `/en/` (meta-refresh + enlace visible de fallback — sin JS de detección de idioma de navegador, consistente con PRD D11); ficheros `src/messages/{en,es,de}.json` con un esquema Zod en `packages/core` que exige las 3 claves para cada string (falta una traducción → falla el build). Cierra el `[verificar]` de compatibilidad de la librería de i18n elegida con `output: 'export'` (PRD §6.2/§12).
+- **Entrega**: rutas localizadas `/en/...`, `/es/...`, `/de/...` generadas vía `generateStaticParams` para las 3 páginas placeholder existentes; `/` (raíz) es un `index.html` estático con redirección fija a `/en/` (meta-refresh + enlace visible de fallback — sin JS de detección de idioma de navegador, consistente con PRD D11); ficheros `src/messages/{en,es,de}.json` con un esquema Zod en `packages/core` que exige las 3 claves para cada string (falta una traducción → falla el build). **`[verificar]` cerrado** (PRD §6.2/§12, línea 135): `next-intl` SÍ es compatible con `output: 'export'` (verificado contra su documentación oficial — rutas con prefijo, sin middleware), pero se optó por una solución custom mínima (diccionario tipado + Zod) por ser más proporcionada a 5 páginas/3 idiomas — ver PRD.md y `apps/web/src/i18n/messages.ts`.
 - **Subtareas**:
-  - [ ] Elegir y configurar la librería de i18n (o solución custom mínima) compatible con export estático
-  - [ ] `generateStaticParams` para `/en`, `/es`, `/de` sobre las páginas placeholder de T0.1
-  - [ ] Redirección estática de `/` a `/en/`
-  - [ ] Esquema Zod de mensajes que exige las 3 claves
+  - [x] Elegir y configurar la librería de i18n (o solución custom mínima) compatible con export estático
+  - [x] `generateStaticParams` para `/en`, `/es`, `/de` sobre las páginas placeholder de T0.1
+  - [x] Redirección estática de `/` a `/en/`
+  - [x] Esquema Zod de mensajes que exige las 3 claves
 - **Playwright permanente**: `apps/web/e2e/i18n.spec.ts` — navegar a `/`, `/es/`, `/de/` y comprobar que cada una sirve el idioma correcto; quitar una clave de `de.json` a propósito rompe el build (control negativo, se prueba con un test que invoca `pnpm build` sobre un fixture, no en Playwright).
 - **Verificación**: `pnpm build` genera `out/en/index.html`, `out/es/index.html`, `out/de/index.html`; abrir `/` en el navegador estático local redirige a `/en/`; editar un mensaje y comprobar que aparece traducido en los 3 idiomas tras rebuild. **Añadido por ajuste de alcance de TD.3** (ver journal 2026-07-17): con `LanguageSwitcher` ya construido (TD.3, vía TD.7), verificar aquí que clicar cada opción del switcher navega realmente a `/en`, `/es`, `/de` sobre una página con el componente montado.
 
@@ -120,6 +120,11 @@ Se intercala tras T0.1 y antes de continuar F0 (T0.2 gana dependencia de orden s
 - **Depende de**: TD.7
 - **Entrega**: nuevo path SVG para `ICON_PATHS.bike` en `apps/web/src/components/ui/icon.tsx` representando una moto de enduro/motocross (dos ruedas con banda de rodadura marcada, suspensión, manillar alto, depósito/asiento) en vez del glifo actual, percibido por el usuario como un triciclo infantil; mismo `viewBox` 24×24 y convenciones del registro (stroke, no fill, consistente con el resto de `ICON_PATHS`); si el espejo de Claude Design referencia explícitamente este glifo (`components/media/Icon.jsx`), actualizarlo también vía `DesignSync` y regenerar el espejo.
 - **Verificación**: captura del glifo nuevo en la sección Icon de `/design-system`, `pnpm gate` verde, y **revisión humana final** (el juicio de "ya no parece un triciclo" es del propio usuario, que fue quien lo señaló — parada de fin de tarea hasta su OK visual).
+
+#### TD.10 · Icono `bike`: vástago entre el manillar y la pipa de dirección
+- **Depende de**: TD.9
+- **Entrega**: el manillar de `ICON_PATHS.bike` (`apps/web/src/components/ui/icon.tsx`, sub-path `'M14.5 12h3.5'`) queda pegado directamente a la pipa de dirección — el usuario, tras aprobar TD.9, pidió un vástago corto que separe visualmente el manillar del cuerpo (rasgo real de una moto de enduro: el manillar se eleva sobre un vástago, no nace pegado al chasis). Ajustar el path (y su equivalente en Claude Design `components/media/Icon.jsx` + espejo local) añadiendo ese vástago sin volver a la forma de la 1ª iteración descartada en TD.9 (vástago vertical largo que se leía como patinete/triciclo) — vástago corto, proporcionado al resto del glifo.
+- **Verificación**: captura del glifo ajustado (zoom aislado + logo del Header a 26px, mismo patrón que TD.9), `pnpm gate` verde, revisión humana final del usuario.
 
 ---
 

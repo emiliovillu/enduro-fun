@@ -83,7 +83,11 @@ export function Header({
 
       <div className="flex items-center gap-4">
         <LanguageSwitcher activeLocale={activeLocale} dark />
-        <Button size="sm" variant="primary" render={<a href="/contact" />}>
+        {/* Link, no <a>: el CTA de contacto es navegación interna (T0.2 —
+            eslint-plugin-next `no-html-link-for-pages` empezó a marcar
+            hrefs de un solo segmento como este tras introducir la ruta
+            dinámica `/[locale]`, que coincide en forma). */}
+        <Button size="sm" variant="primary" render={<Link href="/contact" />}>
           Contact
         </Button>
       </div>

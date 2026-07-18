@@ -1,21 +1,25 @@
-import type { Company } from '@app/core/contracts';
+import Link from 'next/link';
 
-// Placeholder de F0 — se sustituye por src/data/company.ts (PRD §7) en la
-// tarea que monta el contenido real. Tipado contra @app/core a propósito: un
-// campo requerido roto en CompanySchema debe romper esta compilación (T0.1,
-// control negativo).
-const company: Company = {
-  name: 'EnduroFun',
-  email: 'hola@endurofun.eu',
-  location: { address: 'Álora, Málaga', lat: 36.8299, lng: -4.7106 },
-  social: { instagram: 'https://instagram.com/endurofun' },
-};
-
-export default function Home() {
+// Raíz estática (`out/index.html`) — T0.2: redirección fija a `/en/`.
+// Deliberadamente SIN JS de detección de idioma de navegador (PRD D11): el
+// selector de idioma es siempre manual (`LanguageSwitcher`). El mecanismo es
+// un <meta httpEquiv="refresh"> (funciona sin JS, sin servidor, en un export
+// 100% estático) + un enlace visible de fallback para navegadores/lectores
+// que no procesen el refresh. Next.js hoiste automáticamente <meta>/<title>
+// renderizados a nivel de página dentro del <head> del documento.
+export default function RootRedirectPage() {
   return (
-    <main className="flex min-h-dvh flex-col items-center justify-center gap-2">
-      <h1 className="text-3xl font-bold">Hello {company.name}</h1>
-      <p className="text-text-secondary">Enduro guiado en Álora, Málaga.</p>
-    </main>
+    <>
+      <meta httpEquiv="refresh" content="0; url=/en/" />
+      <main className="flex min-h-dvh flex-col items-center justify-center gap-2 p-8 text-center">
+        <p className="text-text-secondary">
+          Redirecting to{' '}
+          <Link href="/en/" className="text-accent-primary underline underline-offset-2">
+            the English site
+          </Link>
+          …
+        </p>
+      </main>
+    </>
   );
 }

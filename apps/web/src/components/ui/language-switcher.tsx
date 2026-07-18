@@ -49,7 +49,12 @@ export function LanguageSwitcher({
         return (
           <a
             key={code}
-            href={`/${code}`}
+            // Barra final obligatoria — coherente con `trailingSlash: true`
+            // en next.config.ts (T0.2): el export estático escribe
+            // `out/<locale>/index.html`, y sin barra final un host sin
+            // servidor (Cloudflare Pages) puede no garantizar el 301
+            // implícito `/en` → `/en/`, dando 404 en producción real.
+            href={`/${code}/`}
             aria-current={isActive ? 'true' : undefined}
             className={cn(
               'font-display rounded-pill px-3 py-1.5 text-caption transition-colors duration-150 ease-standard focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring',
