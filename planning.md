@@ -94,7 +94,7 @@ Se intercala tras T0.1 y antes de continuar F0 (T0.2 gana dependencia de orden s
 - **Entrega**: `Input` y `Textarea` (no definidos por el DS original — necesarios para el formulario de contacto de F1), creados siguiendo las foundations del DS (hairlines `--border-subtle`, `--radius-lg`/`--radius-pill` según corresponda, focus ring único, sin gradientes); sección nueva en `/design-system`; **subida de ambos al proyecto "EnduroFun Design System"** vía `DesignSync` (`.jsx` + `.d.ts` + `.prompt.md` + card en `components/forms/`), regenerando el espejo después.
 - **Verificación**: revisión en navegador de la sección nueva; `DesignSync list_files` sobre `8ee30e13-2372-49e4-ba6f-2692bc1a6af5` muestra `components/forms/Input.*` y `components/forms/Textarea.*`; el espejo regenerado en `docs/design-system/` los incluye.
 
-#### TD.5 · Composites de producto: PackageCard, ReviewCard, SectionHeading
+#### TD.5 · Composites de producto: PackageCard, ReviewCard, SectionHeading [x] 2026-07-18 — PASS, ver docs/verifications/TD.5/
 - **Depende de**: TD.3
 - **Entrega**: `PackageCard`, `ReviewCard`, `SectionHeading` como presentacionales puros (props planas: nombre/noches/días/precio/features para `PackageCard`; nombre/país/rating/texto para `ReviewCard`; eyebrow/title/align/light para `SectionHeading` — prohibido importar tipos de `packages/core`), fieles a `components/cards/*` del espejo; secciones en `/design-system`.
 - **Verificación**: comparación contra `cards.card.html` del espejo; `PackageCard` y `ReviewCard` renderizan correctamente con datos de ejemplo variados (con y sin `highlight`, rating 4 vs 5 estrellas).

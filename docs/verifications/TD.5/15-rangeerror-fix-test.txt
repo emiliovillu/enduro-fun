@@ -1,0 +1,18 @@
+rating=-3 -> "☆☆☆☆☆" (len=5)
+rating=-1 -> "☆☆☆☆☆" (len=5)
+rating=0 -> "☆☆☆☆☆" (len=5)
+rating=1 -> "★☆☆☆☆" (len=5)
+rating=4 -> "★★★★☆" (len=5)
+rating=5 -> "★★★★★" (len=5)
+rating=6 -> "★★★★★" (len=5)
+rating=27 -> "★★★★★" (len=5)
+rating=4.7 -> "★★★★" (len=4)
+---WITHOUT FIX (raw .repeat(rating), unclamped, reproduces the mirror's behavior)---
+rating=-3 -> THREW: Invalid count value: -3
+rating=-1 -> THREW: Invalid count value: -1
+rating=0 -> "☆☆☆☆☆"
+rating=1 -> "★☆☆☆☆"
+rating=4 -> "★★★★☆"
+rating=5 -> "★★★★★"
+rating=6 -> THREW: Invalid count value: -1
+rating=27 -> THREW: Invalid count value: -22

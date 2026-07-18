@@ -1,0 +1,1 @@
+"[\n  {\n    \"label\": \"con highlight\",\n    \"hasBadge\": true,\n    \"badgeText\": \"Popular\"\n  },\n  {\n    \"label\": \"sin highlight\",\n    \"hasBadge\": true,\n    \"badgeText\": null\n  }\n]"

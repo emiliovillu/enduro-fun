@@ -7,6 +7,9 @@ import { Icon, type IconName } from '@/components/ui/icon';
 import { Input } from '@/components/ui/input';
 import { LanguageSwitcher } from '@/components/ui/language-switcher';
 import { MapEmbed } from '@/components/ui/map-embed';
+import { PackageCard } from '@/components/ui/package-card';
+import { ReviewCard } from '@/components/ui/review-card';
+import { SectionHeading } from '@/components/ui/section-heading';
 import { Textarea } from '@/components/ui/textarea';
 
 export const metadata: Metadata = {
@@ -114,7 +117,84 @@ const ICON_NAMES: IconName[] = [
   'chevronDown',
 ];
 
-function SectionHeading({ children }: { children: React.ReactNode }) {
+const SECTION_HEADING_ROWS: {
+  label: string;
+  props: React.ComponentProps<typeof SectionHeading>;
+  wrapperClassName?: string;
+}[] = [
+  {
+    label: 'left, sin eyebrow',
+    props: { title: 'Trail knowledge you can trust' },
+  },
+  {
+    label: 'left, con eyebrow',
+    props: { eyebrow: 'About', title: 'Local guides, real trails' },
+  },
+  {
+    label: 'center',
+    props: { eyebrow: 'Packages', title: 'Choose your route', align: 'center' },
+  },
+  {
+    label: 'light (sobre fondo oscuro)',
+    props: { eyebrow: 'Reviews', title: 'What riders say', align: 'center', light: true },
+    wrapperClassName: 'rounded-lg bg-bg-inverse p-8',
+  },
+];
+
+const PACKAGE_CARD_ROWS: { label: string; props: React.ComponentProps<typeof PackageCard> }[] = [
+  {
+    label: 'con highlight',
+    props: {
+      name: 'Escapada',
+      nights: 4,
+      days: 3,
+      price: '1.290€',
+      highlight: 'Popular',
+      features: [
+        '4 nights with breakfast',
+        '3 days on a Husqvarna enduro bike',
+        'Personal guide included',
+      ],
+    },
+  },
+  {
+    label: 'sin highlight',
+    props: {
+      name: 'Fin de semana',
+      nights: 2,
+      days: 2,
+      price: '590€',
+      features: ['2 nights with breakfast', '2 days on a Husqvarna enduro bike'],
+    },
+  },
+];
+
+const REVIEW_CARD_ROWS: { label: string; props: React.ComponentProps<typeof ReviewCard> }[] = [
+  {
+    label: 'rating 5',
+    props: {
+      name: 'Mark H.',
+      country: 'United Kingdom',
+      rating: 5,
+      text: 'Best riding week of my life. The guides know every trail.',
+    },
+  },
+  {
+    label: 'rating 4',
+    props: {
+      name: 'Sofie L.',
+      country: 'Germany',
+      rating: 4,
+      text: 'Great trails and great company — the last day was a bit rushed.',
+    },
+  },
+];
+
+// Renombrado de `SectionHeading` (colisionaba de nombre con la primitiva
+// REAL `components/ui/section-heading.tsx` importada arriba — TD.5 la sube
+// al DS y este helper interno del showcase, que solo titula sus propias
+// secciones, pasa a `ShowcaseSectionHeading` para no chocar).
+function ShowcaseSectionHeading({ children }: { children: React.ReactNode }) {
   // h2/h3 ya reciben font-display del selector de etiqueta en globals.css @layer base
   return <h2 className="mt-16 mb-6 text-h3 first:mt-0">{children}</h2>;
 }
@@ -157,7 +237,7 @@ export default function DesignSystemPage() {
         <code className="font-mono">guidelines/*.card.html</code> del espejo.
       </p>
 
-      <SectionHeading>Colores</SectionHeading>
+      <ShowcaseSectionHeading>Colores</ShowcaseSectionHeading>
 
       <SubHeading>Brand — sunset ramp</SubHeading>
       <SwatchStrip swatches={BRAND_SWATCHES} heightClass="h-32" />
@@ -186,7 +266,7 @@ export default function DesignSystemPage() {
         ))}
       </div>
 
-      <SectionHeading>Tipografía</SectionHeading>
+      <ShowcaseSectionHeading>Tipografía</ShowcaseSectionHeading>
 
       <SubHeading>Display — Oswald</SubHeading>
       <div className="rounded-lg bg-bg-canvas-alt p-6">
@@ -218,7 +298,7 @@ export default function DesignSystemPage() {
         <div className="mt-1.5 font-display text-h3">Escapada — 4 nights</div>
       </div>
 
-      <SectionHeading>Espaciado y radios</SectionHeading>
+      <ShowcaseSectionHeading>Espaciado y radios</ShowcaseSectionHeading>
 
       <SubHeading>Radios &amp; sombras</SubHeading>
       <div className="flex flex-wrap gap-4">
@@ -245,7 +325,7 @@ export default function DesignSystemPage() {
         ))}
       </div>
 
-      <SectionHeading>Componentes</SectionHeading>
+      <ShowcaseSectionHeading>Componentes</ShowcaseSectionHeading>
 
       <SubHeading>Button — variantes × tamaños</SubHeading>
       <p className="mb-4 text-small text-text-secondary">
@@ -363,6 +443,44 @@ export default function DesignSystemPage() {
       <SubHeading>Footer</SubHeading>
       <div className="overflow-hidden rounded-lg">
         <Footer activeLocale="en" />
+      </div>
+
+      <ShowcaseSectionHeading>Cards</ShowcaseSectionHeading>
+
+      {/* Etiqueta sin nivel de heading (no <SubHeading>/h3): las filas de abajo
+          ya renderizan su propio <h2> vía la primitiva SectionHeading —
+          anteponer un h3 aquí produciría un salto de jerarquía h2→h3→h2. */}
+      <p className="mb-3 text-h4 text-text-secondary">SectionHeading — eyebrow/title/align/light</p>
+      <p className="mb-4 text-small text-text-secondary">
+        Referencia: <code className="font-mono">docs/design-system/components/cards/</code>.
+      </p>
+      <div className="flex flex-col gap-8">
+        {SECTION_HEADING_ROWS.map((row) => (
+          <div key={row.label} className={row.wrapperClassName}>
+            <p className="mb-2 text-caption font-mono text-text-secondary">{row.label}</p>
+            <SectionHeading {...row.props} />
+          </div>
+        ))}
+      </div>
+
+      <SubHeading>PackageCard — con y sin highlight</SubHeading>
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+        {PACKAGE_CARD_ROWS.map((row) => (
+          <div key={row.label}>
+            <p className="mb-2 text-caption font-mono text-text-secondary">{row.label}</p>
+            <PackageCard {...row.props} />
+          </div>
+        ))}
+      </div>
+
+      <SubHeading>ReviewCard — rating 4 vs 5</SubHeading>
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+        {REVIEW_CARD_ROWS.map((row) => (
+          <div key={row.label}>
+            <p className="mb-2 text-caption font-mono text-text-secondary">{row.label}</p>
+            <ReviewCard {...row.props} />
+          </div>
+        ))}
       </div>
     </main>
   );

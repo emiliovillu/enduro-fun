@@ -1,0 +1,1 @@
+"[\n  {\n    \"ariaLabel\": \"5 out of 5 stars\",\n    \"starsText\": \"★★★★★\",\n    \"filled\": 5,\n    \"empty\": 0\n  },\n  {\n    \"ariaLabel\": \"4 out of 5 stars\",\n    \"starsText\": \"★★★★☆\",\n    \"filled\": 4,\n    \"empty\": 1\n  }\n]"

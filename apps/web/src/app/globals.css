@@ -235,6 +235,7 @@
   --font-weight-bold: var(--fw-bold);
 
   --tracking-eyebrow: var(--ls-eyebrow);
+  --leading-body: var(--lh-body);
 
   --ease-standard: var(--ease-standard);
 }
