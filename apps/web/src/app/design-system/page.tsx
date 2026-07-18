@@ -4,8 +4,10 @@ import { Button } from '@/components/ui/button';
 import { Footer } from '@/components/ui/footer';
 import { Header } from '@/components/ui/header';
 import { Icon, type IconName } from '@/components/ui/icon';
+import { Input } from '@/components/ui/input';
 import { LanguageSwitcher } from '@/components/ui/language-switcher';
 import { MapEmbed } from '@/components/ui/map-embed';
+import { Textarea } from '@/components/ui/textarea';
 
 export const metadata: Metadata = {
   title: 'Design system — EnduroFun',
@@ -88,6 +90,16 @@ const BADGE_ROWS: { tone: 'neutral' | 'amber' | 'red' | 'dark'; label: string }[
   { tone: 'amber', label: 'Intermediate' },
   { tone: 'red', label: 'Most popular' },
   { tone: 'dark', label: 'On photo' },
+];
+
+const FORM_FIELD_STATES: { label: string; props: React.ComponentProps<'input'> }[] = [
+  { label: 'Default', props: { placeholder: 'Jane Rider' } },
+  { label: 'Filled', props: { defaultValue: 'Jane Rider' } },
+  { label: 'Disabled', props: { placeholder: 'Jane Rider', disabled: true } },
+  {
+    label: 'Invalid',
+    props: { defaultValue: 'not-an-email', 'aria-invalid': true },
+  },
 ];
 
 const ICON_NAMES: IconName[] = [
@@ -269,6 +281,31 @@ export default function DesignSystemPage() {
             {b.label}
           </Badge>
         ))}
+      </div>
+
+      <SubHeading>Input &amp; Textarea — gap del DS, subidos en TD.4</SubHeading>
+      <p className="mb-4 text-small text-text-secondary">
+        No definidos por el DS original — necesarios para el formulario de contacto de F1.
+        Referencia: <code className="font-mono">docs/design-system/components/forms/</code>. Mismo
+        radio que las cards (<code className="font-mono">--radius-lg</code>), hairline{' '}
+        <code className="font-mono">--border-subtle</code> y un único{' '}
+        <code className="font-mono">--focus-ring</code> (el mismo token que Button).
+      </p>
+      <div className="grid grid-cols-1 gap-6 rounded-lg bg-bg-canvas-alt p-6 sm:grid-cols-2">
+        {FORM_FIELD_STATES.map((s) => (
+          <div key={s.label}>
+            <label htmlFor={`ds-input-${s.label}`} className="mb-1.5 block text-small font-medium">
+              Name — {s.label}
+            </label>
+            <Input id={`ds-input-${s.label}`} {...s.props} />
+          </div>
+        ))}
+      </div>
+      <div className="mt-6 max-w-md">
+        <label htmlFor="ds-textarea" className="mb-1.5 block text-small font-medium">
+          Message
+        </label>
+        <Textarea id="ds-textarea" placeholder="Tell us about your trip…" />
       </div>
 
       <SubHeading>Icon — set inline estilo Lucide</SubHeading>
