@@ -104,7 +104,7 @@ Se intercala tras T0.1 y antes de continuar F0 (T0.2 gana dependencia de orden s
 - **Entrega**: reglas de lint (scope `apps/web`, dentro de `pnpm gate`) adaptando `_adherence.oxlintrc.json` del proyecto Claude Design al flat config del repo. Prohíben: paleta cruda de Tailwind, valores arbitrarios crudos en `className` fuera de `globals.css`, imports de `@radix-ui/*`/`lucide-react`/cualquier librería de iconos.
 - **Verificación**: un fichero de prueba con una violación de cada tipo hace fallar `pnpm lint` nombrando la regla; al retirarlo, `pnpm gate` queda verde.
 
-#### TD.7 · Cierre: skill frontend contra la realidad + OK humano
+#### TD.7 · Cierre: skill frontend contra la realidad + OK humano [x] 2026-07-18 — PASS, ver docs/verifications/TD.7/
 - **Depende de**: TD.4, TD.6
 - **Entrega**: skill `frontend` actualizada contra el código real committeado: inventario definitivo de `components/ui/` (incluyendo `Input`/`Textarea` añadidos en TD.4) con variantes/props leídas de los `.tsx`, obligatoriedad explícita del uso de las primitivas del DS.
 - **Verificación (E2E de fase)**: recorrido completo de `/design-system` con evidencia visual en `docs/verifications/TD.7/`; `pnpm gate` verde; **revisión humana final del showcase** (parada de fin de fase: el usuario da el OK visual).

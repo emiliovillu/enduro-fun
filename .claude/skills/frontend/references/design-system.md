@@ -1,6 +1,6 @@
 # Design system: de Claude Design a código
 
-Cómo se traduce el design system de {{PROJECT_NAME}} (que vive en Claude Design) a tokens Tailwind v4 y componentes en `apps/web/src/components/ui/`. Este documento gobierna TODO valor visual del proyecto: colores, tipografía, radios, variantes, iconografía. La anatomía de componentes (props, composición, ubicación) vive en `references/components.md`. El DS se construye en la **fase TD** del planning (patrón en `bootstrap/references/fd-design-system.md`).
+Cómo se traduce el design system de EnduroFun (que vive en Claude Design) a tokens Tailwind v4 y componentes en `apps/web/src/components/ui/`. Este documento gobierna TODO valor visual del proyecto: colores, tipografía, radios, variantes, iconografía. La anatomía de componentes (props, composición, ubicación) vive en `references/components.md`. El DS se construye en la **fase TD** del planning (patrón en `bootstrap/references/fd-design-system.md`).
 
 ## Índice
 
@@ -17,7 +17,7 @@ Cómo se traduce el design system de {{PROJECT_NAME}} (que vive en Claude Design
 
 ## 1. Fuente de verdad: Claude Design y su espejo en el repo
 
-El design system vive en **Claude Design**: {{CLAUDE_DESIGN_URL}}. El código lo OBEDECE, nunca al revés. Para que el bucle no dependa de la sesión autenticada, el proyecto está **espejado en `docs/design-system/`** (solo lectura; se regenera con la tool `DesignSync` — `list_files` + `get_file` — y JAMÁS se edita a mano).
+El design system vive en **Claude Design**: https://claude.ai/design/p/8ee30e13-2372-49e4-ba6f-2692bc1a6af5. El código lo OBEDECE, nunca al revés. Para que el bucle no dependa de la sesión autenticada, el proyecto está **espejado en `docs/design-system/`** (solo lectura; se regenera con la tool `DesignSync` — `list_files` + `get_file` — y JAMÁS se edita a mano).
 
 Qué es cada cosa dentro del espejo:
 
@@ -163,6 +163,25 @@ Reglas del inventario:
 - **Los componentes de producto y presentacionales de `ui/` son PUROS**: props planas, prohibido importar tipos de dominio de `@app/core` (regla de dependencia de SKILL.md). El wrapper de dominio (que conoce los contratos) vive en su carpeta de dominio y se construye en la tarea de la feature.
 - **Desviaciones deliberadas del espejo se documentan**: si la traducción fiel choca con la a11y (p. ej. un grid-of-divs del espejo que debe ser `<table>` semántica) o con la plataforma (p. ej. un `<select>` nativo más fiel y accesible que un listbox portalizado), gana la a11y/plataforma, se anota la desviación en la tabla del inventario y se flaggea en el report de la tarea.
 - **Utilidades locales de compilación NO se suben al DS**: `@utility` de Tailwind, custom properties puente y demás mecanismos que solo existen para que NUESTRO código Tailwind reproduzca patrones que las specs del DS ya expresan inline con primitivas existentes, se quedan en `globals.css`. Al DS solo suben **tokens y componentes** que sus specs puedan consumir; subir mecanismos de compilación inyecta contenido muerto. Un valor NUEVO (un color de scrim que el DS no tenía) sí es token y sí se sube.
+
+### 4.1 Inventario definitivo (TD.7 — leído del `.tsx` real, `apps/web/src/components/ui/`)
+
+Las 11 primitivas construidas en TD.1–TD.5. Fuente de verdad: el código; donde difiere del espejo remoto (`docs/design-system/components/`), se anota la desviación (regla de arriba). Detalle línea a línea del razonamiento de cada desviación vive en el comentario de cabecera del propio `.tsx` — esta tabla resume el contrato de props.
+
+| Componente | Fichero | Grupo espejo | Props / variantes reales | Desviación vs. espejo remoto |
+|---|---|---|---|---|
+| `Button` | `button.tsx` | `buttons/` | `variant`: `primary` \| `secondary` \| `outline` \| `ghost` (default `primary`); `size`: `sm` \| `md` \| `lg` (default `md`); resto = `ButtonPrimitive.Props` (Base UI `@base-ui/react/button`), polimorfismo vía `render` (no `as`/`asChild`) | Hover de `outline`/`ghost` aproximado (el espejo no define un tono "más oscuro" equivalente para on-dark); `outline` se deja sin hover — ver comentario de cabecera |
+| `Badge` | `badge.tsx` | `feedback/` | `tone`: `neutral` \| `amber` \| `red` \| `dark` (default `neutral`); resto = `React.ComponentProps<'span'>` | Font-size del espejo (12px inline) snapeado a `text-caption` (13px, token nombrado más próximo) |
+| `Input` | `input.tsx` | `forms/` | `invalid?: boolean` + `InputPrimitive.Props` (Base UI `@base-ui/react/input`) | Gap del DS original — creado en TD.4 y subido a Claude Design (`components/forms/Input.*`) en la misma tarea; `invalid` del espejo se traduce a `aria-invalid` |
+| `Textarea` | `textarea.tsx` | `forms/` | `invalid?: boolean`, `rows` (default `4`) + `React.ComponentProps<'textarea'>` | Gap del DS original — creado en TD.4 y subido a Claude Design (`components/forms/Textarea.*`); Base UI no trae primitiva de textarea, así que es `<textarea>` nativo estilado |
+| `PackageCard` | `package-card.tsx` | `cards/` | `name`, `nights: number`, `days: number`, `price: string`, `features?: string[]`, `highlight?: string`, `imageSlot?: string` + `React.ComponentProps<'div'>` — props planas, sin tipos de `@app/core` | Precio del espejo (`fontSize:28px` inline) snapeado a `text-display-md`; `imageSlot` va por `style` inline (escape hatch §3.1) |
+| `ReviewCard` | `review-card.tsx` | `cards/` | `name`, `country`, `rating?: number` (default `5`, acotado a [0,5]), `text` + `React.ComponentProps<'div'>` — props planas | Rating renderizado con estrellas Unicode literales (el espejo no tiene glifo de estrella en `Icon`), envuelto en `role="img"` + `aria-label` |
+| `SectionHeading` | `section-heading.tsx` | `cards/` | `eyebrow?: string`, `title: string`, `align?: 'left' \| 'center'` (default `left`), `light?: boolean` (default `false`) + `React.ComponentProps<'div'>` | `light` traduce el `color:'#fff'` inline del espejo al token `text-text-on-dark` |
+| `Header` | `header.tsx` | `navigation/` | `active?: 'home'\|'packages'\|'about'\|'contact'\|'reviews'`, `transparent?: boolean` (default `false`), `activeLocale?: LocaleCode` + `React.ComponentProps<'header'>` | Sin toggle de menú móvil (el espejo declara `useState('open')` pero nunca lo renderiza — dead code); `transparent` sin degradado de scrim (sin token equivalente aún); hrefs sin locale-prefix (T0.2 construye esa capa) |
+| `Footer` | `footer.tsx` | `navigation/` | `activeLocale?: LocaleCode` + `React.ComponentProps<'footer'>`; columnas de enlaces (`Explore`/`Company`/`Follow`) hardcodeadas | Títulos de columna en `<p>`, no `<h3>` (evita jerarquía de heading duplicada en cada página) |
+| `LanguageSwitcher` | `language-switcher.tsx` | `navigation/` | `activeLocale?: 'en'\|'es'\|'de'`, `dark?: boolean` (default `false`) + `React.ComponentProps<'nav'>` (sin `aria-label`, fijo a `"Language"`) | El espejo modela `onChange` en memoria (SPA); aquí son 3 `<a href="/en">` reales (i18n por ruta, no por estado) — detección del locale activo delegada al caller vía `activeLocale` |
+| `Icon` | `icon.tsx` | `media/` | `name: IconName` (`mail`\|`map-pin`\|`instagram`\|`menu`\|`x`\|`globe`\|`chevronDown`\|`bike`\|`phone`), `size?: number` (default `20`) + `React.ComponentProps<'svg'>` sin `name` | Sustituye a `lucide-react` (retirada en TD.2); paths listados como array de sub-trazos en vez del `.split(' M')` del espejo (mismo resultado, sin parsing frágil) |
+| `MapEmbed` | `map-embed.tsx` | `media/` | `label?: string` (default `'Álora, Málaga'`), `compact?: boolean` (default `false`) + `React.ComponentProps<'div'>` | Solo placeholder visual — el iframe real de Google Maps (PRD §9.1) se conecta en la tarea de Contact (F1), no aquí |
 
 ## 5. Mockups de página: el layout NO se inventa (vinculante, F0 en adelante)
 

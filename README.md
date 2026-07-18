@@ -70,12 +70,12 @@ borres los marcadores**: el gate (`readme:status:check`) falla sin ellos.
 
 <!-- STATUS-TABLE:BEGIN — generado por `pnpm readme:status`, no editar a mano -->
 
-**7 de 22 tareas cerradas (32 %).**
+**8 de 22 tareas cerradas (36 %).**
 
 | Fase                        | Qué entrega                                                                                                                                                                                            | Estado         |
 | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------- |
 | **F0** · Fundaciones        | Monorepo con export estático operativo, i18n estático (EN/ES/DE) funcionando, y pipeline de Cloudflare Pages desplegando en cada push a `main`                                                         | 🔨 1/4         |
-| **TD** · Design system      | `/design-system` muestra tokens y componentes fieles a "EnduroFun Design System" (Claude Design), lint de adherencia activo y skill frontend actualizada — se ejecuta tras T0.1, antes de continuar F0 | 🔨 6/7         |
+| **TD** · Design system      | `/design-system` muestra tokens y componentes fieles a "EnduroFun Design System" (Claude Design), lint de adherencia activo y skill frontend actualizada — se ejecuta tras T0.1, antes de continuar F0 | ✅ Completa    |
 | **F1** · Contenido base     | Home + About + Contact navegables en los 3 idiomas, formulario de contacto entregando a Formspree y mapa de Álora visible                                                                              | ⬜ No empezada |
 | **F2** · Paquetes y reviews | Packages + Reviews completas en los 3 idiomas; el escaparate de las 5 páginas está completo                                                                                                            | ⬜ No empezada |
 | **F3** · Pulido y SEO       | `hreflang`/sitemap multilingüe correctos y Lighthouse móvil > 90 en todas las páginas                                                                                                                  | ⬜ No empezada |
