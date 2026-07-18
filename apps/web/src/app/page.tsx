@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <main className="flex min-h-dvh flex-col items-center justify-center gap-2">
       <h1 className="text-3xl font-bold">Hello {company.name}</h1>
-      <p className="text-neutral-500">Enduro guiado en Álora, Málaga.</p>
+      <p className="text-text-secondary">Enduro guiado en Álora, Málaga.</p>
     </main>
   );
 }

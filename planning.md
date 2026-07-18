@@ -99,7 +99,7 @@ Se intercala tras T0.1 y antes de continuar F0 (T0.2 gana dependencia de orden s
 - **Entrega**: `PackageCard`, `ReviewCard`, `SectionHeading` como presentacionales puros (props planas: nombre/noches/días/precio/features para `PackageCard`; nombre/país/rating/texto para `ReviewCard`; eyebrow/title/align/light para `SectionHeading` — prohibido importar tipos de `packages/core`), fieles a `components/cards/*` del espejo; secciones en `/design-system`.
 - **Verificación**: comparación contra `cards.card.html` del espejo; `PackageCard` y `ReviewCard` renderizan correctamente con datos de ejemplo variados (con y sin `highlight`, rating 4 vs 5 estrellas).
 
-#### TD.6 · Lint de adherencia al DS
+#### TD.6 · Lint de adherencia al DS [x] 2026-07-18 — PASS, ver docs/verifications/TD.6/
 - **Depende de**: TD.4, TD.5
 - **Entrega**: reglas de lint (scope `apps/web`, dentro de `pnpm gate`) adaptando `_adherence.oxlintrc.json` del proyecto Claude Design al flat config del repo. Prohíben: paleta cruda de Tailwind, valores arbitrarios crudos en `className` fuera de `globals.css`, imports de `@radix-ui/*`/`lucide-react`/cualquier librería de iconos.
 - **Verificación**: un fichero de prueba con una violación de cada tipo hace fallar `pnpm lint` nombrando la regla; al retirarlo, `pnpm gate` queda verde.

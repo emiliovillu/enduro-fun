@@ -1,0 +1,6 @@
+
+/Users/personal/Developer/enduro-fun/apps/web/src/app/__td6-verify-regex.tsx
+  4:23  error  Valor arbitrario crudo en className ([...] con hex/px/número/string) — usa una clase semántica del DS. Excepción sancionada: inyectar un token vía var(), p. ej. max-w-[var(--container-max)]. Ver frontend/design-system.md §3.1  no-restricted-syntax
+
+✖ 1 problem (1 error, 0 warnings)
+

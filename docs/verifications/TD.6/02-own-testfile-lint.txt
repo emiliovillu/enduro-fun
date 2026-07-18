@@ -1,0 +1,8 @@
+
+/Users/personal/Developer/enduro-fun/apps/web/src/app/__td6-verify-test.tsx
+  1:1   error  'lucide-react' import is restricted from being used by a pattern. Los iconos vienen SIEMPRE del registro propio components/ui/icon.tsx (TD.3). No se importan librerías de iconos externas                                         no-restricted-imports
+  5:20  error  Paleta cruda de Tailwind — usa una clase semántica de token del DS (bg-accent-primary, text-text-secondary…), no una familia de color por defecto de Tailwind. Ver frontend/design-system.md §3.1                                  no-restricted-syntax
+  7:23  error  Valor arbitrario crudo en className ([...] con hex/px/número/string) — usa una clase semántica del DS. Excepción sancionada: inyectar un token vía var(), p. ej. max-w-[var(--container-max)]. Ver frontend/design-system.md §3.1  no-restricted-syntax
+
+✖ 3 problems (3 errors, 0 warnings)
+
