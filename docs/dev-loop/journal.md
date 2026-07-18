@@ -186,3 +186,12 @@
 - **1 hallazgo de `simplify` RECHAZADO explícitamente**: unificar `LOCALES`/`LocaleCode` de `language-switcher.tsx` con `Locale`/`LOCALES` de `@app/core/contracts` violaría la regla dura "`components/ui/` nunca importa tipos de dominio de `@app/core`" (`frontend/design-system.md:163`) — la duplicación local es deliberada, ya documentada en el propio componente desde TD.3.
 - **1 hallazgo de `ds-reviewer`, aplicado**: `[locale]/page.tsx` usaba `text-3xl font-bold` (Tailwind crudo) en el `<h1>` del placeholder en vez del token de escala del DS (`text-display-lg`, mismo patrón que usa `/design-system`) — corregido.
 - **Deuda anotada**: (1) `SetHtmlLang` client-side — restructurar con route groups antes de F1 (ver arriba). (2) Header's `NAV_LINKS` (`/packages`, `/about`, etc.) siguen sin prefijo de locale — hoy no importa (Header solo se monta en `/design-system`), pero 404eará en cuanto F1 monte `Header` en páginas reales; corresponde arreglarlo en la tarea que integre `Header` con rutas de locale (T1.1+).
+
+## 2026-07-18 · ⏳ TD.10 iniciada
+- Vástago corto entre el manillar y la pipa de dirección del icono bike. Coste esperado: $0.
+
+## 2026-07-18 · TD.10 cerrada — PASS
+- Coste: $0 · Ciclos verifier: — (sin subagente, diff mecánico de una sub-path) · Commit: (siguiente) · Evidencia: docs/verifications/TD.10/
+- Manillar de `ICON_PATHS.bike` pasa de estar pegado a la pipa de dirección (`'M14.5 12h3.5'`) a colgar de un vástago corto (`'M16 13v-2M14 11h4'`, 2 unidades) — iterado y confirmado visualmente antes de aplicar, mismo mecanismo Playwright que TD.9. Sincronizado en Claude Design y espejo local.
+- **Sin STOP-CHECK de juicio humano esta vez**: la Verificación de la tarea pide "revisión humana final del usuario", pero el usuario dio instrucción explícita ("deja de preguntarme, sigue tu solo") tras la última iteración de TD.9 — se cierra sin bloquear, con la evidencia (`01-icon-zoom-with-stem.png`, `02-header-with-stem.png`) lista para que la revise cuando quiera. Si pide otro ajuste, se reabre como TD.11.
+- Deuda anotada: —
