@@ -27,10 +27,11 @@ const ICON_PATHS = {
   ],
   chevronDown: ['M6 9l6 6 6-6'],
   bike: [
-    'M5 17a3 3 0 1 0 0 6 3 3 0 0 0 0-6z',
-    'M19 17a3 3 0 1 0 0 6 3 3 0 0 0 0-6z',
-    'M5 20l4-8h6l4 8',
-    'M9 12l2-5h4',
+    'M5 16a3 3 0 1 0 0 6 3 3 0 0 0 0-6z', // rueda trasera
+    'M18 16.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5z', // rueda delantera (ligeramente menor)
+    'M3 14l5-1 2 3 3-2 3-1 2 3.5', // perfil superior: asiento → muesca → depósito → carenado del faro → horquilla delantera
+    'M6 17h8', // carril bajo (motor/chasis), separado del perfil superior — da masa, evita que se lea como bici de líneas finas
+    'M14.5 12h3.5', // manillar corto pegado a la pipa de dirección (no un vástago vertical separado — eso leía como patinete/triciclo)
   ],
   phone: ['M4 5c0 8.5 6.5 15 15 15l3-4-5-3-2 2c-2-1-4.5-3.5-5.5-5.5l2-2-3-5z'],
 } as const;
