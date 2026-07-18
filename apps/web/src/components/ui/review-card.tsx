@@ -8,8 +8,12 @@ import { cn } from '@/lib/utils';
 // Rating: el espejo renderiza estrellas Unicode literales (`★`.repeat(rating)
 // + `☆`.repeat(5-rating)), NO un Icon del registro (icon.tsx no tiene glifo
 // de estrella) — se preserva el mecanismo del espejo tal cual, coloreado con
-// el token `amber-500` (mismo que usa el DS: `--amber-500`, clase Tailwind
-// `text-amber-500`). Componente custom sin semántica nativa de "rating" →
+// el token semántico `--rating-fill` (TD.8: nuevo, mapeado a `--amber-700`,
+// clase Tailwind `text-rating-fill`). Antes usaba `amber-500` crudo
+// (2.03:1 sobre bg-surface-card, falla WCAG AA); amber-700 da 4.53:1 sobre
+// blanco. No reutiliza `--accent-amber` (se queda en amber-500, sigue
+// pasando donde vive: fondo oscuro del header). Componente custom sin
+// semántica nativa de "rating" →
 // `role="img"` + `aria-label` con el valor exacto en el contenedor
 // (components.md §5/§6: "los componentes custom sin semántica de serie
 // reciben role y aria-label explícitos"); los glifos visuales van
@@ -42,7 +46,7 @@ export function ReviewCard({
       <div
         role="img"
         aria-label={`${String(filledStars)} out of 5 stars`}
-        className="text-body tracking-widest text-amber-500"
+        className="text-body tracking-widest text-rating-fill"
       >
         <span aria-hidden="true">
           {'★'.repeat(filledStars)}

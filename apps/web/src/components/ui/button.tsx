@@ -27,7 +27,17 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        primary: 'bg-accent-primary text-white hover:bg-accent-primary-hover',
+        // TD.8: texto oscuro (no blanco) sobre el naranja vivo — text-white
+        // sobre accent-primary daba 2.92:1 (falla WCAG AA 4.5:1); text-text-primary
+        // (charcoal-900) sobre orange-500 da 5.82:1. El fondo de reposo no cambia.
+        // Hover: NO se puede reusar accent-primary-hover (orange-600) con NINGÚN
+        // color de texto fijo — charcoal-900/orange-600 da 4.17:1 y white/orange-600
+        // da 4.08:1, ambos por debajo de 4.5:1 (bug real, preexistente a TD.8,
+        // detectado en code-review). Fix: en hover, texto Y fondo cambian juntos a
+        // accent-primary-active (#b34a0c, token ya existente, sin inventar valor)
+        // + text-white — white/accent-primary-active da 5.38:1, cumple AA.
+        primary:
+          'bg-accent-primary text-text-primary hover:bg-accent-primary-active hover:text-white',
         secondary: 'bg-accent-secondary text-white hover:bg-accent-secondary-hover',
         outline: 'bg-transparent text-text-on-dark ring-2 ring-inset ring-text-on-dark',
         ghost:

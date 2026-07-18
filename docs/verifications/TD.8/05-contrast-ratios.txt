@@ -1,0 +1,24 @@
+=== Button variante primary — reposo ===
+color: rgb(28, 28, 30)         (--text-primary / charcoal-900)
+backgroundColor: rgb(232, 121, 30)   (--accent-primary)
+ratio: 5.821354554687004  → PASS (>= 4.5:1)
+
+=== Button variante primary — :hover (hover real vía mouse, matchesHover=true) ===
+color: rgb(255, 255, 255)      (text-white)
+backgroundColor: rgb(179, 74, 12)    (--accent-primary-active)
+ratio: 5.382459962433528  → PASS (>= 4.5:1)
+
+=== LanguageSwitcher — píldora activa (aria-current="true") ===
+color: rgb(28, 28, 30)         (--text-primary)
+backgroundColor: rgb(232, 121, 30)   (--accent-primary)
+ratio: 5.821354554687004  → PASS (>= 4.5:1)
+
+=== ReviewCard — rating stars vs fondo real de la tarjeta ===
+starsColor: rgb(159, 108, 23)  (--rating-fill / --amber-700)
+effectiveBg (heredado de bg-surface-card, ancestro): rgb(255, 255, 255)
+ratio: 4.534087084236266  → PASS (>= 4.5:1, margen estrecho: +0.034)
+
+Fórmula: luminancia relativa WCAG estándar sobre sRGB (coeficientes 0.2126/0.7152/0.0722,
+linearización con el break-point 0.03928), ratio = (L_claro + 0.05) / (L_oscuro + 0.05).
+Medido con getComputedStyle() sobre los nodos reales renderizados en /design-system
+(servido desde apps/web/out/ via `python3 -m http.server`), sesión agent-browser tTD8.

@@ -13,6 +13,7 @@
   --orange-600: #d1590f;
   --orange-500: #e8791e;
   --orange-400: #f2932c;
+  --amber-700: #9f6c17;
   --amber-500: #f5a623;
   --amber-400: #fbc02d;
   --amber-300: #ffd45e;
@@ -49,7 +50,19 @@
   --accent-amber: var(--amber-500);
   --link: var(--red-500);
   --link-hover: var(--red-600);
-  --focus-ring: var(--amber-500);
+  /* TD.8: focus-ring pasa a amber-700 (era amber-500) — sobre superficies
+     claras (botones/inputs en fondo blanco) amber-500 daba ~1.9-2.03:1,
+     por debajo del mínimo WCAG AA de 3:1 para elementos no-texto; amber-700
+     da 4.53:1 en blanco y 3.75:1 sobre el footer oscuro (bg-inverse), ambos
+     por encima del mínimo — la superficie clara es la más restrictiva y la
+     que dominaba el fallo. */
+  --focus-ring: var(--amber-700);
+  /* TD.8: token semántico nuevo y acotado para texto/icono sobre fondo
+     claro que usa ámbar (caso ReviewCard) — NO reutiliza --accent-amber,
+     que se queda en amber-500 porque en header.tsx vive sobre fondo oscuro
+     donde amber-500 sí cumple el mínimo de TEXTO (4.5:1); repuntarlo aquí
+     regresionaría ese caso. */
+  --rating-fill: var(--amber-700);
   --gradient-sunset: linear-gradient(
     90deg,
     var(--red-500) 0%,
@@ -143,6 +156,7 @@
   --color-orange-600: var(--orange-600);
   --color-orange-500: var(--orange-500);
   --color-orange-400: var(--orange-400);
+  --color-amber-700: var(--amber-700);
   --color-amber-500: var(--amber-500);
   --color-amber-400: var(--amber-400);
   --color-amber-300: var(--amber-300);
@@ -177,6 +191,7 @@
   --color-accent-secondary: var(--accent-secondary);
   --color-accent-secondary-hover: var(--accent-secondary-hover);
   --color-accent-amber: var(--accent-amber);
+  --color-rating-fill: var(--rating-fill);
   --color-link: var(--link);
   --color-link-hover: var(--link-hover);
   --color-focus-ring: var(--focus-ring);

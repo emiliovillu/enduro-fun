@@ -7,6 +7,7 @@
 --orange-600:#d1590f;
 --orange-500:#e8791e;
 --orange-400:#f2932c;
+--amber-700:#9f6c17;
 --amber-500:#f5a623;
 --amber-400:#fbc02d;
 --amber-300:#ffd45e;
@@ -42,7 +43,8 @@
 --accent-amber:var(--amber-500);
 --link:var(--red-500);
 --link-hover:var(--red-600);
---focus-ring:var(--amber-500);
+--focus-ring:var(--amber-700);
+--rating-fill:var(--amber-700);
 --gradient-sunset:linear-gradient(90deg,var(--red-500) 0%,var(--orange-500) 55%,var(--amber-400) 100%);
 --gradient-sunset-vertical:linear-gradient(180deg,var(--amber-400) 0%,var(--orange-500) 55%,var(--red-600) 100%);
 --gradient-scrim:linear-gradient(180deg,rgba(28,28,30,0) 0%,rgba(28,28,30,.75) 100%); /* @kind color */

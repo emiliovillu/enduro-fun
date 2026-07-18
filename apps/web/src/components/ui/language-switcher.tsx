@@ -54,7 +54,9 @@ export function LanguageSwitcher({
             className={cn(
               'font-display rounded-pill px-3 py-1.5 text-caption transition-colors duration-150 ease-standard focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring',
               isActive
-                ? 'bg-accent-primary text-white'
+                ? // TD.8: texto oscuro sobre accent-primary (mismo fix que Button
+                  // primary) — text-white daba 2.92:1, text-text-primary da 5.82:1.
+                  'bg-accent-primary text-text-primary'
                 : dark
                   ? 'text-text-on-dark-secondary hover:text-text-on-dark'
                   : 'text-text-secondary hover:text-text-primary',

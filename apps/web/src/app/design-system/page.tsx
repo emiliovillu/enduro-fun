@@ -28,6 +28,7 @@ const BRAND_SWATCHES = [
   { label: '500', className: 'bg-red-500 text-white' },
   { label: 'O600', className: 'bg-orange-600 text-white' },
   { label: 'O500', className: 'bg-orange-500 text-white' },
+  { label: 'A700', className: 'bg-amber-700 text-white' },
   { label: 'A500', className: 'bg-amber-500 text-white' },
   { label: 'A400', className: 'bg-amber-400 text-text-primary' },
 ];
@@ -48,9 +49,10 @@ const SAND_SWATCHES = [
 ];
 
 const SEMANTIC_CHIPS = [
-  { label: '--accent-primary', className: 'bg-accent-primary text-white' },
+  { label: '--accent-primary', className: 'bg-accent-primary text-text-primary' },
   { label: '--accent-secondary', className: 'bg-accent-secondary text-white' },
   { label: '--accent-amber', className: 'bg-accent-amber text-text-primary' },
+  { label: '--rating-fill', className: 'bg-rating-fill text-white' },
   { label: '--link', className: 'bg-link text-white' },
   { label: '--success', className: 'bg-success text-white' },
   { label: '--danger', className: 'bg-danger text-white' },
