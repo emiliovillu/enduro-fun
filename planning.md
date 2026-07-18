@@ -109,6 +109,18 @@ Se intercala tras T0.1 y antes de continuar F0 (T0.2 gana dependencia de orden s
 - **Entrega**: skill `frontend` actualizada contra el código real committeado: inventario definitivo de `components/ui/` (incluyendo `Input`/`Textarea` añadidos en TD.4) con variantes/props leídas de los `.tsx`, obligatoriedad explícita del uso de las primitivas del DS.
 - **Verificación (E2E de fase)**: recorrido completo de `/design-system` con evidencia visual en `docs/verifications/TD.7/`; `pnpm gate` verde; **revisión humana final del showcase** (parada de fin de fase: el usuario da el OK visual).
 
+**Añadidas tras el OK humano de TD.7** (ver journal 2026-07-18): dos correcciones dirigidas explícitamente por el usuario sobre el DS ya cerrado — deuda de contraste WCAG acumulada (TD.2/TD.3/TD.5) y rediseño del icono `bike`. Cambio de alcance menor, documentado en la misma sesión.
+
+#### TD.8 · Corrección de contraste WCAG AA en tokens del DS
+- **Depende de**: TD.7
+- **Entrega**: en el proyecto Claude Design (`8ee30e13-2372-49e4-ba6f-2692bc1a6af5`), decisión de diseño y ajuste de los tokens con contraste insuficiente ya detectado: `--accent-primary` (naranja, texto blanco encima en `Button` variante `primary` y en la píldora activa de `LanguageSwitcher`, ratio medido 2.92:1) y `--amber-500` (estrellas de `ReviewCard` sobre blanco, ratio medido 2.03:1) — ambos por debajo del mínimo WCAG AA de 4.5:1 para texto normal. La corrección vive en Claude Design (oscurecer el token o introducir una variante explícita para uso con texto claro — decisión de diseño, no un valor inventado en código, `design-system.md §1`), se sube vía `DesignSync`, se regenera el espejo local (`docs/design-system/`) y se propaga a los consumidores reales en `apps/web` (`button.tsx`, `language-switcher.tsx`, `review-card.tsx` y cualquier otro uso de estos tokens con texto/icono claro encima).
+- **Verificación**: contraste medido con `getComputedStyle` sobre las superficies REALES donde se usa (no una fixture aislada) — `Button` variante `primary`, píldora activa de `LanguageSwitcher`, rating de `ReviewCard` — los tres ≥4.5:1; captura visual del antes/después en `docs/verifications/TD.8/`; `pnpm gate` verde.
+
+#### TD.9 · Rediseño del icono `bike` (moto de enduro)
+- **Depende de**: TD.7
+- **Entrega**: nuevo path SVG para `ICON_PATHS.bike` en `apps/web/src/components/ui/icon.tsx` representando una moto de enduro/motocross (dos ruedas con banda de rodadura marcada, suspensión, manillar alto, depósito/asiento) en vez del glifo actual, percibido por el usuario como un triciclo infantil; mismo `viewBox` 24×24 y convenciones del registro (stroke, no fill, consistente con el resto de `ICON_PATHS`); si el espejo de Claude Design referencia explícitamente este glifo (`components/media/Icon.jsx`), actualizarlo también vía `DesignSync` y regenerar el espejo.
+- **Verificación**: captura del glifo nuevo en la sección Icon de `/design-system`, `pnpm gate` verde, y **revisión humana final** (el juicio de "ya no parece un triciclo" es del propio usuario, que fue quien lo señaló — parada de fin de tarea hasta su OK visual).
+
 ---
 
 ## F1 — Contenido base
