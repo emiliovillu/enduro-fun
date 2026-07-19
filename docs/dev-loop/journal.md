@@ -296,3 +296,10 @@
 - **4ª iteración de T1.5**: el usuario pidió que el carrusel ocupara el ancho COMPLETO de la sección (edge-to-edge), no solo el ancho del contenedor `max-w-[var(--container-max)]` que compartía con el resto del sitio. Se quitó `max-w-[var(--container-max)]`/`px-5 sm:px-8`/`mx-auto` del track (`home-photo-carousel.tsx`) — solo la cabecera (título + botón de pausa) sigue alineada al contenedor estándar; el track de tarjetas ahora arranca en `x=0` y cubre el viewport completo (verificado: `boundingBox().width === 1280` a 1280px de viewport).
 - Verificación: `pnpm gate` verde, `pnpm test:e2e` 25/25 verdes.
 - Deuda anotada: — (cambio de layout puro).
+
+## 2026-07-19 · hotfix: última tarjeta del carrusel no llegaba al borde derecho
+- **Bug real reportado por el usuario** con captura: en viewports anchos (el ancho real de su navegador supera 5×340px=1700px), las 5 tarjetas de ancho fijo (`w-85 shrink-0`) no cubrían el ancho completo de la sección — quedaba un hueco negro vacío después de la última tarjeta, en vez de llegar hasta el borde.
+- **Fix**: `grow shrink-0 basis-85` en vez de `w-85 shrink-0` — con `grow`, cuando el ancho total de las tarjetas es MENOR que el contenedor, flexbox reparte el sobrante entre las 5 y llegan exactas al borde sin hueco; `shrink-0` conserva el comportamiento de scroll cuando el contenedor es más estrecho que 5 tarjetas (mismo mecanismo, sin regresión en móvil).
+- Verificado con Playwright en 1280px y 1920px: `gap` entre el borde derecho del track y el borde derecho de la última tarjeta = 0px en ambos, tras hacer scroll hasta el final del carrusel.
+- Verificación: `pnpm gate` verde, `pnpm test:e2e` 25/25 verdes.
+- Deuda anotada: — (fix autocontenido).

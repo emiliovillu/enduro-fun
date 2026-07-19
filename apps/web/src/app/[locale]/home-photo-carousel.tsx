@@ -111,7 +111,15 @@ export function HomePhotoCarousel({
               cardRefs.current[index] = el;
             }}
             aria-hidden="true"
-            className="flex h-full w-85 shrink-0 items-end bg-linear-to-br from-charcoal-700 to-charcoal-900 p-4 [scroll-snap-align:start]"
+            // `grow shrink-0 basis-85`: bug real reportado por el usuario
+            // (el último slide no llegaba al borde derecho de la sección en
+            // viewports anchos, donde 5 × 340px no cubre el ancho
+            // disponible) — con `grow`, cuando el ancho de las tarjetas es
+            // MENOR que el contenedor, se reparte el sobrante entre las 5 y
+            // llegan al borde sin hueco; `shrink-0` conserva el
+            // comportamiento de scroll cuando el contenedor es más
+            // estrecho que 5 tarjetas (móvil).
+            className="flex h-full grow shrink-0 basis-85 items-end bg-linear-to-br from-charcoal-700 to-charcoal-900 p-4 [scroll-snap-align:start]"
           >
             <span className="font-mono text-caption text-text-on-dark-secondary">
               Photo placeholder — route {index + 1}
