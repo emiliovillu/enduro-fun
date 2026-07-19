@@ -71,65 +71,69 @@ export function HomePhotoCarousel({
   }, [activeIndex]);
 
   return (
-    <section className="py-24" aria-roledescription="carousel" aria-label={title}>
-      <div className="mx-auto max-w-[var(--container-max)] px-5 sm:px-8">
-        <div className="flex items-end justify-between gap-6">
-          <div>
-            <p className="font-display mb-2 text-eyebrow font-semibold tracking-eyebrow text-accent-secondary uppercase">
-              {eyebrow}
-            </p>
-            <h2 className="m-0 text-display-md text-text-primary">{title}</h2>
+    <section className="bg-bg-inverse py-16" aria-roledescription="carousel" aria-label={title}>
+      <div className="mx-auto flex max-w-[var(--container-max)] items-end justify-between gap-6 px-5 sm:px-8">
+        <div>
+          <p className="font-display mb-2 text-eyebrow font-semibold tracking-eyebrow text-accent-secondary uppercase">
+            {eyebrow}
+          </p>
+          <h2 className="m-0 text-display-md text-text-on-dark">{title}</h2>
+        </div>
+        <button
+          type="button"
+          onClick={() => {
+            setPlaying((current) => !current);
+          }}
+          aria-label={playing ? pauseLabel : playLabel}
+          className="flex size-10 shrink-0 items-center justify-center rounded-pill border border-border-subtle text-text-on-dark-secondary transition-colors duration-150 ease-standard hover:text-text-on-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
+        >
+          <Icon name={playing ? 'pause' : 'play'} size={16} />
+        </button>
+      </div>
+
+      {/* Sin gap entre tarjetas (filmstrip continuo) y sin bordes
+          redondeados — pedido explícito del usuario, distinto del resto de
+          cards del sitio (`PackageCard`/`ReviewCard` sí llevan `radius-lg`).
+          Altura fija (`h-100`) para que las fotos ocupen todo el alto de la
+          sección, en vez de la altura recortada (`h-55`) de la 1ª
+          iteración. */}
+      <div
+        ref={trackRef}
+        className="mx-auto mt-8 flex h-100 max-w-[var(--container-max)] overflow-x-auto px-5 [scroll-snap-type:x_mandatory] sm:px-8 [&::-webkit-scrollbar]:hidden"
+        style={{ scrollbarWidth: 'none' }}
+      >
+        {Array.from({ length: SLIDE_COUNT }, (_, index) => (
+          <div
+            key={index}
+            ref={(el) => {
+              cardRefs.current[index] = el;
+            }}
+            aria-hidden="true"
+            className="flex h-full w-85 shrink-0 items-end bg-linear-to-br from-charcoal-700 to-charcoal-900 p-4 [scroll-snap-align:start]"
+          >
+            <span className="font-mono text-caption text-text-on-dark-secondary">
+              Photo placeholder — route {index + 1}
+            </span>
           </div>
+        ))}
+      </div>
+
+      <div className="mt-6 flex justify-center gap-2">
+        {Array.from({ length: SLIDE_COUNT }, (_, index) => (
           <button
+            key={index}
             type="button"
             onClick={() => {
-              setPlaying((current) => !current);
+              setActiveIndex(index);
             }}
-            aria-label={playing ? pauseLabel : playLabel}
-            className="flex size-10 shrink-0 items-center justify-center rounded-pill border border-border-subtle text-text-secondary transition-colors duration-150 ease-standard hover:text-text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
-          >
-            <Icon name={playing ? 'pause' : 'play'} size={16} />
-          </button>
-        </div>
-
-        <div
-          ref={trackRef}
-          className="mt-8 flex gap-6 overflow-x-auto [scroll-snap-type:x_mandatory] [&::-webkit-scrollbar]:hidden"
-          style={{ scrollbarWidth: 'none' }}
-        >
-          {Array.from({ length: SLIDE_COUNT }, (_, index) => (
-            <div
-              key={index}
-              ref={(el) => {
-                cardRefs.current[index] = el;
-              }}
-              aria-hidden="true"
-              className="flex h-55 w-85 shrink-0 items-end rounded-lg bg-linear-to-br from-charcoal-700 to-charcoal-900 p-4 [scroll-snap-align:start]"
-            >
-              <span className="font-mono text-caption text-text-on-dark-secondary">
-                Photo placeholder — route {index + 1}
-              </span>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-6 flex justify-center gap-2">
-          {Array.from({ length: SLIDE_COUNT }, (_, index) => (
-            <button
-              key={index}
-              type="button"
-              onClick={() => {
-                setActiveIndex(index);
-              }}
-              aria-label={`${String(index + 1)}/${String(SLIDE_COUNT)}`}
-              aria-current={index === activeIndex ? 'true' : undefined}
-              className={cn(
-                'size-2 rounded-pill transition-colors duration-150 ease-standard focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring',
-                index === activeIndex ? 'bg-accent-primary' : 'bg-border-subtle',
-              )}
-            />
-          ))}
-        </div>
+            aria-label={`${String(index + 1)}/${String(SLIDE_COUNT)}`}
+            aria-current={index === activeIndex ? 'true' : undefined}
+            className={cn(
+              'size-2 rounded-pill transition-colors duration-150 ease-standard focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring',
+              index === activeIndex ? 'bg-accent-primary' : 'bg-border-subtle',
+            )}
+          />
+        ))}
       </div>
     </section>
   );

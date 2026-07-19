@@ -285,3 +285,9 @@
 - **Control negativo real**, no solo afirmado: se reintrodujo `scrollIntoView` a propósito, se corrió el nuevo test e2e (`el autoplay del carrusel no mueve el scroll de la página`, `apps/web/e2e/home.spec.ts`) y se confirmó en ROJO (`scrollY` cambió de 2752 a 1725 tras un tick de autoplay); se restauró el fix y el mismo test pasó en VERDE. El test usa un poll real sobre el dot activo (`toHaveAttribute('aria-current', 'true', { timeout: 6000 })`) para esperar el tick de autoplay, no un `waitForTimeout` a ciegas (evita el warning de lint `playwright/no-wait-for-timeout`).
 - Verificación: `pnpm gate` verde, `pnpm test:e2e` 25/25 verdes (incluido el nuevo test de regresión).
 - Deuda anotada: — (fix autocontenido, sin superficie nueva).
+
+## 2026-07-19 · hotfix: galería reubicada encima de Packages, estilo filmstrip
+- **3ª iteración de diseño de T1.5**, petición directa del usuario con capturas anotadas: (1) la sección de galería sube de posición — pasa de estar entre Packages y Reviews a estar ANTES de Packages (justo después del hero); (2) fondo pasa de claro (`bg-canvas`) a oscuro (`bg-bg-inverse`, mismo tono que Reviews/CTA final); (3) sin separación entre tarjetas (`gap-6`→sin gap, filmstrip continuo, esquinas sin redondear — se retira `rounded-lg` de las tarjetas, la única superficie del sitio que rompe con el patrón `radius-lg` del resto de cards, deliberado); (4) tarjetas con altura fija (`h-100`, 400px) que ocupan toda la banda de la sección en vez de la altura recortada anterior (`h-55`).
+- Texto de cabecera (eyebrow/título/botón pausa) pasa a variante "sobre fondo oscuro" (`text-on-dark`/`text-on-dark-secondary`), mismo patrón que usa `SectionHeading light` en Reviews.
+- Verificación: `pnpm gate` verde, `pnpm test:e2e` 25/25 verdes (sin tocar el test de regresión del scroll de página, que sigue protegiendo el mecanismo de autoplay).
+- Deuda anotada: — (cambio puramente visual/de layout, sin superficie nueva).

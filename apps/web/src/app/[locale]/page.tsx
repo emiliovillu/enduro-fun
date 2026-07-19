@@ -95,6 +95,13 @@ export default async function LocaleHomePage({ params }: { params: Promise<{ loc
         </div>
       </section>
 
+      <HomePhotoCarousel
+        eyebrow={messages.home.gallery.eyebrow}
+        title={messages.home.gallery.title}
+        pauseLabel={messages.home.gallery.pauseLabel}
+        playLabel={messages.home.gallery.playLabel}
+      />
+
       <section className="mx-auto max-w-[var(--container-max)] px-5 py-24 sm:px-8">
         <SectionHeading
           eyebrow={messages.home.packages.eyebrow}
@@ -120,13 +127,6 @@ export default async function LocaleHomePage({ params }: { params: Promise<{ loc
         </div>
         <p className="mt-7 text-small text-text-secondary">{messages.home.packages.note}</p>
       </section>
-
-      <HomePhotoCarousel
-        eyebrow={messages.home.gallery.eyebrow}
-        title={messages.home.gallery.title}
-        pauseLabel={messages.home.gallery.pauseLabel}
-        playLabel={messages.home.gallery.playLabel}
-      />
 
       <section className="bg-bg-inverse py-24">
         <div className="mx-auto max-w-[var(--container-max)] px-5 sm:px-8">
