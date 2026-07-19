@@ -95,11 +95,13 @@ export function HomePhotoCarousel({
           redondeados — pedido explícito del usuario, distinto del resto de
           cards del sitio (`PackageCard`/`ReviewCard` sí llevan `radius-lg`).
           Altura fija (`h-100`) para que las fotos ocupen todo el alto de la
-          sección, en vez de la altura recortada (`h-55`) de la 1ª
-          iteración. */}
+          sección. Sin `max-w-[var(--container-max)]` ni padding horizontal
+          (a diferencia de la cabecera de arriba) — el track ocupa TODO el
+          ancho de la sección, pedido explícito del usuario; solo el título
+          y el botón de pausa quedan alineados al contenedor. */}
       <div
         ref={trackRef}
-        className="mx-auto mt-8 flex h-100 max-w-[var(--container-max)] overflow-x-auto px-5 [scroll-snap-type:x_mandatory] sm:px-8 [&::-webkit-scrollbar]:hidden"
+        className="mt-8 flex h-100 overflow-x-auto [scroll-snap-type:x_mandatory] [&::-webkit-scrollbar]:hidden"
         style={{ scrollbarWidth: 'none' }}
       >
         {Array.from({ length: SLIDE_COUNT }, (_, index) => (

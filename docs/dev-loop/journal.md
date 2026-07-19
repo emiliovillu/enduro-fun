@@ -291,3 +291,8 @@
 - Texto de cabecera (eyebrow/título/botón pausa) pasa a variante "sobre fondo oscuro" (`text-on-dark`/`text-on-dark-secondary`), mismo patrón que usa `SectionHeading light` en Reviews.
 - Verificación: `pnpm gate` verde, `pnpm test:e2e` 25/25 verdes (sin tocar el test de regresión del scroll de página, que sigue protegiendo el mecanismo de autoplay).
 - Deuda anotada: — (cambio puramente visual/de layout, sin superficie nueva).
+
+## 2026-07-19 · hotfix: el track del carrusel ocupa todo el ancho de la sección
+- **4ª iteración de T1.5**: el usuario pidió que el carrusel ocupara el ancho COMPLETO de la sección (edge-to-edge), no solo el ancho del contenedor `max-w-[var(--container-max)]` que compartía con el resto del sitio. Se quitó `max-w-[var(--container-max)]`/`px-5 sm:px-8`/`mx-auto` del track (`home-photo-carousel.tsx`) — solo la cabecera (título + botón de pausa) sigue alineada al contenedor estándar; el track de tarjetas ahora arranca en `x=0` y cubre el viewport completo (verificado: `boundingBox().width === 1280` a 1280px de viewport).
+- Verificación: `pnpm gate` verde, `pnpm test:e2e` 25/25 verdes.
+- Deuda anotada: — (cambio de layout puro).
