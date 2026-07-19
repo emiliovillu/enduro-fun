@@ -1,5 +1,7 @@
 import { execFileSync } from 'node:child_process';
-import { readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, unlinkSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { afterEach, beforeAll, describe, expect, it } from 'vitest';
 
@@ -10,43 +12,59 @@ import { afterEach, beforeAll, describe, expect, it } from 'vitest';
 // el build DE VERDAD (no una aserción sobre el esquema aislado) sobre el
 // fichero real, temporalmente roto, y lo restaura pase lo que pase.
 //
-// Riesgo residual aceptado (code review): esto muta un fichero TRACKEADO en
-// disco y solo lo restaura en `afterEach`. Si el proceso muere de forma
-// abrupta entre escribir el fixture roto y que `pnpm build` termine (OOM,
-// SIGKILL, cancelación dura de CI), `afterEach` nunca corre y `de.json`
-// queda con la clave `subtitle` borrada en el working tree. Mitigación
-// proporcionada, no sobre-ingeniería (no se copia el repo entero a un
-// tmpdir para un proyecto de 5 páginas/3 idiomas): la guarda de abajo
-// rechaza mutar si `de.json` YA tiene cambios sin commitear respecto al
-// índice de git — así nunca se pisa en silencio trabajo previo real. Un
-// fichero recién creado y aún sin commitear (`??`, sin baseline en git que
-// proteger) SÍ se deja mutar: si un SIGKILL lo deja roto a medio escribir,
-// no hay historial que perder — `git diff`/`status` lo señala como
-// "contenido inesperado" en un fichero ya marcado como pendiente, nunca
-// como una regresión silenciosa sobre algo commiteado.
-
-const relPath = 'apps/web/src/messages/de.json';
+// Riesgo residual: esto muta un fichero TRACKEADO en disco y solo lo
+// restaura en `afterEach`. Si el proceso muere de forma abrupta entre
+// escribir el fixture roto y que `pnpm build` termine (OOM, SIGKILL,
+// cancelación dura de CI), `afterEach` nunca corre.
+//
+// Mitigación (T1.1, reemplaza la guarda original de T0.2): un snapshot de
+// `de.json` se escribe a un fichero de backup EN DISCO (`os.tmpdir()`, fuera
+// del repo) antes de mutar, y se borra tras restaurar con éxito — así el
+// contenido previo sobrevive aunque el PROCESO no lo haga (a diferencia de
+// `originalDe`, que solo vive en el heap de un proceso que un SIGKILL mata
+// junto con el resto). La guarda original de T0.2 bloqueaba el test entero
+// si `de.json` tenía cambios sin commitear respecto a git — con buena
+// intención (no pisar trabajo real en silencio), pero un `git status` sucio
+// es precisamente el estado NORMAL de `de.json` durante cualquier tarea que
+// añada contenido real (T1.1 y sucesivas: el implementer nunca commitea a
+// mitad de tarea), así que la guarda hacía este control negativo
+// imposible de correr en el flujo de desarrollo real — sin aportar
+// seguridad adicional sobre la del backup en disco (el riesgo de perder
+// trabajo ante un crash es el mismo con o sin cambios pendientes; lo que
+// protege de verdad es que el contenido sobreviva en un fichero aparte, no
+// el estado de git). Si queda un backup de una ejecución anterior sin
+// limpiar (señal de que un crash real dejó `de.json` a medio escribir), el
+// test aborta pidiendo recuperación manual en vez de pisarlo.
 const dePath = fileURLToPath(new URL('../messages/de.json', import.meta.url));
 const repoRoot = fileURLToPath(new URL('../../../..', import.meta.url));
+// `process.pid` en el nombre: aísla ejecuciones concurrentes en la misma
+// máquina (2 workers, un `pnpm test` local solapado con el gate del bucle,
+// 2 checkouts en el mismo runner de CI) — sin esto, la segunda ejecución
+// encontraría el backup de la primera y abortaría con el mensaje de "crash
+// previo", un falso positivo que confunde colisión de concurrencia con un
+// crash real (code review de T1.1).
+const backupPath = join(
+  tmpdir(),
+  `endurofun-de-json-build-negative.${String(process.pid)}.bak.json`,
+);
 const originalDe = readFileSync(dePath, 'utf8');
 
 beforeAll(() => {
-  const status = execFileSync('git', ['status', '--porcelain', '--', relPath], {
-    cwd: repoRoot,
-    encoding: 'utf8',
-  });
-  const isTrackedWithPendingEdits = status.trim() !== '' && !status.startsWith('??');
-  if (isTrackedWithPendingEdits) {
+  if (existsSync(backupPath)) {
     throw new Error(
-      `${relPath} tiene cambios sin commitear (${status.trim()}) — abortando el control ` +
-        'negativo para no pisarlos en silencio. Commitea o descarta esos cambios antes de ' +
-        're-ejecutar este test.',
+      `Se encontró un backup de una ejecución anterior en ${backupPath} — probablemente un ` +
+        `crash dejó ${dePath} a medio escribir en una ejecución previa de este test. Recupera ` +
+        'manualmente desde ese backup (o bórralo si ya se resolvió) antes de re-ejecutar.',
     );
   }
+  writeFileSync(backupPath, originalDe);
 });
 
 afterEach(() => {
   writeFileSync(dePath, originalDe);
+  if (existsSync(backupPath)) {
+    unlinkSync(backupPath);
+  }
 });
 
 describe('esquema de mensajes: control negativo de build', () => {

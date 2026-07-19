@@ -1,6 +1,40 @@
 {
+  "nav": {
+    "home": "Inicio",
+    "packages": "Paquetes",
+    "about": "Sobre nosotros",
+    "contact": "Contacto",
+    "reviews": "Opiniones",
+    "footer": {
+      "explore": "Explora",
+      "company": "Empresa",
+      "follow": "Síguenos",
+      "brandBlurb": "Rutas de enduro guiadas desde Álora, Málaga. Paquetes de varios días con moto y alojamiento incluidos."
+    }
+  },
   "home": {
-    "title": "Hola EnduroFun",
-    "subtitle": "Rutas guiadas de enduro en Álora, Málaga."
+    "title": "Vive el corazón salvaje de Andalucía",
+    "subtitle": "Rutas de enduro guiadas de varios días por los terrenos más variados de Málaga — moto, alojamiento y conocimiento local incluidos.",
+    "badge": "Álora · Málaga · EN / ES / DE",
+    "ctaPrimary": "Ver paquetes",
+    "ctaSecondary": "Contacta con nosotros",
+    "packages": {
+      "eyebrow": "Paquetes",
+      "title": "Dos formas de rodar",
+      "note": "Opciones de moto de trail disponibles en los días de ruta. También te asesoramos personalmente y preparamos una oferta individual para ti.",
+      "fromPrefix": "Desde",
+      "mostPopular": "Más popular",
+      "durationTemplate": "{nights} noches · {days} días de ruta",
+      "ctaLabel": "Consultar"
+    },
+    "reviews": {
+      "eyebrow": "Opiniones",
+      "title": "De quienes ya han venido"
+    },
+    "findUs": {
+      "eyebrow": "Encuéntranos",
+      "title": "Con base en Álora, Málaga",
+      "text": "A 20 minutos del aeropuerto de Málaga, al borde de algunos de los mejores terrenos de enduro de la provincia."
+    }
   }
 }

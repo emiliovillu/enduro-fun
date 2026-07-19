@@ -1,6 +1,40 @@
 {
+  "nav": {
+    "home": "Home",
+    "packages": "Packages",
+    "about": "About",
+    "contact": "Contact",
+    "reviews": "Reviews",
+    "footer": {
+      "explore": "Explore",
+      "company": "Company",
+      "follow": "Follow",
+      "brandBlurb": "Guided enduro routes from Álora, Málaga. Multi-day packages with bike and accommodation included."
+    }
+  },
   "home": {
-    "title": "Hello EnduroFun",
-    "subtitle": "Guided enduro rides in Álora, Málaga."
+    "title": "Ride the wild heart of Andalucía",
+    "subtitle": "Multi-day guided enduro routes through Málaga's most varied terrain — bike, accommodation and local knowledge included.",
+    "badge": "Álora · Málaga · EN / ES / DE",
+    "ctaPrimary": "View packages",
+    "ctaSecondary": "Get in touch",
+    "packages": {
+      "eyebrow": "Packages",
+      "title": "Two ways to ride",
+      "note": "Adventure bike options available on route days. We also advise you personally and prepare an individual offer for you.",
+      "fromPrefix": "From",
+      "mostPopular": "Most popular",
+      "durationTemplate": "{nights} nights · {days} route days",
+      "ctaLabel": "Enquire"
+    },
+    "reviews": {
+      "eyebrow": "Reviews",
+      "title": "From riders who've been"
+    },
+    "findUs": {
+      "eyebrow": "Find us",
+      "title": "Based in Álora, Málaga",
+      "text": "20 minutes from Málaga airport, at the edge of some of the province's best enduro terrain."
+    }
   }
 }

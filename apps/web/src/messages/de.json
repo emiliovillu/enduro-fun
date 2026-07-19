@@ -1,6 +1,40 @@
 {
+  "nav": {
+    "home": "Start",
+    "packages": "Pakete",
+    "about": "Über uns",
+    "contact": "Kontakt",
+    "reviews": "Bewertungen",
+    "footer": {
+      "explore": "Entdecken",
+      "company": "Unternehmen",
+      "follow": "Folgen",
+      "brandBlurb": "Geführte Enduro-Touren ab Álora, Málaga. Mehrtägige Pakete inklusive Motorrad und Unterkunft."
+    }
+  },
   "home": {
-    "title": "Hallo EnduroFun",
-    "subtitle": "Geführte Enduro-Touren in Álora, Málaga."
+    "title": "Erlebe das wilde Herz Andalusiens",
+    "subtitle": "Mehrtägige geführte Enduro-Touren durch das abwechslungsreichste Gelände Málagas — Motorrad, Unterkunft und lokales Wissen inklusive.",
+    "badge": "Álora · Málaga · EN / ES / DE",
+    "ctaPrimary": "Pakete ansehen",
+    "ctaSecondary": "Kontakt aufnehmen",
+    "packages": {
+      "eyebrow": "Pakete",
+      "title": "Zwei Arten zu fahren",
+      "note": "An den Routentagen sind Adventure-Bike-Optionen verfügbar. Wir beraten dich außerdem persönlich und erstellen dir ein individuelles Angebot.",
+      "fromPrefix": "Ab",
+      "mostPopular": "Am beliebtesten",
+      "durationTemplate": "{nights} Nächte · {days} Routentage",
+      "ctaLabel": "Anfragen"
+    },
+    "reviews": {
+      "eyebrow": "Bewertungen",
+      "title": "Von Fahrern, die schon dort waren"
+    },
+    "findUs": {
+      "eyebrow": "Finde uns",
+      "title": "Zuhause in Álora, Málaga",
+      "text": "20 Minuten vom Flughafen Málaga entfernt, am Rand einiger der besten Enduro-Gebiete der Provinz."
+    }
   }
 }

@@ -30,3 +30,17 @@ const twMerge = extendTailwindMerge({
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
+
+// Construye un href interno con locale + trailing slash obligatorio
+// (`trailingSlash: true` en next.config.ts escribe `out/<locale>/<slug>/
+// index.html` — sin la barra, un host sin servidor como Cloudflare Pages
+// puede 404 en vez de redirigir). `slug` vacío → raíz del locale. Sin
+// `activeLocale` (undefined) → sin prefijar, red de seguridad genérica para
+// cualquier consumidor que no lo pase (hoy: solo el showcase
+// `/design-system`, que SÍ pasa `activeLocale` explícito — ver Header y
+// Footer). Compartido por `Header` y `Footer` (T1.1 code review: ambos
+// reimplementaban la misma lógica de una línea de forma idéntica).
+export function localeHref(activeLocale: string | undefined, slug: string): string {
+  const prefix = activeLocale ? `/${activeLocale}` : '';
+  return slug ? `${prefix}/${slug}/` : `${prefix}/`;
+}

@@ -148,8 +148,7 @@ const PACKAGE_CARD_ROWS: { label: string; props: React.ComponentProps<typeof Pac
     label: 'con highlight',
     props: {
       name: 'Escapada',
-      nights: 4,
-      days: 3,
+      subtitle: '4 nights · 3 route days',
       price: '1.290€',
       highlight: 'Popular',
       features: [
@@ -163,8 +162,7 @@ const PACKAGE_CARD_ROWS: { label: string; props: React.ComponentProps<typeof Pac
     label: 'sin highlight',
     props: {
       name: 'Fin de semana',
-      nights: 2,
-      days: 2,
+      subtitle: '2 nights · 2 route days',
       price: '590€',
       features: ['2 nights with breakfast', '2 days on a Husqvarna enduro bike'],
     },
@@ -439,12 +437,33 @@ export default function DesignSystemPage() {
         siempre visible.
       </p>
       <div className="overflow-hidden rounded-lg">
-        <Header active="packages" activeLocale="en" />
+        <Header
+          active="packages"
+          activeLocale="en"
+          labels={{
+            home: 'Home',
+            packages: 'Packages',
+            about: 'About',
+            contact: 'Contact',
+            reviews: 'Reviews',
+          }}
+        />
       </div>
 
       <SubHeading>Footer</SubHeading>
       <div className="overflow-hidden rounded-lg">
-        <Footer activeLocale="en" />
+        <Footer
+          activeLocale="en"
+          labels={{
+            home: 'Home',
+            packages: 'Packages',
+            about: 'About',
+            contact: 'Contact',
+            reviews: 'Reviews',
+          }}
+          columnLabels={{ explore: 'Explore', company: 'Company', follow: 'Follow' }}
+          brandBlurb="Guided enduro routes from Álora, Málaga. Multi-day packages with bike and accommodation included."
+        />
       </div>
 
       <ShowcaseSectionHeading>Cards</ShowcaseSectionHeading>

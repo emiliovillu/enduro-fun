@@ -19,25 +19,39 @@ import { cn } from '@/lib/utils';
 // Precio: el espejo fija `fontSize:28px` inline sin token propio — se snapea
 // a `text-display-md` (clamp que arranca en 1.75rem = 28px), mismo criterio
 // que TD.2 con Badge/text-caption (design-system.md §3.6).
+//
+// `subtitle`/`ctaLabel` (T1.1, code review del verifier — FAIL real,
+// capturas de `/es/`/`/de/` mostrando inglés colado): el espejo construye
+// `` `${nights} nights · ${days} route days` `` y fija `"Enquire"` DENTRO
+// del componente — ambos son literales en inglés, y esta primitiva es
+// presentacional pura (PROHIBIDO importar `@app/core` o i18n, ver arriba),
+// así que no puede resolver la traducción por sí misma. Se sustituyen las
+// props numéricas `nights`/`days` (que obligaban a construir el string
+// dentro del componente) por `subtitle: string`, el texto YA traducido y
+// formateado que llega desde la página (que sí conoce `messages` y por
+// tanto construye `` `${nights} noches · ${days} días de ruta` `` o
+// equivalente por idioma antes de pasarlo). `ctaLabel` tiene un default
+// ('Enquire') solo por compatibilidad de API — hoy el único consumidor
+// (Home) siempre lo pasa explícito y traducido.
 interface PackageCardProps extends React.ComponentProps<'div'> {
   name: string;
-  nights: number;
-  days: number;
+  subtitle: string;
   price: string;
   features?: string[];
   highlight?: string;
   imageSlot?: string;
+  ctaLabel?: string;
 }
 
 export function PackageCard({
   className,
   name,
-  nights,
-  days,
+  subtitle,
   price,
   features = [],
   highlight,
   imageSlot,
+  ctaLabel = 'Enquire',
   ...props
 }: PackageCardProps) {
   return (
@@ -58,9 +72,7 @@ export function PackageCard({
         className="flex h-45 items-end bg-linear-to-br from-charcoal-700 to-charcoal-900 p-4"
         style={imageSlot ? { background: imageSlot } : undefined}
       >
-        <span className="font-mono text-caption text-text-on-dark-secondary">
-          {nights} nights · {days} route days
-        </span>
+        <span className="font-mono text-caption text-text-on-dark-secondary">{subtitle}</span>
       </div>
       <div className="flex flex-1 flex-col gap-3.5 p-6">
         <h3 className="m-0 text-h3">{name}</h3>
@@ -77,7 +89,7 @@ export function PackageCard({
         <div className="mt-auto flex items-center justify-between border-t border-border-subtle pt-2">
           <span className="font-display text-display-md text-accent-secondary">{price}</span>
           <Button size="sm" variant="primary">
-            Enquire
+            {ctaLabel}
           </Button>
         </div>
       </div>

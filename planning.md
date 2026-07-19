@@ -132,7 +132,7 @@ Se intercala tras T0.1 y antes de continuar F0 (T0.2 gana dependencia de orden s
 
 Home + About + Contact navegables en los 3 idiomas, con el formulario de contacto entregando de verdad a Formspree y el mapa de Álora visible.
 
-#### T1.1 · Página Home
+#### T1.1 · Página Home [x] 2026-07-19 — PASS, ver docs/verifications/T1.1/
 - **Depende de**: TD.7, T0.2
 - **Entrega**: `/[en|es|de]` con hero a pantalla completa (foto/vídeo placeholder + scrim), badge de ubicación/idiomas, tagline + CTA ("View packages" / "Get in touch"), preview de 2-3 `PackageCard`, 2-3 `ReviewCard` destacadas, sección "Find us" con `MapEmbed` (placeholder — el iframe real llega en T1.3) — contenido en los 3 idiomas vía los mensajes de T0.2.
 - **Mockup**: Claude Design "EnduroFun Pages" (`07ce2c66-a9a4-4636-ad05-ea1746fa94f9`), `variants/HomeVariantA.jsx` (Variante Cinemática, elegida — PRD §6.4).

@@ -1,8 +1,9 @@
 import Link from 'next/link';
 
-import { cn } from '@/lib/utils';
+import { cn, localeHref } from '@/lib/utils';
 
 import { Icon } from './icon';
+import type { NavLabels } from './header';
 import { LanguageSwitcher, type LocaleCode } from './language-switcher';
 
 // Espejo: docs/design-system/components/navigation/Footer.jsx — blurb de
@@ -13,20 +14,37 @@ import { LanguageSwitcher, type LocaleCode } from './language-switcher';
 // páginas, no estructura de documento — un `<h3>` de footer sin `<h2>` previo
 // en cada página rompería la jerarquía de headings (components.md §5). Las
 // listas de enlaces usan `<ul>/<li>` reales.
+//
+// slugs sin locale (mismo mecanismo y mismo motivo que `Header`, T1.1: se
+// prefijan con `activeLocale` al construir cada columna vía `localeHref`,
+// compartido con `Header` desde `@/lib/utils` — code review de T1.1; `null`
+// → sin prefijar, para no romper el fallback del showcase de
+// `/design-system`).
+//
+// labels/columnLabels/brandBlurb: SIN texto fijo a nivel de módulo (2º fix de
+// code review del verifier en T1.1, mismo patrón que `Header`) — este
+// componente no importa `@app/core`/i18n, así que todo el texto ya traducido
+// llega como props desde quien sí conoce `messages` (la página). `labels`
+// reutiliza el mismo tipo `NavLabels` que `Header` (mismas claves
+// home/packages/about/contact/reviews) porque las columnas del footer
+// enlazan a las mismas páginas con el mismo copy.
 const EXPLORE_LINKS = [
-  { label: 'Home', href: '/' },
-  { label: 'Packages', href: '/packages' },
-  { label: 'About', href: '/about' },
-  { label: 'Reviews', href: '/reviews' },
+  { key: 'home', slug: '' },
+  { key: 'packages', slug: 'packages' },
+  { key: 'about', slug: 'about' },
+  { key: 'reviews', slug: 'reviews' },
 ] as const;
 
 const COMPANY_LINKS = [
-  { label: 'Contact', href: '/contact' },
+  { key: 'contact' as const, slug: 'contact' },
   { label: 'info@endurofun.eu', href: 'mailto:info@endurofun.eu' },
 ] as const;
 
 interface FooterProps extends React.ComponentProps<'footer'> {
   activeLocale?: LocaleCode;
+  labels: NavLabels;
+  columnLabels: { explore: string; company: string; follow: string };
+  brandBlurb: string;
 }
 
 function FooterColumn({
@@ -55,7 +73,22 @@ function FooterColumn({
   );
 }
 
-export function Footer({ activeLocale, className, ...props }: FooterProps) {
+export function Footer({
+  activeLocale,
+  labels,
+  columnLabels,
+  brandBlurb,
+  className,
+  ...props
+}: FooterProps) {
+  const exploreLinks = EXPLORE_LINKS.map((link) => ({
+    label: labels[link.key],
+    href: localeHref(activeLocale, link.slug),
+  }));
+  const companyLinks = COMPANY_LINKS.map((link) =>
+    'slug' in link ? { label: labels[link.key], href: localeHref(activeLocale, link.slug) } : link,
+  );
+
   return (
     <footer
       data-slot="footer"
@@ -65,17 +98,16 @@ export function Footer({ activeLocale, className, ...props }: FooterProps) {
       <div className="mx-auto flex max-w-[var(--container-max)] flex-wrap justify-between gap-12">
         <div className="max-w-70">
           <p className="font-display mb-2.5 text-h4 text-white">EnduroFun</p>
-          <p className="text-small">
-            Guided enduro routes from Álora, Málaga. Multi-day packages with bike and accommodation
-            included.
-          </p>
+          <p className="text-small">{brandBlurb}</p>
         </div>
 
-        <FooterColumn title="Explore" links={EXPLORE_LINKS} />
-        <FooterColumn title="Company" links={COMPANY_LINKS} />
+        <FooterColumn title={columnLabels.explore} links={exploreLinks} />
+        <FooterColumn title={columnLabels.company} links={companyLinks} />
 
         <div>
-          <p className="font-display mb-3.5 text-caption tracking-eyebrow text-white">Follow</p>
+          <p className="font-display mb-3.5 text-caption tracking-eyebrow text-white">
+            {columnLabels.follow}
+          </p>
           <a
             href="https://www.instagram.com/endurofun_oficial"
             className="flex items-center gap-2 text-small text-text-on-dark-secondary transition-colors duration-150 ease-standard hover:text-text-on-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"

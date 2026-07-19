@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { cn } from '@/lib/utils';
+import { cn, localeHref } from '@/lib/utils';
 
 import { Button } from './button';
 import { Icon } from './icon';
@@ -20,28 +20,45 @@ import { LanguageSwitcher, type LocaleCode } from './language-switcher';
 //   en dirección/opacidad distintas). Se deja sin degradado hasta que la
 //   página que use `transparent` (fase F1, hero) lo necesite y el DS lo
 //   tokenice — no se inventa un valor crudo.
-// - hrefs de página son slugs simples (`/`, `/packages`…) sin locale: la
-//   estructura de rutas real (`/en/packages`) la construye T0.2.
+// - hrefs de página: slugs simples (`packages`, `about`…) sin locale — se
+//   prefijan con `activeLocale` al construir el nav vía `localeHref` (T1.1,
+//   deuda anotada en T0.2: "404eará en cuanto F1 monte Header en páginas
+//   reales"; compartido con `Footer`, code review de T1.1). Sin
+//   `activeLocale`, hacen fallback a `/${slug}` (comportamiento previo) —
+//   red de seguridad genérica para cualquier consumidor que no pase
+//   `activeLocale`, no un camino real hoy: el único otro consumidor,
+//   `/design-system` (showcase), SÍ pasa `activeLocale="en"` explícitamente
+//   desde TD.1 (`app/design-system/page.tsx`), así que ese fallback no se
+//   ejercita ahí.
+// - labels: SIN texto fijo a nivel de módulo (2º fix de code review del
+//   verifier en T1.1, mismo patrón que `subtitle`/`ctaLabel` en
+//   `PackageCard`) — este componente no importa `@app/core`/i18n, así que
+//   los labels ya traducidos llegan como prop `labels` (`Record<NavKey,
+//   string>`) desde quien sí conoce `messages` (la página). El botón CTA
+//   reutiliza `labels.contact` (mismo copy que el link de nav "Contact").
 const NAV_LINKS = [
-  { key: 'home', label: 'Home', href: '/' },
-  { key: 'packages', label: 'Packages', href: '/packages' },
-  { key: 'about', label: 'About', href: '/about' },
-  { key: 'contact', label: 'Contact', href: '/contact' },
-  { key: 'reviews', label: 'Reviews', href: '/reviews' },
+  { key: 'home', slug: '' },
+  { key: 'packages', slug: 'packages' },
+  { key: 'about', slug: 'about' },
+  { key: 'contact', slug: 'contact' },
+  { key: 'reviews', slug: 'reviews' },
 ] as const;
 
 type NavKey = (typeof NAV_LINKS)[number]['key'];
+type NavLabels = Record<NavKey, string>;
 
 interface HeaderProps extends React.ComponentProps<'header'> {
   active?: NavKey;
   transparent?: boolean;
   activeLocale?: LocaleCode;
+  labels: NavLabels;
 }
 
 export function Header({
   active,
   transparent = false,
   activeLocale,
+  labels,
   className,
   ...props
 }: HeaderProps) {
@@ -56,7 +73,7 @@ export function Header({
       {...props}
     >
       <Link
-        href="/"
+        href={localeHref(activeLocale, '')}
         className="font-display flex items-center gap-2.5 text-h4 text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
       >
         <Icon name="bike" size={26} className="text-accent-primary" />
@@ -64,10 +81,10 @@ export function Header({
       </Link>
 
       <nav aria-label="Primary" className="flex gap-7">
-        {NAV_LINKS.map(({ key, label, href }) => (
+        {NAV_LINKS.map(({ key, slug }) => (
           <Link
             key={key}
-            href={href}
+            href={localeHref(activeLocale, slug)}
             aria-current={key === active ? 'page' : undefined}
             className={cn(
               'font-display text-small transition-colors duration-150 ease-standard focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring',
@@ -76,7 +93,7 @@ export function Header({
                 : 'text-text-on-dark-secondary hover:text-text-on-dark',
             )}
           >
-            {label}
+            {labels[key]}
           </Link>
         ))}
       </nav>
@@ -87,12 +104,16 @@ export function Header({
             eslint-plugin-next `no-html-link-for-pages` empezó a marcar
             hrefs de un solo segmento como este tras introducir la ruta
             dinámica `/[locale]`, que coincide en forma). */}
-        <Button size="sm" variant="primary" render={<Link href="/contact" />}>
-          Contact
+        <Button
+          size="sm"
+          variant="primary"
+          render={<Link href={localeHref(activeLocale, 'contact')} />}
+        >
+          {labels.contact}
         </Button>
       </div>
     </header>
   );
 }
 
-export type { HeaderProps, NavKey };
+export type { HeaderProps, NavKey, NavLabels };
