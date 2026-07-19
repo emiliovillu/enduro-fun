@@ -31,6 +31,12 @@
       "eyebrow": "Opiniones",
       "title": "De quienes ya han venido"
     },
+    "gallery": {
+      "eyebrow": "Galería",
+      "title": "Una muestra del terreno",
+      "pauseLabel": "Pausar el pase automático de la galería",
+      "playLabel": "Reanudar el pase automático de la galería"
+    },
     "findUs": {
       "eyebrow": "Encuéntranos",
       "title": "Con base en Álora, Málaga",

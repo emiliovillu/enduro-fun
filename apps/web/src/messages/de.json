@@ -31,6 +31,12 @@
       "eyebrow": "Bewertungen",
       "title": "Von Fahrern, die schon dort waren"
     },
+    "gallery": {
+      "eyebrow": "Galerie",
+      "title": "Ein Vorgeschmack auf das Gelände",
+      "pauseLabel": "Automatische Wiedergabe der Galerie pausieren",
+      "playLabel": "Automatische Wiedergabe der Galerie fortsetzen"
+    },
     "findUs": {
       "eyebrow": "Finde uns",
       "title": "Zuhause in Álora, Málaga",

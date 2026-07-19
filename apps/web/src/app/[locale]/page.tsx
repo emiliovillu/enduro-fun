@@ -14,6 +14,8 @@ import { REVIEWS } from '@/data/reviews';
 import { getMessages } from '@/i18n/messages';
 import { localeHref } from '@/lib/utils';
 
+import { HomePhotoCarousel } from './home-photo-carousel';
+
 // Home real (T1.1, F1) — reemplaza el placeholder de F0. Mockup: Claude
 // Design "EnduroFun Pages", `variants/HomeVariantA.jsx` (Variante Cinemática,
 // PRD §6.4).
@@ -118,6 +120,13 @@ export default async function LocaleHomePage({ params }: { params: Promise<{ loc
         </div>
         <p className="mt-7 text-small text-text-secondary">{messages.home.packages.note}</p>
       </section>
+
+      <HomePhotoCarousel
+        eyebrow={messages.home.gallery.eyebrow}
+        title={messages.home.gallery.title}
+        pauseLabel={messages.home.gallery.pauseLabel}
+        playLabel={messages.home.gallery.playLabel}
+      />
 
       <section className="bg-bg-inverse py-24">
         <div className="mx-auto max-w-[var(--container-max)] px-5 sm:px-8">

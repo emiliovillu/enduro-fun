@@ -41,6 +41,25 @@ test('la preview de packages y reviews renderiza', { tag: ['@f1'] }, async ({ pa
   await expect(page.getByText('Sophie')).toBeVisible();
 });
 
+test('la sección de galería es visible y navegable', { tag: ['@f1'] }, async ({ page }) => {
+  await page.goto('/en/');
+  const gallery = page.getByRole('region', { name: 'A taste of the terrain' });
+  await gallery.scrollIntoViewIfNeeded();
+  await expect(gallery).toBeVisible();
+
+  const dots = gallery.getByRole('button', { name: /^\d\/5$/ });
+  await expect(dots).toHaveCount(5);
+  await expect(dots.first()).toHaveAttribute('aria-current', 'true');
+
+  await dots.nth(2).click();
+  await expect(dots.nth(2)).toHaveAttribute('aria-current', 'true');
+
+  const pauseButton = gallery.getByRole('button', { name: 'Pause gallery autoplay' });
+  await expect(pauseButton).toBeVisible();
+  await pauseButton.click();
+  await expect(gallery.getByRole('button', { name: 'Resume gallery autoplay' })).toBeVisible();
+});
+
 test(
   'el LanguageSwitcher cambia de idioma conservando la página (Home)',
   { tag: ['@f1'] },

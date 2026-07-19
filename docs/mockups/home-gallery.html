@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Mockup — Home Gallery carousel</title>
+<link rel="stylesheet" href="../design-system/tokens/colors.css" />
+<link rel="stylesheet" href="../design-system/tokens/typography.css" />
+<link rel="stylesheet" href="../design-system/tokens/spacing.css" />
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg-canvas); }
+  .container { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--container-pad); }
+  .eyebrow { font-family: var(--font-display); font-size: var(--fs-eyebrow); letter-spacing: var(--ls-eyebrow); text-transform: uppercase; color: var(--accent-secondary); font-weight: var(--fw-semibold); margin-bottom: var(--space-2); }
+  section.gallery { padding: var(--space-24) 0; }
+  section.gallery h2 { font-size: var(--fs-display-md); margin: 0 0 var(--space-8); padding: 0 var(--container-pad); max-width: var(--container-max); margin-left: auto; margin-right: auto; }
+  .track { display: flex; gap: var(--space-6); overflow-x: auto; scroll-snap-type: x mandatory; padding: 0 var(--container-pad); scrollbar-width: none; }
+  .track::-webkit-scrollbar { display: none; }
+  .card {
+    scroll-snap-align: start;
+    flex: 0 0 340px;
+    height: 220px;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, var(--charcoal-700), var(--charcoal-900));
+    display: flex;
+    align-items: flex-end;
+    padding: var(--space-4);
+    color: var(--text-on-dark-secondary);
+    font-family: var(--font-mono);
+    font-size: var(--fs-caption);
+  }
+  .dots { display: flex; gap: var(--space-2); justify-content: center; margin-top: var(--space-6); }
+  .dot { width: 8px; height: 8px; border-radius: var(--radius-pill); background: var(--border-subtle); }
+  .dot.active { background: var(--accent-primary); }
+</style>
+</head>
+<body>
+
+<section class="gallery">
+  <div class="container">
+    <div class="eyebrow">Gallery</div>
+    <h2 style="margin-left:0; margin-right:0; padding:0;">A taste of the terrain</h2>
+  </div>
+  <div class="track">
+    <div class="card">Photo placeholder — singletrack climb</div>
+    <div class="card">Photo placeholder — river crossing</div>
+    <div class="card">Photo placeholder — group at sunset</div>
+    <div class="card">Photo placeholder — Caminito del Rey rest day</div>
+    <div class="card">Photo placeholder — Álora old town</div>
+  </div>
+  <div class="dots">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+</section>
+
+</body>
+</html>

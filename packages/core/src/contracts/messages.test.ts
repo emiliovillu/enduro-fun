@@ -34,6 +34,12 @@ const validMessages = {
       eyebrow: 'Reviews',
       title: "From riders who've been",
     },
+    gallery: {
+      eyebrow: 'Gallery',
+      title: 'A taste of the terrain',
+      pauseLabel: 'Pause gallery autoplay',
+      playLabel: 'Resume gallery autoplay',
+    },
     findUs: {
       eyebrow: 'Find us',
       title: 'Based in Álora, Málaga',

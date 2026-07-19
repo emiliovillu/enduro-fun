@@ -158,8 +158,16 @@ Home + About + Contact navegables en los 3 idiomas, con el formulario de contact
 - **Playwright permanente**: `apps/web/e2e/contact.spec.ts` — el formulario se rellena y envía contra un **fixture/mock del endpoint de Formspree** (nunca el endpoint real en CI, regla 10); se comprueba el estado de éxito mostrado al usuario; el mapa embebido está presente en el DOM (sin verificar contenido del iframe de terceros).
 - **Verificación**: en navegador, rellenar y enviar el formulario real una vez contra el endpoint real de Formspree → comprobar que el email llega a la bandeja configurada (evidencia: captura del email recibido); el mapa de Google muestra Álora, Málaga, visible e interactivo (zoom/paneo funcionan). Este envío real es manual/one-shot (no se repite en cada gate — el gate usa el fixture de Playwright).
 
+#### T1.5 · Sección Galería (Home) — carrusel de fotos [x] 2026-07-19 — PASS, ver docs/verifications/T1.5/
+- **Depende de**: T1.1
+- **Añadida 2026-07-19** (petición directa del usuario mientras se reúnen los prerequisitos ⚠ de T1.3/T0.3, scope-change menor documentado en el journal): nueva sección de Home, carrusel deslizante ("aesthetic") de fotos placeholder (mismo criterio tokenizado que el hero/About — sin fotos reales todavía), ancho completo igual al contenedor de la sección Reviews (`max-w-[var(--container-max)]`). Posición acordada con el usuario: justo después de la preview de Packages, antes de Reviews.
+- **Entrega**: nueva sección en `apps/web/src/app/[locale]/page.tsx` entre Packages y Reviews — carrusel horizontal (scroll-snap o equivalente, sin librería externa — mismo criterio "sin dependencias nuevas si no hace falta" que el resto del proyecto) con varias tarjetas de foto placeholder tokenizadas; controles operables por teclado/táctil.
+- **Mockup**: `docs/mockups/home-gallery.html` (a crear y aprobar por el usuario al iniciar esta tarea — sin mockup previo en Claude Design, regla 7 del planning).
+- **Playwright permanente**: añadir a `apps/web/e2e/home.spec.ts` — la sección de galería es visible en `/en/`, contiene más de una tarjeta, es navegable (siguiente/anterior o scroll) sin JS roto.
+- **Verificación**: en navegador, `/en/`, `/es/`, `/de/` muestran la sección con el mismo ancho que Reviews, el carrusel se desplaza (rueda/gesto/controles) sin salirse del contenedor, y funciona con teclado (foco visible, `Tab`/flechas si aplica).
+
 #### T1.4 · E2E de fase F1
-- **Depende de**: T1.1, T1.2, T1.3
+- **Depende de**: T1.1, T1.2, T1.3, T1.5
 - **Entrega**: ninguna — tarea de verificación pura.
 - **Verificación**: recorrido completo del caso de uso 2 y 3 del PRD (§4) — desde `/en/` navegar a About y a Contact, cambiar idioma en cada paso y comprobar que persiste la navegación, enviar el formulario de contacto (fixture) y ver el estado de éxito, comprobar el mapa visible. Cita criterios de éxito §14.2 (3 idiomas completos en Home/About/Contact), §14.3 (formulario funcional), §14.4 (mapa visible e interactivo), §14.7 (responsive). Sin regresión de TD.7/F0.
 

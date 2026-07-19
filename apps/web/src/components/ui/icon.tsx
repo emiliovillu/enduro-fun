@@ -42,6 +42,8 @@ const ICON_PATHS = {
     'M15 22V10', // columnas
     'M2 10l10-6 10 6', // frontón
   ],
+  play: ['M6 4l14 8-14 8z'],
+  pause: ['M7 4v16', 'M17 4v16'],
 } as const;
 
 type IconName = keyof typeof ICON_PATHS;
