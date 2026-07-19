@@ -80,6 +80,40 @@ export const MessagesSchema = z.object({
       text: z.string().min(1),
     }),
   }),
+  // T1.2 (F1, Página About): grupo nuevo, mismo patrón que `home` — cada
+  // sección de la página (intro, historia, diferenciadores, niveles de
+  // experiencia) es un sub-objeto con sus propias claves obligatorias. Los
+  // 3 diferenciadores (`localKnowledge`/`variedTerrain`/`culturalOffering`)
+  // y los 3 niveles (`beginner`/`intermediate`/`advanced`) van como claves
+  // fijas, no un array — mismo criterio que evitar arrays de longitud fija
+  // en Zod cuando el contenido es semánticamente distinto por clave (no una
+  // lista homogénea), y permite que falte un solo campo de un solo
+  // diferenciador/nivel dispare el control negativo con un mensaje de error
+  // preciso (nombra la ruta exacta).
+  about: z.object({
+    eyebrow: z.string().min(1),
+    title: z.string().min(1),
+    intro: z.string().min(1),
+    story: z.object({
+      eyebrow: z.string().min(1),
+      title: z.string().min(1),
+      text: z.string().min(1),
+    }),
+    different: z.object({
+      eyebrow: z.string().min(1),
+      title: z.string().min(1),
+      localKnowledge: z.object({ title: z.string().min(1), text: z.string().min(1) }),
+      variedTerrain: z.object({ title: z.string().min(1), text: z.string().min(1) }),
+      culturalOffering: z.object({ title: z.string().min(1), text: z.string().min(1) }),
+    }),
+    levels: z.object({
+      eyebrow: z.string().min(1),
+      title: z.string().min(1),
+      beginner: z.object({ label: z.string().min(1), text: z.string().min(1) }),
+      intermediate: z.object({ label: z.string().min(1), text: z.string().min(1) }),
+      advanced: z.object({ label: z.string().min(1), text: z.string().min(1) }),
+    }),
+  }),
 });
 
 export type Messages = z.infer<typeof MessagesSchema>;

@@ -14,6 +14,21 @@ interface SectionHeadingProps extends React.ComponentProps<'div'> {
   title: string;
   align?: 'left' | 'center';
   light?: boolean;
+  // `as` (T1.2, About): por defecto `h2` — el uso previsto es encabezar UNA
+  // sección dentro de una página que ya tiene su propio `<h1>` (Home: título
+  // del hero, fuera de este componente). About reutiliza este mismo patrón
+  // visual (eyebrow + título) para el título DE PÁGINA (el único `<h1>` de
+  // `/about`), así que necesita emitir `h1` en vez de `h2` sin duplicar el
+  // marcado del eyebrow a mano — jerarquía de headings real (components.md
+  // §5), no solo estilo.
+  as?: 'h1' | 'h2';
+  // `size` (T1.2, About): mockup de About (`docs/mockups/about.html`,
+  // `.intro h1`) usa `--fs-display-lg` para el único h1 de página, un peldaño
+  // por encima de `--fs-display-md` que usan el resto de secciones (`h2`) —
+  // mismo componente, tamaño distinto según si titula la página entera o una
+  // sección dentro de ella. Por defecto `md` preserva el tamaño existente de
+  // todos los consumidores actuales (Home).
+  size?: 'md' | 'lg';
 }
 
 export function SectionHeading({
@@ -22,6 +37,8 @@ export function SectionHeading({
   title,
   align = 'left',
   light = false,
+  as: Heading = 'h2',
+  size = 'md',
   ...props
 }: SectionHeadingProps) {
   return (
@@ -35,9 +52,15 @@ export function SectionHeading({
           {eyebrow}
         </div>
       ) : null}
-      <h2 className={cn('m-0 text-display-md', light ? 'text-text-on-dark' : 'text-text-primary')}>
+      <Heading
+        className={cn(
+          'm-0',
+          size === 'lg' ? 'text-display-lg' : 'text-display-md',
+          light ? 'text-text-on-dark' : 'text-text-primary',
+        )}
+      >
         {title}
-      </h2>
+      </Heading>
     </div>
   );
 }

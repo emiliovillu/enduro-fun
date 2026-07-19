@@ -36,5 +36,47 @@
       "title": "Zuhause in Álora, Málaga",
       "text": "20 Minuten vom Flughafen Málaga entfernt, am Rand einiger der besten Enduro-Gebiete der Provinz."
     }
+  },
+  "about": {
+    "eyebrow": "Über uns",
+    "title": "Lokales Wissen, echte Trails",
+    "intro": "EnduroFun ist ein kleines Team aus Fahrern und Guides mit Sitz in Álora, das mehrtägige Enduro-Touren durch die wildesten Teile der Provinz Málaga anbietet.",
+    "story": {
+      "eyebrow": "Unsere Geschichte",
+      "title": "Zuerst Fahrer, dann Guides von Beruf",
+      "text": "Was als eine Handvoll Freunde begann, die an Wochenenden die Trails rund um Álora erkundeten, wurde zu einem kleinen geführten Tourenbetrieb, aufgebaut auf jahrelanger Erfahrung mit demselben Gelände in jeder Jahreszeit und jedem Zustand. Jede Route, die wir anbieten, sind wir selbst vorher gefahren — wir wissen, wo nach Regen der Matsch liegt, welche Anstiege Schwung brauchen und wo man für die beste Aussicht anhält."
+    },
+    "different": {
+      "eyebrow": "Was uns anders macht",
+      "title": "Drei Dinge, die Fahrern auffallen",
+      "localKnowledge": {
+        "title": "Lokales Wissen",
+        "text": "Routen aus jahrelanger Erfahrung mit genau diesem Gelände, nicht aus GPS-Tracks aus dem Internet."
+      },
+      "variedTerrain": {
+        "title": "Abwechslungsreiches Gelände",
+        "text": "Staubige Singletrails, felsige Anstiege und offene Forstwege, alles in kurzer Fahrt von Álora."
+      },
+      "culturalOffering": {
+        "title": "Kulturelles Angebot",
+        "text": "Optionen für den Ruhetag wie der Caminito del Rey oder die Altstadt von Málaga — mehr als nur eine Motorradtour."
+      }
+    },
+    "levels": {
+      "eyebrow": "Erfahrungsstufen",
+      "title": "Für wen das ist",
+      "beginner": {
+        "label": "Anfänger",
+        "text": "Sicher auf dem Motorrad, neu im Gelände — Routen mit einfacheren Abschnitten und mehr Anleitung."
+      },
+      "intermediate": {
+        "label": "Fortgeschritten",
+        "text": "Etwas Enduro-/Geländeerfahrung — die Standard-Routenmischung der meisten Pakete."
+      },
+      "advanced": {
+        "label": "Erfahren",
+        "text": "Sicher auf technischem Gelände — Routen können auf Anfrage um anspruchsvollere Abschnitte angepasst werden."
+      }
+    }
   }
 }

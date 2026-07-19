@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Mockup — About</title>
+<link rel="stylesheet" href="../design-system/tokens/colors.css" />
+<link rel="stylesheet" href="../design-system/tokens/typography.css" />
+<link rel="stylesheet" href="../design-system/tokens/spacing.css" />
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg-canvas); }
+  .container { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--container-pad); }
+  .header { display: flex; align-items: center; justify-content: space-between; gap: var(--space-6); padding: var(--space-4) var(--space-8); background: var(--bg-inverse); color: #fff; }
+  .header nav { display: flex; gap: var(--space-6); font-family: var(--font-display); font-size: var(--fs-small); }
+  .header nav a.active { color: var(--accent-amber); }
+  .header nav a { color: var(--text-on-dark-secondary); text-decoration: none; }
+  .eyebrow { font-family: var(--font-display); font-size: var(--fs-eyebrow); letter-spacing: var(--ls-eyebrow); text-transform: uppercase; color: var(--accent-secondary); font-weight: var(--fw-semibold); margin-bottom: var(--space-2); }
+  section { padding: var(--space-24) var(--container-pad); }
+  section > .container { }
+  .intro h1 { font-size: var(--fs-display-lg); margin: 0 0 var(--space-5); max-width: 720px; }
+  .intro p { font-size: var(--fs-lead); color: var(--text-secondary); max-width: 640px; margin: 0; }
+  .story { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-14); align-items: center; }
+  .story .photo { height: 340px; border-radius: var(--radius-lg); background: linear-gradient(135deg, var(--charcoal-700), var(--charcoal-900)); display: flex; align-items: center; justify-content: center; color: var(--text-on-dark-secondary); font-family: var(--font-mono); font-size: var(--fs-caption); }
+  .story p { color: var(--text-secondary); line-height: var(--lh-body); margin: var(--space-4) 0 0; }
+  .diff-section { background: var(--bg-inverse); color: #fff; }
+  .diff-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-8); margin-top: var(--space-10); }
+  .diff-card { background: var(--surface-card-inverse); border-radius: var(--radius-lg); padding: var(--space-6); }
+  .diff-card .icon { width: 40px; height: 40px; border-radius: var(--radius-pill); background: var(--accent-primary); margin-bottom: var(--space-4); }
+  .diff-card h3 { font-size: var(--fs-h4); margin: 0 0 var(--space-2); }
+  .diff-card p { color: var(--text-on-dark-secondary); font-size: var(--fs-small); margin: 0; }
+  .levels-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); margin-top: var(--space-10); }
+  .level-card { border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-6); background: var(--surface-card); }
+  .badge { display: inline-block; padding: var(--space-2) var(--space-4); border-radius: var(--radius-pill); font-family: var(--font-display); font-size: var(--fs-caption); letter-spacing: var(--ls-eyebrow); text-transform: uppercase; background: var(--sand-200); margin-bottom: var(--space-3); }
+  .level-card p { color: var(--text-secondary); font-size: var(--fs-small); margin: 0; }
+  .footer { background: var(--bg-inverse); color: var(--text-on-dark-secondary); padding: var(--space-16) var(--container-pad); font-size: var(--fs-small); }
+  .footer .container { display: flex; justify-content: space-between; }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <strong style="font-family:var(--font-display); text-transform:uppercase; color:#fff;">EnduroFun</strong>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Packages</a>
+    <a class="active" href="#">About</a>
+    <a href="#">Reviews</a>
+    <a href="#">Contact</a>
+  </nav>
+</header>
+
+<section class="intro">
+  <div class="container">
+    <div class="eyebrow">About</div>
+    <h1>Local knowledge, real trails</h1>
+    <p>EnduroFun is a small team of riders and guides based in Álora, running multi-day enduro routes across the wildest parts of the province of Málaga.</p>
+  </div>
+</section>
+
+<section class="story">
+  <div class="container story">
+    <div>
+      <div class="eyebrow">Our story</div>
+      <h2 style="font-size:var(--fs-display-md); margin:0;">Riders first, guides by trade</h2>
+      <p>What started as a handful of friends exploring the trails around Álora on weekends became a small guided-tour operation, built on years of riding the same terrain in every season and condition — placeholder copy, replaced with real content when the client supplies it.</p>
+    </div>
+    <div class="photo">Photo placeholder — guides on trail</div>
+  </div>
+</section>
+
+<section class="diff-section">
+  <div class="container">
+    <div class="eyebrow" style="color:var(--accent-amber);">What makes us different</div>
+    <h2 style="font-size:var(--fs-display-md); margin:0; color:#fff;">Three things riders notice</h2>
+    <div class="diff-grid">
+      <div class="diff-card">
+        <div class="icon"></div>
+        <h3>Local knowledge</h3>
+        <p>Routes built from years riding this exact terrain, not GPS tracks pulled off the internet.</p>
+      </div>
+      <div class="diff-card">
+        <div class="icon"></div>
+        <h3>Varied terrain</h3>
+        <p>Dusty singletrack, rocky climbs and open fire roads, all within a short ride of Álora.</p>
+      </div>
+      <div class="diff-card">
+        <div class="icon"></div>
+        <h3>Cultural offering</h3>
+        <p>Rest-day options like Caminito del Rey or Málaga's old town — more than just a bike trip.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="eyebrow">Experience levels</div>
+    <h2 style="font-size:var(--fs-display-md); margin:0;">Who this is for</h2>
+    <div class="levels-grid">
+      <div class="level-card">
+        <div class="badge">Beginner</div>
+        <p>Comfortable on a bike, new to off-road — routes chosen with easier sections and more guidance.</p>
+      </div>
+      <div class="level-card">
+        <div class="badge">Intermediate</div>
+        <p>Some enduro/off-road experience — the standard route mix on most packages.</p>
+      </div>
+      <div class="level-card">
+        <div class="badge">Advanced</div>
+        <p>Confident on technical terrain — routes can be adjusted for more demanding sections on request.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <span>EnduroFun — Álora, Málaga</span>
+    <span>info@endurofun.eu</span>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -27,8 +27,8 @@ El implementer LEE el mockup (y su `.png`) antes de escribir la página; el revi
 
 | Página | Ruta | Mockup | Tarea | Captura |
 |---|---|---|---|---|
-| _(se rellena a medida que el usuario aprueba mockups)_ | | | | |
+| About | `/[locale]/about` | `docs/mockups/about.html` | T1.2 | `docs/mockups/about.png` |
 
 ## Notas de fidelidad
 
-_(Desviaciones acordadas, con fecha y motivo — ninguna todavía.)_
+- **About (T1.2, 2026-07-19)**: layout acordado con el usuario vía pregunta directa (sin mockup previo en Claude Design, regla 7) antes de construir el HTML — 5 secciones: intro, historia con foto placeholder, 3 diferenciadores sobre fondo oscuro, niveles de experiencia con badges, footer. Aprobado tal cual, sin desviaciones.

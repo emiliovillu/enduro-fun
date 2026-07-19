@@ -36,5 +36,47 @@
       "title": "Based in Álora, Málaga",
       "text": "20 minutes from Málaga airport, at the edge of some of the province's best enduro terrain."
     }
+  },
+  "about": {
+    "eyebrow": "About",
+    "title": "Local knowledge, real trails",
+    "intro": "EnduroFun is a small team of riders and guides based in Álora, running multi-day enduro routes across the wildest parts of the province of Málaga.",
+    "story": {
+      "eyebrow": "Our story",
+      "title": "Riders first, guides by trade",
+      "text": "What started as a handful of friends exploring the trails around Álora on weekends grew into a small guided-tour operation, built on years of riding the same terrain in every season and condition. Every route we run has been ridden by us first — we know where the mud sits after rain, which climbs need a run-up, and where to stop for the best views."
+    },
+    "different": {
+      "eyebrow": "What makes us different",
+      "title": "Three things riders notice",
+      "localKnowledge": {
+        "title": "Local knowledge",
+        "text": "Routes built from years riding this exact terrain, not GPS tracks pulled off the internet."
+      },
+      "variedTerrain": {
+        "title": "Varied terrain",
+        "text": "Dusty singletrack, rocky climbs and open fire roads, all within a short ride of Álora."
+      },
+      "culturalOffering": {
+        "title": "Cultural offering",
+        "text": "Rest-day options like Caminito del Rey or Málaga's old town — more than just a bike trip."
+      }
+    },
+    "levels": {
+      "eyebrow": "Experience levels",
+      "title": "Who this is for",
+      "beginner": {
+        "label": "Beginner",
+        "text": "Comfortable on a bike, new to off-road — routes chosen with easier sections and more guidance."
+      },
+      "intermediate": {
+        "label": "Intermediate",
+        "text": "Some enduro/off-road experience — the standard route mix on most packages."
+      },
+      "advanced": {
+        "label": "Advanced",
+        "text": "Confident on technical terrain — routes can be adjusted for more demanding sections on request."
+      }
+    }
   }
 }

@@ -36,5 +36,47 @@
       "title": "Con base en Álora, Málaga",
       "text": "A 20 minutos del aeropuerto de Málaga, al borde de algunos de los mejores terrenos de enduro de la provincia."
     }
+  },
+  "about": {
+    "eyebrow": "Sobre nosotros",
+    "title": "Conocimiento local, rutas de verdad",
+    "intro": "EnduroFun es un pequeño equipo de motoristas y guías con base en Álora, que organiza rutas de enduro de varios días por los rincones más salvajes de la provincia de Málaga.",
+    "story": {
+      "eyebrow": "Nuestra historia",
+      "title": "Motoristas primero, guías de oficio",
+      "text": "Lo que empezó como un grupo de amigos explorando los senderos de Álora los fines de semana se convirtió en una pequeña operación de rutas guiadas, construida sobre años rodando el mismo terreno en cada estación y condición. Cada ruta que ofrecemos la hemos recorrido antes nosotros mismos — sabemos dónde queda el barro después de la lluvia, qué subidas necesitan impulso y dónde parar para las mejores vistas."
+    },
+    "different": {
+      "eyebrow": "Qué nos hace diferentes",
+      "title": "Tres cosas que los motoristas notan",
+      "localKnowledge": {
+        "title": "Conocimiento local",
+        "text": "Rutas construidas con años rodando este terreno exacto, no tracks de GPS sacados de internet."
+      },
+      "variedTerrain": {
+        "title": "Terreno variado",
+        "text": "Singletrack polvoriento, subidas rocosas y pistas forestales abiertas, todo a poca distancia de Álora."
+      },
+      "culturalOffering": {
+        "title": "Oferta cultural",
+        "text": "Opciones para el día de descanso como el Caminito del Rey o el casco antiguo de Málaga — más que un simple viaje en moto."
+      }
+    },
+    "levels": {
+      "eyebrow": "Niveles de experiencia",
+      "title": "Para quién es esto",
+      "beginner": {
+        "label": "Principiante",
+        "text": "Cómodo en moto, nuevo en el off-road — rutas elegidas con tramos más sencillos y más acompañamiento."
+      },
+      "intermediate": {
+        "label": "Intermedio",
+        "text": "Algo de experiencia en enduro/off-road — la mezcla de ruta estándar en la mayoría de los paquetes."
+      },
+      "advanced": {
+        "label": "Avanzado",
+        "text": "Confiado en terreno técnico — las rutas pueden ajustarse a tramos más exigentes bajo petición."
+      }
+    }
   }
 }

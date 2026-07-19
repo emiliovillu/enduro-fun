@@ -40,6 +40,30 @@ const validMessages = {
       text: '20 minutes from Málaga airport.',
     },
   },
+  about: {
+    eyebrow: 'About',
+    title: 'Local knowledge, real trails',
+    intro: 'EnduroFun is a small team of riders and guides based in Álora.',
+    story: {
+      eyebrow: 'Our story',
+      title: 'Riders first, guides by trade',
+      text: 'What started as weekend trail rides became a small guided-tour operation.',
+    },
+    different: {
+      eyebrow: 'What makes us different',
+      title: 'Three things riders notice',
+      localKnowledge: { title: 'Local knowledge', text: 'Routes built from years riding.' },
+      variedTerrain: { title: 'Varied terrain', text: 'Singletrack, climbs and fire roads.' },
+      culturalOffering: { title: 'Cultural offering', text: 'Rest-day options nearby.' },
+    },
+    levels: {
+      eyebrow: 'Experience levels',
+      title: 'Who this is for',
+      beginner: { label: 'Beginner', text: 'Comfortable on a bike, new to off-road.' },
+      intermediate: { label: 'Intermediate', text: 'Some enduro/off-road experience.' },
+      advanced: { label: 'Advanced', text: 'Confident on technical terrain.' },
+    },
+  },
 };
 
 describe('MessagesSchema', () => {
@@ -67,6 +91,16 @@ describe('MessagesSchema', () => {
 
   it('rechaza un string vacío como traducción', () => {
     const result = MessagesSchema.safeParse({ home: { ...validMessages.home, title: '' } });
+    expect(result.success).toBe(false);
+  });
+
+  it('rechaza si falta la clave about.different.culturalOffering (control negativo, T1.2)', () => {
+    const { culturalOffering: _culturalOffering, ...differentWithoutCultural } =
+      validMessages.about.different;
+    const result = MessagesSchema.safeParse({
+      ...validMessages,
+      about: { ...validMessages.about, different: differentWithoutCultural },
+    });
     expect(result.success).toBe(false);
   });
 });

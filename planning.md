@@ -139,7 +139,7 @@ Home + About + Contact navegables en los 3 idiomas, con el formulario de contact
 - **Playwright permanente**: `apps/web/e2e/home.spec.ts` — hero visible, CTAs navegan a `/packages` y `/contact` respectivamente, preview de paquetes y reviews renderiza, `LanguageSwitcher` cambia de `/en/` a `/es/` y `/de/` conservando la página.
 - **Verificación**: en navegador (sirviendo `out/` local), abrir `/en/`, `/es/`, `/de/` y comprobar que el hero, tagline, CTAs, paquetes y reviews de preview aparecen traducidos y correctos en los 3; clicar cada CTA navega a la ruta esperada.
 
-#### T1.2 · Página About
+#### T1.2 · Página About [x] 2026-07-19 — PASS, ver docs/verifications/T1.2/
 - **Depende de**: TD.7, T1.1
 - **Entrega**: `/[en|es|de]/about` con historia de la empresa/guías, diferenciadores (conocimiento local, terreno variado, oferta cultural) y niveles de experiencia aceptados (PRD §8). Layout acordado con el usuario al iniciar esta tarea (no existía mockup previo en Claude Design — regla 7 del planning: se acuerda antes de implementar).
 - **Mockup**: `docs/mockups/about.html` (a crear y aprobar por el usuario al iniciar esta tarea, con los componentes del DS ya cerrado en TD).
