@@ -60,6 +60,41 @@ test('la sección de galería es visible y navegable', { tag: ['@f1'] }, async (
   await expect(gallery.getByRole('button', { name: 'Resume gallery autoplay' })).toBeVisible();
 });
 
+// Control negativo (bug real reportado por el usuario, 2026-07-19): el
+// avance automático del carrusel usaba `card.scrollIntoView()`, que puede
+// escalar a CUALQUIER ancestro scrolleable — incluida la página entera — si
+// decide que la tarjeta "no está visible" (p. ej. el usuario ya bajó a leer
+// Reviews mientras el autoplay seguía en marcha), tirando al usuario de
+// vuelta a la galería en cada tick. Fix: `track.scrollTo()` sobre el propio
+// contenedor del carrusel, nunca sobre la tarjeta. Este test falla si el bug
+// se reintroduce (verificado reintroduciendo `scrollIntoView` antes de fijar
+// el fix: el test se puso en rojo).
+test(
+  'el autoplay del carrusel no mueve el scroll de la página',
+  { tag: ['@f1'] },
+  async ({ page }) => {
+    await page.goto('/en/');
+    // Simula al usuario leyendo una sección posterior a la galería mientras
+    // el autoplay sigue avanzando solo.
+    await page.evaluate(() => {
+      window.scrollTo(0, document.body.scrollHeight * 0.8);
+    });
+    const scrollBefore = await page.evaluate(() => window.scrollY);
+
+    // Espera a que el autoplay haga avanzar al menos un slide (poll real
+    // sobre el dot activo, no un `waitForTimeout` a ciegas).
+    const gallery = page.getByRole('region', { name: 'A taste of the terrain' });
+    await expect(gallery.getByRole('button', { name: '2/5' })).toHaveAttribute(
+      'aria-current',
+      'true',
+      { timeout: 6000 },
+    );
+
+    const scrollAfter = await page.evaluate(() => window.scrollY);
+    expect(scrollAfter).toBe(scrollBefore);
+  },
+);
+
 test(
   'el LanguageSwitcher cambia de idioma conservando la página (Home)',
   { tag: ['@f1'] },

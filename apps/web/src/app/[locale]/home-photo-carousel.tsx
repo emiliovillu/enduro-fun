@@ -57,12 +57,17 @@ export function HomePhotoCarousel({
     };
   }, [playing]);
 
+  // Desplaza SOLO el track del carrusel (`scrollTo` sobre el propio
+  // contenedor), nunca `card.scrollIntoView()` — ese método puede escalar a
+  // CUALQUIER ancestro scrolleable, incluida la página entera, si decide
+  // que la tarjeta "no está visible" (p. ej. el usuario ya bajó a Reviews
+  // mientras el autoplay seguía en marcha): el bug real reportado por el
+  // usuario era justo eso, la página saltaba de vuelta a la galería en
+  // cada avance automático.
   useEffect(() => {
-    cardRefs.current[activeIndex]?.scrollIntoView({
-      behavior: 'smooth',
-      inline: 'start',
-      block: 'nearest',
-    });
+    const card = cardRefs.current[activeIndex];
+    if (!card || !trackRef.current) return;
+    trackRef.current.scrollTo({ left: card.offsetLeft, behavior: 'smooth' });
   }, [activeIndex]);
 
   return (
