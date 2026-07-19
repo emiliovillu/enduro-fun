@@ -245,3 +245,8 @@
 - Layout acordado (regla 7), mockup `docs/mockups/reviews.html`/`.png`. `reviews.ts` ampliado de 3 a 6 (Lars/Elena/Tom nuevos); Home ajustada a `REVIEWS.slice(0,3)` para preservar su preview de 3 sin duplicar datos. Tercer control negativo de build (`reviews.build-negative.test.ts`), mismo patrón ya establecido, sin fricción nueva (la serialización de `fileParallelism: false` de T2.1 ya lo cubre).
 - **Cuarta tarea seguida sin FAIL de i18n** desde el patrón de T1.1 — el hábito de que el implementer haga su propio grep amplio antes de entregar, más el verifier repitiéndolo de forma independiente, se sostiene.
 - Deuda anotada: —
+
+## 2026-07-19 · Cambio de alcance menor — T2.3 gana dependencia de T1.3
+- Al llegar a T2.3 (E2E de fase F2), su propia Verificación exige un recorrido de las 5 páginas del sitio (incluida Contact) — pero Contact es T1.3, bloqueada por prerequisitos externos (⚠ cuenta Formspree + API key de Google Maps, aún no provistos), y el grafo `Depende de` de T2.3 solo listaba T2.1/T2.2. Inconsistencia real del planning original: el propio texto de la tarea revela una dependencia que el grafo no reflejaba.
+- Corregido añadiendo T1.3 a `Depende de` de T2.3 — cambio menor, misma sesión, anotado aquí y en planning.md.
+- **Consecuencia**: T2.3 queda bloqueada transitivamente por el mismo ⚠ que T1.3. F2 tiene T2.1/T2.2 cerradas (el escaparate de packages/reviews funciona), pero su E2E de fase no puede cerrarse hasta que el usuario provea las credenciales de T1.3. Punto de parada natural del bucle — se informa al usuario.

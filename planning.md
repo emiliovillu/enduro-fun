@@ -184,7 +184,7 @@ Packages + Reviews completas en los 3 idiomas; el escaparate de las 5 páginas q
 - **Verificación**: en navegador, las 3 versiones de idioma muestran el mismo conjunto de reviews traducido; el diseño es coherente con `ReviewCard` de TD.5.
 
 #### T2.3 · E2E de fase F2
-- **Depende de**: T2.1, T2.2
+- **Depende de**: T2.1, T2.2, T1.3 — **añadida T1.3** (ver journal 2026-07-19): la propia Verificación exige el recorrido de las 5 páginas, incluida Contact, así que el grafo original (que no la listaba) era inconsistente con su propio texto. Cambio menor, documentado en la misma sesión.
 - **Entrega**: ninguna — tarea de verificación pura.
 - **Verificación**: recorrido completo de las 5 páginas (Home, About, Contact, Packages, Reviews) en los 3 idiomas sin roturas de navegación ni de `LanguageSwitcher`; cita criterio §14.5 (reviews con diseño coherente y datos creíbles) y confirma que el resto de criterios de contenido (§14.2) siguen cumpliéndose con las 5 páginas completas. Sin regresión de F1.
 
