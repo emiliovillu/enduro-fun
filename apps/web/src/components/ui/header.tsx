@@ -1,9 +1,9 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
 import { cn, localeHref } from '@/lib/utils';
 
 import { Button } from './button';
-import { Icon } from './icon';
 import { LanguageSwitcher, type LocaleCode } from './language-switcher';
 
 // Espejo: docs/design-system/components/navigation/Header.jsx — logo, nav de
@@ -74,10 +74,19 @@ export function Header({
     >
       <Link
         href={localeHref(activeLocale, '')}
-        className="font-display flex items-center gap-2.5 text-h4 text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
+        className="flex items-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
       >
-        <Icon name="bike" size={26} className="text-accent-primary" />
-        EnduroFun
+        {/* logo con wordmark propio (marca provista, sin recrear — ver
+            docs/design-system/guidelines/brand-logo.card.html): sustituye al
+            icono `bike` + texto "EnduroFun" (hotfix branding, 2026-07-19) */}
+        <Image
+          src="/logo.png"
+          alt="EnduroFun"
+          width={155}
+          height={100}
+          className="h-10 w-auto sm:h-11"
+          priority
+        />
       </Link>
 
       <nav aria-label="Primary" className="flex gap-7">

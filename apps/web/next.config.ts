@@ -10,6 +10,11 @@ const nextConfig: NextConfig = {
   // estáticos (Cloudflare Pages incluido) resuelven sin servidor: piden
   // `/en/` con barra final y sirven `index.html` de esa carpeta.
   trailingSlash: true,
+  // hotfix logo Header: `next/image` necesita la Image Optimization API (un
+  // servidor) para redimensionar/servir formatos on-demand — `output:
+  // 'export'` no tiene servidor, así que se sirve el asset tal cual sin
+  // pasar por esa pipeline.
+  images: { unoptimized: true },
 };
 
 export default nextConfig;
