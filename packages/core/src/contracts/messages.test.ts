@@ -64,6 +64,12 @@ const validMessages = {
       advanced: { label: 'Advanced', text: 'Confident on technical terrain.' },
     },
   },
+  packages: {
+    eyebrow: 'Packages',
+    title: 'Two ways to ride',
+    intro: "Multi-day guided enduro routes through Málaga's most varied terrain.",
+    note: 'Adventure bike options available on route days.',
+  },
 };
 
 describe('MessagesSchema', () => {
@@ -100,6 +106,15 @@ describe('MessagesSchema', () => {
     const result = MessagesSchema.safeParse({
       ...validMessages,
       about: { ...validMessages.about, different: differentWithoutCultural },
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it('rechaza si falta la clave packages.note (control negativo, T2.1)', () => {
+    const { note: _note, ...packagesWithoutNote } = validMessages.packages;
+    const result = MessagesSchema.safeParse({
+      ...validMessages,
+      packages: packagesWithoutNote,
     });
     expect(result.success).toBe(false);
   });

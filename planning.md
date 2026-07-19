@@ -169,7 +169,7 @@ Home + About + Contact navegables en los 3 idiomas, con el formulario de contact
 
 Packages + Reviews completas en los 3 idiomas; el escaparate de las 5 páginas queda completo.
 
-#### T2.1 · Página Packages
+#### T2.1 · Página Packages [x] 2026-07-19 — PASS, ver docs/verifications/T2.1/
 - **Depende de**: TD.7, T1.1
 - **Entrega**: `/[en|es|de]/packages` con las cards completas de los 2 paquetes (Getaway: 4 noches/3 días, desde 1.290 €; Full Adventure: 6 noches/4 días, desde 1.690 €, "Most popular") vía `packages.ts` tipado con Zod (PRD §7), features completas, nota de Adventure Bike disponible y de oferta personalizada.
 - **Mockup**: `docs/mockups/packages.html` (a crear y aprobar por el usuario al iniciar esta tarea; reutiliza la sección de paquetes ya vista en `HomeVariantA.jsx` como referencia de estilo de card).

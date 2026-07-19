@@ -114,6 +114,18 @@ export const MessagesSchema = z.object({
       advanced: z.object({ label: z.string().min(1), text: z.string().min(1) }),
     }),
   }),
+  // T2.1 (F2, Página Packages): grupo nuevo con SOLO el copy propio de esta
+  // página (eyebrow/título/intro del h1 + nota de Adventure Bike/oferta
+  // personalizada). Deliberadamente NO duplica `durationTemplate`/
+  // `ctaLabel`/`mostPopular` de `home.packages` — la página reusa esas 3
+  // claves tal cual para las cards (mismo dato, mismo formato, un solo sitio
+  // que traducir si cambia el criterio de "most popular" o el CTA).
+  packages: z.object({
+    eyebrow: z.string().min(1),
+    title: z.string().min(1),
+    intro: z.string().min(1),
+    note: z.string().min(1),
+  }),
 });
 
 export type Messages = z.infer<typeof MessagesSchema>;
