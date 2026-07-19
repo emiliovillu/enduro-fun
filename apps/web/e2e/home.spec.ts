@@ -12,7 +12,7 @@ test('el hero, tagline y CTAs de Home son visibles', { tag: ['@f1'] }, async ({ 
   await expect(page.getByRole('heading', { level: 1 })).toContainText(
     'Ride the wild heart of Andalucía',
   );
-  await expect(page.getByText('Álora · Málaga · EN / ES / DE')).toBeVisible();
+  await expect(page.getByRole('img', { name: 'EnduroFun' })).toBeVisible();
   await expect(page.getByRole('link', { name: 'View packages' })).toBeVisible();
   await expect(page.getByRole('link', { name: 'Get in touch' })).toBeVisible();
 });

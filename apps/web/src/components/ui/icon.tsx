@@ -34,6 +34,14 @@ const ICON_PATHS = {
     'M16 13v-2M14 11h4', // vástago corto desde la pipa de dirección + manillar horizontal (TD.10: separa visualmente el manillar del chasis, sin volver al vástago largo de la 1ª iteración de TD.9 que leía como patinete)
   ],
   phone: ['M4 5c0 8.5 6.5 15 15 15l3-4-5-3-2 2c-2-1-4.5-3.5-5.5-5.5l2-2-3-5z'],
+  landmark: [
+    'M3 22h18', // base
+    'M5 22V10',
+    'M19 22V10',
+    'M9 22V10',
+    'M15 22V10', // columnas
+    'M2 10l10-6 10 6', // frontón
+  ],
 } as const;
 
 type IconName = keyof typeof ICON_PATHS;

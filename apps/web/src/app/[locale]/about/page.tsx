@@ -28,10 +28,9 @@ import { getMessages } from '@/i18n/messages';
 // (decorativo, `background: var(--accent-primary)` sin contenido) — aquí
 // se sustituye por un `Icon` real donde el registro (`components/ui/icon`)
 // tiene un glifo con encaje semántico razonable: `map-pin` para
-// conocimiento local, `globe` para terreno variado. Para "oferta cultural"
-// ningún icono del registro encaja (no hay glifo de cultura/monumento) —
-// se deja el círculo tokenizado simple del mockup, sin inventar un icono
-// nuevo (criterio explícito del brief de esta tarea).
+// conocimiento local, `globe` para terreno variado, `landmark` (añadido en
+// este hotfix — el usuario reportó el círculo vacío de "Oferta cultural"
+// como icono roto) para oferta cultural.
 export default async function AboutPage({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
   const messages = getMessages(locale);
@@ -47,7 +46,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
   const differentiators = [
     { ...about.different.localKnowledge, icon: 'map-pin' as const },
     { ...about.different.variedTerrain, icon: 'globe' as const },
-    { ...about.different.culturalOffering, icon: null },
+    { ...about.different.culturalOffering, icon: 'landmark' as const },
   ];
 
   const levels = [about.levels.beginner, about.levels.intermediate, about.levels.advanced];
@@ -82,13 +81,9 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
           <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-3">
             {differentiators.map((item) => (
               <div key={item.title} className="rounded-lg bg-surface-card-inverse p-6">
-                {item.icon ? (
-                  <div className="mb-4 flex size-10 items-center justify-center rounded-pill bg-accent-primary text-charcoal-900">
-                    <Icon name={item.icon} size={20} />
-                  </div>
-                ) : (
-                  <div className="mb-4 size-10 rounded-pill bg-accent-primary" aria-hidden="true" />
-                )}
+                <div className="mb-4 flex size-10 items-center justify-center rounded-pill bg-accent-primary text-charcoal-900">
+                  <Icon name={item.icon} size={20} />
+                </div>
                 <h3 className="m-0 mb-2 text-h4 text-text-on-dark">{item.title}</h3>
                 <p className="m-0 text-small text-text-on-dark-secondary">{item.text}</p>
               </div>

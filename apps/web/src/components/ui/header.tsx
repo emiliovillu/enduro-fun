@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 
 import { cn, localeHref } from '@/lib/utils';
@@ -74,19 +73,9 @@ export function Header({
     >
       <Link
         href={localeHref(activeLocale, '')}
-        className="flex items-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
+        className="font-display text-h4 text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
       >
-        {/* logo con wordmark propio (marca provista, sin recrear — ver
-            docs/design-system/guidelines/brand-logo.card.html): sustituye al
-            icono `bike` + texto "EnduroFun" (hotfix branding, 2026-07-19) */}
-        <Image
-          src="/logo.png"
-          alt="EnduroFun"
-          width={155}
-          height={100}
-          className="h-10 w-auto sm:h-11"
-          priority
-        />
+        EnduroFun
       </Link>
 
       <nav aria-label="Primary" className="flex gap-7">

@@ -1,6 +1,6 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import type { Locale } from '@app/core/contracts';
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Footer } from '@/components/ui/footer';
 import { Header } from '@/components/ui/header';
@@ -56,7 +56,20 @@ export default async function LocaleHomePage({ params }: { params: Promise<{ loc
         <div className="absolute inset-0 bg-gradient-scrim" aria-hidden="true" />
         <Header active="home" transparent activeLocale={locale} labels={navLabels} />
         <div className="absolute inset-x-0 bottom-0 flex flex-col items-start gap-5 px-5 pb-20 sm:px-8">
-          <Badge tone="amber">{messages.home.badge}</Badge>
+          {/* logo con más presencia en el hero, pegado al h1 (marca
+              provista, sin recrear — docs/design-system/guidelines/
+              brand-logo.card.html); el Header vuelve a usar solo texto
+              "EnduroFun" (hotfix branding, 2026-07-19, 3ª iteración a
+              petición del usuario: fuera el badge Álora·Málaga, logo más
+              cerca del título) */}
+          <Image
+            src="/logo.png"
+            alt="EnduroFun"
+            width={620}
+            height={400}
+            className="-mb-2 h-24 w-auto sm:h-32"
+            priority
+          />
           <h1 className="m-0 max-w-3xl text-display-xl text-text-on-dark">{messages.home.title}</h1>
           <p className="m-0 max-w-140 text-body text-text-on-dark-secondary">
             {messages.home.subtitle}
