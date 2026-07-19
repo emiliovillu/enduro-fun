@@ -115,7 +115,11 @@ export default async function LocaleHomePage({ params }: { params: Promise<{ loc
             light
           />
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {REVIEWS.map((review) => (
+            {/* Preview: solo las 3 primeras de `REVIEWS` (T2.2 amplió el
+                array a 6 para la página dedicada `/reviews` — Home conserva
+                su grid original de 1 fila/3 columnas, el resto vive solo en
+                esa página). */}
+            {REVIEWS.slice(0, 3).map((review) => (
               <ReviewCard
                 key={review.id}
                 name={review.name}

@@ -176,7 +176,7 @@ Packages + Reviews completas en los 3 idiomas; el escaparate de las 5 páginas q
 - **Playwright permanente**: `apps/web/e2e/packages.spec.ts` — las 2 cards renderizan con su precio y features en los 3 idiomas; el badge "Most popular" aparece en el paquete correcto.
 - **Verificación**: en navegador, `/en/packages`, `/es/packages`, `/de/packages` muestran ambos paquetes completos y correctos; añadir un paquete de prueba a `packages.ts` sin traducción alemana rompe el build (control negativo del esquema Zod de §7).
 
-#### T2.2 · Página Reviews
+#### T2.2 · Página Reviews [x] 2026-07-19 — PASS, ver docs/verifications/T2.2/
 - **Depende de**: TD.7, T1.1
 - **Entrega**: `/[en|es|de]/reviews` con 4-6 testimonios (datos inventados en v1 — PRD D4) vía `reviews.ts` tipado con Zod, en grid completo usando `ReviewCard`.
 - **Mockup**: `docs/mockups/reviews.html` (a crear y aprobar por el usuario al iniciar esta tarea).

@@ -70,6 +70,11 @@ const validMessages = {
     intro: "Multi-day guided enduro routes through Málaga's most varied terrain.",
     note: 'Adventure bike options available on route days.',
   },
+  reviews: {
+    eyebrow: 'Reviews',
+    title: "From riders who've been",
+    intro: 'Real trips, real terrain.',
+  },
 };
 
 describe('MessagesSchema', () => {

@@ -236,3 +236,12 @@
 - **Segundo control negativo de build permanente** (`apps/web/src/data/packages.build-negative.test.ts`, mismo patrón que el de i18n de T0.2/T1.1) — descubrió una colisión real: dos tests que invocan `pnpm build` sobre el mismo `.next` en paralelo (workers de Vitest) se pisan entre sí, produciendo fallos cruzados que no reflejan la mutación de ninguno de los dos. Arreglado con `fileParallelism: false` en `apps/web/vitest.config.ts` — afecta a TODA la suite unit de `apps/web`, aceptable con solo 4 ficheros de test hoy; **vigilar el coste de tiempo si la suite crece mucho** (candidato a revisar si algún día hay 5+ controles negativos de build).
 - **Regla del journal de T1.1 aplicada con éxito**: grep amplio del propio implementer ANTES de entregar, más el verifier repitiéndolo de forma independiente (no confiando en el script del implementer) — PASS a la primera, tercera tarea seguida sin FAIL de i18n tras el patrón de T1.1.
 - Deuda anotada: —
+
+## 2026-07-19 · ⏳ T2.2 iniciada
+- Página Reviews: grid de 6 testimonios (ampliando reviews.ts de 3 a 6), ReviewCard. Mockup acordado con el usuario: docs/mockups/reviews.html. Coste esperado: $0.
+
+## 2026-07-19 · T2.2 cerrada — PASS
+- Coste: $0 · Ciclos verifier: 1 (PASS a la primera) · Commit: (siguiente) · Evidencia: docs/verifications/T2.2/
+- Layout acordado (regla 7), mockup `docs/mockups/reviews.html`/`.png`. `reviews.ts` ampliado de 3 a 6 (Lars/Elena/Tom nuevos); Home ajustada a `REVIEWS.slice(0,3)` para preservar su preview de 3 sin duplicar datos. Tercer control negativo de build (`reviews.build-negative.test.ts`), mismo patrón ya establecido, sin fricción nueva (la serialización de `fileParallelism: false` de T2.1 ya lo cubre).
+- **Cuarta tarea seguida sin FAIL de i18n** desde el patrón de T1.1 — el hábito de que el implementer haga su propio grep amplio antes de entregar, más el verifier repitiéndolo de forma independiente, se sostiene.
+- Deuda anotada: —

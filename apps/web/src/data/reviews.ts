@@ -41,6 +41,43 @@ const RAW_REVIEWS: Review[] = [
       de: 'Vom Flughafen bis zum letzten Trail gut organisiert. Plane bereits die Rückkehr.',
     },
   },
+  // Añadidas en T2.2 (F2, Página Reviews) para llegar a las 6 del mockup
+  // `docs/mockups/reviews.html` — mismo estilo de texto e inventadas en v1
+  // (PRD D4), sin segundo array paralelo. Home (T1.1) sigue enseñando solo
+  // las 3 primeras (ver `apps/web/src/app/[locale]/page.tsx`).
+  {
+    id: 'lars',
+    name: 'Lars',
+    country: 'Sweden',
+    rating: 5,
+    text: {
+      en: 'The guides know every inch of that terrain. Never felt unsafe, always felt challenged.',
+      es: 'Los guías conocen cada rincón de ese terreno. Nunca me sentí inseguro, siempre desafiado.',
+      de: 'Die Guides kennen jeden Zentimeter des Geländes. Nie unsicher gefühlt, immer gefordert.',
+    },
+  },
+  {
+    id: 'elena',
+    name: 'Elena',
+    country: 'Italy',
+    rating: 5,
+    text: {
+      en: 'Six days, zero regrets. The rest-day trip to Caminito del Rey was a great touch.',
+      es: 'Seis días, cero arrepentimientos. La excursión del día de descanso al Caminito del Rey fue un gran detalle.',
+      de: 'Sechs Tage, keine Reue. Der Ausflug zum Caminito del Rey am Ruhetag war ein schönes Extra.',
+    },
+  },
+  {
+    id: 'tom',
+    name: 'Tom',
+    country: 'Netherlands',
+    rating: 4,
+    text: {
+      en: 'Bike was well maintained and the route difficulty matched exactly what we discussed beforehand.',
+      es: 'La moto estaba bien mantenida y la dificultad de la ruta coincidió exactamente con lo que habíamos hablado.',
+      de: 'Das Motorrad war gut gewartet und der Schwierigkeitsgrad entsprach genau dem, was wir vorher besprochen hatten.',
+    },
+  },
 ];
 
 export const REVIEWS: Review[] = RAW_REVIEWS.map((review) => ReviewSchema.parse(review));

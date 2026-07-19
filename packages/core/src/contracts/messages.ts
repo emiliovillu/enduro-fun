@@ -126,6 +126,14 @@ export const MessagesSchema = z.object({
     intro: z.string().min(1),
     note: z.string().min(1),
   }),
+  // T2.2 (F2, Página Reviews): mismo patrón que `packages` arriba — copy
+  // propio de la página (eyebrow/h1/intro), distinto de `home.reviews`
+  // (eyebrow/título de la SECCIÓN de preview en Home, texto más corto).
+  reviews: z.object({
+    eyebrow: z.string().min(1),
+    title: z.string().min(1),
+    intro: z.string().min(1),
+  }),
 });
 
 export type Messages = z.infer<typeof MessagesSchema>;
