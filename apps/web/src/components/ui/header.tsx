@@ -1,8 +1,12 @@
+'use client';
+
+import { useEffect, useId, useState } from 'react';
 import Link from 'next/link';
 
 import { cn, localeHref } from '@/lib/utils';
 
 import { Button } from './button';
+import { Icon } from './icon';
 import { LanguageSwitcher, type LocaleCode } from './language-switcher';
 
 // Espejo: docs/design-system/components/navigation/Header.jsx — logo, nav de
@@ -10,9 +14,14 @@ import { LanguageSwitcher, type LocaleCode } from './language-switcher';
 //
 // Desviaciones deliberadas:
 // - El espejo declara `useState('open')` para un menú móvil pero nunca lo
-//   renderiza (dead code del mock) — no se replica un toggle que el propio
-//   DS no dibuja; el nav queda siempre visible (sin colapso responsive). Si
-//   el DS define un patrón de menú móvil en el futuro, se sube ahí primero.
+//   renderiza (dead code del mock) — la 1ª versión de este componente (TD.3)
+//   no replicaba ese toggle porque el propio DS no lo dibujaba. **Hotfix
+//   2026-07-20**: el usuario reportó que en mobile el nav de 5 enlaces se
+//   desbordaba/partía en dos líneas (captura real) — se implementó el menú
+//   hamburguesa que el mock ya insinuaba, con los iconos `menu`/`x` que ya
+//   existían en el registro. Por debajo de `lg` (1024px) el nav/switcher/CTA
+//   colapsan detrás de un botón; a partir de `lg` el layout previo (todo en
+//   una fila) se mantiene sin cambios.
 // - `transparent` (hero overlay) usa `bg-transparent` sin el degradado del
 //   espejo (`linear-gradient(180deg, rgba(28,28,30,.55), transparent)`): ese
 //   degradado no tiene token en el volcado (--gradient-scrim existe pero va
@@ -51,6 +60,8 @@ interface HeaderProps extends React.ComponentProps<'header'> {
   transparent?: boolean;
   activeLocale?: LocaleCode;
   labels: NavLabels;
+  menuOpenLabel: string;
+  menuCloseLabel: string;
 }
 
 export function Header({
@@ -58,15 +69,42 @@ export function Header({
   transparent = false,
   activeLocale,
   labels,
+  menuOpenLabel,
+  menuCloseLabel,
   className,
   ...props
 }: HeaderProps) {
+  const [open, setOpen] = useState(false);
+  const panelId = useId();
+
+  // Cierra el panel con Escape (el botón hamburguesa ya lo cierra con su
+  // propio toggle) — sin esto, un usuario de teclado que abre el menú no
+  // tiene forma rápida de salir sin volver a tabular hasta el botón.
+  useEffect(() => {
+    if (!open) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setOpen(false);
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => {
+      window.removeEventListener('keydown', onKeyDown);
+    };
+  }, [open]);
+
   return (
     <header
       data-slot="header"
       className={cn(
         'flex items-center justify-between gap-6 px-5 py-4.5 sm:px-8',
-        transparent ? 'absolute inset-x-0 top-0 z-10 bg-transparent' : 'bg-bg-inverse',
+        // El panel móvil (`absolute top-full`) se posiciona respecto al
+        // header: la variante `transparent` ya es `absolute` (contexto de
+        // posicionamiento propio); la variante normal no tenía ningún
+        // `position`, así que necesita `relative` explícito o el panel se
+        // habría posicionado respecto al siguiente ancestro posicionado
+        // (probablemente `<body>`), no respecto al header. Nunca las dos
+        // clases (`relative`+`absolute`) a la vez — orden de cascada
+        // impredecible entre utilidades de la misma capa.
+        transparent ? 'absolute inset-x-0 top-0 z-10 bg-transparent' : 'relative bg-bg-inverse',
         className,
       )}
       {...props}
@@ -78,7 +116,10 @@ export function Header({
         EnduroFun
       </Link>
 
-      <nav aria-label="Primary" className="flex gap-7">
+      {/* >= lg: el layout original en una sola fila, sin cambios. < lg: nav
+          + LanguageSwitcher + CTA colapsan detrás del botón hamburguesa
+          (hotfix 2026-07-20 — desbordaba/partía en dos líneas en mobile). */}
+      <nav aria-label="Primary" className="hidden gap-7 lg:flex">
         {NAV_LINKS.map(({ key, slug }) => (
           <Link
             key={key}
@@ -96,7 +137,7 @@ export function Header({
         ))}
       </nav>
 
-      <div className="flex items-center gap-4">
+      <div className="hidden items-center gap-4 lg:flex">
         <LanguageSwitcher activeLocale={activeLocale} dark />
         {/* Link, no <a>: el CTA de contacto es navegación interna (T0.2 —
             eslint-plugin-next `no-html-link-for-pages` empezó a marcar
@@ -110,6 +151,60 @@ export function Header({
           {labels.contact}
         </Button>
       </div>
+
+      <button
+        type="button"
+        onClick={() => {
+          setOpen((current) => !current);
+        }}
+        aria-label={open ? menuCloseLabel : menuOpenLabel}
+        aria-expanded={open}
+        aria-controls={panelId}
+        className="flex size-10 shrink-0 items-center justify-center text-white lg:hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
+      >
+        <Icon name={open ? 'x' : 'menu'} size={24} />
+      </button>
+
+      {open ? (
+        <div
+          id={panelId}
+          className="absolute inset-x-0 top-full flex flex-col gap-6 bg-bg-inverse px-5 py-6 lg:hidden"
+        >
+          <nav aria-label="Primary" className="flex flex-col gap-5">
+            {NAV_LINKS.map(({ key, slug }) => (
+              <Link
+                key={key}
+                href={localeHref(activeLocale, slug)}
+                aria-current={key === active ? 'page' : undefined}
+                onClick={() => {
+                  setOpen(false);
+                }}
+                className={cn(
+                  'font-display text-body transition-colors duration-150 ease-standard focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring',
+                  key === active
+                    ? 'text-accent-amber'
+                    : 'text-text-on-dark-secondary hover:text-text-on-dark',
+                )}
+              >
+                {labels[key]}
+              </Link>
+            ))}
+          </nav>
+          <div className="flex flex-col gap-4">
+            <LanguageSwitcher activeLocale={activeLocale} dark />
+            <Button
+              size="sm"
+              variant="primary"
+              render={<Link href={localeHref(activeLocale, 'contact')} />}
+              onClick={() => {
+                setOpen(false);
+              }}
+            >
+              {labels.contact}
+            </Button>
+          </div>
+        </div>
+      ) : null}
     </header>
   );
 }

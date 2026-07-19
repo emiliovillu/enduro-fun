@@ -41,7 +41,13 @@ export default async function PackagesPage({ params }: { params: Promise<{ local
 
   return (
     <main>
-      <Header active="packages" activeLocale={locale} labels={navLabels} />
+      <Header
+        active="packages"
+        activeLocale={locale}
+        labels={navLabels}
+        menuOpenLabel={messages.nav.menuOpen}
+        menuCloseLabel={messages.nav.menuClose}
+      />
 
       <section className="mx-auto max-w-[var(--container-max)] px-5 py-24 sm:px-8">
         <SectionHeading as="h1" size="lg" eyebrow={pageCopy.eyebrow} title={pageCopy.title} />

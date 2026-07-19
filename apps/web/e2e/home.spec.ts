@@ -95,6 +95,41 @@ test(
   },
 );
 
+// Hotfix 2026-07-20: en mobile el nav de 5 enlaces se desbordaba y partía
+// en dos líneas (captura real del usuario) — el Header colapsa detrás de
+// un botón hamburguesa por debajo de `lg` (1024px).
+test(
+  'en mobile el nav colapsa detrás de un botón hamburguesa',
+  { tag: ['@f1'] },
+  async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto('/en/');
+
+    const menuButton = page.getByRole('button', { name: 'Open menu' });
+    await expect(menuButton).toBeVisible();
+    await expect(page.getByRole('navigation', { name: 'Primary' })).toBeHidden();
+
+    await menuButton.click();
+    await expect(page.getByRole('button', { name: 'Close menu' })).toBeVisible();
+    const nav = page.getByRole('navigation', { name: 'Primary' });
+    await expect(nav).toBeVisible();
+    await expect(nav.getByRole('link', { name: 'Packages' })).toBeVisible();
+
+    await page.keyboard.press('Escape');
+    await expect(page.getByRole('button', { name: 'Open menu' })).toBeVisible();
+  },
+);
+
+test(
+  'en desktop el nav se muestra en una fila, sin botón hamburguesa',
+  { tag: ['@f1'] },
+  async ({ page }) => {
+    await page.goto('/en/');
+    await expect(page.getByRole('navigation', { name: 'Primary' })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Open menu' })).toBeHidden();
+  },
+);
+
 test(
   'el LanguageSwitcher cambia de idioma conservando la página (Home)',
   { tag: ['@f1'] },

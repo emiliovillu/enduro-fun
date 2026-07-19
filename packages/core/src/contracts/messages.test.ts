@@ -8,6 +8,8 @@ const validMessages = {
     about: 'About',
     contact: 'Contact',
     reviews: 'Reviews',
+    menuOpen: 'Open menu',
+    menuClose: 'Close menu',
     footer: {
       explore: 'Explore',
       company: 'Company',

@@ -447,6 +447,8 @@ export default function DesignSystemPage() {
             contact: 'Contact',
             reviews: 'Reviews',
           }}
+          menuOpenLabel="Open menu"
+          menuCloseLabel="Close menu"
         />
       </div>
 

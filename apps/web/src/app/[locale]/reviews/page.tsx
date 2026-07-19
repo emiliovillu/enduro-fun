@@ -38,7 +38,13 @@ export default async function ReviewsPage({ params }: { params: Promise<{ locale
 
   return (
     <main>
-      <Header active="reviews" activeLocale={locale} labels={navLabels} />
+      <Header
+        active="reviews"
+        activeLocale={locale}
+        labels={navLabels}
+        menuOpenLabel={messages.nav.menuOpen}
+        menuCloseLabel={messages.nav.menuClose}
+      />
 
       <section className="mx-auto max-w-[var(--container-max)] px-5 py-24 sm:px-8">
         <SectionHeading as="h1" size="lg" eyebrow={pageCopy.eyebrow} title={pageCopy.title} />

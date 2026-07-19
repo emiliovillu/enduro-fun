@@ -48,6 +48,8 @@ export const MessagesSchema = z.object({
     about: z.string().min(1),
     contact: z.string().min(1),
     reviews: z.string().min(1),
+    menuOpen: z.string().min(1),
+    menuClose: z.string().min(1),
     footer: z.object({
       explore: z.string().min(1),
       company: z.string().min(1),

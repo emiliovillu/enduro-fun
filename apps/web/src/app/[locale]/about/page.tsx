@@ -53,7 +53,13 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
   return (
     <main>
-      <Header active="about" activeLocale={locale} labels={navLabels} />
+      <Header
+        active="about"
+        activeLocale={locale}
+        labels={navLabels}
+        menuOpenLabel={messages.nav.menuOpen}
+        menuCloseLabel={messages.nav.menuClose}
+      />
 
       <section className="mx-auto max-w-[var(--container-max)] px-5 py-24 sm:px-8">
         <SectionHeading as="h1" size="lg" eyebrow={about.eyebrow} title={about.title} />

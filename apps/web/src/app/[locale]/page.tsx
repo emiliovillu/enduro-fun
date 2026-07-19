@@ -56,7 +56,14 @@ export default async function LocaleHomePage({ params }: { params: Promise<{ loc
           </span>
         </div>
         <div className="absolute inset-0 bg-gradient-scrim" aria-hidden="true" />
-        <Header active="home" transparent activeLocale={locale} labels={navLabels} />
+        <Header
+          active="home"
+          transparent
+          activeLocale={locale}
+          labels={navLabels}
+          menuOpenLabel={messages.nav.menuOpen}
+          menuCloseLabel={messages.nav.menuClose}
+        />
         <div className="absolute inset-x-0 bottom-0 flex flex-col items-start gap-5 px-5 pb-20 sm:px-8">
           {/* logo con más presencia en el hero, pegado al h1 (marca
               provista, sin recrear — docs/design-system/guidelines/
