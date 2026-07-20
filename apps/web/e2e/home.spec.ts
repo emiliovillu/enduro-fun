@@ -97,7 +97,8 @@ test(
 
 // Hotfix 2026-07-20: en mobile el nav de 5 enlaces se desbordaba y partía
 // en dos líneas (captura real del usuario) — el Header colapsa detrás de
-// un botón hamburguesa por debajo de `lg` (1024px).
+// un botón hamburguesa por debajo de `lg` (1024px). 2ª iteración, mismo
+// día: el panel pasa de dropdown a drawer deslizante desde la derecha.
 test(
   'en mobile el nav colapsa detrás de un botón hamburguesa',
   { tag: ['@f1'] },
@@ -110,13 +111,31 @@ test(
     await expect(page.getByRole('navigation', { name: 'Primary' })).toBeHidden();
 
     await menuButton.click();
-    await expect(page.getByRole('button', { name: 'Close menu' })).toBeVisible();
+    const closeButton = page.getByRole('button', { name: 'Close menu' });
+    await expect(closeButton).toBeVisible();
     const nav = page.getByRole('navigation', { name: 'Primary' });
     await expect(nav).toBeVisible();
     await expect(nav.getByRole('link', { name: 'Packages' })).toBeVisible();
 
+    // Control negativo (bug real cazado al verificar visualmente antes de
+    // cerrar el hotfix): un elemento SIN `position` propio siempre pinta
+    // por DEBAJO de cualquier descendiente posicionado con z-index dentro
+    // del mismo contexto de apilamiento — el botón "Close menu" quedaba
+    // tapado por el propio drawer (`fixed z-40`) pese a que el `<header>`
+    // tenía `z-50`, porque ese z-50 solo compite con los HERMANOS del
+    // header, no gobierna el orden ENTRE sus hijos. Un `.click()` real de
+    // Playwright sobre un botón tapado falla la comprobación de
+    // "receives pointer events" — este assert es el que lo habría cazado
+    // (Escape por sí solo no ejercita el botón real).
+    await closeButton.click();
+    await expect(menuButton).toBeVisible();
+    await expect(nav).toBeHidden();
+
+    // Escape también cierra (accesibilidad de teclado).
+    await menuButton.click();
+    await expect(closeButton).toBeVisible();
     await page.keyboard.press('Escape');
-    await expect(page.getByRole('button', { name: 'Open menu' })).toBeVisible();
+    await expect(menuButton).toBeVisible();
   },
 );
 

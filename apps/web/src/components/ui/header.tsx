@@ -21,7 +21,14 @@ import { LanguageSwitcher, type LocaleCode } from './language-switcher';
 //   hamburguesa que el mock ya insinuaba, con los iconos `menu`/`x` que ya
 //   existían en el registro. Por debajo de `lg` (1024px) el nav/switcher/CTA
 //   colapsan detrás de un botón; a partir de `lg` el layout previo (todo en
-//   una fila) se mantiene sin cambios.
+//   una fila) se mantiene sin cambios. **2ª iteración, mismo día**: a
+//   petición del usuario, el panel pasa de dropdown (`top-full`) a un drawer
+//   que entra deslizando desde el borde derecho (`translate-x`, con
+//   backdrop). El panel y el backdrop están SIEMPRE montados (nunca
+//   `{open && <div>}`) — si se desmontan al cerrar, la transición de salida
+//   nunca llega a pintarse (React quita el nodo del DOM en el mismo tick).
+//   Visibilidad/interactividad cuando está cerrado se controla con
+//   `invisible`+`pointer-events-none`, no con desmontar.
 // - `transparent` (hero overlay) usa `bg-transparent` sin el degradado del
 //   espejo (`linear-gradient(180deg, rgba(28,28,30,.55), transparent)`): ese
 //   degradado no tiene token en el volcado (--gradient-scrim existe pero va
@@ -95,16 +102,16 @@ export function Header({
     <header
       data-slot="header"
       className={cn(
-        'flex items-center justify-between gap-6 px-5 py-4.5 sm:px-8',
-        // El panel móvil (`absolute top-full`) se posiciona respecto al
-        // header: la variante `transparent` ya es `absolute` (contexto de
-        // posicionamiento propio); la variante normal no tenía ningún
-        // `position`, así que necesita `relative` explícito o el panel se
-        // habría posicionado respecto al siguiente ancestro posicionado
-        // (probablemente `<body>`), no respecto al header. Nunca las dos
-        // clases (`relative`+`absolute`) a la vez — orden de cascada
-        // impredecible entre utilidades de la misma capa.
-        transparent ? 'absolute inset-x-0 top-0 z-10 bg-transparent' : 'relative bg-bg-inverse',
+        // z-50: por encima del drawer/backdrop (z-40, ver más abajo) — el
+        // botón hamburguesa vive en el header y debe quedar SIEMPRE
+        // clickable/visible por encima del backdrop mientras el drawer está
+        // abierto, en vez de que el backdrop (a pantalla completa) le robe
+        // los clicks. `relative` solo en la variante NO transparente —
+        // `transparent` ya es `absolute` (su propio contexto de
+        // posicionamiento); nunca las dos a la vez, cascada impredecible
+        // entre utilidades `position` de la misma capa.
+        'z-50 flex items-center justify-between gap-6 px-5 py-4.5 sm:px-8',
+        transparent ? 'absolute inset-x-0 top-0 bg-transparent' : 'relative bg-bg-inverse',
         className,
       )}
       {...props}
@@ -160,51 +167,85 @@ export function Header({
         aria-label={open ? menuCloseLabel : menuOpenLabel}
         aria-expanded={open}
         aria-controls={panelId}
-        className="flex size-10 shrink-0 items-center justify-center text-white lg:hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
+        // `relative z-50`: bug real encontrado al verificar visualmente —
+        // un elemento SIN `position` (este botón, `static` por defecto)
+        // siempre pinta por DEBAJO de cualquier descendiente posicionado
+        // con z-index dentro del mismo contexto de apilamiento (el drawer,
+        // `fixed z-40`), sin importar el z-index del propio `<header>`
+        // (z-50): ese z-50 solo compite con los HERMANOS del header, no
+        // gobierna el orden ENTRE los hijos del header. El botón necesita
+        // su propio `position`+z-index para competir con el drawer.
+        className="relative z-50 flex size-10 shrink-0 items-center justify-center text-white lg:hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
       >
         <Icon name={open ? 'x' : 'menu'} size={24} />
       </button>
 
-      {open ? (
-        <div
-          id={panelId}
-          className="absolute inset-x-0 top-full flex flex-col gap-6 bg-bg-inverse px-5 py-6 lg:hidden"
-        >
-          <nav aria-label="Primary" className="flex flex-col gap-5">
-            {NAV_LINKS.map(({ key, slug }) => (
-              <Link
-                key={key}
-                href={localeHref(activeLocale, slug)}
-                aria-current={key === active ? 'page' : undefined}
-                onClick={() => {
-                  setOpen(false);
-                }}
-                className={cn(
-                  'font-display text-body transition-colors duration-150 ease-standard focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring',
-                  key === active
-                    ? 'text-accent-amber'
-                    : 'text-text-on-dark-secondary hover:text-text-on-dark',
-                )}
-              >
-                {labels[key]}
-              </Link>
-            ))}
-          </nav>
-          <div className="flex flex-col gap-4">
-            <LanguageSwitcher activeLocale={activeLocale} dark />
-            <Button
-              size="sm"
-              variant="primary"
-              render={<Link href={localeHref(activeLocale, 'contact')} />}
+      {/* Backdrop + drawer SIEMPRE montados (nunca `{open && …}`) — con
+          `transition-*` + clases condicionales, desmontar el nodo en el
+          mismo render que lo cierra le quita a React la oportunidad de
+          pintar el frame de partida de la transición de salida (no hay
+          "antes" desde el que animar si el nodo ya no existe). `invisible`
+          además de `opacity-0`/`translate-x-full` para que, cerrado, ni
+          ocupe la mira del ratón ni sea alcanzable por Tab. */}
+      <div
+        aria-hidden={!open}
+        onClick={() => {
+          setOpen(false);
+        }}
+        className={cn(
+          'fixed inset-0 z-40 bg-charcoal-900/60 transition-opacity duration-300 ease-standard lg:hidden',
+          open ? 'opacity-100' : 'invisible opacity-0',
+        )}
+      />
+      <div
+        id={panelId}
+        role="dialog"
+        aria-modal="true"
+        aria-label={menuOpenLabel}
+        aria-hidden={!open}
+        className={cn(
+          // `w-full max-w-75` en vez de un ancho fijo con `max-w-[85vw]`
+          // (arbitrario crudo, prohibido — TD.6 §3.1): en viewports más
+          // estrechos que 300px el drawer ocupa el 100% sin desbordar,
+          // en el resto se asienta en 300px.
+          'fixed inset-y-0 right-0 z-40 flex w-full max-w-75 flex-col gap-8 bg-bg-inverse px-6 py-24 shadow-lg transition-transform duration-300 ease-standard lg:hidden',
+          open ? 'translate-x-0' : 'invisible translate-x-full',
+        )}
+      >
+        <nav aria-label="Primary" className="flex flex-col gap-6">
+          {NAV_LINKS.map(({ key, slug }) => (
+            <Link
+              key={key}
+              href={localeHref(activeLocale, slug)}
+              aria-current={key === active ? 'page' : undefined}
               onClick={() => {
                 setOpen(false);
               }}
+              className={cn(
+                'font-display text-body transition-colors duration-150 ease-standard focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring',
+                key === active
+                  ? 'text-accent-amber'
+                  : 'text-text-on-dark-secondary hover:text-text-on-dark',
+              )}
             >
-              {labels.contact}
-            </Button>
-          </div>
+              {labels[key]}
+            </Link>
+          ))}
+        </nav>
+        <div className="flex flex-col gap-4">
+          <LanguageSwitcher activeLocale={activeLocale} dark />
+          <Button
+            size="sm"
+            variant="primary"
+            render={<Link href={localeHref(activeLocale, 'contact')} />}
+            onClick={() => {
+              setOpen(false);
+            }}
+          >
+            {labels.contact}
+          </Button>
         </div>
-      ) : null}
+      </div>
     </header>
   );
 }
