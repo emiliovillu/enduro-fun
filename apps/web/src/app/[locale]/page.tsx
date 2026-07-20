@@ -151,7 +151,9 @@ export default async function LocaleHomePage({ params }: { params: Promise<{ loc
             );
           })}
         </div>
-        <p className="mt-7 text-small text-text-secondary">{messages.home.packages.note}</p>
+        <p className="mx-auto mt-7 max-w-160 text-center text-small text-text-secondary">
+          {messages.home.packages.note}
+        </p>
       </section>
 
       <section className="bg-bg-inverse py-24">

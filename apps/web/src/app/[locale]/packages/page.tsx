@@ -92,7 +92,9 @@ export default async function PackagesPage({ params }: { params: Promise<{ local
             );
           })}
         </div>
-        <p className="mt-7 max-w-160 text-small text-text-secondary">{pageCopy.note}</p>
+        <p className="mx-auto mt-7 max-w-160 text-center text-small text-text-secondary">
+          {pageCopy.note}
+        </p>
       </section>
 
       <Footer
