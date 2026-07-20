@@ -6,9 +6,9 @@ import { test, expect } from '@playwright/test';
 // envío completo interceptando el POST al endpoint de Formspree con
 // `page.route()` (regla 10 del planning: nunca el endpoint real en CI) —
 // se comprueba tanto el estado de éxito (200 simulado) como el de error
-// (respuesta no-ok simulada). El mapa embebido (`MapEmbed`, placeholder de
-// TD.3 — el iframe real de Google Maps queda diferido, ver report de T1.3)
-// se comprueba presente en el DOM, sin verificar contenido de terceros.
+// (respuesta no-ok simulada). El mapa embebido (`MapEmbed interactive`,
+// iframe real sin API key — ver map-embed.tsx) se comprueba presente en el
+// DOM, sin verificar contenido de terceros (regla 10 del planning).
 
 const FORMSPREE_PATTERN = '**/f/mykrjbra';
 
@@ -52,15 +52,11 @@ test('el nav del Header marca "Contact" como página activa', { tag: ['@f1'] }, 
   await expect(contactLink).toHaveAttribute('aria-current', 'page');
 });
 
-test(
-  'el mapa embebido (placeholder) está presente en el DOM',
-  { tag: ['@f1'] },
-  async ({ page }) => {
-    await page.goto('/en/contact/');
+test('el mapa embebido está presente en el DOM', { tag: ['@f1'] }, async ({ page }) => {
+  await page.goto('/en/contact/');
 
-    await expect(page.getByRole('img', { name: /Google Maps embed placeholder/ })).toBeVisible();
-  },
-);
+  await expect(page.locator('iframe[title^="Google Maps"]')).toBeVisible();
+});
 
 test('los 3 campos del formulario son requeridos', { tag: ['@f1'] }, async ({ page }) => {
   await page.goto('/en/contact/');

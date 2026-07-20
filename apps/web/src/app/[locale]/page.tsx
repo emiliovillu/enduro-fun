@@ -177,7 +177,7 @@ export default async function LocaleHomePage({ params }: { params: Promise<{ loc
             info@endurofun.eu
           </Button>
         </div>
-        <MapEmbed />
+        <MapEmbed label={messages.home.findUs.eyebrow} interactive />
       </section>
 
       <Footer

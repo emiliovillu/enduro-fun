@@ -19,13 +19,11 @@ import { ContactForm } from './contact-form';
 // `items-start` evita que el mapa (más alto que el formulario en la mayoría
 // de idiomas) fuerce un estirado raro de la columna del formulario.
 //
-// DESVIACIÓN DELIBERADA acordada con el usuario para esta tarea (ver
-// journal del dev-loop y report de T1.3): Google Maps real diferido — el
-// usuario todavía no tiene la API key de Google Cloud (Maps Embed API). Se
-// usa `MapEmbed` (TD.3, placeholder visual) TAL CUAL, sin modificar — el
-// `[verificar]` de coste/condiciones de Maps Embed API (PRD §9.1) queda SIN
-// CERRAR. El endpoint de Formspree, en cambio, ya es el real (claim
-// completado por el usuario) — ver `contact-form.tsx`.
+// Mapa real (`MapEmbed interactive`, ver map-embed.tsx para el porqué del
+// endpoint sin API key en vez de la Maps Embed API oficial — cierra el
+// `[verificar]` de PRD §9.1) y endpoint real de Formspree (claim completado
+// por el usuario, ver `contact-form.tsx`) — ambos prerequisitos ⚠ de T1.3
+// resueltos.
 export default async function ContactPage({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
   const messages = getMessages(locale);
@@ -60,7 +58,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
             {contact.findUs.eyebrow}
           </div>
           <p className="mb-6 text-body text-text-secondary">{contact.findUs.text}</p>
-          <MapEmbed label={contact.findUs.eyebrow} />
+          <MapEmbed label={contact.findUs.eyebrow} interactive />
         </div>
       </section>
 

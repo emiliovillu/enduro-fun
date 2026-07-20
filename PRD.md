@@ -188,17 +188,18 @@ Presentes en **todas** las páginas: header (logo, nav de 5 enlaces, selector de
 
 ## 9. Integraciones externas
 
-### 9.1 Google Maps Embed API
+### 9.1 Google Maps embed
 
-- **Uso**: iframe embed para mostrar la ubicación de Álora, Málaga, en `/contact` y en el footer (versión compacta).
-- **Coste**: gratis para embeds básicos según la documentación pública de Google `[verificar: confirmar límites/condiciones actuales al implementar]`.
-- **Requiere**: ⚠ API key de Google Cloud con Maps Embed API habilitada, restringida por dominio (`endurofun.eu`) — prerequisito externo del usuario, se resuelve en la tarea que construye el mapa.
+- **Uso**: iframe embed para mostrar la ubicación de Álora, Málaga, en `/contact` y en el footer/Home (versión compacta).
+- **`[verificar]` cerrado en T1.3 (2026-07-20)**: se descartó la Maps Embed API oficial (exige API key + proyecto de Google Cloud + cuenta de facturación activada, aunque el uso en sí sea gratuito e ilimitado) en favor del endpoint público `maps.google.com/maps?...&output=embed` — sin API key, sin cuota, sin proyecto de Cloud, gratis e ilimitado, estable desde 2014. Decisión explícita del usuario: prioriza cero prerequisitos externos sobre el respaldo oficial/SLA de Google. Implementado en `MapEmbed` (`apps/web/src/components/ui/map-embed.tsx`, prop `interactive`).
+- **Coste**: $0, sin límite de uso conocido.
+- **Requiere**: nada — ya no hay prerequisito externo del usuario para este punto.
 
 ### 9.2 Formspree
 
 - **Uso**: recepción y reenvío por email del formulario de `/contact`. El formulario hace POST directo al endpoint de Formspree desde el cliente — no hay route handler propio.
-- **Requiere**: ⚠ cuenta en formspree.io + ID de formulario/endpoint — prerequisito externo del usuario, se resuelve en la tarea de contacto.
-- **Límites**: plan gratuito de Formspree tiene un tope mensual de envíos `[verificar: límite exacto vigente al implementar]`.
+- **Requiere**: cuenta en formspree.io + ID de formulario/endpoint — ✅ resuelto en T1.3 (2026-07-20), endpoint real `https://formspree.io/f/mykrjbra`.
+- **Límites — `[verificar]` cerrado en T1.3 (2026-07-20)**: plan gratuito de Formspree admite **50 envíos/mes por formulario**. Si se supera, Formspree deja de aceptar nuevos envíos hasta el siguiente ciclo mensual (el formulario mostraría el estado de error ya implementado en `contact-form.tsx`, sin lógica adicional necesaria). Documentado también como comentario en el código.
 
 ### 9.3 Google Reviews / Places API (fuera de alcance v1)
 
@@ -226,7 +227,6 @@ No se integra en v1 (ver D4, no-objetivo). Si se aborda en el futuro, sustituye 
 
 | Riesgo | Impacto | Mitigación |
 |---|---|---|
-| Google Maps API key expuesta en frontend | Bajo (restringida por dominio) | Restricción de referrer en Google Cloud Console (§9.1) |
 | Contenido no traducido correctamente al alemán | Medio (público principal) | Revisión por hablante nativo antes de lanzar cada página con contenido nuevo |
 | Librería de i18n elegida no soporta bien `output: 'export'` | Medio (ya no es "alto": D11 evita depender de middleware) | Se verifica en la tarea de F0 que monta i18n antes de construir páginas sobre ella |
 | Dominio en Hostinger, hosting en Cloudflare | Bajo | Documentar la configuración DNS exacta en la tarea de deploy; es un patrón estándar |
