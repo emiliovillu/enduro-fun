@@ -83,7 +83,7 @@ export default async function LocaleHomePage({ params }: { params: Promise<{ loc
           <p className="m-0 max-w-140 text-body text-text-on-dark-secondary">
             {messages.home.subtitle}
           </p>
-          <div className="flex flex-wrap gap-4">
+          <div className="flex w-full flex-wrap justify-center gap-4">
             <Button
               size="lg"
               variant="primary"
