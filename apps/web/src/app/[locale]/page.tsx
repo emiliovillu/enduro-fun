@@ -9,7 +9,7 @@ import { MapEmbed } from '@/components/ui/map-embed';
 import { PackageCard } from '@/components/ui/package-card';
 import { ReviewCard } from '@/components/ui/review-card';
 import { SectionHeading } from '@/components/ui/section-heading';
-import { HIGHLIGHTED_PACKAGE_ID, PACKAGES } from '@/data/packages';
+import { CENTERED_PACKAGE_ID, HIGHLIGHTED_PACKAGE_ID, PACKAGES } from '@/data/packages';
 import { REVIEWS } from '@/data/reviews';
 import { getMessages } from '@/i18n/messages';
 import { localeHref } from '@/lib/utils';
@@ -116,30 +116,40 @@ export default async function LocaleHomePage({ params }: { params: Promise<{ loc
           align="left"
         />
         <div className="mt-10 grid grid-cols-1 gap-7 sm:grid-cols-2">
-          {PACKAGES.map((pkg) => (
-            <PackageCard
-              key={pkg.id}
-              name={pkg.name[locale]}
-              subtitle={
-                pkg.subtitleOverride
-                  ? pkg.subtitleOverride[locale]
-                  : messages.home.packages.durationTemplate
-                      .replace('{nights}', String(pkg.nights))
-                      .replace('{days}', String(pkg.days))
-              }
-              price={
-                pkg.priceLabel
-                  ? pkg.priceLabel[locale]
-                  : `${messages.home.packages.fromPrefix} ${priceFormatter.format(pkg.priceEur ?? 0)} €`
-              }
-              features={pkg.features.map((feature) => feature[locale])}
-              highlight={
-                pkg.id === HIGHLIGHTED_PACKAGE_ID ? messages.home.packages.mostPopular : undefined
-              }
-              ctaLabel={messages.home.packages.ctaLabel}
-              ctaHref={localeHref(locale, 'contact')}
-            />
-          ))}
+          {PACKAGES.map((pkg) => {
+            const card = (
+              <PackageCard
+                key={pkg.id}
+                name={pkg.name[locale]}
+                subtitle={
+                  pkg.subtitleOverride
+                    ? pkg.subtitleOverride[locale]
+                    : messages.home.packages.durationTemplate
+                        .replace('{nights}', String(pkg.nights))
+                        .replace('{days}', String(pkg.days))
+                }
+                price={
+                  pkg.priceLabel
+                    ? pkg.priceLabel[locale]
+                    : `${messages.home.packages.fromPrefix} ${priceFormatter.format(pkg.priceEur ?? 0)} €`
+                }
+                features={pkg.features.map((feature) => feature[locale])}
+                highlight={
+                  pkg.id === HIGHLIGHTED_PACKAGE_ID ? messages.home.packages.mostPopular : undefined
+                }
+                ctaLabel={messages.home.packages.ctaLabel}
+                ctaHref={localeHref(locale, 'contact')}
+              />
+            );
+
+            return pkg.id === CENTERED_PACKAGE_ID ? (
+              <div key={pkg.id} className="sm:col-span-2 sm:flex sm:justify-center">
+                <div className="w-full sm:w-1/2">{card}</div>
+              </div>
+            ) : (
+              card
+            );
+          })}
         </div>
         <p className="mt-7 text-small text-text-secondary">{messages.home.packages.note}</p>
       </section>

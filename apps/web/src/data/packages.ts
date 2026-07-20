@@ -127,3 +127,9 @@ export const PACKAGES: Package[] = RAW_PACKAGES.map((pkg) => PackageSchema.parse
 // sobre Full Adventure) — decisión de presentación de la PÁGINA, no del
 // contrato de dominio (`Package` no tiene un campo `highlight`).
 export const HIGHLIGHTED_PACKAGE_ID = 'full-adventure';
+
+// Petición directa del usuario: en el grid de 2 columnas de Home/Packages,
+// esta card (sin pareja — es la 3ª de un total impar) va centrada en su
+// propia fila en vez de pegada a la izquierda. Igual que `HIGHLIGHTED_PACKAGE_ID`,
+// es una decisión de presentación de la PÁGINA, no del contrato de dominio.
+export const CENTERED_PACKAGE_ID = 'own-bike';

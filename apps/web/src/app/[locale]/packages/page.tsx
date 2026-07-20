@@ -3,7 +3,7 @@ import { Footer } from '@/components/ui/footer';
 import { Header } from '@/components/ui/header';
 import { PackageCard } from '@/components/ui/package-card';
 import { SectionHeading } from '@/components/ui/section-heading';
-import { HIGHLIGHTED_PACKAGE_ID, PACKAGES } from '@/data/packages';
+import { CENTERED_PACKAGE_ID, HIGHLIGHTED_PACKAGE_ID, PACKAGES } from '@/data/packages';
 import { getMessages } from '@/i18n/messages';
 import { localeHref } from '@/lib/utils';
 
@@ -57,28 +57,40 @@ export default async function PackagesPage({ params }: { params: Promise<{ local
 
       <section className="mx-auto max-w-[var(--container-max)] px-5 pb-24 sm:px-8">
         <div className="grid grid-cols-1 gap-7 sm:grid-cols-2">
-          {PACKAGES.map((pkg) => (
-            <PackageCard
-              key={pkg.id}
-              name={pkg.name[locale]}
-              subtitle={
-                pkg.subtitleOverride
-                  ? pkg.subtitleOverride[locale]
-                  : home.packages.durationTemplate
-                      .replace('{nights}', String(pkg.nights))
-                      .replace('{days}', String(pkg.days))
-              }
-              price={
-                pkg.priceLabel
-                  ? pkg.priceLabel[locale]
-                  : `${home.packages.fromPrefix} ${priceFormatter.format(pkg.priceEur ?? 0)} €`
-              }
-              features={pkg.features.map((feature) => feature[locale])}
-              highlight={pkg.id === HIGHLIGHTED_PACKAGE_ID ? home.packages.mostPopular : undefined}
-              ctaLabel={home.packages.ctaLabel}
-              ctaHref={localeHref(locale, 'contact')}
-            />
-          ))}
+          {PACKAGES.map((pkg) => {
+            const card = (
+              <PackageCard
+                key={pkg.id}
+                name={pkg.name[locale]}
+                subtitle={
+                  pkg.subtitleOverride
+                    ? pkg.subtitleOverride[locale]
+                    : home.packages.durationTemplate
+                        .replace('{nights}', String(pkg.nights))
+                        .replace('{days}', String(pkg.days))
+                }
+                price={
+                  pkg.priceLabel
+                    ? pkg.priceLabel[locale]
+                    : `${home.packages.fromPrefix} ${priceFormatter.format(pkg.priceEur ?? 0)} €`
+                }
+                features={pkg.features.map((feature) => feature[locale])}
+                highlight={
+                  pkg.id === HIGHLIGHTED_PACKAGE_ID ? home.packages.mostPopular : undefined
+                }
+                ctaLabel={home.packages.ctaLabel}
+                ctaHref={localeHref(locale, 'contact')}
+              />
+            );
+
+            return pkg.id === CENTERED_PACKAGE_ID ? (
+              <div key={pkg.id} className="sm:col-span-2 sm:flex sm:justify-center">
+                <div className="w-full sm:w-1/2">{card}</div>
+              </div>
+            ) : (
+              card
+            );
+          })}
         </div>
         <p className="mt-7 max-w-160 text-small text-text-secondary">{pageCopy.note}</p>
       </section>
