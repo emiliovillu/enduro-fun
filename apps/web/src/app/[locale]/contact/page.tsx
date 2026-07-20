@@ -13,16 +13,11 @@ import { ContactForm } from './contact-form';
 // mismos patrones que About (T1.2): Header/Footer reciben `labels` ya
 // traducidos, copy real en `messages.contact`, nunca hardcodeado.
 //
-// DESVIACIÓN respecto al mockup, pedida por el usuario tras ver la página
-// renderizada (grid de 2 columnas dejaba un hueco vertical raro porque el
-// formulario y el mapa no tienen alturas comparables — a diferencia de
-// about/page.tsx §"story", donde SÍ tiene sentido un grid compartido porque
-// ambas columnas tienen contenido de altura similar): el formulario y el
-// bloque "Find us" + mapa van en DOS SECCIONES SEPARADAS, apiladas
-// verticalmente (mismo patrón de secciones independientes que el resto de
-// la página), no en un grid compartido. El formulario se queda en un ancho
-// contenido (`max-w-160`, igual que el párrafo de intro) en vez de ocupar
-// media fila del grid.
+// El formulario y el bloque "Find us" + mapa van en un grid de 2 columnas
+// (`lg:grid-cols-2`), fiel al mockup — el usuario pidió volver a este layout
+// tras una iteración intermedia que los apilaba en secciones separadas.
+// `items-start` evita que el mapa (más alto que el formulario en la mayoría
+// de idiomas) fuerce un estirado raro de la columna del formulario.
 //
 // DESVIACIÓN DELIBERADA acordada con el usuario para esta tarea (ver
 // journal del dev-loop y report de T1.3): Google Maps real diferido — el
@@ -58,18 +53,15 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
         <p className="mt-5 max-w-160 text-lead text-text-secondary">{contact.intro}</p>
       </section>
 
-      <section className="mx-auto max-w-[var(--container-max)] px-5 pb-14 sm:px-8">
-        <div className="max-w-160">
-          <ContactForm labels={contact.form} />
+      <section className="mx-auto grid max-w-[var(--container-max)] items-start gap-14 px-5 pb-24 sm:px-8 lg:grid-cols-2">
+        <ContactForm labels={contact.form} />
+        <div>
+          <div className="font-display mb-2 text-eyebrow font-semibold tracking-eyebrow text-accent-secondary uppercase">
+            {contact.findUs.eyebrow}
+          </div>
+          <p className="mb-6 text-body text-text-secondary">{contact.findUs.text}</p>
+          <MapEmbed label={contact.findUs.eyebrow} />
         </div>
-      </section>
-
-      <section className="mx-auto max-w-[var(--container-max)] px-5 pb-24 sm:px-8">
-        <div className="font-display mb-2 text-eyebrow font-semibold tracking-eyebrow text-accent-secondary uppercase">
-          {contact.findUs.eyebrow}
-        </div>
-        <p className="mb-6 max-w-160 text-body text-text-secondary">{contact.findUs.text}</p>
-        <MapEmbed label={contact.findUs.eyebrow} />
       </section>
 
       <Footer
