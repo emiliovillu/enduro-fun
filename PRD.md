@@ -97,11 +97,11 @@ El enduro tourism en Andalucía es un nicho creciente, impulsado por el clima fa
 | D5 | Deploy en Cloudflare Pages | Dominio `endurofun.eu` registrado en Hostinger; DNS apunta a Cloudflare. La skill `deploy` del arnés (VPS+Docker+Caddy) **no se usa** en este proyecto |
 | D6 | Vídeos/fotos como contenido principal del hero | Placeholders en v1, preparados para contenido real del cliente |
 | D7 | Solo Instagram como red social | `@endurofun_oficial` enlazado en el footer |
-| D8 | Google Maps embebido | Vía Maps Embed API, para mostrar la ubicación de Álora, Málaga. ⚠ requiere API key de Google Cloud (prerequisito externo) |
+| D8 | Google Maps embebido | Iframe del endpoint público de Google (sin API key, sin cuenta de Google Cloud) para mostrar la ubicación de Álora, Málaga — decisión actualizada en T1.3 (ver §9.1), ya no requiere prerequisito externo |
 | D9 | Licencia AGPL-3.0, repo público | github.com/emiliovillu/enduro-fun |
 | D10 | Paquetes con precios orientativos | Los precios mostrados son de partida; el texto invita a pedir una oferta personalizada |
 | D11 | Sin auto-detección de idioma por navegador | La exportación estática no ejecuta middleware; `/` sirve inglés por defecto y el visitante cambia de idioma manualmente con el selector (siempre visible) |
-| D12 | 5 páginas | Home, Packages, About, Contact, Reviews — cada una con su propia ruta localizada |
+| D12 | 6 páginas | Home, Gallery, Packages, About, Contact, Reviews — cada una con su propia ruta localizada. Gallery se añadió tras el lanzamiento inicial, hotfix a petición directa del usuario (ver journal) |
 
 ## 6. Arquitectura general
 
@@ -114,6 +114,7 @@ El enduro tourism en Andalucía es un nicho creciente, impulsado por el clima fa
 │  │      Next.js App Router (static export)   ││
 │  │                                            ││
 │  │  /[locale]/            → Home              ││
+│  │  /[locale]/gallery     → Galería            ││
 │  │  /[locale]/packages    → Paquetes           ││
 │  │  /[locale]/about       → Sobre nosotros     ││
 │  │  /[locale]/contact     → Contacto           ││
@@ -171,12 +172,13 @@ Invariantes:
 | Ruta | Página | Contenido |
 |---|---|---|
 | `/[locale]` | Home | Hero (foto/vídeo), tagline, CTA a paquetes/contacto, preview de 2-3 paquetes, 2-3 reviews destacadas, mapa de ubicación |
+| `/[locale]/gallery` | Galería | Grid de 5 columnas con scroll infinito de fotos del terreno (placeholder hasta que haya fotos reales) — hotfix, no prevista en el diseño original, añadida a petición directa del usuario (ver journal) |
 | `/[locale]/packages` | Paquetes | Todas las cards de paquetes con precio y detalle completo; nota de oferta personalizada |
 | `/[locale]/about` | Sobre nosotros | Historia de la empresa/guías, qué la hace especial (conocimiento local, terreno variado, oferta cultural), niveles de experiencia aceptados |
 | `/[locale]/contact` | Contacto | Formulario (nombre, email, mensaje) → Formspree; texto invitando a pedir presupuesto personalizado; mapa embebido |
 | `/[locale]/reviews` | Reviews | 4-6 testimonios (datos inventados en v1) |
 
-Presentes en **todas** las páginas: header (logo, nav de 5 enlaces, selector de idioma, CTA de contacto) y footer (logo/nombre, nav, Instagram, mapa mini o link, selector de idioma).
+Presentes en **todas** las páginas: header (logo, nav de 6 enlaces, selector de idioma, CTA de contacto) y footer (logo/nombre, nav, Instagram, mapa mini o link, selector de idioma).
 
 **Requisitos UX no negociables:**
 - Mobile-first — la mayoría de turistas buscan desde el móvil.
@@ -246,7 +248,7 @@ No se integra en v1 (ver D4, no-objetivo). Si se aborda en el futuro, sustituye 
 ## 14. Criterios de éxito
 
 1. La web carga en **< 2 segundos** en Lighthouse móvil (score Performance > 90).
-2. Las **3 versiones lingüísticas** (EN/ES/DE) muestran contenido completo y correcto en las 5 páginas.
+2. Las **3 versiones lingüísticas** (EN/ES/DE) muestran contenido completo y correcto en las 6 páginas.
 3. El **formulario de contacto** envía correctamente y el email llega vía Formspree, en los 3 idiomas de UI.
 4. **Google Maps** muestra la ubicación de Álora, visible e interactiva, en `/contact` y en el footer.
 5. Las **reviews** se muestran con diseño coherente y datos de ejemplo creíbles (datos reales sustituibles sin cambios de esquema).

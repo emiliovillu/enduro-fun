@@ -1,6 +1,7 @@
 {
   "nav": {
     "home": "Home",
+    "gallery": "Gallery",
     "packages": "Packages",
     "about": "About",
     "contact": "Contact",
@@ -117,5 +118,12 @@
       "eyebrow": "Find us",
       "text": "Based in Álora, in the heart of the province of Málaga — routes leave from town and reach the wildest trails within a short ride."
     }
+  },
+  "gallery": {
+    "eyebrow": "Gallery",
+    "title": "A taste of the terrain",
+    "intro": "A closer look at the trails and terrain around Álora — dusty singletrack, rocky climbs and open fire roads.",
+    "placeholderLabelTemplate": "Photo placeholder — route {n}",
+    "loadingLabel": "Loading more photos"
   }
 }

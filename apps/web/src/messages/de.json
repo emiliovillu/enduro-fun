@@ -1,6 +1,7 @@
 {
   "nav": {
     "home": "Start",
+    "gallery": "Galerie",
     "packages": "Pakete",
     "about": "Über uns",
     "contact": "Kontakt",
@@ -117,5 +118,12 @@
       "eyebrow": "Finde uns",
       "text": "Zuhause in Álora, im Herzen der Provinz Málaga — die Routen starten im Ort und erreichen die wildesten Trails in kurzer Fahrt."
     }
+  },
+  "gallery": {
+    "eyebrow": "Galerie",
+    "title": "Ein Vorgeschmack auf das Gelände",
+    "intro": "Ein genauerer Blick auf die Trails und das Gelände rund um Álora — staubige Singletrails, felsige Anstiege und offene Forstwege.",
+    "placeholderLabelTemplate": "Fotoplatzhalter — Route {n}",
+    "loadingLabel": "Weitere Fotos werden geladen"
   }
 }

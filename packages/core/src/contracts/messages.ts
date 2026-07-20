@@ -44,6 +44,7 @@ import { z } from 'zod';
 export const MessagesSchema = z.object({
   nav: z.object({
     home: z.string().min(1),
+    gallery: z.string().min(1),
     packages: z.string().min(1),
     about: z.string().min(1),
     contact: z.string().min(1),
@@ -166,6 +167,21 @@ export const MessagesSchema = z.object({
       eyebrow: z.string().min(1),
       text: z.string().min(1),
     }),
+  }),
+  // Hotfix (petición directa del usuario): página nueva /gallery, grid de 5
+  // columnas con scroll infinito de fotos placeholder (mismo criterio
+  // tokenizado que el resto del sitio — sin fotos reales todavía).
+  // `placeholderLabelTemplate` reusa el patrón `{n}` de interpolación
+  // manual ya usado en `home.packages.durationTemplate` (`{nights}`/
+  // `{days}`) — cada tarjeta placeholder interpola su propio índice.
+  // `loadingLabel` es el texto accesible (`aria-live`) del spinner que
+  // aparece al cargar la siguiente tanda.
+  gallery: z.object({
+    eyebrow: z.string().min(1),
+    title: z.string().min(1),
+    intro: z.string().min(1),
+    placeholderLabelTemplate: z.string().min(1),
+    loadingLabel: z.string().min(1),
   }),
 });
 

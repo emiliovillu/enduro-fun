@@ -1,6 +1,7 @@
 {
   "nav": {
     "home": "Inicio",
+    "gallery": "Galería",
     "packages": "Paquetes",
     "about": "Sobre nosotros",
     "contact": "Contacto",
@@ -117,5 +118,12 @@
       "eyebrow": "Encuéntranos",
       "text": "Con base en Álora, en el corazón de la provincia de Málaga — las rutas salen del pueblo y llegan a los senderos más salvajes en poco tiempo."
     }
+  },
+  "gallery": {
+    "eyebrow": "Galería",
+    "title": "Una muestra del terreno",
+    "intro": "Un vistazo más de cerca a los senderos y el terreno de los alrededores de Álora — singletrack polvoriento, subidas rocosas y pistas forestales abiertas.",
+    "placeholderLabelTemplate": "Foto de ejemplo — ruta {n}",
+    "loadingLabel": "Cargando más fotos"
   }
 }

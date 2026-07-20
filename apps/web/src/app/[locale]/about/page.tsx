@@ -36,6 +36,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
   const messages = getMessages(locale);
   const navLabels = {
     home: messages.nav.home,
+    gallery: messages.nav.gallery,
     packages: messages.nav.packages,
     about: messages.nav.about,
     contact: messages.nav.contact,

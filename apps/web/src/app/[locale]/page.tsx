@@ -38,6 +38,7 @@ export default async function LocaleHomePage({ params }: { params: Promise<{ loc
   const priceFormatter = new Intl.NumberFormat(locale);
   const navLabels = {
     home: messages.nav.home,
+    gallery: messages.nav.gallery,
     packages: messages.nav.packages,
     about: messages.nav.about,
     contact: messages.nav.contact,

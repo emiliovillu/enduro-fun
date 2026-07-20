@@ -4,6 +4,7 @@ import { MessagesSchema } from './messages';
 const validMessages = {
   nav: {
     home: 'Home',
+    gallery: 'Gallery',
     packages: 'Packages',
     about: 'About',
     contact: 'Contact',
@@ -103,6 +104,13 @@ const validMessages = {
       text: 'Based in Álora, in the heart of the province of Málaga.',
     },
   },
+  gallery: {
+    eyebrow: 'Gallery',
+    title: 'A taste of the terrain',
+    intro: 'A closer look at the trails and terrain around Álora.',
+    placeholderLabelTemplate: 'Photo placeholder — route {n}',
+    loadingLabel: 'Loading more photos',
+  },
 };
 
 describe('MessagesSchema', () => {
@@ -157,6 +165,15 @@ describe('MessagesSchema', () => {
     const result = MessagesSchema.safeParse({
       ...validMessages,
       contact: { ...validMessages.contact, form: formWithoutError },
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it('rechaza si falta la clave gallery.loadingLabel (control negativo, página Gallery)', () => {
+    const { loadingLabel: _loadingLabel, ...galleryWithoutLoading } = validMessages.gallery;
+    const result = MessagesSchema.safeParse({
+      ...validMessages,
+      gallery: galleryWithoutLoading,
     });
     expect(result.success).toBe(false);
   });

@@ -33,6 +33,7 @@ export default async function PackagesPage({ params }: { params: Promise<{ local
   const priceFormatter = new Intl.NumberFormat(locale);
   const navLabels = {
     home: messages.nav.home,
+    gallery: messages.nav.gallery,
     packages: messages.nav.packages,
     about: messages.nav.about,
     contact: messages.nav.contact,

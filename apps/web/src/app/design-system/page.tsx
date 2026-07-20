@@ -442,6 +442,7 @@ export default function DesignSystemPage() {
           activeLocale="en"
           labels={{
             home: 'Home',
+            gallery: 'Gallery',
             packages: 'Packages',
             about: 'About',
             contact: 'Contact',
@@ -458,6 +459,7 @@ export default function DesignSystemPage() {
           activeLocale="en"
           labels={{
             home: 'Home',
+            gallery: 'Gallery',
             packages: 'Packages',
             about: 'About',
             contact: 'Contact',

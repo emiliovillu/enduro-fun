@@ -64,6 +64,7 @@ import { LanguageSwitcher, type LocaleCode } from './language-switcher';
 //   decorativo (evita que un lector de pantalla anuncie el link dos veces).
 const NAV_LINKS = [
   { key: 'home', slug: '' },
+  { key: 'gallery', slug: 'gallery' },
   { key: 'packages', slug: 'packages' },
   { key: 'about', slug: 'about' },
   { key: 'contact', slug: 'contact' },

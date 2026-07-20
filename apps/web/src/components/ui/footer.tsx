@@ -30,6 +30,7 @@ import { LanguageSwitcher, type LocaleCode } from './language-switcher';
 // enlazan a las mismas páginas con el mismo copy.
 const EXPLORE_LINKS = [
   { key: 'home', slug: '' },
+  { key: 'gallery', slug: 'gallery' },
   { key: 'packages', slug: 'packages' },
   { key: 'about', slug: 'about' },
   { key: 'reviews', slug: 'reviews' },
