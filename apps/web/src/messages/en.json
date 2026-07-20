@@ -97,5 +97,25 @@
     "eyebrow": "Reviews",
     "title": "From riders who've been",
     "intro": "Real trips, real terrain — here's what riders say after a week on the trails around Álora."
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Ask for a custom quote",
+    "intro": "Tell us about your group, the dates you're thinking and your riding level — we'll get back to you with a route and a price tailored to what you're after.",
+    "form": {
+      "nameLabel": "Name",
+      "namePlaceholder": "Your name",
+      "emailLabel": "Email",
+      "emailPlaceholder": "you@example.com",
+      "messageLabel": "Message",
+      "messagePlaceholder": "Group size, dates, experience level, anything else we should know...",
+      "submitLabel": "Send message",
+      "successMessage": "Thanks — your message is on its way. We'll get back to you soon.",
+      "errorMessage": "Something went wrong sending your message. Please try again in a moment."
+    },
+    "findUs": {
+      "eyebrow": "Find us",
+      "text": "Based in Álora, in the heart of the province of Málaga — routes leave from town and reach the wildest trails within a short ride."
+    }
   }
 }

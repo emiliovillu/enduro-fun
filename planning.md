@@ -150,13 +150,14 @@ Home + About + Contact navegables en los 3 idiomas, con el formulario de contact
 - **Depende de**: TD.7, T0.1
 - **Entrega**: `/[en|es|de]/contact` con formulario (`Input` nombre/email + `Textarea` mensaje de TD.4) que hace POST directo al endpoint de Formspree; texto invitando a pedir presupuesto personalizado; `MapEmbed` con el iframe **real** de Google Maps Embed API (ubicación de Álora, Málaga) — cierra el `[verificar]` de coste/condiciones de la API (PRD §9.1). Cierra también el `[verificar]` de límite del plan gratuito de Formspree (PRD §9.2), documentado como comentario en el código y en el journal.
 - **Subtareas**:
-  - [ ] ⚠ Cuenta Formspree del usuario + ID de endpoint del formulario
-  - [ ] ⚠ API key de Google Cloud con Maps Embed API habilitada, restringida por dominio `endurofun.eu`
-  - [ ] Formulario con validación mínima (campos requeridos) usando `Input`/`Textarea` del DS
-  - [ ] Iframe de Google Maps embebido con la key
-- **Mockup**: `docs/mockups/contact.html` (a crear y aprobar por el usuario al iniciar esta tarea).
-- **Playwright permanente**: `apps/web/e2e/contact.spec.ts` — el formulario se rellena y envía contra un **fixture/mock del endpoint de Formspree** (nunca el endpoint real en CI, regla 10); se comprueba el estado de éxito mostrado al usuario; el mapa embebido está presente en el DOM (sin verificar contenido del iframe de terceros).
+  - [x] Cuenta Formspree del usuario + ID de endpoint del formulario — resuelto 2026-07-20, endpoint real `https://formspree.io/f/mykrjbra` (`action.email=info@endurofun.eu`), integrado en `contact-form.tsx`
+  - [ ] ⚠ API key de Google Cloud con Maps Embed API habilitada, restringida por dominio `endurofun.eu` — sigue pendiente del usuario
+  - [x] Formulario con validación mínima (campos requeridos) usando `Input`/`Textarea` del DS
+  - [ ] Iframe de Google Maps embebido con la key — bloqueado por la subtarea de arriba
+- **Mockup**: `docs/mockups/contact.html` (creado y aprobado por el usuario 2026-07-20; layout final se desvía del mockup en la disposición formulario/mapa — ver comentario de cabecera en `page.tsx`).
+- **Playwright permanente**: `apps/web/e2e/contact.spec.ts` — el formulario se rellena y envía contra un **fixture/mock del endpoint de Formspree** (nunca el endpoint real en CI, regla 10); se comprueba el estado de éxito mostrado al usuario; el mapa embebido está presente en el DOM (sin verificar contenido del iframe de terceros). ✅ 8/8 verdes.
 - **Verificación**: en navegador, rellenar y enviar el formulario real una vez contra el endpoint real de Formspree → comprobar que el email llega a la bandeja configurada (evidencia: captura del email recibido); el mapa de Google muestra Álora, Málaga, visible e interactivo (zoom/paneo funcionan). Este envío real es manual/one-shot (no se repite en cada gate — el gate usa el fixture de Playwright).
+  - **Estado 2026-07-20** (ver `docs/verifications/T1.3/report.md`): PASS parcial en todo lo automatable + el envío real one-shot contra Formspree (POST 200 confirmado por captura de red). Quedan 2 pendientes que solo puede resolver el usuario antes de poder marcar esta tarea `[x]`: (1) confirmar que el email de prueba llegó a `info@endurofun.eu`, (2) proveer la API key de Google Maps Embed para implementar el iframe real. La tarea NO se cierra hasta que ambos estén resueltos.
 
 #### T1.5 · Sección Galería (Home) — carrusel de fotos [x] 2026-07-19 — PASS, ver docs/verifications/T1.5/
 - **Depende de**: T1.1

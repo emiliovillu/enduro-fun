@@ -83,6 +83,26 @@ const validMessages = {
     title: "From riders who've been",
     intro: 'Real trips, real terrain.',
   },
+  contact: {
+    eyebrow: 'Contact',
+    title: 'Ask for a custom quote',
+    intro: "Tell us about your group and we'll get back to you.",
+    form: {
+      nameLabel: 'Name',
+      namePlaceholder: 'Your name',
+      emailLabel: 'Email',
+      emailPlaceholder: 'you@example.com',
+      messageLabel: 'Message',
+      messagePlaceholder: 'Group size, dates, experience level...',
+      submitLabel: 'Send message',
+      successMessage: 'Thanks — your message is on its way.',
+      errorMessage: 'Something went wrong sending your message.',
+    },
+    findUs: {
+      eyebrow: 'Find us',
+      text: 'Based in Álora, in the heart of the province of Málaga.',
+    },
+  },
 };
 
 describe('MessagesSchema', () => {
@@ -128,6 +148,15 @@ describe('MessagesSchema', () => {
     const result = MessagesSchema.safeParse({
       ...validMessages,
       packages: packagesWithoutNote,
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it('rechaza si falta la clave contact.form.errorMessage (control negativo, T1.3)', () => {
+    const { errorMessage: _errorMessage, ...formWithoutError } = validMessages.contact.form;
+    const result = MessagesSchema.safeParse({
+      ...validMessages,
+      contact: { ...validMessages.contact, form: formWithoutError },
     });
     expect(result.success).toBe(false);
   });

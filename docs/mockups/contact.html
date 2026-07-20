@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Mockup — Contact</title>
+<link rel="stylesheet" href="../design-system/tokens/colors.css" />
+<link rel="stylesheet" href="../design-system/tokens/typography.css" />
+<link rel="stylesheet" href="../design-system/tokens/spacing.css" />
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg-canvas); }
+  .container { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--container-pad); }
+  .header { display: flex; align-items: center; justify-content: space-between; gap: var(--space-6); padding: var(--space-4) var(--space-8); background: var(--bg-inverse); color: #fff; }
+  .header nav { display: flex; gap: var(--space-6); font-family: var(--font-display); font-size: var(--fs-small); }
+  .header nav a.active { color: var(--accent-amber); }
+  .header nav a { color: var(--text-on-dark-secondary); text-decoration: none; }
+  .eyebrow { font-family: var(--font-display); font-size: var(--fs-eyebrow); letter-spacing: var(--ls-eyebrow); text-transform: uppercase; color: var(--accent-secondary); font-weight: var(--fw-semibold); margin-bottom: var(--space-2); }
+  section { padding: var(--space-24) var(--container-pad); }
+  .intro h1 { font-size: var(--fs-display-lg); margin: 0 0 var(--space-5); max-width: 720px; }
+  .intro p { font-size: var(--fs-lead); color: var(--text-secondary); max-width: 640px; margin: 0; }
+  .layout { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-14); align-items: start; }
+  .field { margin-bottom: var(--space-5); }
+  .field label { display: block; font-family: var(--font-display); font-size: var(--fs-small); font-weight: var(--fw-semibold); margin-bottom: var(--space-2); }
+  .field input, .field textarea { font-family: var(--font-body); font-size: var(--fs-body); color: var(--text-primary); background: var(--surface-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 11px 13px; width: 100%; box-sizing: border-box; }
+  .field textarea { min-height: 120px; resize: vertical; }
+  .submit-btn { font-family: var(--font-display); font-size: var(--fs-small); font-weight: var(--fw-semibold); text-transform: uppercase; letter-spacing: var(--ls-eyebrow); background: var(--accent-primary); color: #fff; border: none; border-radius: var(--radius-pill); padding: var(--space-3) var(--space-8); cursor: pointer; }
+  .side .eyebrow { margin-top: 0; }
+  .side p { color: var(--text-secondary); line-height: var(--lh-body); margin: 0 0 var(--space-6); }
+  .map { height: 320px; border-radius: var(--radius-lg); background: repeating-linear-gradient(45deg, var(--sand-200), var(--sand-200) 10px, var(--sand-300) 10px, var(--sand-300) 20px); display: flex; align-items: center; justify-content: center; color: var(--text-secondary); font-family: var(--font-mono); font-size: var(--fs-caption); }
+  .footer { background: var(--bg-inverse); color: var(--text-on-dark-secondary); padding: var(--space-16) var(--container-pad); font-size: var(--fs-small); }
+  .footer .container { display: flex; justify-content: space-between; }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <strong style="font-family:var(--font-display); text-transform:uppercase; color:#fff;">EnduroFun</strong>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Packages</a>
+    <a href="#">About</a>
+    <a href="#">Reviews</a>
+    <a class="active" href="#">Contact</a>
+  </nav>
+</header>
+
+<section class="intro">
+  <div class="container">
+    <div class="eyebrow">Contact</div>
+    <h1>Ask for a custom quote</h1>
+    <p>Tell us about your group, the dates you're thinking and your riding level — we'll get back to you with a route and a price tailored to what you're after.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container layout">
+    <form>
+      <div class="field">
+        <label for="name">Name</label>
+        <input id="name" type="text" placeholder="Your name" />
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" type="email" placeholder="you@example.com" />
+      </div>
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea id="message" placeholder="Group size, dates, experience level, anything else we should know..."></textarea>
+      </div>
+      <button class="submit-btn" type="submit">Send message</button>
+    </form>
+    <div class="side">
+      <div class="eyebrow">Find us</div>
+      <p>Based in Álora, in the heart of the province of Málaga — routes leave from town and reach the wildest trails within a short ride.</p>
+      <div class="map">Google Maps embed — Álora, Málaga</div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <span>EnduroFun — Álora, Málaga</span>
+    <span>info@endurofun.eu</span>
+  </div>
+</footer>
+
+</body>
+</html>

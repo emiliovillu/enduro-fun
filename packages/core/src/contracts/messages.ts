@@ -142,6 +142,31 @@ export const MessagesSchema = z.object({
     title: z.string().min(1),
     intro: z.string().min(1),
   }),
+  // T1.3 (F1, Página Contact): copy propio de la página — intro invitando a
+  // pedir presupuesto personalizado, labels/placeholders de los 3 campos del
+  // formulario (name/email/message), label del botón de envío, mensajes de
+  // éxito/error tras el POST a Formspree, y el bloque "find us" (eyebrow +
+  // texto corto sobre Álora/Málaga que acompaña al `MapEmbed`).
+  contact: z.object({
+    eyebrow: z.string().min(1),
+    title: z.string().min(1),
+    intro: z.string().min(1),
+    form: z.object({
+      nameLabel: z.string().min(1),
+      namePlaceholder: z.string().min(1),
+      emailLabel: z.string().min(1),
+      emailPlaceholder: z.string().min(1),
+      messageLabel: z.string().min(1),
+      messagePlaceholder: z.string().min(1),
+      submitLabel: z.string().min(1),
+      successMessage: z.string().min(1),
+      errorMessage: z.string().min(1),
+    }),
+    findUs: z.object({
+      eyebrow: z.string().min(1),
+      text: z.string().min(1),
+    }),
+  }),
 });
 
 export type Messages = z.infer<typeof MessagesSchema>;

@@ -97,5 +97,25 @@
     "eyebrow": "Bewertungen",
     "title": "Von Fahrern, die schon dort waren",
     "intro": "Echte Reisen, echtes Gelände — das sagen Fahrer nach einer Woche auf den Trails rund um Álora."
+  },
+  "contact": {
+    "eyebrow": "Kontakt",
+    "title": "Individuelles Angebot anfragen",
+    "intro": "Erzähl uns von deiner Gruppe, den geplanten Terminen und deinem Fahrniveau — wir melden uns mit einer passenden Route und einem individuellen Preis zurück.",
+    "form": {
+      "nameLabel": "Name",
+      "namePlaceholder": "Dein Name",
+      "emailLabel": "E-Mail",
+      "emailPlaceholder": "du@beispiel.de",
+      "messageLabel": "Nachricht",
+      "messagePlaceholder": "Gruppengröße, Termine, Erfahrungsstufe, alles Weitere, das wir wissen sollten...",
+      "submitLabel": "Nachricht senden",
+      "successMessage": "Danke — deine Nachricht ist unterwegs. Wir melden uns bald bei dir.",
+      "errorMessage": "Beim Senden deiner Nachricht ist etwas schiefgelaufen. Bitte versuche es gleich noch einmal."
+    },
+    "findUs": {
+      "eyebrow": "Finde uns",
+      "text": "Zuhause in Álora, im Herzen der Provinz Málaga — die Routen starten im Ort und erreichen die wildesten Trails in kurzer Fahrt."
+    }
   }
 }

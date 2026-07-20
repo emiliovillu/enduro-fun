@@ -1,0 +1,829 @@
+[WebServer] 
+[WebServer] > @app/web@ build /Users/personal/Developer/enduro-fun/apps/web
+[WebServer] > next build
+[WebServer] 
+[WebServer] ▲ Next.js 16.2.10 (Turbopack)
+[WebServer] 
+[WebServer]   Creating an optimized production build ...
+[WebServer] ✓ Compiled successfully in 1617ms
+[WebServer]   Running TypeScript ...
+[WebServer]   Finished TypeScript in 1887ms ...
+[WebServer]   Collecting page data using 9 workers ...
+[WebServer]   Generating static pages using 9 workers (0/19) ...
+[WebServer]   Generating static pages using 9 workers (4/19) 
+[WebServer]   Generating static pages using 9 workers (9/19) 
+[WebServer]   Generating static pages using 9 workers (14/19) 
+[WebServer] ✓ Generating static pages using 9 workers (19/19) in 274ms
+[WebServer]   Finalizing page optimization ...
+[WebServer] 
+[WebServer] Route (app)
+[WebServer] ┌ ○ /
+[WebServer] ├ ○ /_not-found
+[WebServer] ├ ● /[locale]
+[WebServer] │ ├ /en
+[WebServer] │ ├ /es
+[WebServer] │ └ /de
+[WebServer] ├ ● /[locale]/about
+[WebServer] │ ├ /en/about
+[WebServer] │ ├ /es/about
+[WebServer] │ └ /de/about
+[WebServer] ├ ● /[locale]/contact
+[WebServer] │ ├ /en/contact
+[WebServer] │ ├ /es/contact
+[WebServer] │ └ /de/contact
+[WebServer] ├ ● /[locale]/packages
+[WebServer] │ ├ /en/packages
+[WebServer] │ ├ /es/packages
+[WebServer] │ └ /de/packages
+[WebServer] ├ ● /[locale]/reviews
+[WebServer] │ ├ /en/reviews
+[WebServer] │ ├ /es/reviews
+[WebServer] │ └ /de/reviews
+[WebServer] └ ○ /design-system
+[WebServer] 
+[WebServer] 
+[WebServer] ○  (Static)  prerendered as static content
+[WebServer] ●  (SSG)     prerendered as static HTML (uses generateStaticParams)
+[WebServer] 
+[WebServer]  INFO  Accepting connections at http://localhost:3100
+
+Running 8 tests using 5 workers
+
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /en/contact/
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /en/contact/
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /es/contact/
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /en/contact/
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 13 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /de/contact/
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 4 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 6 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 6 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 3 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/media/inter_400-s.p.2qdljeg3s-lsl.woff2
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/media/inter_400-s.p.2qdljeg3s-lsl.woff2
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/media/inter_400-s.p.2qdljeg3s-lsl.woff2
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/1get2vecdst0s.css
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/media/inter_500-s.p.1d14jwmkqqa0f.woff2
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/media/inter_600-s.p.2dov6rjg62vru.woff2
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/media/inter_700-s.p.4421omqeymgmp.woff2
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/media/oswald_400-s.p.13ei9xnsmv81c.woff2
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/1get2vecdst0s.css
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/media/inter_500-s.p.1d14jwmkqqa0f.woff2
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/media/inter_600-s.p.2dov6rjg62vru.woff2
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/media/inter_500-s.p.1d14jwmkqqa0f.woff2
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/media/inter_400-s.p.2qdljeg3s-lsl.woff2
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/media/inter_400-s.p.2qdljeg3s-lsl.woff2
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 6 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 6 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/media/inter_600-s.p.2dov6rjg62vru.woff2
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/media/inter_700-s.p.4421omqeymgmp.woff2
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/media/oswald_400-s.p.13ei9xnsmv81c.woff2
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/media/inter_500-s.p.1d14jwmkqqa0f.woff2
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/media/inter_600-s.p.2dov6rjg62vru.woff2
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/media/inter_700-s.p.4421omqeymgmp.woff2
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 2 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 3 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 8 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/media/oswald_500-s.p.1r1tfvsdc503p.woff2
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 8 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 9 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 2 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 9 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/media/oswald_400-s.p.13ei9xnsmv81c.woff2
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 9 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 9 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 9 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 9 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 9 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 9 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 3 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/1get2vecdst0s.css
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/media/oswald_500-s.p.1r1tfvsdc503p.woff2
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/media/inter_700-s.p.4421omqeymgmp.woff2
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/1get2vecdst0s.css
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/media/oswald_600-s.p.2s9_tnruh4e-7.woff2
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/media/oswald_500-s.p.1r1tfvsdc503p.woff2
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/1get2vecdst0s.css
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/media/oswald_700-s.p.3lxihg9xyecvo.woff2
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/media/oswald_400-s.p.13ei9xnsmv81c.woff2
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 4 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 5 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 13 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 13 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 13 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 12 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 12 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 2 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 3 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 2 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/media/oswald_600-s.p.2s9_tnruh4e-7.woff2
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/3yswd53b_6lk1.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/media/oswald_600-s.p.2s9_tnruh4e-7.woff2
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/2u9lhs18y1ulj.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/media/oswald_700-s.p.3lxihg9xyecvo.woff2
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/media/oswald_600-s.p.2s9_tnruh4e-7.woff2
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/media/oswald_500-s.p.1r1tfvsdc503p.woff2
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/media/oswald_700-s.p.3lxihg9xyecvo.woff2
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/media/inter_500-s.p.1d14jwmkqqa0f.woff2
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 16 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/1asi04b89qzcs.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/media/oswald_700-s.p.3lxihg9xyecvo.woff2
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/3yswd53b_6lk1.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/2u9lhs18y1ulj.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/3yswd53b_6lk1.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/2u9lhs18y1ulj.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/1asi04b89qzcs.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/media/inter_600-s.p.2dov6rjg62vru.woff2
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/3yswd53b_6lk1.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/2u9lhs18y1ulj.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 17 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 14 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 14 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 15 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 3 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 8 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 2 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/media/inter_700-s.p.4421omqeymgmp.woff2
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 13 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 14 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 15 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 15 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/1asi04b89qzcs.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/media/oswald_400-s.p.13ei9xnsmv81c.woff2
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 3 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 15 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 16 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/2iy-mojj18hmx.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/media/oswald_600-s.p.2s9_tnruh4e-7.woff2
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/2iy-mojj18hmx.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/2iy-mojj18hmx.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/turbopack-1j6nd221bzgqg.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/27p_9-f09rc5j.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/media/oswald_500-s.p.1r1tfvsdc503p.woff2
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/1asi04b89qzcs.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 4 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 21 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 17 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 5 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 6 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/2iy-mojj18hmx.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/turbopack-1j6nd221bzgqg.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/media/oswald_700-s.p.3lxihg9xyecvo.woff2
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/turbopack-1j6nd221bzgqg.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/3yswd53b_6lk1.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 15 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 14 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 14 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 15 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 22 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/27p_9-f09rc5j.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/turbopack-1j6nd221bzgqg.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 25 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 12 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 13 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/27p_9-f09rc5j.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/27p_9-f09rc5j.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/2u9lhs18y1ulj.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 25 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/1asi04b89qzcs.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/2-plk-cp3itbm.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/0zll8qjnv8k2s.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/2iy-mojj18hmx.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/turbopack-1j6nd221bzgqg.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 2 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 26 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 34 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 33 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 21 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 3 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 3 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 23 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 31 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 31 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/27p_9-f09rc5j.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/2-plk-cp3itbm.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/2-plk-cp3itbm.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/0zll8qjnv8k2s.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 32 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 14 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 13 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 3 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/2-plk-cp3itbm.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/0zll8qjnv8k2s.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/0zll8qjnv8k2s.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 30 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 13 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 12 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 38 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/2-plk-cp3itbm.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/25yrrup3mmc0x.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 39 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 15 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 15 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/1t6t8ukvgizcz.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 9 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 17 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/25yrrup3mmc0x.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/0zll8qjnv8k2s.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/25yrrup3mmc0x.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 18 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 18 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 25 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/1t6t8ukvgizcz.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/25yrrup3mmc0x.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/25yrrup3mmc0x.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/1nam6xx6w_2q0.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 2 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 17 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 17 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 18 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/1t6t8ukvgizcz.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/1t6t8ukvgizcz.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/1t6t8ukvgizcz.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/1nam6xx6w_2q0.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 16 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/1nam6xx6w_2q0.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/1nam6xx6w_2q0.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 14 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 15 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 15 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 GET /_next/static/chunks/1nam6xx6w_2q0.js
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 16 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 17 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 17 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 18 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 17 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 18 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 18 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 18 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 17 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 17 ms
+[WebServer]  HTTP  20/7/2026 18:44:57 ::1 Returned 200 in 11 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 HEAD /de/reviews/
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 HEAD /de/about/
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 HEAD /de/packages/
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 HEAD /de/
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 HEAD /en/reviews/
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 HEAD /en/about/
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 HEAD /en/reviews/
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 HEAD /en/about/
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 HEAD /en/packages/
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 HEAD /en/
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 HEAD /en/packages/
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 HEAD /en/
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 HEAD /es/reviews/
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 HEAD /es/about/
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 HEAD /es/packages/
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 HEAD /es/
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 14 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 15 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 15 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 15 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 8 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 8 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 7 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 7 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 8 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 7 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 7 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 7 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 7 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 7 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 7 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 8 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /de/reviews/__next._tree.txt?_rsc=_YrqhSIK7TvspmKP
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 HEAD /en/reviews/
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 HEAD /en/about/
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /de/about/__next._tree.txt?_rsc=_YrqhSIK7TvspmKP
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /de/packages/__next._tree.txt?_rsc=_YrqhSIK7TvspmKP
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 HEAD /en/packages/
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 HEAD /en/
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/reviews/__next._tree.txt?_rsc=0jGZgW6Ln_bTiVd1
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/about/__next._tree.txt?_rsc=0jGZgW6Ln_bTiVd1
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/__next._tree.txt?_rsc=0jGZgW6Ln_bTiVd1
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/packages/__next._tree.txt?_rsc=0jGZgW6Ln_bTiVd1
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /es/reviews/__next._tree.txt?_rsc=BwP4tuQ_LXyzMv4r
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /es/about/__next._tree.txt?_rsc=BwP4tuQ_LXyzMv4r
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /es/packages/__next._tree.txt?_rsc=BwP4tuQ_LXyzMv4r
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /es/__next._tree.txt?_rsc=BwP4tuQ_LXyzMv4r
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /de/__next._tree.txt?_rsc=_YrqhSIK7TvspmKP
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/reviews/__next._tree.txt?_rsc=0jGZgW6Ln_bTiVd1
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/about/__next._tree.txt?_rsc=0jGZgW6Ln_bTiVd1
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/packages/__next._tree.txt?_rsc=0jGZgW6Ln_bTiVd1
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/__next._tree.txt?_rsc=0jGZgW6Ln_bTiVd1
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 5 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 5 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 5 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 5 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 11 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 9 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 10 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 10 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 10 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 9 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 9 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 9 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 9 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 9 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 10 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 10 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 10 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 9 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 9 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 7 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/reviews/__next._tree.txt?_rsc=0jGZgW6Ln_bTiVd1
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/about/__next._tree.txt?_rsc=0jGZgW6Ln_bTiVd1
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/packages/__next._tree.txt?_rsc=0jGZgW6Ln_bTiVd1
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/__next._tree.txt?_rsc=0jGZgW6Ln_bTiVd1
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 4 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 3 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 3 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 5 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /de/contact/__next._head.txt?_rsc=drMwkl8VYCn8l1q1
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /de/contact/__next._index.txt?_rsc=VzjRKmX_zpc5WhOG
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /de/contact/__next.$d$locale.txt?_rsc=45exAiQ1C-5_Aaza
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /es/contact/__next._head.txt?_rsc=s4FGcmAccPbczNbe
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /es/contact/__next._index.txt?_rsc=akNgIe3WbLa6Wh-0
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/contact/__next._head.txt?_rsc=zfUWMkdvtJUKmQNR
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/contact/__next._index.txt?_rsc=AJ_OYdYPalrdrgwy
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/contact/__next.$d$locale.txt?_rsc=v6ldk5Q99EEhPR3R
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/contact/__next.$d$locale.contact.txt?_rsc=ipEkrfOdoAp139Xw
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /es/contact/__next.$d$locale.txt?_rsc=wsIOKQQ7G7AAvz3Q
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /es/contact/__next.$d$locale.contact.txt?_rsc=3PZthwttzx5SUhM-
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /de/contact/__next.$d$locale.contact.txt?_rsc=4wDgj-PHdeBlA92E
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/contact/__next._head.txt?_rsc=zfUWMkdvtJUKmQNR
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/contact/__next._index.txt?_rsc=AJ_OYdYPalrdrgwy
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/contact/__next.$d$locale.txt?_rsc=v6ldk5Q99EEhPR3R
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/contact/__next.$d$locale.contact.txt?_rsc=ipEkrfOdoAp139Xw
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 11 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 11 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/contact/__next._head.txt?_rsc=zfUWMkdvtJUKmQNR
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/contact/__next._index.txt?_rsc=AJ_OYdYPalrdrgwy
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/contact/__next.$d$locale.txt?_rsc=v6ldk5Q99EEhPR3R
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/contact/__next.$d$locale.contact.txt?_rsc=ipEkrfOdoAp139Xw
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 14 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 15 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 16 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 13 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 10 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 9 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 9 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 9 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 9 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 9 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 1 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 1 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 1 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 10 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 10 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 11 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 12 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /de/contact/__next.$d$locale.contact.__PAGE__.txt?_rsc=EaMZ6Ww7-XrnGWjs
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /de/reviews/__next._head.txt?_rsc=drMwkl8VYCn8l1q1
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/contact/__next.$d$locale.contact.__PAGE__.txt?_rsc=h9tJkLXdZk-F4QxV
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/reviews/__next._head.txt?_rsc=zfUWMkdvtJUKmQNR
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/contact/__next.$d$locale.contact.__PAGE__.txt?_rsc=h9tJkLXdZk-F4QxV
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /de/reviews/__next.$d$locale.reviews.txt?_rsc=lO2Zgu_3Ve5zO0xL
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /es/contact/__next.$d$locale.contact.__PAGE__.txt?_rsc=d0Dzs-SmQ3wUw3ch
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /es/reviews/__next._head.txt?_rsc=s4FGcmAccPbczNbe
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /es/reviews/__next.$d$locale.reviews.txt?_rsc=5zsmaPkbIJjiW7SI
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/reviews/__next._head.txt?_rsc=zfUWMkdvtJUKmQNR
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/reviews/__next.$d$locale.reviews.txt?_rsc=WRU5eSSAA7TrINQO
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/reviews/__next.$d$locale.reviews.txt?_rsc=WRU5eSSAA7TrINQO
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 16 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/contact/__next.$d$locale.contact.__PAGE__.txt?_rsc=h9tJkLXdZk-F4QxV
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/reviews/__next._head.txt?_rsc=zfUWMkdvtJUKmQNR
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /de/reviews/__next.$d$locale.reviews.__PAGE__.txt?_rsc=2Mw-Bfe1JQfo7uSu
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /es/reviews/__next.$d$locale.reviews.__PAGE__.txt?_rsc=h2yag6wxP7ehSX_P
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/reviews/__next.$d$locale.reviews.__PAGE__.txt?_rsc=63Ra7Hi-AXTXk5I1
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/reviews/__next.$d$locale.reviews.__PAGE__.txt?_rsc=63Ra7Hi-AXTXk5I1
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 14 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 13 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 14 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 14 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 12 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 11 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 7 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/reviews/__next.$d$locale.reviews.txt?_rsc=WRU5eSSAA7TrINQO
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/reviews/__next.$d$locale.reviews.__PAGE__.txt?_rsc=63Ra7Hi-AXTXk5I1
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 8 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 8 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 8 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 8 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 8 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/about/__next._head.txt?_rsc=zfUWMkdvtJUKmQNR
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 9 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 3 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 9 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 8 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /de/about/__next._head.txt?_rsc=drMwkl8VYCn8l1q1
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /de/about/__next.$d$locale.about.txt?_rsc=mhrs0UUrBfu4SYko
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/about/__next._head.txt?_rsc=zfUWMkdvtJUKmQNR
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/about/__next.$d$locale.about.txt?_rsc=3EjLsDGKPaiGhA_K
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /es/about/__next._head.txt?_rsc=s4FGcmAccPbczNbe
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /es/about/__next.$d$locale.about.txt?_rsc=bvxyvyZt9I9b6zQ0
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/about/__next.$d$locale.about.txt?_rsc=3EjLsDGKPaiGhA_K
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/about/__next.$d$locale.about.__PAGE__.txt?_rsc=zi3zsG0mdw_wbSUe
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /de/about/__next.$d$locale.about.__PAGE__.txt?_rsc=GEc-eqo7kovDMAlD
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 13 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 13 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 13 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/about/__next._head.txt?_rsc=zfUWMkdvtJUKmQNR
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/about/__next.$d$locale.about.__PAGE__.txt?_rsc=zi3zsG0mdw_wbSUe
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/about/__next.$d$locale.about.txt?_rsc=3EjLsDGKPaiGhA_K
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 17 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 17 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /es/about/__next.$d$locale.about.__PAGE__.txt?_rsc=cX0DRUs9aqqbHp0S
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/about/__next.$d$locale.about.__PAGE__.txt?_rsc=zi3zsG0mdw_wbSUe
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 14 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 14 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 15 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 15 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 15 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 15 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 16 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/2lmgjmcmasb82.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /de/packages/__next._head.txt?_rsc=drMwkl8VYCn8l1q1
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 4 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 18 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 19 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/2lmgjmcmasb82.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/2lmgjmcmasb82.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/packages/__next._head.txt?_rsc=zfUWMkdvtJUKmQNR
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /es/packages/__next._head.txt?_rsc=s4FGcmAccPbczNbe
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 16 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 15 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 14 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/packages/__next.$d$locale.packages.txt?_rsc=cs7xPhOdC0Rd-Udv
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/2lmgjmcmasb82.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/packages/__next._head.txt?_rsc=zfUWMkdvtJUKmQNR
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /de/packages/__next.$d$locale.packages.txt?_rsc=yhvWRuDOC9s-74Zl
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/packages/__next.$d$locale.packages.__PAGE__.txt?_rsc=AjrF6P7Vk8hIcJiA
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/packages/__next.$d$locale.packages.txt?_rsc=cs7xPhOdC0Rd-Udv
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /es/packages/__next.$d$locale.packages.txt?_rsc=kiz5sao4o7rih6Br
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/packages/__next.$d$locale.packages.__PAGE__.txt?_rsc=AjrF6P7Vk8hIcJiA
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /de/packages/__next.$d$locale.packages.__PAGE__.txt?_rsc=hPmGg77tTD8q2PGs
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /es/packages/__next.$d$locale.packages.__PAGE__.txt?_rsc=r8X68RuhS75i5x-f
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/packages/__next._head.txt?_rsc=zfUWMkdvtJUKmQNR
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/__next._head.txt?_rsc=zfUWMkdvtJUKmQNR
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /de/__next._head.txt?_rsc=drMwkl8VYCn8l1q1
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/2lmgjmcmasb82.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/packages/__next.$d$locale.packages.txt?_rsc=cs7xPhOdC0Rd-Udv
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/packages/__next.$d$locale.packages.__PAGE__.txt?_rsc=AjrF6P7Vk8hIcJiA
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 10 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 9 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 6 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 6 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 7 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 14 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 8 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 9 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 9 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 8 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 8 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 8 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 8 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 8 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 8 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/__next._head.txt?_rsc=zfUWMkdvtJUKmQNR
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/__next._head.txt?_rsc=zfUWMkdvtJUKmQNR
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /de/__next.$d$locale.__PAGE__.txt?_rsc=EbCKHqIRWYAlOATh
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /es/__next._head.txt?_rsc=s4FGcmAccPbczNbe
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 9 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 9 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 8 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 8 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 8 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 8 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 3 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 3 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/__next.$d$locale.__PAGE__.txt?_rsc=18MQzaB6F82kcBiK
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/__next.$d$locale.__PAGE__.txt?_rsc=18MQzaB6F82kcBiK
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /es/__next.$d$locale.__PAGE__.txt?_rsc=dvpGGzyJv4XpM3d4
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 9 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 10 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/__next.$d$locale.__PAGE__.txt?_rsc=18MQzaB6F82kcBiK
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 14 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 14 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 13 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 13 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 12 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 9 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/0mvcemxqqyksu.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/3zrnb29ddgsom.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/0mvcemxqqyksu.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/3zrnb29ddgsom.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/0mvcemxqqyksu.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/3zrnb29ddgsom.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/0mvcemxqqyksu.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/3zrnb29ddgsom.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/0mvcemxqqyksu.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/3zrnb29ddgsom.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 4 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 4 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 4 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 5 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 5 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 5 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 5 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 5 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 4 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 3 ms
+  ✓  4 [chromium] › e2e/contact.spec.ts:36:1 › /de/contact carga con el contenido en alemán @f1 (590ms)
+  ✓  1 [chromium] › e2e/contact.spec.ts:15:1 › /en/contact carga con el contenido en inglés @f1 (591ms)
+  ✓  3 [chromium] › e2e/contact.spec.ts:46:1 › el nav del Header marca "Contact" como página activa @f1 (589ms)
+  ✓  5 [chromium] › e2e/contact.spec.ts:26:1 › /es/contact carga con el contenido en español @f1 (617ms)
+  ✓  2 [chromium] › e2e/contact.spec.ts:55:1 › el mapa embebido (placeholder) está presente en el DOM @f1 (611ms)
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/contact/
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 0 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/contact/
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 1 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/media/inter_400-s.p.2qdljeg3s-lsl.woff2
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/media/inter_400-s.p.2qdljeg3s-lsl.woff2
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/media/inter_500-s.p.1d14jwmkqqa0f.woff2
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/media/inter_600-s.p.2dov6rjg62vru.woff2
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 0 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 0 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 1 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 1 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/media/inter_500-s.p.1d14jwmkqqa0f.woff2
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/media/inter_700-s.p.4421omqeymgmp.woff2
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 0 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/media/inter_600-s.p.2dov6rjg62vru.woff2
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 1 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 1 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/media/inter_700-s.p.4421omqeymgmp.woff2
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/1get2vecdst0s.css
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/media/oswald_600-s.p.2s9_tnruh4e-7.woff2
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/media/oswald_700-s.p.3lxihg9xyecvo.woff2
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/media/oswald_400-s.p.13ei9xnsmv81c.woff2
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/media/oswald_400-s.p.13ei9xnsmv81c.woff2
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/media/oswald_500-s.p.1r1tfvsdc503p.woff2
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/media/oswald_500-s.p.1r1tfvsdc503p.woff2
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 3 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 2 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 2 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 2 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 2 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 3 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 2 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 2 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/1get2vecdst0s.css
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/media/oswald_600-s.p.2s9_tnruh4e-7.woff2
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 2 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/media/oswald_700-s.p.3lxihg9xyecvo.woff2
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/3yswd53b_6lk1.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/contact/
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 2 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 2 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 2 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/3yswd53b_6lk1.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/2u9lhs18y1ulj.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/2u9lhs18y1ulj.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 2 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 1 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/1asi04b89qzcs.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/1asi04b89qzcs.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/2iy-mojj18hmx.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 2 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 2 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 2 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/turbopack-1j6nd221bzgqg.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 3 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 2 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/27p_9-f09rc5j.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/2iy-mojj18hmx.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 3 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/turbopack-1j6nd221bzgqg.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/27p_9-f09rc5j.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 5 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 5 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 4 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 3 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/2-plk-cp3itbm.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 13 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/2-plk-cp3itbm.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/media/inter_400-s.p.2qdljeg3s-lsl.woff2
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/0zll8qjnv8k2s.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/0zll8qjnv8k2s.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/media/inter_500-s.p.1d14jwmkqqa0f.woff2
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 3 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 2 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/media/inter_600-s.p.2dov6rjg62vru.woff2
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/25yrrup3mmc0x.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/media/inter_700-s.p.4421omqeymgmp.woff2
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/media/oswald_400-s.p.13ei9xnsmv81c.woff2
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 6 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 6 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 5 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 5 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 5 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 7 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/1t6t8ukvgizcz.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/25yrrup3mmc0x.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/1t6t8ukvgizcz.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/media/oswald_500-s.p.1r1tfvsdc503p.woff2
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 1 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 1 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 1 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 1 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 1 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/1get2vecdst0s.css
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 3 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/media/oswald_600-s.p.2s9_tnruh4e-7.woff2
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/1nam6xx6w_2q0.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/media/oswald_700-s.p.3lxihg9xyecvo.woff2
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/3yswd53b_6lk1.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/2u9lhs18y1ulj.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 2 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 2 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 1 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 1 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/1nam6xx6w_2q0.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/1asi04b89qzcs.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 2 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 1 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 1 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/2iy-mojj18hmx.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/turbopack-1j6nd221bzgqg.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/27p_9-f09rc5j.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 2 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 2 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 1 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/2-plk-cp3itbm.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/0zll8qjnv8k2s.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 3 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 1 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/25yrrup3mmc0x.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/1t6t8ukvgizcz.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/1nam6xx6w_2q0.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 10 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 12 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 10 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 HEAD /en/reviews/
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 HEAD /en/about/
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 HEAD /en/packages/
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 HEAD /en/
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 1 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 1 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 0 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 0 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 HEAD /en/reviews/
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 HEAD /en/about/
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 HEAD /en/packages/
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 HEAD /en/
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 1 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 0 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 0 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 0 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/reviews/__next._tree.txt?_rsc=0jGZgW6Ln_bTiVd1
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 1 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/about/__next._tree.txt?_rsc=0jGZgW6Ln_bTiVd1
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/__next._tree.txt?_rsc=0jGZgW6Ln_bTiVd1
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 1 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/packages/__next._tree.txt?_rsc=0jGZgW6Ln_bTiVd1
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 1 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 0 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/packages/__next._tree.txt?_rsc=0jGZgW6Ln_bTiVd1
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 0 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/reviews/__next._tree.txt?_rsc=0jGZgW6Ln_bTiVd1
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 1 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/about/__next._tree.txt?_rsc=0jGZgW6Ln_bTiVd1
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/__next._tree.txt?_rsc=0jGZgW6Ln_bTiVd1
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 1 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 1 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/contact/__next._head.txt?_rsc=zfUWMkdvtJUKmQNR
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/contact/__next._index.txt?_rsc=AJ_OYdYPalrdrgwy
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 0 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/contact/__next.$d$locale.txt?_rsc=v6ldk5Q99EEhPR3R
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/contact/__next.$d$locale.contact.txt?_rsc=ipEkrfOdoAp139Xw
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 1 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 1 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 1 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/contact/__next._head.txt?_rsc=zfUWMkdvtJUKmQNR
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/contact/__next._index.txt?_rsc=AJ_OYdYPalrdrgwy
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 2 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 1 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 HEAD /en/reviews/
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 HEAD /en/about/
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/contact/__next.$d$locale.txt?_rsc=v6ldk5Q99EEhPR3R
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 HEAD /en/packages/
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 HEAD /en/
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/contact/__next.$d$locale.contact.txt?_rsc=ipEkrfOdoAp139Xw
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 2 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 1 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 1 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 1 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 1 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 1 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/contact/__next.$d$locale.contact.__PAGE__.txt?_rsc=h9tJkLXdZk-F4QxV
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/contact/__next.$d$locale.contact.__PAGE__.txt?_rsc=h9tJkLXdZk-F4QxV
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/reviews/__next._head.txt?_rsc=zfUWMkdvtJUKmQNR
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/reviews/__next.$d$locale.reviews.txt?_rsc=WRU5eSSAA7TrINQO
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/reviews/__next.$d$locale.reviews.__PAGE__.txt?_rsc=63Ra7Hi-AXTXk5I1
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/reviews/__next._head.txt?_rsc=zfUWMkdvtJUKmQNR
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 2 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 1 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 2 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 2 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 1 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 2 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/__next._tree.txt?_rsc=0jGZgW6Ln_bTiVd1
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/reviews/__next._tree.txt?_rsc=0jGZgW6Ln_bTiVd1
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/about/__next._tree.txt?_rsc=0jGZgW6Ln_bTiVd1
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/packages/__next._tree.txt?_rsc=0jGZgW6Ln_bTiVd1
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 2 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 1 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 1 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 1 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/reviews/__next.$d$locale.reviews.txt?_rsc=WRU5eSSAA7TrINQO
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 2 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/reviews/__next.$d$locale.reviews.__PAGE__.txt?_rsc=63Ra7Hi-AXTXk5I1
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/about/__next._head.txt?_rsc=zfUWMkdvtJUKmQNR
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/about/__next._head.txt?_rsc=zfUWMkdvtJUKmQNR
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/about/__next.$d$locale.about.txt?_rsc=3EjLsDGKPaiGhA_K
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/2lmgjmcmasb82.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/about/__next.$d$locale.about.__PAGE__.txt?_rsc=zi3zsG0mdw_wbSUe
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/about/__next.$d$locale.about.txt?_rsc=3EjLsDGKPaiGhA_K
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/packages/__next._head.txt?_rsc=zfUWMkdvtJUKmQNR
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 5 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 3 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/contact/__next._head.txt?_rsc=zfUWMkdvtJUKmQNR
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/contact/__next._index.txt?_rsc=AJ_OYdYPalrdrgwy
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/contact/__next.$d$locale.txt?_rsc=v6ldk5Q99EEhPR3R
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/contact/__next.$d$locale.contact.txt?_rsc=ipEkrfOdoAp139Xw
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 9 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 8 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 8 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 8 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 8 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 8 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 2 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 3 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 3 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/about/__next.$d$locale.about.__PAGE__.txt?_rsc=zi3zsG0mdw_wbSUe
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 2 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 2 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/contact/__next.$d$locale.contact.__PAGE__.txt?_rsc=h9tJkLXdZk-F4QxV
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/reviews/__next._head.txt?_rsc=zfUWMkdvtJUKmQNR
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/reviews/__next.$d$locale.reviews.txt?_rsc=WRU5eSSAA7TrINQO
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/packages/__next._head.txt?_rsc=zfUWMkdvtJUKmQNR
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/packages/__next.$d$locale.packages.txt?_rsc=cs7xPhOdC0Rd-Udv
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/reviews/__next.$d$locale.reviews.__PAGE__.txt?_rsc=63Ra7Hi-AXTXk5I1
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/packages/__next.$d$locale.packages.__PAGE__.txt?_rsc=AjrF6P7Vk8hIcJiA
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/packages/__next.$d$locale.packages.txt?_rsc=cs7xPhOdC0Rd-Udv
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/__next._head.txt?_rsc=zfUWMkdvtJUKmQNR
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/__next.$d$locale.__PAGE__.txt?_rsc=18MQzaB6F82kcBiK
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 3 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/2lmgjmcmasb82.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/packages/__next.$d$locale.packages.__PAGE__.txt?_rsc=AjrF6P7Vk8hIcJiA
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 4 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 3 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 3 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 4 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 4 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 4 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 4 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 4 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 5 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 4 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 3 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/__next._head.txt?_rsc=zfUWMkdvtJUKmQNR
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/about/__next._head.txt?_rsc=zfUWMkdvtJUKmQNR
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 3 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 3 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/about/__next.$d$locale.about.txt?_rsc=3EjLsDGKPaiGhA_K
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 5 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/__next.$d$locale.__PAGE__.txt?_rsc=18MQzaB6F82kcBiK
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/about/__next.$d$locale.about.__PAGE__.txt?_rsc=zi3zsG0mdw_wbSUe
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 6 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 5 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/2lmgjmcmasb82.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/packages/__next._head.txt?_rsc=zfUWMkdvtJUKmQNR
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/packages/__next.$d$locale.packages.txt?_rsc=cs7xPhOdC0Rd-Udv
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 2 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 2 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 2 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/0mvcemxqqyksu.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/3zrnb29ddgsom.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/packages/__next.$d$locale.packages.__PAGE__.txt?_rsc=AjrF6P7Vk8hIcJiA
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 2 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 2 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 0 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/__next._head.txt?_rsc=zfUWMkdvtJUKmQNR
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /en/__next.$d$locale.__PAGE__.txt?_rsc=18MQzaB6F82kcBiK
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 3 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 2 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/0mvcemxqqyksu.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/3zrnb29ddgsom.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 1 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 1 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/0mvcemxqqyksu.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 GET /_next/static/chunks/3zrnb29ddgsom.js
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 1 ms
+[WebServer]  HTTP  20/7/2026 18:44:58 ::1 Returned 200 in 1 ms
+  ✓  6 [chromium] › e2e/contact.spec.ts:65:1 › los 3 campos del formulario son requeridos @f1 (406ms)
+  ✓  8 [chromium] › e2e/contact.spec.ts:73:1 › envío correcto muestra el mensaje de éxito @f1 (482ms)
+  ✓  7 [chromium] › e2e/contact.spec.ts:93:1 › envío fallido muestra el mensaje de error y deja el formulario reintentable @f1 (504ms)
+
+  8 passed (8.6s)

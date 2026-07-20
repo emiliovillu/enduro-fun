@@ -97,5 +97,25 @@
     "eyebrow": "Opiniones",
     "title": "De riders que ya han estado aquí",
     "intro": "Viajes reales, terreno real — esto es lo que dicen los riders tras una semana en los senderos de Álora."
+  },
+  "contact": {
+    "eyebrow": "Contacto",
+    "title": "Pide un presupuesto personalizado",
+    "intro": "Cuéntanos sobre tu grupo, las fechas que tienes en mente y tu nivel de conducción — te responderemos con una ruta y un precio a medida.",
+    "form": {
+      "nameLabel": "Nombre",
+      "namePlaceholder": "Tu nombre",
+      "emailLabel": "Email",
+      "emailPlaceholder": "tu@ejemplo.com",
+      "messageLabel": "Mensaje",
+      "messagePlaceholder": "Tamaño del grupo, fechas, nivel de experiencia, cualquier otra cosa que debamos saber...",
+      "submitLabel": "Enviar mensaje",
+      "successMessage": "Gracias — tu mensaje está en camino. Te responderemos pronto.",
+      "errorMessage": "Algo ha fallado al enviar tu mensaje. Por favor, inténtalo de nuevo en un momento."
+    },
+    "findUs": {
+      "eyebrow": "Encuéntranos",
+      "text": "Con base en Álora, en el corazón de la provincia de Málaga — las rutas salen del pueblo y llegan a los senderos más salvajes en poco tiempo."
+    }
   }
 }

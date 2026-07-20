@@ -1,0 +1,60 @@
+{
+    "success": true,
+    "data": {
+        "lifecycle": {
+            "effectiveLaunch": {
+                "browserLaunched": true,
+                "engine": "chrome",
+                "launchHash": 12798390076057945372
+            },
+            "launched": false,
+            "relaunchedBrowser": false,
+            "restartedBackground": false,
+            "restoreStatus": "not_configured",
+            "reused": true,
+            "saveStatus": "not_attempted"
+        },
+        "requests": [
+            {
+                "headers": {
+                    "Accept": "application/json",
+                    "Accept-Language": "es-ES,es;q=0.9",
+                    "Content-Type": "multipart/form-data; boundary=----WebKitFormBoundarytwiu0yQzOJG74zxX",
+                    "Referer": "http://localhost:4173/",
+                    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+                    "sec-ch-ua": "\"Chromium\";v=\"151\", \"Not=A?Brand\";v=\"99\"",
+                    "sec-ch-ua-mobile": "?0",
+                    "sec-ch-ua-platform": "\"macOS\""
+                },
+                "method": "POST",
+                "mimeType": "application/json",
+                "postData": "------WebKitFormBoundarytwiu0yQzOJG74zxX\r\nContent-Disposition: form-data; name=\"name\"\r\n\r\nT1.3 Verifier Test\r\n------WebKitFormBoundarytwiu0yQzOJG74zxX\r\nContent-Disposition: form-data; name=\"email\"\r\n\r\ntest@endurofun.eu\r\n------WebKitFormBoundarytwiu0yQzOJG74zxX\r\nContent-Disposition: form-data; name=\"message\"\r\n\r\nMensaje de verificaci\u00f3n autom\u00e1tica T1.3 del dev-loop \u2014 enviado 2026-07-20 18:43 CEST. Por favor ignorar, es un test one-shot contra el endpoint real de Formspree.\r\n------WebKitFormBoundarytwiu0yQzOJG74zxX--\r\n",
+                "requestId": "55860.298",
+                "resourceType": "Fetch",
+                "responseHeaders": {
+                    "access-control-allow-origin": "http://localhost:4173",
+                    "alt-svc": "h3=\":443\"; ma=86400",
+                    "cf-cache-status": "DYNAMIC",
+                    "cf-ray": "a1e36cbd7bb7035e-MAD",
+                    "content-encoding": "gzip",
+                    "content-security-policy": "default-src 'self' 'unsafe-eval' 'unsafe-inline' formspree.io *.formspree.io cdn.amplitude.com *.posthog.com fonts.googleapis.com fonts.googleapis.com *.gstatic.com api.amplitude.com www.googletagmanager.com *.google-analytics.com analytics.google.com ajax.cloudflare.com o478120.ingest.sentry.io www.linkedin.com *.ads.linkedin.com js.stripe.com m.stripe.network m.stripe.com cdnjs.cloudflare.com use.fontawesome.com static.cloudflareinsights.com recaptcha.net *.recaptcha.net https://unpkg.com/visionscarto-world-atlas@1.0.0/world/110m.json www.google.com https://telegram.org/js/telegram-widget.js https://oauth.telegram.org; img-src 'self' data: https:; report-uri /csp-report",
+                    "content-type": "application/json",
+                    "date": "Mon, 20 Jul 2026 16:43:26 GMT",
+                    "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+                    "referrer-policy": "strict-origin-when-cross-origin",
+                    "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=5hcYInKEJ2n%2B6FqRl09mlWYmj2Yu52Fb7ORCH7MSiIArtcghygyZNV4M1%2FY5Ui543IlBYHirsE198tXNFftFB%2B%2BU%2BwYg15yu0znYTpjML75%2FN%2By0om%2Bbp73BEyPXlw%3D%3D\"}]}",
+                    "server": "cloudflare",
+                    "status": "200 OK",
+                    "vary": "Accept-Encoding, Origin",
+                    "x-content-type-options": "nosniff",
+                    "x-fs-worker": "3539837915",
+                    "x-powered-by": "Phusion Passenger(R)"
+                },
+                "status": 200,
+                "timestamp": 1784565805592,
+                "url": "https://formspree.io/f/mykrjbra"
+            }
+        ]
+    },
+    "error": null
+}
