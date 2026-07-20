@@ -5,6 +5,7 @@ import { PackageCard } from '@/components/ui/package-card';
 import { SectionHeading } from '@/components/ui/section-heading';
 import { HIGHLIGHTED_PACKAGE_ID, PACKAGES } from '@/data/packages';
 import { getMessages } from '@/i18n/messages';
+import { localeHref } from '@/lib/utils';
 
 // Packages real (T2.1, F2). Mockup: `docs/mockups/packages.html`, creado y
 // aprobado por el usuario al iniciar esta tarea (no existía mockup previo en
@@ -67,6 +68,7 @@ export default async function PackagesPage({ params }: { params: Promise<{ local
               features={pkg.features.map((feature) => feature[locale])}
               highlight={pkg.id === HIGHLIGHTED_PACKAGE_ID ? home.packages.mostPopular : undefined}
               ctaLabel={home.packages.ctaLabel}
+              ctaHref={localeHref(locale, 'contact')}
             />
           ))}
         </div>

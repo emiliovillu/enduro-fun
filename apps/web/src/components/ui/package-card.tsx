@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -31,8 +33,17 @@ import { cn } from '@/lib/utils';
 // formateado que llega desde la página (que sí conoce `messages` y por
 // tanto construye `` `${nights} noches · ${days} días de ruta` `` o
 // equivalente por idioma antes de pasarlo). `ctaLabel` tiene un default
-// ('Enquire') solo por compatibilidad de API — hoy el único consumidor
-// (Home) siempre lo pasa explícito y traducido.
+// ('Enquire') solo por compatibilidad de API — hoy los consumidores (Home,
+// Packages) siempre lo pasan explícito y traducido.
+//
+// `ctaHref` (hotfix, petición directa del usuario): el botón "Consultar" no
+// navegaba a ningún sitio. Mismo patrón que los CTA del hero de Home —
+// `render={<Link href={ctaHref} />}` en vez de un `onClick`, para que sea un
+// link real (mismo criterio de accesibilidad/SEO que el resto del sitio).
+// Import de `next/link` es framework, no dominio — no viola la regla de
+// "sin `@app/core`" de arriba (esa regla es sobre tipos/contratos de
+// negocio, no sobre routing). Opcional (`ctaHref?`) para no romper el
+// showcase de `/design-system`, que muestra la card sin navegación real.
 interface PackageCardProps extends React.ComponentProps<'div'> {
   name: string;
   subtitle: string;
@@ -41,6 +52,7 @@ interface PackageCardProps extends React.ComponentProps<'div'> {
   highlight?: string;
   imageSlot?: string;
   ctaLabel?: string;
+  ctaHref?: string;
 }
 
 export function PackageCard({
@@ -52,6 +64,7 @@ export function PackageCard({
   highlight,
   imageSlot,
   ctaLabel = 'Enquire',
+  ctaHref,
   ...props
 }: PackageCardProps) {
   return (
@@ -88,7 +101,11 @@ export function PackageCard({
         </ul>
         <div className="mt-auto flex items-center justify-between border-t border-border-subtle pt-2">
           <span className="font-display text-display-md text-accent-secondary">{price}</span>
-          <Button size="sm" variant="primary">
+          <Button
+            size="sm"
+            variant="primary"
+            render={ctaHref ? <Link href={ctaHref} /> : undefined}
+          >
             {ctaLabel}
           </Button>
         </div>

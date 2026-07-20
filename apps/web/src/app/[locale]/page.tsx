@@ -129,6 +129,7 @@ export default async function LocaleHomePage({ params }: { params: Promise<{ loc
                 pkg.id === HIGHLIGHTED_PACKAGE_ID ? messages.home.packages.mostPopular : undefined
               }
               ctaLabel={messages.home.packages.ctaLabel}
+              ctaHref={localeHref(locale, 'contact')}
             />
           ))}
         </div>
