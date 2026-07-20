@@ -103,3 +103,29 @@ test(
     await expect(packagesLink).toHaveAttribute('aria-current', 'page');
   },
 );
+
+// Hotfix — tercera card "Ride your own bike" (servicio de almacenamiento/
+// transporte/taller, sin noches/días/precio fijo): verifica que se muestra
+// junto a las 2 rutas guiadas, con su subtitle/precio propios (no la
+// plantilla de noches/días), y que el CTA navega a /contact igual que las
+// otras 2 cards.
+test(
+  'la 3ª card "Ride your own bike" se muestra con su propio subtitle/precio',
+  { tag: ['@f2'] },
+  async ({ page }) => {
+    await page.goto('/en/packages/');
+
+    const ownBikeCard = page
+      .getByRole('heading', { name: 'Ride your own bike' })
+      .locator('..')
+      .locator('..');
+    await expect(ownBikeCard).toContainText('Storage · Transport · Workshop');
+    await expect(ownBikeCard).toContainText('Ask for pricing');
+    await expect(ownBikeCard).toContainText('Storage with our own workshop');
+    await expect(ownBikeCard).toContainText('Airport pickup service');
+
+    const ownBikeCta = ownBikeCard.getByRole('link', { name: 'Enquire' });
+    await ownBikeCta.click();
+    await expect(page).toHaveURL(/\/en\/contact\/$/);
+  },
+);

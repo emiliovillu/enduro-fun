@@ -61,10 +61,18 @@ export default async function PackagesPage({ params }: { params: Promise<{ local
             <PackageCard
               key={pkg.id}
               name={pkg.name[locale]}
-              subtitle={home.packages.durationTemplate
-                .replace('{nights}', String(pkg.nights))
-                .replace('{days}', String(pkg.days))}
-              price={`${home.packages.fromPrefix} ${priceFormatter.format(pkg.priceEur)} €`}
+              subtitle={
+                pkg.subtitleOverride
+                  ? pkg.subtitleOverride[locale]
+                  : home.packages.durationTemplate
+                      .replace('{nights}', String(pkg.nights))
+                      .replace('{days}', String(pkg.days))
+              }
+              price={
+                pkg.priceLabel
+                  ? pkg.priceLabel[locale]
+                  : `${home.packages.fromPrefix} ${priceFormatter.format(pkg.priceEur ?? 0)} €`
+              }
               features={pkg.features.map((feature) => feature[locale])}
               highlight={pkg.id === HIGHLIGHTED_PACKAGE_ID ? home.packages.mostPopular : undefined}
               ctaLabel={home.packages.ctaLabel}

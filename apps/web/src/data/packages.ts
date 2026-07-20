@@ -72,6 +72,53 @@ const RAW_PACKAGES: Package[] = [
       },
     ],
   },
+  {
+    // Hotfix (petición directa del usuario, cliente aportó el texto):
+    // servicio de traer tu propia moto (almacenamiento/transporte/taller),
+    // no una ruta guiada — sin noches/días/precio fijo, ver nota de
+    // `PackageSchema` para `subtitleOverride`/`priceLabel`. El nombre
+    // completo del partner de transporte ("Gayer Motorrad") se menciona sin
+    // URL: el texto que pasó el cliente traía la dirección truncada
+    // (`www.gayermotorrad.....`) y no se inventa una URL sin confirmar.
+    id: 'own-bike',
+    name: {
+      en: 'Ride your own bike',
+      es: 'Rueda con tu propia moto',
+      de: 'Fahre mit deinem eigenen Motorrad',
+    },
+    description: {
+      en: 'Bring your own bike and explore Andalucía on your own terms — we help with transport, storage and workshop support.',
+      es: 'Trae tu propia moto y explora Andalucía a tu ritmo — te ayudamos con el transporte, el almacenamiento y el taller.',
+      de: 'Bring dein eigenes Motorrad mit und erkunde Andalusien in deinem eigenen Tempo — wir helfen bei Transport, Lagerung und Werkstatt.',
+    },
+    subtitleOverride: {
+      en: 'Storage · Transport · Workshop',
+      es: 'Almacenamiento · Transporte · Taller',
+      de: 'Lagerung · Transport · Werkstatt',
+    },
+    priceLabel: {
+      en: 'Ask for pricing',
+      es: 'Consulta precio',
+      de: 'Preis auf Anfrage',
+    },
+    features: [
+      {
+        en: "We're happy to help you find the right transport — our partner: Gayer Motorrad",
+        es: 'Te ayudamos con gusto a encontrar el transporte adecuado — socio colaborador: Gayer Motorrad',
+        de: 'Wir helfen dir gerne, den passenden Transport zu finden — unser Partner: Gayer Motorrad',
+      },
+      {
+        en: 'Storage with our own workshop',
+        es: 'Almacenamiento con taller propio',
+        de: 'Lagerung mit eigener Werkstatt',
+      },
+      {
+        en: 'Airport pickup service',
+        es: 'Servicio de aeropuerto',
+        de: 'Flughafen-Service',
+      },
+    ],
+  },
 ];
 
 export const PACKAGES: Package[] = RAW_PACKAGES.map((pkg) => PackageSchema.parse(pkg));

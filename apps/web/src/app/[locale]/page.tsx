@@ -120,10 +120,18 @@ export default async function LocaleHomePage({ params }: { params: Promise<{ loc
             <PackageCard
               key={pkg.id}
               name={pkg.name[locale]}
-              subtitle={messages.home.packages.durationTemplate
-                .replace('{nights}', String(pkg.nights))
-                .replace('{days}', String(pkg.days))}
-              price={`${messages.home.packages.fromPrefix} ${priceFormatter.format(pkg.priceEur)} €`}
+              subtitle={
+                pkg.subtitleOverride
+                  ? pkg.subtitleOverride[locale]
+                  : messages.home.packages.durationTemplate
+                      .replace('{nights}', String(pkg.nights))
+                      .replace('{days}', String(pkg.days))
+              }
+              price={
+                pkg.priceLabel
+                  ? pkg.priceLabel[locale]
+                  : `${messages.home.packages.fromPrefix} ${priceFormatter.format(pkg.priceEur ?? 0)} €`
+              }
               features={pkg.features.map((feature) => feature[locale])}
               highlight={
                 pkg.id === HIGHLIGHTED_PACKAGE_ID ? messages.home.packages.mostPopular : undefined
