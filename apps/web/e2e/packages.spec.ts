@@ -9,7 +9,7 @@ import { test, expect } from '@playwright/test';
 test('/en/packages muestra las 2 cards completas en inglés', { tag: ['@f2'] }, async ({ page }) => {
   await page.goto('/en/packages/');
 
-  await expect(page.getByRole('heading', { level: 1 })).toContainText('Two ways to ride');
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('Three ways to ride');
 
   const getaway = page.getByRole('heading', { name: 'Getaway' }).locator('..');
   await expect(getaway).toContainText('From 1,290 €');
@@ -49,7 +49,7 @@ test(
   async ({ page }) => {
     await page.goto('/es/packages/');
 
-    await expect(page.getByRole('heading', { level: 1 })).toContainText('Dos formas de rodar');
+    await expect(page.getByRole('heading', { level: 1 })).toContainText('Tres formas de rodar');
 
     const getaway = page.getByRole('heading', { name: 'Escapada' }).locator('..');
     // `Intl.NumberFormat('es')` no agrupa números de 4 cifras con un único
@@ -75,7 +75,7 @@ test(
 test('/de/packages muestra las 2 cards completas en alemán', { tag: ['@f2'] }, async ({ page }) => {
   await page.goto('/de/packages/');
 
-  await expect(page.getByRole('heading', { level: 1 })).toContainText('Zwei Arten zu fahren');
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('Drei Arten zu fahren');
 
   const getaway = page.getByRole('heading', { name: 'Kurztrip' }).locator('..');
   await expect(getaway).toContainText('Ab 1.290 €');
