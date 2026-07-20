@@ -33,7 +33,7 @@ export function Input({ className, invalid, ...props }: InputProps) {
       data-slot="input"
       aria-invalid={invalid}
       className={cn(
-        'w-full rounded-lg border border-border-subtle bg-surface-card px-4 py-3 text-body text-text-primary transition-colors duration-150 ease-standard placeholder:text-text-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-danger',
+        'w-full rounded-lg border border-border-subtle bg-surface-card px-4 py-3 text-body text-text-primary transition-colors duration-150 ease-standard placeholder:text-text-secondary/60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-danger',
         className,
       )}
       {...props}
