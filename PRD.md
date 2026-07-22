@@ -147,7 +147,7 @@ El enduro tourism en Andalucía es un nicho creciente, impulsado por el clima fa
 
 ### 6.4 Fuentes de diseño
 
-- Design system: proyecto Claude Design **"EnduroFun Design System"** (`8ee30e13-2372-49e4-ba6f-2692bc1a6af5`) — tokens, componentes (`Button`, `Badge`, `PackageCard`, `ReviewCard`, `SectionHeading`, `Header`, `Footer`, `LanguageSwitcher`, `Icon`, `MapEmbed`), guidelines de marca.
+- Design system: proyecto Claude Design **"EnduroFun Design System"** (`8ee30e13-2372-49e4-ba6f-2692bc1a6af5`) — tokens, componentes (`Button`, `Badge`, `PackageCard`, `ReviewCard`, `SectionHeading`, `Header`, `Footer`, `LanguageSwitcher`, `Icon`, `MapEmbed`, `Lightbox`), guidelines de marca. `Lightbox` (overlay a pantalla completa para ver una imagen ampliada) se añadió tras el lanzamiento inicial, hotfix a petición directa del usuario sobre la Gallery (TD.11, ver journal) — mismo patrón que Gallery en D12.
 - Mockups: proyecto Claude Design **"EnduroFun Pages"** (`07ce2c66-a9a4-4636-ad05-ea1746fa94f9`) — dos variantes de Home fueron evaluadas (A "Cinemática": hero foto/vídeo a pantalla completa, header transparente; B "Editorial": hero partido, header sólido). **Elegida: Variante A (Cinemática)** — la tarea de Home parte de `HomeVariantA.jsx` de ese proyecto.
 
 ## 7. Contenido multilingüe y estructura de datos
