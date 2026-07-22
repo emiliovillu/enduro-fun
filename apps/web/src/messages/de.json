@@ -55,6 +55,14 @@
       "title": "Zuerst Fahrer, dann Guides von Beruf",
       "text": "Was als eine Handvoll Freunde begann, die an Wochenenden die Trails rund um Álora erkundeten, wurde zu einem kleinen geführten Tourenbetrieb, aufgebaut auf jahrelanger Erfahrung mit demselben Gelände in jeder Jahreszeit und jedem Zustand. Jede Route, die wir anbieten, sind wir selbst vorher gefahren — wir wissen, wo nach Regen der Matsch liegt, welche Anstiege Schwung brauchen und wo man für die beste Aussicht anhält."
     },
+    "fleet": {
+      "eyebrow": "Unsere Flotte",
+      "title": "Die Motorräder, die wir fahren",
+      "categories": {
+        "enduro": "Enduro",
+        "trailAdventure": "Trail & Abenteuer"
+      }
+    },
     "different": {
       "eyebrow": "Was uns anders macht",
       "title": "Drei Dinge, die Fahrern auffallen",

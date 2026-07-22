@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { FleetCard } from '@/components/ui/fleet-card';
 import { Footer } from '@/components/ui/footer';
 import { Header } from '@/components/ui/header';
 import { Icon, type IconName } from '@/components/ui/icon';
@@ -167,6 +168,27 @@ const PACKAGE_CARD_ROWS: { label: string; props: React.ComponentProps<typeof Pac
       subtitle: '2 nights · 2 route days',
       price: '590€',
       features: ['2 nights with breakfast', '2 days on a Husqvarna enduro bike'],
+    },
+  },
+];
+
+const FLEET_CARD_ROWS: { label: string; props: React.ComponentProps<typeof FleetCard> }[] = [
+  {
+    label: 'enduro',
+    props: {
+      name: 'Husqvarna TE 300',
+      displacementCc: 300,
+      categoryLabel: 'Enduro',
+      description: 'Our go-to enduro bike for technical singletrack and rocky climbs.',
+    },
+  },
+  {
+    label: 'trail-adventure',
+    props: {
+      name: 'Husqvarna Norden 901',
+      displacementCc: 901,
+      categoryLabel: 'Trail & Adventure',
+      description: 'Long-distance comfort for open trails and multi-day touring.',
     },
   },
 ];
@@ -508,6 +530,16 @@ export default function DesignSystemPage() {
           <div key={row.label}>
             <p className="mb-2 text-caption font-mono text-text-secondary">{row.label}</p>
             <PackageCard {...row.props} />
+          </div>
+        ))}
+      </div>
+
+      <SubHeading>FleetCard — enduro vs trail-adventure</SubHeading>
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+        {FLEET_CARD_ROWS.map((row) => (
+          <div key={row.label}>
+            <p className="mb-2 text-caption font-mono text-text-secondary">{row.label}</p>
+            <FleetCard {...row.props} />
           </div>
         ))}
       </div>

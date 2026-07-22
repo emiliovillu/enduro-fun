@@ -1,9 +1,11 @@
 import type { Locale } from '@app/core/contracts';
 import { Badge } from '@/components/ui/badge';
+import { FleetCard } from '@/components/ui/fleet-card';
 import { Footer } from '@/components/ui/footer';
 import { Header } from '@/components/ui/header';
 import { Icon } from '@/components/ui/icon';
 import { SectionHeading } from '@/components/ui/section-heading';
+import { FLEET, fleetCategoryLabel } from '@/data/fleet';
 import { getMessages } from '@/i18n/messages';
 
 // About real (T1.2, F1). Mockup acordado con el usuario al iniciar esta
@@ -31,6 +33,17 @@ import { getMessages } from '@/i18n/messages';
 // conocimiento local, `globe` para terreno variado, `landmark` (añadido en
 // este hotfix — el usuario reportó el círculo vacío de "Oferta cultural"
 // como icono roto) para oferta cultural.
+//
+// Sección "Nuestra flota" (TD.12, petición directa del usuario): insertada
+// justo debajo de "Our story" y antes de "What makes us different", MISMO
+// grid de 2 columnas que la sección de arriba (`lg:grid-cols-2 gap-14
+// items-center`) — a diferencia de "Our story" (donde una de las 2 columnas
+// es el `SectionHeading`+texto), aquí el `SectionHeading` va ENCIMA del
+// grid (mismo patrón que "What makes us different"/"levels" más abajo,
+// porque las 2 columnas son las 2 `FleetCard`, no texto+foto). Datos reales
+// (`apps/web/src/data/fleet.ts`, 2 motos, NO inventadas). `imageSlot` no se
+// pasa (sin fotos reales todavía) — usa el degradado de fallback tokenizado
+// de `FleetCard`, igual que el resto de placeholders de esta página.
 export default async function AboutPage({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
   const messages = getMessages(locale);
@@ -49,6 +62,13 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
     { ...about.different.variedTerrain, icon: 'globe' as const },
     { ...about.different.culturalOffering, icon: 'landmark' as const },
   ];
+
+  // TD.12: etiqueta de categoría del Badge de `FleetCard` — el enum
+  // `FleetBike.category` es el dato de dominio, la traducción de su etiqueta
+  // es copy de UI; `fleetCategoryLabel()` (en `data/fleet.ts`, no aquí) es el
+  // único sitio de mapeo enum→texto, reusado también por el showcase de
+  // `/design-system`.
+  const fleetCategoryLabels = fleetCategoryLabel(about.fleet.categories);
 
   const levels = [about.levels.beginner, about.levels.intermediate, about.levels.advanced];
 
@@ -79,6 +99,21 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
           <span className="font-mono text-caption text-text-on-dark-secondary">
             Photo placeholder — guides on trail
           </span>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-[var(--container-max)] px-5 py-24 sm:px-8">
+        <SectionHeading eyebrow={about.fleet.eyebrow} title={about.fleet.title} />
+        <div className="mt-10 grid items-center gap-14 lg:grid-cols-2">
+          {FLEET.map((bike) => (
+            <FleetCard
+              key={bike.id}
+              name={bike.name}
+              displacementCc={bike.displacementCc}
+              categoryLabel={fleetCategoryLabels[bike.category]}
+              description={bike.description[locale]}
+            />
+          ))}
         </div>
       </section>
 

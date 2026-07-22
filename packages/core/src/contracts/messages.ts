@@ -108,6 +108,22 @@ export const MessagesSchema = z.object({
       title: z.string().min(1),
       text: z.string().min(1),
     }),
+    // TD.12: sección "Nuestra flota", hermana de `story`/`different`/`levels`
+    // (mismo patrón de sub-objeto por sección). `categories` traduce el enum
+    // `FleetBike.category` (`enduro`/`trail-adventure`, ver `fleet-bike.ts`)
+    // a la etiqueta visible del `Badge` de `FleetCard` — el enum es el dato
+    // de dominio, la etiqueta es copy de UI localizado, misma separación que
+    // `status-class.ts` usa para mapear estado→token (design-system.md
+    // §3.4: la agrupación enum→texto vive en UN sitio, aquí en `messages`
+    // porque es texto, no una clase Tailwind).
+    fleet: z.object({
+      eyebrow: z.string().min(1),
+      title: z.string().min(1),
+      categories: z.object({
+        enduro: z.string().min(1),
+        trailAdventure: z.string().min(1),
+      }),
+    }),
     different: z.object({
       eyebrow: z.string().min(1),
       title: z.string().min(1),

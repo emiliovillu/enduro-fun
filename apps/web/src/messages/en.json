@@ -55,6 +55,14 @@
       "title": "Riders first, guides by trade",
       "text": "What started as a handful of friends exploring the trails around Álora on weekends grew into a small guided-tour operation, built on years of riding the same terrain in every season and condition. Every route we run has been ridden by us first — we know where the mud sits after rain, which climbs need a run-up, and where to stop for the best views."
     },
+    "fleet": {
+      "eyebrow": "Our fleet",
+      "title": "The bikes we ride",
+      "categories": {
+        "enduro": "Enduro",
+        "trailAdventure": "Trail & Adventure"
+      }
+    },
     "different": {
       "eyebrow": "What makes us different",
       "title": "Three things riders notice",

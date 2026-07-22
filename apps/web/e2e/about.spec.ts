@@ -49,3 +49,73 @@ test('el nav del Header marca "About" como página activa', { tag: ['@f1'] }, as
   });
   await expect(aboutLink).toHaveAttribute('aria-current', 'page');
 });
+
+// TD.12 — sección "Nuestra flota": visible en los 3 idiomas, justo después
+// de la sección de guías/historia ("Our story") y antes de "What makes us
+// different" (orden real del DOM, no solo presencia — los 3 títulos son
+// `h2`), con las 2 `FleetCard` (TE 300 / Norden 901) mostrando nombre
+// (literal, sin traducir), cilindrada y categoría traducida.
+test(
+  '/en/about muestra "Our fleet" en la posición correcta con las 2 motos',
+  { tag: ['@f1'] },
+  async ({ page }) => {
+    await page.goto('/en/about/');
+
+    const h2Titles = await page.getByRole('heading', { level: 2 }).allTextContents();
+    const storyIndex = h2Titles.indexOf('Riders first, guides by trade');
+    const fleetIndex = h2Titles.indexOf('The bikes we ride');
+    const differentIndex = h2Titles.indexOf('Three things riders notice');
+    expect(storyIndex).toBeGreaterThanOrEqual(0);
+    expect(fleetIndex).toBeGreaterThan(storyIndex);
+    expect(differentIndex).toBeGreaterThan(fleetIndex);
+
+    await expect(page.getByRole('heading', { name: 'Husqvarna TE 300' })).toBeVisible();
+    await expect(page.getByText('300cc')).toBeVisible();
+    await expect(page.getByText('Enduro', { exact: true })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Husqvarna Norden 901' })).toBeVisible();
+    await expect(page.getByText('901cc')).toBeVisible();
+    await expect(page.getByText('Trail & Adventure')).toBeVisible();
+  },
+);
+
+test(
+  '/es/about muestra "Nuestra flota" con las 2 motos y categorías en español',
+  { tag: ['@f1'] },
+  async ({ page }) => {
+    await page.goto('/es/about/');
+
+    const h2Titles = await page.getByRole('heading', { level: 2 }).allTextContents();
+    const storyIndex = h2Titles.indexOf('Motoristas primero, guías de oficio');
+    const fleetIndex = h2Titles.indexOf('Las motos con las que rodamos');
+    const differentIndex = h2Titles.indexOf('Tres cosas que los motoristas notan');
+    expect(fleetIndex).toBeGreaterThan(storyIndex);
+    expect(differentIndex).toBeGreaterThan(fleetIndex);
+
+    await expect(page.getByRole('heading', { name: 'Husqvarna TE 300' })).toBeVisible();
+    await expect(page.getByText('300cc')).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Husqvarna Norden 901' })).toBeVisible();
+    await expect(page.getByText('901cc')).toBeVisible();
+    await expect(page.getByText('Trail y Aventura')).toBeVisible();
+  },
+);
+
+test(
+  '/de/about muestra "Unsere Flotte" con las 2 motos y categorías en alemán',
+  { tag: ['@f1'] },
+  async ({ page }) => {
+    await page.goto('/de/about/');
+
+    const h2Titles = await page.getByRole('heading', { level: 2 }).allTextContents();
+    const storyIndex = h2Titles.indexOf('Zuerst Fahrer, dann Guides von Beruf');
+    const fleetIndex = h2Titles.indexOf('Die Motorräder, die wir fahren');
+    const differentIndex = h2Titles.indexOf('Drei Dinge, die Fahrern auffallen');
+    expect(fleetIndex).toBeGreaterThan(storyIndex);
+    expect(differentIndex).toBeGreaterThan(fleetIndex);
+
+    await expect(page.getByRole('heading', { name: 'Husqvarna TE 300' })).toBeVisible();
+    await expect(page.getByText('300cc')).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Husqvarna Norden 901' })).toBeVisible();
+    await expect(page.getByText('901cc')).toBeVisible();
+    await expect(page.getByText('Trail & Abenteuer')).toBeVisible();
+  },
+);

@@ -58,6 +58,11 @@ const validMessages = {
       title: 'Riders first, guides by trade',
       text: 'What started as weekend trail rides became a small guided-tour operation.',
     },
+    fleet: {
+      eyebrow: 'Our fleet',
+      title: 'The bikes we ride',
+      categories: { enduro: 'Enduro', trailAdventure: 'Trail & Adventure' },
+    },
     different: {
       eyebrow: 'What makes us different',
       title: 'Three things riders notice',
@@ -148,6 +153,19 @@ describe('MessagesSchema', () => {
     const result = MessagesSchema.safeParse({
       ...validMessages,
       about: { ...validMessages.about, different: differentWithoutCultural },
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it('rechaza si falta la clave about.fleet.categories.trailAdventure (control negativo, TD.12)', () => {
+    const { trailAdventure: _trailAdventure, ...categoriesWithoutTrailAdventure } =
+      validMessages.about.fleet.categories;
+    const result = MessagesSchema.safeParse({
+      ...validMessages,
+      about: {
+        ...validMessages.about,
+        fleet: { ...validMessages.about.fleet, categories: categoriesWithoutTrailAdventure },
+      },
     });
     expect(result.success).toBe(false);
   });
