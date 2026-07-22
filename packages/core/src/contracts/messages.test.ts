@@ -57,6 +57,7 @@ const validMessages = {
       eyebrow: 'Our story',
       title: 'Riders first, guides by trade',
       text: 'What started as weekend trail rides became a small guided-tour operation.',
+      photoAlt: 'A guide giving a thumbs up on the trail',
     },
     fleet: {
       eyebrow: 'Our fleet',

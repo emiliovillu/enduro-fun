@@ -170,6 +170,7 @@ Home + About + Contact navegables en los 3 idiomas, con el formulario de contact
 - **Mockup**: `docs/mockups/about.html` (a crear y aprobar por el usuario al iniciar esta tarea, con los componentes del DS ya cerrado en TD).
 - **Playwright permanente**: `apps/web/e2e/about.spec.ts` — la página carga en los 3 idiomas, el nav de `Header` marca "about" como activo.
 - **Verificación**: en navegador, `/en/about`, `/es/about`, `/de/about` muestran el contenido completo y correcto en cada idioma; el header/footer son consistentes con Home.
+- **Cambio de alcance menor 2026-07-23** (petición directa del usuario, fix directo — foto real aportada por el usuario, no hace falta componente nuevo del DS): el placeholder tokenizado de la sección "Our story" se sustituye por una foto real (`apps/web/public/about/our-story.avif`, ~125KB, mismo pipeline `sharp`/AVIF que Gallery). Nuevo campo `messages.about.story.photoAlt` (traducido en los 3 idiomas) para el `alt`. `pnpm gate` verde + `about.spec.ts` (7/7) verde tras el cambio.
 
 #### T1.3 · Página Contact (Formspree + Google Maps real)
 - **Depende de**: TD.7, T0.1

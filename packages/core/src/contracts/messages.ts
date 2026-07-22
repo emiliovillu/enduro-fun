@@ -107,6 +107,10 @@ export const MessagesSchema = z.object({
       eyebrow: z.string().min(1),
       title: z.string().min(1),
       text: z.string().min(1),
+      // Foto real de un guía en ruta (añadida 2026-07-23, sustituye el
+      // placeholder tokenizado) — `alt` traducido, mismo criterio que
+      // `gallery.photoAltTemplate`.
+      photoAlt: z.string().min(1),
     }),
     // TD.12: sección "Nuestra flota", hermana de `story`/`different`/`levels`
     // (mismo patrón de sub-objeto por sección). `categories` traduce el enum

@@ -418,3 +418,11 @@
 - Cambios: `data/fleet.ts` (+1 entrada), grid de la sección "Nuestra flota" en `about/page.tsx` de `lg:grid-cols-2` a `sm:grid-cols-2 lg:grid-cols-3` (2 columnas dejaba la 3ª card sola en su fila), showcase `/design-system` (+1 fila), `about.spec.ts` actualizado a 3 motos — la etiqueta de categoría duplicada (Norden + BMW) se verifica con `toHaveCount(2)`, y `300cc`/`1300cc` necesitaron `exact: true` para no colisionar por substring. `planning.md` (nota en TD.12) y `PRD.md` (§6.4 y tabla de About) anotados en la misma sesión.
 - `pnpm gate` verde + 7/7 e2e de `about.spec.ts` verdes + verificación manual del HTML servido (`out/`) confirmando las 3 motos y el badge duplicado.
 - Sin ciclo implementer/verifier (decisión explícita del usuario) — hecho directamente en conversación, gate + e2e como evidencia.
+
+## 2026-07-23 · Cambio de alcance menor — foto real en "Nuestra historia" (About)
+- Petición directa del usuario en conversación (foto aportada, no `/dev-loop task`). Sustituye el placeholder tokenizado (`from-charcoal-700 to-charcoal-900` con caption "Photo placeholder — guides on trail") de la sección "Our story" de `/about` por una foto real de un guía en ruta.
+- Pipeline idéntico al de Gallery (TD.11's precedente, `docs/dev-loop/journal.md` gallery): `sharp` ad-hoc (mismo scratchpad reusado), `rotate()` antes de codificar (hornea orientación EXIF) + `.avif({quality: 50, effort: 6})`, resize a 1400px de lado mayor → 751KB origen a 125KB AVIF.
+- Cambios: `public/about/our-story.avif` (nuevo), `about/page.tsx` (placeholder div → `next/image` con `fill`+`object-cover`, ya usa `images.unoptimized: true` del `output: 'export'`), `messages.about.story.photoAlt` nuevo campo en el contrato (`messages.ts`) + los 3 idiomas + fixture de `messages.test.ts`.
+- `pnpm gate` verde + build real + 7/7 `about.spec.ts` verdes + verificación manual sirviendo `out/` (foto 200, referenciada en el HTML de `/en/about/`).
+- Sin ciclo implementer/verifier (mismo criterio que la BMW 1300 GS: dato/asset nuevo sobre un componente ya existente, sin contrato nuevo que diseñar) — hecho directamente en conversación, gate + build + e2e como evidencia.
+- Añadida aserción a `about.spec.ts` (test EN) comprobando por `alt` que la foto real es visible — mismo criterio que Gallery, sin dejarlo como deuda al ser barato de cerrar en el momento.

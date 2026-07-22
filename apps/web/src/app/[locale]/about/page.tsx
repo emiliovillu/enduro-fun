@@ -1,4 +1,5 @@
 import type { Locale } from '@app/core/contracts';
+import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { FleetCard } from '@/components/ui/fleet-card';
 import { Footer } from '@/components/ui/footer';
@@ -19,12 +20,14 @@ import { getMessages } from '@/i18n/messages';
 // `transparent` (el mockup lo pinta como header estándar sobre fondo claro,
 // sin hero full-bleed debajo) — se monta como sección normal, no `absolute`.
 //
-// Placeholder de foto de "Our story": mismo criterio que el hero de Home
-// (div con gradiente tokenizado `from-charcoal-700 to-charcoal-900`,
-// construido local a la página porque no hay primitiva del DS para esto),
-// pero NO full-bleed: el mockup lo pone en una caja de altura fija dentro
-// de un grid de 2 columnas, así que aquí es `h-85 rounded-lg` en vez de
-// `absolute inset-0`.
+// Foto real de "Our story" (añadida 2026-07-23, sustituye el placeholder
+// tokenizado — petición directa del usuario): `public/about/our-story.avif`,
+// AVIF ~125KB (mismo pipeline `sharp` que Gallery: `rotate()` antes de
+// codificar para hornear la orientación EXIF, calidad 50/effort 6). Sigue
+// dentro de la caja de altura fija `h-85 rounded-lg` del mockup (no
+// full-bleed) — `fill` + `object-cover` en vez de dimensiones explícitas
+// porque el contenedor ya fija el tamaño. `alt` traducido en
+// `messages.about.story.photoAlt`.
 //
 // Iconos de "What makes us different": el mockup deja el círculo vacío
 // (decorativo, `background: var(--accent-primary)` sin contenido) — aquí
@@ -92,13 +95,14 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
           <SectionHeading eyebrow={about.story.eyebrow} title={about.story.title} />
           <p className="mt-5 text-body text-text-secondary">{about.story.text}</p>
         </div>
-        <div
-          className="flex h-85 items-center justify-center rounded-lg bg-linear-to-br from-charcoal-700 to-charcoal-900"
-          aria-hidden="true"
-        >
-          <span className="font-mono text-caption text-text-on-dark-secondary">
-            Photo placeholder — guides on trail
-          </span>
+        <div className="relative h-85 overflow-hidden rounded-lg">
+          <Image
+            src="/about/our-story.avif"
+            alt={about.story.photoAlt}
+            fill
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            className="object-cover"
+          />
         </div>
       </section>
 

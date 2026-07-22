@@ -11,6 +11,9 @@ test('/en/about carga con el contenido en inglés', { tag: ['@f1'] }, async ({ p
     'Local knowledge, real trails',
   );
   await expect(page.getByRole('heading', { name: 'Riders first, guides by trade' })).toBeVisible();
+  await expect(
+    page.getByAltText('One of our guides giving a thumbs up on the trail near Álora'),
+  ).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Local knowledge', exact: true })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Varied terrain', exact: true })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Cultural offering', exact: true })).toBeVisible();
