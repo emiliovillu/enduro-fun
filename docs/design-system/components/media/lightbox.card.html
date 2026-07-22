@@ -1,0 +1,15 @@
+<!-- @dsCard group="Components" viewport="700x460" name="Lightbox" subtitle="Full-screen image viewer with scrim overlay" -->
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>body{margin:0;padding:0;background:var(--bg-canvas)}</style>
+<div id="root"></div>
+<script type="text/babel">
+const {Lightbox}=window.EnduroFunDesignSystem_8ee30e;
+const PHOTO="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%23c62b28'/%3E%3Cstop offset='55%25' stop-color='%23e8791e'/%3E%3Cstop offset='100%25' stop-color='%23fbc02d'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='600' fill='url(%23g)'/%3E%3C/svg%3E";
+ReactDOM.createRoot(document.getElementById('root')).render(
+<Lightbox src={PHOTO} alt="Enduro trail photo 12" onClose={() => {}} closeLabel="Close image viewer" />
+);
+</script>

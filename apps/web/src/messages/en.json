@@ -124,6 +124,7 @@
     "title": "A taste of the terrain",
     "intro": "A closer look at the trails and terrain around Álora — dusty singletrack, rocky climbs and open fire roads.",
     "photoAltTemplate": "Enduro trail photo {n}",
-    "loadingLabel": "Loading more photos"
+    "loadingLabel": "Loading more photos",
+    "lightboxCloseLabel": "Close image viewer"
   }
 }

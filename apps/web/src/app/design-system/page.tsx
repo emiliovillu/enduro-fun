@@ -12,6 +12,8 @@ import { ReviewCard } from '@/components/ui/review-card';
 import { SectionHeading } from '@/components/ui/section-heading';
 import { Textarea } from '@/components/ui/textarea';
 
+import { LightboxShowcase } from './lightbox-showcase';
+
 export const metadata: Metadata = {
   title: 'Design system — EnduroFun',
   robots: { index: false, follow: false },
@@ -415,6 +417,18 @@ export default function DesignSystemPage() {
           <MapEmbed label="Álora, Málaga" compact />
         </div>
       </div>
+
+      <SubHeading>Lightbox — visor a pantalla completa (TD.11)</SubHeading>
+      <p className="mb-4 text-small text-text-secondary">
+        Referencia:{' '}
+        <code className="font-mono">docs/design-system/components/media/Lightbox.*</code>. Gap del
+        DS original — creado a partir de las foundations existentes (scrim
+        <code className="font-mono">--charcoal-900</code>,{' '}
+        <code className="font-mono">--radius-lg</code>,{' '}
+        <code className="font-mono">--shadow-lg</code>) y subido a Claude Design en la misma tarea.
+        Cierra con el botón, con click en el scrim fuera de la foto, o con Escape.
+      </p>
+      <LightboxShowcase />
 
       <SubHeading>LanguageSwitcher — EN / ES / DE</SubHeading>
       <p className="mb-4 text-small text-text-secondary">

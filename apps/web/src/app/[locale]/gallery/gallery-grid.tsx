@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 
+import { Lightbox } from '@/components/ui/lightbox';
+
 // Página Gallery (hotfix, petición directa del usuario): grid de 5 columnas
 // con scroll infinito sobre las fotos reales subidas por el usuario
 // (apps/web/public/gallery/gallery-001.avif … gallery-122.avif — AVIF,
@@ -37,9 +39,14 @@ function photoSrc(index: number): string {
 interface GalleryGridProps {
   photoAltTemplate: string;
   loadingLabel: string;
+  lightboxCloseLabel: string;
 }
 
-export function GalleryGrid({ photoAltTemplate, loadingLabel }: GalleryGridProps) {
+export function GalleryGrid({
+  photoAltTemplate,
+  loadingLabel,
+  lightboxCloseLabel,
+}: GalleryGridProps) {
   const [count, setCount] = useState(Math.min(INITIAL_COUNT, TOTAL_PHOTOS));
   const [loading, setLoading] = useState(false);
   const sentinelRef = useRef<HTMLDivElement>(null);
@@ -48,6 +55,15 @@ export function GalleryGrid({ photoAltTemplate, loadingLabel }: GalleryGridProps
       typeof window !== 'undefined' &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches,
   );
+
+  // TD.11 — Lightbox: `openIndex` es la foto actualmente ampliada (`null` =
+  // cerrado). Sin ref manual para devolver el foco a la miniatura: Base UI
+  // captura el elemento activo al abrir (aquí, el `<button>` que acaba de
+  // recibir el foco del propio click nativo) y se lo devuelve solo al
+  // cerrar, incluso con el `open` controlado desde fuera de `Dialog.Trigger`
+  // — verificado en `FloatingFocusManager` de `@base-ui/react`, no hace
+  // falta reimplementarlo.
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   useEffect(() => {
     const sentinel = sentinelRef.current;
@@ -79,7 +95,14 @@ export function GalleryGrid({ photoAltTemplate, loadingLabel }: GalleryGridProps
     <>
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
         {Array.from({ length: count }, (_, index) => (
-          <div key={index} className="relative aspect-square overflow-hidden rounded-lg">
+          <button
+            key={index}
+            type="button"
+            onClick={() => {
+              setOpenIndex(index);
+            }}
+            className="relative aspect-square overflow-hidden rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
+          >
             <Image
               src={photoSrc(index)}
               alt={photoAltTemplate.replace('{n}', String(index + 1))}
@@ -88,9 +111,19 @@ export function GalleryGrid({ photoAltTemplate, loadingLabel }: GalleryGridProps
               className="object-cover"
               loading={index < INITIAL_COUNT ? undefined : 'lazy'}
             />
-          </div>
+          </button>
         ))}
       </div>
+
+      <Lightbox
+        open={openIndex !== null}
+        onOpenChange={(next) => {
+          if (!next) setOpenIndex(null);
+        }}
+        src={photoSrc(openIndex ?? 0)}
+        alt={photoAltTemplate.replace('{n}', String((openIndex ?? 0) + 1))}
+        closeLabel={lightboxCloseLabel}
+      />
 
       {count < TOTAL_PHOTOS ? (
         <div ref={sentinelRef} className="flex h-24 items-center justify-center" aria-live="polite">

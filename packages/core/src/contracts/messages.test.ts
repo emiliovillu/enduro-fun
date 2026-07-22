@@ -110,6 +110,7 @@ const validMessages = {
     intro: 'A closer look at the trails and terrain around Álora.',
     photoAltTemplate: 'Enduro trail photo {n}',
     loadingLabel: 'Loading more photos',
+    lightboxCloseLabel: 'Close image viewer',
   },
 };
 
@@ -174,6 +175,16 @@ describe('MessagesSchema', () => {
     const result = MessagesSchema.safeParse({
       ...validMessages,
       gallery: galleryWithoutLoading,
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it('rechaza si falta la clave gallery.lightboxCloseLabel (control negativo, TD.11)', () => {
+    const { lightboxCloseLabel: _lightboxCloseLabel, ...galleryWithoutCloseLabel } =
+      validMessages.gallery;
+    const result = MessagesSchema.safeParse({
+      ...validMessages,
+      gallery: galleryWithoutCloseLabel,
     });
     expect(result.success).toBe(false);
   });

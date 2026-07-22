@@ -181,6 +181,10 @@ export const MessagesSchema = z.object({
     intro: z.string().min(1),
     photoAltTemplate: z.string().min(1),
     loadingLabel: z.string().min(1),
+    // TD.11 — Lightbox: único texto nuevo del componente (aria-label del
+    // botón de cerrar); la propia entrada del planning es explícita en que
+    // no hay más copy que traducir en el visor.
+    lightboxCloseLabel: z.string().min(1),
   }),
 });
 

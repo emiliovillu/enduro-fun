@@ -126,7 +126,7 @@ Se intercala tras T0.1 y antes de continuar F0 (T0.2 gana dependencia de orden s
 - **Entrega**: el manillar de `ICON_PATHS.bike` (`apps/web/src/components/ui/icon.tsx`, sub-path `'M14.5 12h3.5'`) queda pegado directamente a la pipa de dirección — el usuario, tras aprobar TD.9, pidió un vástago corto que separe visualmente el manillar del cuerpo (rasgo real de una moto de enduro: el manillar se eleva sobre un vástago, no nace pegado al chasis). Ajustar el path (y su equivalente en Claude Design `components/media/Icon.jsx` + espejo local) añadiendo ese vástago sin volver a la forma de la 1ª iteración descartada en TD.9 (vástago vertical largo que se leía como patinete/triciclo) — vástago corto, proporcionado al resto del glifo.
 - **Verificación**: captura del glifo ajustado (zoom aislado + logo del Header a 26px, mismo patrón que TD.9), `pnpm gate` verde, revisión humana final del usuario.
 
-#### TD.11 · Componente Lightbox (visor de imagen a pantalla completa con overlay)
+#### TD.11 · Componente Lightbox (visor de imagen a pantalla completa con overlay) [x] 2026-07-22 — PASS, ver docs/verifications/TD.11/
 - **Depende de**: TD.7
 - **Añadida 2026-07-22** (petición directa del usuario sobre la Gallery ya cerrada con fotos reales — ver journal): al hacer clic en una foto de `/gallery`, se abre un visor a pantalla completa con overlay/scrim detrás, para ver el detalle de la imagen ampliada. Mismo patrón de scope-change que TD.8/TD.9/TD.10 — componente nuevo del design system añadido tras el OK humano de TD.7, no contenido de página (por eso vive en TD, no en F1/F2/F3).
 - **Entrega**:

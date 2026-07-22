@@ -46,6 +46,7 @@ export default async function GalleryPage({ params }: { params: Promise<{ locale
         <GalleryGrid
           photoAltTemplate={gallery.photoAltTemplate}
           loadingLabel={gallery.loadingLabel}
+          lightboxCloseLabel={gallery.lightboxCloseLabel}
         />
       </section>
 
