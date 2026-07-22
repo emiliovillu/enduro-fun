@@ -35,15 +35,15 @@ import { getMessages } from '@/i18n/messages';
 // como icono roto) para oferta cultural.
 //
 // Sección "Nuestra flota" (TD.12, petición directa del usuario): insertada
-// justo debajo de "Our story" y antes de "What makes us different", MISMO
-// grid de 2 columnas que la sección de arriba (`lg:grid-cols-2 gap-14
-// items-center`) — a diferencia de "Our story" (donde una de las 2 columnas
-// es el `SectionHeading`+texto), aquí el `SectionHeading` va ENCIMA del
-// grid (mismo patrón que "What makes us different"/"levels" más abajo,
-// porque las 2 columnas son las 2 `FleetCard`, no texto+foto). Datos reales
-// (`apps/web/src/data/fleet.ts`, 2 motos, NO inventadas). `imageSlot` no se
-// pasa (sin fotos reales todavía) — usa el degradado de fallback tokenizado
-// de `FleetCard`, igual que el resto de placeholders de esta página.
+// justo debajo de "Our story" y antes de "What makes us different". El
+// `SectionHeading` va ENCIMA del grid (mismo patrón que "What makes us
+// different"/"levels" más abajo, porque las columnas son las `FleetCard`, no
+// texto+foto). Datos reales (`apps/web/src/data/fleet.ts`, NO inventados).
+// Grid `sm:grid-cols-2 lg:grid-cols-3` (cambio de alcance menor 2026-07-23,
+// ver planning.md TD.12: se amplió de 2 a 3 columnas al añadir la BMW 1300
+// GS — 2 columnas dejaba la 3ª card sola en su fila). `imageSlot` no se pasa
+// (sin fotos reales todavía) — usa el degradado de fallback tokenizado de
+// `FleetCard`, igual que el resto de placeholders de esta página.
 export default async function AboutPage({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
   const messages = getMessages(locale);
@@ -104,7 +104,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
       <section className="mx-auto max-w-[var(--container-max)] px-5 py-24 sm:px-8">
         <SectionHeading eyebrow={about.fleet.eyebrow} title={about.fleet.title} />
-        <div className="mt-10 grid items-center gap-14 lg:grid-cols-2">
+        <div className="mt-10 grid items-center gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {FLEET.map((bike) => (
             <FleetCard
               key={bike.id}

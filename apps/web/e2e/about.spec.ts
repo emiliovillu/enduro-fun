@@ -53,10 +53,14 @@ test('el nav del Header marca "About" como página activa', { tag: ['@f1'] }, as
 // TD.12 — sección "Nuestra flota": visible en los 3 idiomas, justo después
 // de la sección de guías/historia ("Our story") y antes de "What makes us
 // different" (orden real del DOM, no solo presencia — los 3 títulos son
-// `h2`), con las 2 `FleetCard` (TE 300 / Norden 901) mostrando nombre
-// (literal, sin traducir), cilindrada y categoría traducida.
+// `h2`), con las 3 `FleetCard` (TE 300 / Norden 901 / BMW 1300 GS — la BMW
+// añadida 2026-07-23, misma categoría trail-adventure que la Norden)
+// mostrando nombre (literal, sin traducir), cilindrada y categoría
+// traducida. La categoría "Trail & Adventure"/"Trail y Aventura"/"Trail &
+// Abenteuer" aparece 2 veces (Norden + BMW) — se cuenta en vez de asumir un
+// único match.
 test(
-  '/en/about muestra "Our fleet" en la posición correcta con las 2 motos',
+  '/en/about muestra "Our fleet" en la posición correcta con las 3 motos',
   { tag: ['@f1'] },
   async ({ page }) => {
     await page.goto('/en/about/');
@@ -70,16 +74,18 @@ test(
     expect(differentIndex).toBeGreaterThan(fleetIndex);
 
     await expect(page.getByRole('heading', { name: 'Husqvarna TE 300' })).toBeVisible();
-    await expect(page.getByText('300cc')).toBeVisible();
+    await expect(page.getByText('300cc', { exact: true })).toBeVisible();
     await expect(page.getByText('Enduro', { exact: true })).toBeVisible();
     await expect(page.getByRole('heading', { name: 'Husqvarna Norden 901' })).toBeVisible();
     await expect(page.getByText('901cc')).toBeVisible();
-    await expect(page.getByText('Trail & Adventure')).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'BMW 1300 GS' })).toBeVisible();
+    await expect(page.getByText('1300cc')).toBeVisible();
+    await expect(page.getByText('Trail & Adventure')).toHaveCount(2);
   },
 );
 
 test(
-  '/es/about muestra "Nuestra flota" con las 2 motos y categorías en español',
+  '/es/about muestra "Nuestra flota" con las 3 motos y categorías en español',
   { tag: ['@f1'] },
   async ({ page }) => {
     await page.goto('/es/about/');
@@ -92,15 +98,17 @@ test(
     expect(differentIndex).toBeGreaterThan(fleetIndex);
 
     await expect(page.getByRole('heading', { name: 'Husqvarna TE 300' })).toBeVisible();
-    await expect(page.getByText('300cc')).toBeVisible();
+    await expect(page.getByText('300cc', { exact: true })).toBeVisible();
     await expect(page.getByRole('heading', { name: 'Husqvarna Norden 901' })).toBeVisible();
     await expect(page.getByText('901cc')).toBeVisible();
-    await expect(page.getByText('Trail y Aventura')).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'BMW 1300 GS' })).toBeVisible();
+    await expect(page.getByText('1300cc')).toBeVisible();
+    await expect(page.getByText('Trail y Aventura')).toHaveCount(2);
   },
 );
 
 test(
-  '/de/about muestra "Unsere Flotte" con las 2 motos y categorías en alemán',
+  '/de/about muestra "Unsere Flotte" con las 3 motos y categorías en alemán',
   { tag: ['@f1'] },
   async ({ page }) => {
     await page.goto('/de/about/');
@@ -113,9 +121,11 @@ test(
     expect(differentIndex).toBeGreaterThan(fleetIndex);
 
     await expect(page.getByRole('heading', { name: 'Husqvarna TE 300' })).toBeVisible();
-    await expect(page.getByText('300cc')).toBeVisible();
+    await expect(page.getByText('300cc', { exact: true })).toBeVisible();
     await expect(page.getByRole('heading', { name: 'Husqvarna Norden 901' })).toBeVisible();
     await expect(page.getByText('901cc')).toBeVisible();
-    await expect(page.getByText('Trail & Abenteuer')).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'BMW 1300 GS' })).toBeVisible();
+    await expect(page.getByText('1300cc')).toBeVisible();
+    await expect(page.getByText('Trail & Abenteuer')).toHaveCount(2);
   },
 );

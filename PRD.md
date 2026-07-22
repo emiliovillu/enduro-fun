@@ -147,7 +147,7 @@ El enduro tourism en Andalucía es un nicho creciente, impulsado por el clima fa
 
 ### 6.4 Fuentes de diseño
 
-- Design system: proyecto Claude Design **"EnduroFun Design System"** (`8ee30e13-2372-49e4-ba6f-2692bc1a6af5`) — tokens, componentes (`Button`, `Badge`, `PackageCard`, `ReviewCard`, `SectionHeading`, `Header`, `Footer`, `LanguageSwitcher`, `Icon`, `MapEmbed`, `Lightbox`, `FleetCard`), guidelines de marca. `Lightbox` (TD.11) y `FleetCard` (TD.12, tarjeta de moto de la flota — nombre/cilindrada/categoría/foto — para la sección "Nuestra flota" de About) se añadieron tras el lanzamiento inicial, hotfixes a petición directa del usuario (ver journal) — mismo patrón que Gallery en D12.
+- Design system: proyecto Claude Design **"EnduroFun Design System"** (`8ee30e13-2372-49e4-ba6f-2692bc1a6af5`) — tokens, componentes (`Button`, `Badge`, `PackageCard`, `ReviewCard`, `SectionHeading`, `Header`, `Footer`, `LanguageSwitcher`, `Icon`, `MapEmbed`, `Lightbox`, `FleetCard`), guidelines de marca. `Lightbox` (TD.11) y `FleetCard` (TD.12, tarjeta de moto de la flota — nombre/cilindrada/categoría/foto — para la sección "Nuestra flota" de About) se añadieron tras el lanzamiento inicial, hotfixes a petición directa del usuario (ver journal) — mismo patrón que Gallery en D12. La flota pasó de 2 a 3 motos (BMW 1300 GS añadida 2026-07-23, ver planning.md TD.12) reutilizando el mismo `FleetCard` sin cambios de contrato.
 - Mockups: proyecto Claude Design **"EnduroFun Pages"** (`07ce2c66-a9a4-4636-ad05-ea1746fa94f9`) — dos variantes de Home fueron evaluadas (A "Cinemática": hero foto/vídeo a pantalla completa, header transparente; B "Editorial": hero partido, header sólido). **Elegida: Variante A (Cinemática)** — la tarea de Home parte de `HomeVariantA.jsx` de ese proyecto.
 
 ## 7. Contenido multilingüe y estructura de datos
@@ -174,7 +174,7 @@ Invariantes:
 | `/[locale]` | Home | Hero (foto/vídeo), tagline, CTA a paquetes/contacto, preview de 2-3 paquetes, 2-3 reviews destacadas, mapa de ubicación |
 | `/[locale]/gallery` | Galería | Grid de 5 columnas con scroll infinito de fotos del terreno (placeholder hasta que haya fotos reales) — hotfix, no prevista en el diseño original, añadida a petición directa del usuario (ver journal) |
 | `/[locale]/packages` | Paquetes | Todas las cards de paquetes con precio y detalle completo; nota de oferta personalizada |
-| `/[locale]/about` | Sobre nosotros | Historia de la empresa/guías, "Nuestra flota" (motos Husqvarna: TE 300 para enduro, Norden 901 para trail/aventura — hotfix, TD.12, ver journal), qué la hace especial (conocimiento local, terreno variado, oferta cultural), niveles de experiencia aceptados |
+| `/[locale]/about` | Sobre nosotros | Historia de la empresa/guías, "Nuestra flota" (motos: Husqvarna TE 300 para enduro, Husqvarna Norden 901 y BMW 1300 GS para trail/aventura — hotfix, TD.12, ver journal; BMW añadida 2026-07-23, cambio de alcance menor), qué la hace especial (conocimiento local, terreno variado, oferta cultural), niveles de experiencia aceptados |
 | `/[locale]/contact` | Contacto | Formulario (nombre, email, mensaje) → Formspree; texto invitando a pedir presupuesto personalizado; mapa embebido |
 | `/[locale]/reviews` | Reviews | 4-6 testimonios (datos inventados en v1) |
 

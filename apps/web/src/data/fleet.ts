@@ -1,8 +1,10 @@
 import { FleetBikeSchema, type FleetBike, type Messages } from '@app/core/contracts';
 
 // Datos reales de la flota (TD.12, aportados por el usuario — NO SE
-// INVENTAN NI SE CAMBIAN): 2 motos, Husqvarna TE 300 (enduro, 300cc) y
-// Husqvarna Norden 901 (trail/aventura, 901cc). Mismo patrón que
+// INVENTAN NI SE CAMBIAN): Husqvarna TE 300 (enduro, 300cc), Husqvarna
+// Norden 901 (trail/aventura, 901cc) y BMW 1300 GS (trail/aventura, 1300cc —
+// añadida 2026-07-23, misma categoría que la Norden 901, ver planning.md
+// TD.12 nota de cambio de alcance menor). Mismo patrón que
 // `apps/web/src/data/packages.ts`: `RAW_X` + `.map(Schema.parse)` a nivel de
 // MÓDULO — un dato con una traducción que falte una clave de
 // `LocalizedTextSchema` rompe el build, no solo el render (control negativo
@@ -34,6 +36,17 @@ const RAW_FLEET: FleetBike[] = [
       en: 'Long-distance comfort for open trails and multi-day touring.',
       es: 'Comodidad para largas distancias en pistas abiertas y rutas de varios días.',
       de: 'Komfort für lange Strecken auf offenen Pisten und mehrtägige Touren.',
+    },
+  },
+  {
+    id: 'bmw-1300-gs',
+    name: 'BMW 1300 GS',
+    displacementCc: 1300,
+    category: 'trail-adventure',
+    description: {
+      en: 'Flagship adventure tourer for effortless miles between routes.',
+      es: 'Adventure tourer insignia para kilómetros sin esfuerzo entre rutas.',
+      de: 'Flaggschiff-Adventure-Tourer für mühelose Kilometer zwischen den Routen.',
     },
   },
 ];

@@ -191,6 +191,15 @@ const FLEET_CARD_ROWS: { label: string; props: React.ComponentProps<typeof Fleet
       description: 'Long-distance comfort for open trails and multi-day touring.',
     },
   },
+  {
+    label: 'trail-adventure',
+    props: {
+      name: 'BMW 1300 GS',
+      displacementCc: 1300,
+      categoryLabel: 'Trail & Adventure',
+      description: 'Flagship adventure tourer for effortless miles between routes.',
+    },
+  },
 ];
 
 const REVIEW_CARD_ROWS: { label: string; props: React.ComponentProps<typeof ReviewCard> }[] = [
