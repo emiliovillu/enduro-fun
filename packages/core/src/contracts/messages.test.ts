@@ -108,7 +108,7 @@ const validMessages = {
     eyebrow: 'Gallery',
     title: 'A taste of the terrain',
     intro: 'A closer look at the trails and terrain around Álora.',
-    placeholderLabelTemplate: 'Photo placeholder — route {n}',
+    photoAltTemplate: 'Enduro trail photo {n}',
     loadingLabel: 'Loading more photos',
   },
 };

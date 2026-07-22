@@ -44,7 +44,7 @@ export default async function GalleryPage({ params }: { params: Promise<{ locale
 
       <section className="mx-auto max-w-[var(--container-max)] px-5 pb-24 sm:px-8">
         <GalleryGrid
-          placeholderLabelTemplate={gallery.placeholderLabelTemplate}
+          photoAltTemplate={gallery.photoAltTemplate}
           loadingLabel={gallery.loadingLabel}
         />
       </section>

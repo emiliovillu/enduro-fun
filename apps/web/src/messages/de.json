@@ -123,7 +123,7 @@
     "eyebrow": "Galerie",
     "title": "Ein Vorgeschmack auf das Gelände",
     "intro": "Ein genauerer Blick auf die Trails und das Gelände rund um Álora — staubige Singletrails, felsige Anstiege und offene Forstwege.",
-    "placeholderLabelTemplate": "Fotoplatzhalter — Route {n}",
+    "photoAltTemplate": "Enduro-Trail-Foto {n}",
     "loadingLabel": "Weitere Fotos werden geladen"
   }
 }

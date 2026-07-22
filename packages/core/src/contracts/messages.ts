@@ -168,19 +168,18 @@ export const MessagesSchema = z.object({
       text: z.string().min(1),
     }),
   }),
-  // Hotfix (petición directa del usuario): página nueva /gallery, grid de 5
-  // columnas con scroll infinito de fotos placeholder (mismo criterio
-  // tokenizado que el resto del sitio — sin fotos reales todavía).
-  // `placeholderLabelTemplate` reusa el patrón `{n}` de interpolación
+  // Hotfix (petición directa del usuario): página /gallery, grid de 5
+  // columnas con scroll infinito sobre las fotos reales subidas por el
+  // usuario. `photoAltTemplate` reusa el patrón `{n}` de interpolación
   // manual ya usado en `home.packages.durationTemplate` (`{nights}`/
-  // `{days}`) — cada tarjeta placeholder interpola su propio índice.
+  // `{days}`) — cada foto interpola su propio índice en el `alt`.
   // `loadingLabel` es el texto accesible (`aria-live`) del spinner que
   // aparece al cargar la siguiente tanda.
   gallery: z.object({
     eyebrow: z.string().min(1),
     title: z.string().min(1),
     intro: z.string().min(1),
-    placeholderLabelTemplate: z.string().min(1),
+    photoAltTemplate: z.string().min(1),
     loadingLabel: z.string().min(1),
   }),
 });

@@ -123,7 +123,7 @@
     "eyebrow": "Galería",
     "title": "Una muestra del terreno",
     "intro": "Un vistazo más de cerca a los senderos y el terreno de los alrededores de Álora — singletrack polvoriento, subidas rocosas y pistas forestales abiertas.",
-    "placeholderLabelTemplate": "Foto de ejemplo — ruta {n}",
+    "photoAltTemplate": "Foto de ruta de enduro {n}",
     "loadingLabel": "Cargando más fotos"
   }
 }
