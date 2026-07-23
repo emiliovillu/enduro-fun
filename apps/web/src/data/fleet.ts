@@ -53,6 +53,23 @@ const RAW_FLEET: FleetBike[] = [
 
 export const FLEET: FleetBike[] = RAW_FLEET.map((bike) => FleetBikeSchema.parse(bike));
 
+// Foto real de la Norden 901 (petición directa del usuario 2026-07-23,
+// `apps/web/public/fleet/norden-901.avif`, mismo pipeline `sharp`/AVIF que
+// Gallery/About: `rotate()` + `avif({quality: 50, effort: 6})`, ~73KB).
+// Vive fuera de `FleetBikeSchema` a propósito: `imageSlot` de `FleetCard` es
+// un string CSS `background` no-tokenizable (design-system.md §3.1), no un
+// dato de dominio — mismo criterio que separa `fleetCategoryLabel` del
+// contrato Zod. `50% 80%` de posición porque la foto es una fila de motos en
+// un almacén; ese recorte deja el depósito con la serigrafía "NORDEN 901" en
+// primer plano en vez del manillar/espejos de arriba.
+const FLEET_IMAGES: Partial<Record<FleetBike['id'], string>> = {
+  'norden-901': 'url(/fleet/norden-901.avif) 50% 80% / cover no-repeat',
+};
+
+export function fleetImageSlot(id: FleetBike['id']): string | undefined {
+  return FLEET_IMAGES[id];
+}
+
 // Mapeo enum→etiqueta traducida (`fleet-bike.ts` cita `status-class.ts` como
 // precedente de "la agrupación enum→texto vive en UN sitio" — este es ESE
 // sitio, no un `const` local a `about/page.tsx`: `design-system/page.tsx`

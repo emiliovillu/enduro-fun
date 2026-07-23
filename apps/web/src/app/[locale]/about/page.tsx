@@ -6,7 +6,7 @@ import { Footer } from '@/components/ui/footer';
 import { Header } from '@/components/ui/header';
 import { Icon } from '@/components/ui/icon';
 import { SectionHeading } from '@/components/ui/section-heading';
-import { FLEET, fleetCategoryLabel } from '@/data/fleet';
+import { FLEET, fleetCategoryLabel, fleetImageSlot } from '@/data/fleet';
 import { getMessages } from '@/i18n/messages';
 
 // About real (T1.2, F1). Mockup acordado con el usuario al iniciar esta
@@ -52,9 +52,11 @@ import { getMessages } from '@/i18n/messages';
 // texto+foto). Datos reales (`apps/web/src/data/fleet.ts`, NO inventados).
 // Grid `sm:grid-cols-2 lg:grid-cols-3` (cambio de alcance menor 2026-07-23,
 // ver planning.md TD.12: se amplió de 2 a 3 columnas al añadir la BMW 1300
-// GS — 2 columnas dejaba la 3ª card sola en su fila). `imageSlot` no se pasa
-// (sin fotos reales todavía) — usa el degradado de fallback tokenizado de
-// `FleetCard`, igual que el resto de placeholders de esta página.
+// GS — 2 columnas dejaba la 3ª card sola en su fila). `imageSlot` (vía
+// `fleetImageSlot`, `data/fleet.ts`) da foto real solo a la Norden 901
+// (petición directa del usuario 2026-07-23) — TE 300 y BMW 1300 GS siguen
+// con el degradado de fallback tokenizado de `FleetCard` hasta que haya foto
+// real de esas motos también.
 export default async function AboutPage({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
   const messages = getMessages(locale);
@@ -125,6 +127,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
               displacementCc={bike.displacementCc}
               categoryLabel={fleetCategoryLabels[bike.category]}
               description={bike.description[locale]}
+              imageSlot={fleetImageSlot(bike.id)}
             />
           ))}
         </div>
