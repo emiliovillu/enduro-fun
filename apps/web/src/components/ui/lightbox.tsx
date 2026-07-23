@@ -47,15 +47,42 @@ import { Icon } from './icon';
 // forma natural sin distorsión, y el `<img>` renderizado ocupa solo el
 // espacio real que pinta (no toda la caja del Popup), así que el margen
 // alrededor sigue siendo clicable como "fuera de la imagen".
+//
+// TD.13 — navegación anterior/siguiente: `onPrev`/`onNext` son OPCIONALES a
+// propósito. Decisión de producto tomada en esta tarea: navegación SIN
+// wrap-around (no circular). El caller (`GalleryGrid`) calcula si hay foto
+// anterior/siguiente y pasa `undefined` en el extremo correspondiente
+// (primera foto → sin `onPrev`; última → sin `onNext`); el botón entonces NO
+// SE RENDERIZA (en vez de renderizarse `disabled`) — mismo patrón que usaría
+// cualquier consumidor futuro de este componente agnóstico de dominio, sin
+// que `Lightbox` necesite saber cuántas fotos hay en total.
+// Teclado: `ArrowLeft`/`ArrowRight` disparan lo mismo que los botones,
+// cableados con un `onKeyDown` en el propio Popup — el foco sigue atrapado
+// dentro del diálogo por Base UI, este handler no interfiere con eso ni con
+// el cierre por `Escape` (que Base UI ya gestiona internamente).
 interface LightboxProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   src: string;
   alt: string;
   closeLabel: string;
+  onPrev?: () => void;
+  onNext?: () => void;
+  prevLabel: string;
+  nextLabel: string;
 }
 
-export function Lightbox({ open, onOpenChange, src, alt, closeLabel }: LightboxProps) {
+export function Lightbox({
+  open,
+  onOpenChange,
+  src,
+  alt,
+  closeLabel,
+  onPrev,
+  onNext,
+  prevLabel,
+  nextLabel,
+}: LightboxProps) {
   return (
     <DialogPrimitive.Root open={open} onOpenChange={onOpenChange}>
       <DialogPrimitive.Portal>
@@ -70,6 +97,15 @@ export function Lightbox({ open, onOpenChange, src, alt, closeLabel }: LightboxP
           onClick={(event) => {
             if (event.target === event.currentTarget) onOpenChange(false);
           }}
+          onKeyDown={(event) => {
+            if (event.key === 'ArrowLeft' && onPrev) {
+              event.preventDefault();
+              onPrev();
+            } else if (event.key === 'ArrowRight' && onNext) {
+              event.preventDefault();
+              onNext();
+            }
+          }}
           className="fixed inset-6 z-50 flex items-center justify-center outline-none sm:inset-10"
         >
           <DialogPrimitive.Close
@@ -79,6 +115,28 @@ export function Lightbox({ open, onOpenChange, src, alt, closeLabel }: LightboxP
           >
             <Icon name="x" size={24} />
           </DialogPrimitive.Close>
+          {onPrev ? (
+            <button
+              type="button"
+              data-slot="lightbox-prev"
+              aria-label={prevLabel}
+              onClick={onPrev}
+              className="fixed top-1/2 left-4 z-50 flex size-10 -translate-y-1/2 items-center justify-center text-text-on-dark transition-colors duration-150 ease-standard hover:text-text-on-dark-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring sm:left-6"
+            >
+              <Icon name="chevron-left" size={28} />
+            </button>
+          ) : null}
+          {onNext ? (
+            <button
+              type="button"
+              data-slot="lightbox-next"
+              aria-label={nextLabel}
+              onClick={onNext}
+              className="fixed top-1/2 right-4 z-50 flex size-10 -translate-y-1/2 items-center justify-center text-text-on-dark transition-colors duration-150 ease-standard hover:text-text-on-dark-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring sm:right-6"
+            >
+              <Icon name="chevron-right" size={28} />
+            </button>
+          ) : null}
           <Image
             src={src}
             alt={alt}

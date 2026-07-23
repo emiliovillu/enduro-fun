@@ -40,12 +40,16 @@ interface GalleryGridProps {
   photoAltTemplate: string;
   loadingLabel: string;
   lightboxCloseLabel: string;
+  lightboxPrevLabel: string;
+  lightboxNextLabel: string;
 }
 
 export function GalleryGrid({
   photoAltTemplate,
   loadingLabel,
   lightboxCloseLabel,
+  lightboxPrevLabel,
+  lightboxNextLabel,
 }: GalleryGridProps) {
   const [count, setCount] = useState(Math.min(INITIAL_COUNT, TOTAL_PHOTOS));
   const [loading, setLoading] = useState(false);
@@ -123,6 +127,31 @@ export function GalleryGrid({
         src={photoSrc(openIndex ?? 0)}
         alt={photoAltTemplate.replace('{n}', String((openIndex ?? 0) + 1))}
         closeLabel={lightboxCloseLabel}
+        // TD.13 — navegación anterior/siguiente: sin wrap-around. Los límites
+        // son las 122 fotos reales (TOTAL_PHOTOS), no `count` (las ya
+        // cargadas en el grid): el fichero AVIF de cualquier foto existe
+        // igualmente aunque su miniatura todavía no se haya renderizado por
+        // el scroll infinito, así que navegar más allá de `count` es válido.
+        // El callback captura `openIndex` directamente (sin updater funcional
+        // ni re-chequeo de límites): solo existe mientras la condición del
+        // ternario es cierta, y cada render con `openIndex` distinto recrea
+        // la función — no hay estado obsoleto que defenderse.
+        onPrev={
+          openIndex !== null && openIndex > 0
+            ? () => {
+                setOpenIndex(openIndex - 1);
+              }
+            : undefined
+        }
+        onNext={
+          openIndex !== null && openIndex < TOTAL_PHOTOS - 1
+            ? () => {
+                setOpenIndex(openIndex + 1);
+              }
+            : undefined
+        }
+        prevLabel={lightboxPrevLabel}
+        nextLabel={lightboxNextLabel}
       />
 
       {count < TOTAL_PHOTOS ? (

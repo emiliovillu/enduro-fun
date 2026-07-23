@@ -117,6 +117,8 @@ const validMessages = {
     photoAltTemplate: 'Enduro trail photo {n}',
     loadingLabel: 'Loading more photos',
     lightboxCloseLabel: 'Close image viewer',
+    lightboxPrevLabel: 'Previous photo',
+    lightboxNextLabel: 'Next photo',
   },
 };
 
@@ -204,6 +206,26 @@ describe('MessagesSchema', () => {
     const result = MessagesSchema.safeParse({
       ...validMessages,
       gallery: galleryWithoutCloseLabel,
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it('rechaza si falta la clave gallery.lightboxPrevLabel (control negativo, TD.13)', () => {
+    const { lightboxPrevLabel: _lightboxPrevLabel, ...galleryWithoutPrevLabel } =
+      validMessages.gallery;
+    const result = MessagesSchema.safeParse({
+      ...validMessages,
+      gallery: galleryWithoutPrevLabel,
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it('rechaza si falta la clave gallery.lightboxNextLabel (control negativo, TD.13)', () => {
+    const { lightboxNextLabel: _lightboxNextLabel, ...galleryWithoutNextLabel } =
+      validMessages.gallery;
+    const result = MessagesSchema.safeParse({
+      ...validMessages,
+      gallery: galleryWithoutNextLabel,
     });
     expect(result.success).toBe(false);
   });

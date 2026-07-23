@@ -26,6 +26,8 @@ const ICON_PATHS = {
     'M2 12a10 10 0 0 1 20 0 10 10 0 0 1-20 0',
   ],
   chevronDown: ['M6 9l6 6 6-6'],
+  'chevron-left': ['M15 6l-6 6 6 6'],
+  'chevron-right': ['M9 6l6 6-6 6'],
   bike: [
     'M5 16a3 3 0 1 0 0 6 3 3 0 0 0 0-6z', // rueda trasera
     'M18 16.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5z', // rueda delantera (ligeramente menor)

@@ -120,6 +120,8 @@ const ICON_NAMES: IconName[] = [
   'menu',
   'x',
   'chevronDown',
+  'chevron-left',
+  'chevron-right',
 ];
 
 const SECTION_HEADING_ROWS: {
@@ -449,7 +451,7 @@ export default function DesignSystemPage() {
         </div>
       </div>
 
-      <SubHeading>Lightbox — visor a pantalla completa (TD.11)</SubHeading>
+      <SubHeading>Lightbox — visor a pantalla completa (TD.11, TD.13)</SubHeading>
       <p className="mb-4 text-small text-text-secondary">
         Referencia:{' '}
         <code className="font-mono">docs/design-system/components/media/Lightbox.*</code>. Gap del
@@ -457,7 +459,10 @@ export default function DesignSystemPage() {
         <code className="font-mono">--charcoal-900</code>,{' '}
         <code className="font-mono">--radius-lg</code>,{' '}
         <code className="font-mono">--shadow-lg</code>) y subido a Claude Design en la misma tarea.
-        Cierra con el botón, con click en el scrim fuera de la foto, o con Escape.
+        Cierra con el botón, con click en el scrim fuera de la foto, o con Escape. Flechas
+        anterior/siguiente (TD.13, sin wrap-around): recorren 3 fotos de demo con ratón, teclado (
+        <code className="font-mono">ArrowLeft</code>/<code className="font-mono">ArrowRight</code>)
+        o ambos.
       </p>
       <LightboxShowcase />
 

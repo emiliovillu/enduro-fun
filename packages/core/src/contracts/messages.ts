@@ -205,6 +205,10 @@ export const MessagesSchema = z.object({
     // botón de cerrar); la propia entrada del planning es explícita en que
     // no hay más copy que traducir en el visor.
     lightboxCloseLabel: z.string().min(1),
+    // TD.13 — flechas de navegación anterior/siguiente del Lightbox: mismo
+    // patrón que lightboxCloseLabel (aria-label del botón, sin texto visible).
+    lightboxPrevLabel: z.string().min(1),
+    lightboxNextLabel: z.string().min(1),
   }),
 });
 

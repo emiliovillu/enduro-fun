@@ -157,3 +157,81 @@ test(
     }
   },
 );
+
+// TD.13 — navegación anterior/siguiente: flechas de ratón + teclado
+// (ArrowLeft/ArrowRight), sin wrap-around (primera/última foto sin el botón
+// correspondiente).
+test('el botón "siguiente" avanza a la foto correcta', { tag: ['@f1'] }, async ({ page }) => {
+  await page.goto('/en/gallery/');
+
+  await page.getByRole('button', { name: 'Enduro trail photo 5', exact: true }).click();
+  const dialog = page.getByRole('dialog');
+  await expect(dialog.getByAltText('Enduro trail photo 5', { exact: true })).toBeVisible();
+
+  await page.getByRole('button', { name: 'Next photo' }).click();
+  await expect(dialog.getByAltText('Enduro trail photo 6', { exact: true })).toBeVisible();
+});
+
+test('el botón "anterior" retrocede a la foto correcta', { tag: ['@f1'] }, async ({ page }) => {
+  await page.goto('/en/gallery/');
+
+  await page.getByRole('button', { name: 'Enduro trail photo 5', exact: true }).click();
+  const dialog = page.getByRole('dialog');
+
+  await page.getByRole('button', { name: 'Previous photo' }).click();
+  await expect(dialog.getByAltText('Enduro trail photo 4', { exact: true })).toBeVisible();
+});
+
+test(
+  'ArrowRight y ArrowLeft del teclado navegan igual que los botones, sin perder el foco atrapado',
+  { tag: ['@f1'] },
+  async ({ page }) => {
+    await page.goto('/en/gallery/');
+
+    await page.getByRole('button', { name: 'Enduro trail photo 5', exact: true }).click();
+    const dialog = page.getByRole('dialog');
+    await expect(dialog).toBeVisible();
+
+    await page.keyboard.press('ArrowRight');
+    await expect(dialog.getByAltText('Enduro trail photo 6', { exact: true })).toBeVisible();
+
+    await page.keyboard.press('ArrowLeft');
+    await expect(dialog.getByAltText('Enduro trail photo 5', { exact: true })).toBeVisible();
+
+    // Foco sigue dentro del lightbox tras navegar por teclado (no escapó al
+    // resto de la página).
+    const focusTrapped = await page.evaluate(() => {
+      const el = document.activeElement;
+      if (!el) return false;
+      if (el.closest('[data-slot="lightbox"]')) return true;
+      return 'baseUiFocusGuard' in (el as HTMLElement).dataset;
+    });
+    expect(focusTrapped).toBe(true);
+  },
+);
+
+test(
+  'la primera foto no tiene botón "anterior" y la última no tiene botón "siguiente"',
+  { tag: ['@f1'] },
+  async ({ page }) => {
+    await page.goto('/en/gallery/');
+
+    await page.getByRole('button', { name: 'Enduro trail photo 1', exact: true }).click();
+    await expect(page.getByRole('dialog')).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Previous photo' })).toHaveCount(0);
+    await expect(page.getByRole('button', { name: 'Next photo' })).toBeVisible();
+    await page.keyboard.press('Escape');
+
+    await page.getByRole('button', { name: 'Enduro trail photo 1', exact: true }).click();
+    // Navega desde la foto 1 hasta la última (122) pulsando ArrowRight 121
+    // veces: comprueba el límite superior real sin depender de que el grid
+    // ya haya cargado esa miniatura (el scroll infinito solo carga 25-40).
+    for (let i = 0; i < 121; i += 1) {
+      await page.keyboard.press('ArrowRight');
+    }
+    const dialog = page.getByRole('dialog');
+    await expect(dialog.getByAltText('Enduro trail photo 122', { exact: true })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Next photo' })).toHaveCount(0);
+    await expect(page.getByRole('button', { name: 'Previous photo' })).toBeVisible();
+  },
+);
