@@ -29,6 +29,14 @@ import { getMessages } from '@/i18n/messages';
 // porque el contenedor ya fija el tamaño. `alt` traducido en
 // `messages.about.story.photoAlt`.
 //
+// Recorte descentrado reportado por el usuario 2026-07-23 (foto retrato
+// 1047×1400 dentro de una caja apaisada — el centrado por defecto de
+// `object-cover` dejaba el casco cortado arriba y el pulgar dominando la
+// composición): `objectPosition: '50% 25%'` vía `style` (no `className`
+// arbitrario — el lint del DS prohíbe valores crudos en clases, ver
+// `design-system.md` §3.1) desplaza el recorte hacia arriba para mostrar
+// casco y cara completos.
+//
 // Iconos de "What makes us different": el mockup deja el círculo vacío
 // (decorativo, `background: var(--accent-primary)` sin contenido) — aquí
 // se sustituye por un `Icon` real donde el registro (`components/ui/icon`)
@@ -102,6 +110,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
             fill
             sizes="(min-width: 1024px) 50vw, 100vw"
             className="object-cover"
+            style={{ objectPosition: '50% 25%' }}
           />
         </div>
       </section>
