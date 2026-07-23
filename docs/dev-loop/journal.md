@@ -497,3 +497,10 @@
 - Verificado con `curl`: `https://endurofun.eu/`, `/en/`, `/es/`, `/de/` y `https://www.endurofun.eu/` sirven el sitio real (200, `<title>EnduroFun</title>`) con TLS válido (`CN=endurofun.eu`, `SSL certificate verify ok.`).
 - El pendiente explícito anotado en el cierre de T0.3 ("Custom Domain pendiente de activación de zona, para T3.4") queda resuelto aquí — no hace falta re-tocarlo en el cierre de F3. `planning.md` y `DEPLOY.md` actualizados en consecuencia.
 - Deuda que sigue viva (sin cambios): `<html lang>` fijo en "en" en las 3 rutas (candidata a T3.2).
+
+## 2026-07-23 · Añadida TD.13 (navegación anterior/siguiente en el Lightbox de Gallery)
+- El usuario pidió añadir flechas de navegación en la vista ampliada de las fotos de Gallery (Lightbox, TD.11) para recorrer las fotos sin cerrar el visor.
+- Mismo patrón de scope-change que TD.8-TD.12: modifica un componente ya cerrado del design system, así que se formaliza como tarea (diseño primero en Claude Design → DesignSync → implementer+verifier), no como hotfix conversacional.
+- Formalizada como **TD.13** (depende de TD.11) en `planning.md` + PRD §6.4 anotado. Documentado en la propia tarea el estado del código relevante (`openIndex` ya existe en `gallery-grid.tsx`, `Lightbox` es props planas sin `@app/core`) para que el implementer no tenga que releer todo desde cero.
+- Decisiones dejadas abiertas A PROPÓSITO para cuando se implemente (no zanjadas aquí): navegación circular vs. con límites en los extremos, nombre exacto del glifo de flecha si no hay uno adecuado en el registro de `Icon`.
+- No bloquea nada en curso (T1.3 sigue con su pendiente de usuario). Queda lista para `/dev-loop task TD.13`.
