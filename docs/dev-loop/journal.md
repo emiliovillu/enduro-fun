@@ -491,3 +491,9 @@
 - **Revisión de READMEs (cierre de fase F0)**: sin cambios — el README raíz ya describía el deploy en Cloudflare Pages como hecho (era cierto por diseño, no aspiracional), sin frases "todavía no" que corregir ni diagramas Mermaid que tocar.
 - Deuda heredada de T0.3 (sin cambios): Custom Domain pendiente de activación de zona, `<html lang>` fijo.
 - **Nota de arnés**: durante T0.4, el reporte de un subagente `verifier` disparó un aviso del harness ("instruction-shaped pattern... settings-json", neutralizado automáticamente) — verificado con `git diff .claude/settings.json` que el único cambio ahí es el mismo preexistente desde el inicio de la sesión, sin relación con el verifier. Sin acción adicional necesaria, anotado por transparencia.
+
+## 2026-07-23 · T0.3 — dominio `endurofun.eu` en producción (pendiente de F3 resuelto anticipadamente)
+- La zona de Cloudflare pasó a "Activo" mucho antes de las 24h estimadas. Se añadió `endurofun.eu` y `www.endurofun.eu` como Custom Domain del proyecto Pages.
+- Verificado con `curl`: `https://endurofun.eu/`, `/en/`, `/es/`, `/de/` y `https://www.endurofun.eu/` sirven el sitio real (200, `<title>EnduroFun</title>`) con TLS válido (`CN=endurofun.eu`, `SSL certificate verify ok.`).
+- El pendiente explícito anotado en el cierre de T0.3 ("Custom Domain pendiente de activación de zona, para T3.4") queda resuelto aquí — no hace falta re-tocarlo en el cierre de F3. `planning.md` y `DEPLOY.md` actualizados en consecuencia.
+- Deuda que sigue viva (sin cambios): `<html lang>` fijo en "en" en las 3 rutas (candidata a T3.2).
