@@ -53,17 +53,29 @@ const RAW_FLEET: FleetBike[] = [
 
 export const FLEET: FleetBike[] = RAW_FLEET.map((bike) => FleetBikeSchema.parse(bike));
 
-// Foto real de la Norden 901 (petición directa del usuario 2026-07-23,
-// `apps/web/public/fleet/norden-901.avif`, mismo pipeline `sharp`/AVIF que
-// Gallery/About: `rotate()` + `avif({quality: 50, effort: 6})`, ~73KB).
-// Vive fuera de `FleetBikeSchema` a propósito: `imageSlot` de `FleetCard` es
-// un string CSS `background` no-tokenizable (design-system.md §3.1), no un
-// dato de dominio — mismo criterio que separa `fleetCategoryLabel` del
-// contrato Zod. `50% 80%` de posición porque la foto es una fila de motos en
-// un almacén; ese recorte deja el depósito con la serigrafía "NORDEN 901" en
-// primer plano en vez del manillar/espejos de arriba.
+// Fotos reales (peticiones directas del usuario, mismo pipeline `sharp`/AVIF
+// que Gallery/About: `rotate()` + `avif({quality: 50, effort: 6})`). Viven
+// fuera de `FleetBikeSchema` a propósito: `imageSlot` de `FleetCard` es un
+// string CSS `background` no-tokenizable (design-system.md §3.1), no un dato
+// de dominio — mismo criterio que separa `fleetCategoryLabel` del contrato
+// Zod.
+// - `norden-901.avif` (2026-07-23, ~73KB): foto de una fila de motos en un
+//   almacén; `50% 80%` deja el depósito con la serigrafía "NORDEN 901" en
+//   primer plano en vez del manillar/espejos de arriba.
+// - `te-300.avif` (2026-07-23, ~116KB): otra foto de almacén, sin tag EXIF
+//   de orientación — rotada 90° a mano (`rotate(90)`) antes de recodificar.
+//   INCIDENTE (ver journal 2026-07-23): `sharp('src').rotate(90)...avif()`
+//   directo escribe un `irot` en el contenedor AVIF que Chrome SÍ respeta
+//   (rota otra vez sobre unos píxeles que ya venían rotados) pero `sips`
+//   NO — el pipeline pasaba su propio control visual (herramientas de
+//   escritorio) mientras el sitio real servía la foto de lado. Fix: recodificar
+//   a PNG en un buffer intermedio (`.png().toBuffer()`) antes del `.avif()`
+//   final, para que el rotado quede horneado en los píxeles sin metadato de
+//   rotación que arrastrar. El centrado por defecto (`50% 50%`) deja el
+//   "7"/logo Husqvarna bien encuadrados, sin ajuste de posición.
 const FLEET_IMAGES: Partial<Record<FleetBike['id'], string>> = {
   'norden-901': 'url(/fleet/norden-901.avif) 50% 80% / cover no-repeat',
+  'te-300': 'url(/fleet/te-300.avif) center/cover no-repeat',
 };
 
 export function fleetImageSlot(id: FleetBike['id']): string | undefined {

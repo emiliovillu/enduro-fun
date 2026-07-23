@@ -53,10 +53,10 @@ import { getMessages } from '@/i18n/messages';
 // Grid `sm:grid-cols-2 lg:grid-cols-3` (cambio de alcance menor 2026-07-23,
 // ver planning.md TD.12: se amplió de 2 a 3 columnas al añadir la BMW 1300
 // GS — 2 columnas dejaba la 3ª card sola en su fila). `imageSlot` (vía
-// `fleetImageSlot`, `data/fleet.ts`) da foto real solo a la Norden 901
-// (petición directa del usuario 2026-07-23) — TE 300 y BMW 1300 GS siguen
-// con el degradado de fallback tokenizado de `FleetCard` hasta que haya foto
-// real de esas motos también.
+// `fleetImageSlot`, `data/fleet.ts`) da foto real a Norden 901 y TE 300
+// (peticiones directas del usuario 2026-07-23) — BMW 1300 GS sigue con el
+// degradado de fallback tokenizado de `FleetCard` hasta que haya foto real
+// de esa moto también.
 export default async function AboutPage({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
   const messages = getMessages(locale);
