@@ -1,0 +1,4 @@
+subject= /CN=enduro-fun.pages.dev
+issuer= /C=US/O=Google Trust Services/CN=WE1
+notBefore=Jul 23 15:41:44 2026 GMT
+notAfter=Oct 21 16:40:17 2026 GMT

@@ -60,7 +60,7 @@ El corazón de F0 aquí es distinto del template estándar: no hay base de datos
 - **Pendiente explícito para F3 (T3.4, no antes)**: la zona de Cloudflare para `endurofun.eu` aún no pasó a "Activo" en su chequeo interno (la delegación DNS real ya es correcta, confirmado con `dig +trace`, pero Cloudflare tarda hasta 24h en refrescar su propio estado) — el Custom Domain del proyecto Pages no se pudo añadir todavía. Cuando se active, añadir `endurofun.eu` (y `www`) como Custom Domain y re-verificar `https://endurofun.eu` con TLS válido.
 - **Deuda anotada** (hallazgo del verifier, fuera de alcance de esta tarea): `<html lang="...">` queda fijo en `"en"` en las 3 rutas de idioma pese a que el body sí cambia correctamente — pertenece a T0.1/T0.2 (ya cerradas), no a T0.3. Candidata a fix rápido en una tarea futura de i18n/SEO (p. ej. junto a T3.2).
 
-#### T0.4 · E2E de fase F0
+#### T0.4 · E2E de fase F0 [x] 2026-07-23 — PASS, ver docs/verifications/T0.4/
 - **Depende de**: T0.2, T0.3, TD.7
 - **Entrega**: ninguna — tarea de verificación pura.
 - **Verificación**: recorrido completo — `pnpm build && pnpm gate` verde; las 3 rutas de idioma sirven contenido placeholder correcto; push a `main` dispara deploy en Cloudflare Pages con éxito; la URL pública (Cloudflare o dominio si ya propagado) es accesible desde fuera y sirve HTTPS válido. Sin regresión de T0.1-T0.3.

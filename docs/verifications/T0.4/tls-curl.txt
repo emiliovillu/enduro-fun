@@ -1,0 +1,5 @@
+*  subject: CN=enduro-fun.pages.dev
+*  expire date: Oct 21 16:40:17 2026 GMT
+*  subjectAltName: host "enduro-fun.pages.dev" matched cert's "enduro-fun.pages.dev"
+*  issuer: C=US; O=Google Trust Services; CN=WE1
+*  SSL certificate verify ok.

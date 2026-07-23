@@ -1,0 +1,53 @@
+
+> endurofun@ build /Users/personal/Developer/enduro-fun
+> pnpm -r build
+
+(node:30202) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Scope: 2 of 3 workspace projects
+apps/web build$ next build
+apps/web build: ▲ Next.js 16.2.10 (Turbopack)
+apps/web build:   Creating an optimized production build ...
+apps/web build: ✓ Compiled successfully in 1629ms
+apps/web build:   Running TypeScript ...
+apps/web build:   Finished TypeScript in 2.2s ...
+apps/web build:   Collecting page data using 9 workers ...
+apps/web build:   Generating static pages using 9 workers (0/24) ...
+apps/web build:   Generating static pages using 9 workers (6/24) 
+apps/web build:   Generating static pages using 9 workers (12/24) 
+apps/web build:   Generating static pages using 9 workers (18/24) 
+apps/web build: ✓ Generating static pages using 9 workers (24/24) in 320ms
+apps/web build:   Finalizing page optimization ...
+apps/web build: Route (app)
+apps/web build: ┌ ○ /
+apps/web build: ├ ○ /_not-found
+apps/web build: ├ ● /[locale]
+apps/web build: │ ├ /en
+apps/web build: │ ├ /es
+apps/web build: │ └ /de
+apps/web build: ├ ● /[locale]/about
+apps/web build: │ ├ /en/about
+apps/web build: │ ├ /es/about
+apps/web build: │ └ /de/about
+apps/web build: ├ ● /[locale]/contact
+apps/web build: │ ├ /en/contact
+apps/web build: │ ├ /es/contact
+apps/web build: │ └ /de/contact
+apps/web build: ├ ● /[locale]/gallery
+apps/web build: │ ├ /en/gallery
+apps/web build: │ ├ /es/gallery
+apps/web build: │ └ /de/gallery
+apps/web build: ├ ● /[locale]/packages
+apps/web build: │ ├ /en/packages
+apps/web build: │ ├ /es/packages
+apps/web build: │ └ /de/packages
+apps/web build: ├ ● /[locale]/reviews
+apps/web build: │ ├ /en/reviews
+apps/web build: │ ├ /es/reviews
+apps/web build: │ └ /de/reviews
+apps/web build: ├ ○ /apple-icon.png
+apps/web build: ├ ○ /design-system
+apps/web build: └ ○ /icon.png
+apps/web build: ○  (Static)  prerendered as static content
+apps/web build: ●  (SSG)     prerendered as static HTML (uses generateStaticParams)
+apps/web build: Done
