@@ -72,4 +72,4 @@ Evita el paso 4-6 de arriba por completo — el dominio se queda gestionado 100%
 
 ## Estado
 
-Pendiente de que el usuario ejecute los pasos con credenciales propias (cuenta de Cloudflare/Vercel/Netlify, panel de Hostinger) — ninguno de los pasos de arriba es automatizable desde este entorno. Cuando el paso 4-8 (o equivalente) esté hecho, T0.3 se puede cerrar con su Verificación (`planning.md`).
+**Hecho (2026-07-23)** — Opción A completa: Cloudflare Pages conectado (`https://enduro-fun.pages.dev`), `endurofun.eu` con nameservers en Cloudflare, zona activa, y `endurofun.eu` + `www.endurofun.eu` añadidos como Custom Domain del proyecto Pages. `https://endurofun.eu` sirve el sitio real en los 3 idiomas con TLS válido. T0.3 (`planning.md`) cerrada.
