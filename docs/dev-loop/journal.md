@@ -426,3 +426,9 @@
 - `pnpm gate` verde + build real + 7/7 `about.spec.ts` verdes + verificación manual sirviendo `out/` (foto 200, referenciada en el HTML de `/en/about/`).
 - Sin ciclo implementer/verifier (mismo criterio que la BMW 1300 GS: dato/asset nuevo sobre un componente ya existente, sin contrato nuevo que diseñar) — hecho directamente en conversación, gate + build + e2e como evidencia.
 - Añadida aserción a `about.spec.ts` (test EN) comprobando por `alt` que la foto real es visible — mismo criterio que Gallery, sin dejarlo como deuda al ser barato de cerrar en el momento.
+
+## 2026-07-23 · Cambio de alcance menor — recorte descentrado de la foto de "Nuestra historia"
+- El usuario reportó en conversación (con captura) que la foto real de "Our story" (añadida el mismo día, ver entrada anterior) se veía descentrada: el casco cortado por arriba y el pulgar dominando la composición.
+- Causa: la foto es retrato (1047×1400) dentro de una caja apaisada (`h-85`, ~2:1); `object-cover` con centrado por defecto recorta la banda vertical central de la imagen escalada, que cae por debajo del casco/cara.
+- Fix: `objectPosition: '50% 25%'` vía `style` en el `<Image>` (NO `className` arbitrario — el lint del DS lo prohíbe, `design-system.md` §3.1) para desplazar el recorte hacia arriba. Verificado visualmente con `agent-browser` contra el dev server: casco y cara completos, gesto de "OK" bien encuadrado.
+- `pnpm gate` verde + 7/7 `about.spec.ts` verdes. Sin ciclo implementer/verifier (mismo criterio que los hotfixes anteriores del día: ajuste de estilo sobre un asset/componente ya existente, sin contrato nuevo). Commit `c2e7373`.
