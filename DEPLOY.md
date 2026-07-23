@@ -3,8 +3,10 @@
 Sitio estático (`output: 'export'` en `apps/web/next.config.ts`, sin servidor Next que operar). Build:
 
 ```bash
-pnpm --filter apps/web build   # genera apps/web/out/
+pnpm --filter ./apps/web build   # genera apps/web/out/
 ```
+
+**Importante**: el filtro de pnpm necesita el prefijo `./` (`--filter ./apps/web`, no `--filter apps/web`) — sin él, pnpm interpreta `apps/web` como un nombre de paquete literal (no lo encuentra, ya que el paquete se llama `@app/web`), no ejecuta el build, y sale con código 0 igualmente ("No projects matched the filters"). Cloudflare Pages no lo detecta como error y despliega lo que haya en el output directory configurado — que si además apunta mal, acaba subiendo el repo entero en vez del sitio. Incidente real de la primera conexión (ver journal 2026-07-23).
 
 `apps/web/out/` es el directorio a servir en cualquiera de las opciones de abajo. Este proyecto **no usa** la skill `deploy` del arnés ni `deploy.env` (no hay VPS — ver PRD §10, planning.md T0.3): el despliegue es 100% vía CI del proveedor elegido, disparado por `git push` a `main`.
 
@@ -24,12 +26,12 @@ Fuentes: [Cloudflare Community — .eu TLD not supported at Cloudflare](https://
 No cambia nada de lo ya documentado en el proyecto; solo aclara el paso de DNS.
 
 1. **Cloudflare Pages ↔ GitHub**: Cloudflare dashboard → *Workers & Pages* → *Create* → *Pages* → *Connect to Git* → autorizar y elegir `emiliovillu/enduro-fun`.
-2. **Build config** del proyecto Pages:
-   - Framework preset: `Next.js (Static HTML Export)` (o "None" + comandos manuales, equivalente).
-   - Build command: `pnpm --filter apps/web build` (o `cd apps/web && pnpm build` según cómo detecte el monorepo).
+2. **Build config** del proyecto Pages (valores ya verificados funcionando, 2026-07-23):
+   - Framework preset: `Ninguno`.
+   - Build command: `pnpm --filter ./apps/web build` (con `./`, ver nota de arriba).
    - Build output directory: `apps/web/out`.
-   - Root directory: `/` (raíz del repo, para que `pnpm` vea el workspace).
-3. Cloudflare hace un primer deploy a una URL `*.pages.dev` — confirmar que carga antes de tocar DNS.
+   - Root directory: vacío / `/` (raíz del repo, para que `pnpm` vea el workspace `pnpm-workspace.yaml` + `packages/*`).
+3. Cloudflare hace un primer deploy a una URL `*.pages.dev` — confirmar que carga antes de tocar DNS. **Verificar de verdad la URL** (`curl -I` a `/`, `/en/`, `/favicon.ico` — deben dar `200`, no solo mirar el "¡Operación correcta!" del dashboard): un build que falla en silencio (p. ej. el filtro de pnpm sin `./` de la nota de arriba) o un output directory mal puesto puede desplegar con "éxito" mientras sirve el repo entero o nada, y el dashboard no lo distingue de un deploy correcto.
 4. **Añadir `endurofun.eu` como zona de Cloudflare** (esto es lo que la confusión del `.eu` bloqueaba mentalmente, pero no técnicamente):
    - Cloudflare dashboard → *Add a site* → `endurofun.eu` → plan **Free**.
    - Cloudflare escanea los registros DNS actuales de Hostinger (los importa) — revisar que estén todos antes de continuar (o recrearlos a mano si el escaneo se deja alguno).
