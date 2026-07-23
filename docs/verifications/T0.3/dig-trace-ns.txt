@@ -1,0 +1,40 @@
+
+; <<>> DiG 9.10.6 <<>> +trace endurofun.eu NS
+;; global options: +cmd
+.			61091	IN	NS	j.root-servers.net.
+.			61091	IN	NS	k.root-servers.net.
+.			61091	IN	NS	l.root-servers.net.
+.			61091	IN	NS	m.root-servers.net.
+.			61091	IN	NS	a.root-servers.net.
+.			61091	IN	NS	b.root-servers.net.
+.			61091	IN	NS	c.root-servers.net.
+.			61091	IN	NS	d.root-servers.net.
+.			61091	IN	NS	e.root-servers.net.
+.			61091	IN	NS	f.root-servers.net.
+.			61091	IN	NS	g.root-servers.net.
+.			61091	IN	NS	h.root-servers.net.
+.			61091	IN	NS	i.root-servers.net.
+.			61091	IN	RRSIG	NS 8 0 518400 20260731050000 20260718040000 57780 . G/Wsk5Ivb7UlzVO4EgbhkZ7Mj4Nv5JGMOdfXedjhy33y6f9JBfCKxVFS 1BsybXsA8TpNHHzfu6fVpDVHtNYYEL1Vf0jUQe0O4309c87t/PGRR61W IPf/PiRgpH4FRA+2owsjmr1AZTQRHe3qO22WsVLG5yEfWZ+TplTVYB5H H0pbEcjhudnW1vVnYBkWZ3a8Izb5b8QDg2kqmNqV3zsjRoNa+DZh/UZi hu0ANrjc7xss4AHBjPKyy9OqskC6xUFcVBi1E5ykF314wj9jY794jwoS J+09hQHRNOCTWnGbYvafHNBfNEZ5sUtiETjtgIyQH/I2as2DNGOQrLjZ gkDzrg==
+;; Received 1069 bytes from 46.6.113.34#53(46.6.113.34) in 16 ms
+
+eu.			172800	IN	NS	w.dns.eu.
+eu.			172800	IN	NS	x.dns.eu.
+eu.			172800	IN	NS	y.dns.eu.
+eu.			172800	IN	NS	be.dns.eu.
+eu.			172800	IN	NS	si.dns.eu.
+eu.			86400	IN	DS	35926 8 2 89B9EF0445904E7C6074B5BECE823C3E264FBD91C103D10BDE603412 343CE70C
+eu.			86400	IN	RRSIG	DS 8 1 86400 20260805050000 20260723040000 57780 . RjqaLn8/dlLcv0UCbiK/GhVR1MGOMIM/ORjV46QzokU4DcWdNodN88m3 2Q6BZRa9+u1qANIT/yc2SArlzv2H/BsuLTd1AeVLi87M5QZ/F3+YHwJJ CH4gNaARwSqmiUGm5eJIiIf6bSBmXUWZaZ5AHzqz26wotS/XSZF6fIF3 BqS3/6U1TMQhvOLSJ1GaBVFW5YdkIvbTj7mkxP4DxoEFsLQn799JW+KC GAqxf/DVgQGXLUsol91LnywpvxdNz1VgaJvpdiU0jaK9ORmRTURqozJf nKGokRi0lPOqy2S6DAJj13XRUERF3+BkQKofM/e77fNcB6i42FbVQ8eb Bnzd6g==
+;; Received 654 bytes from 192.5.5.241#53(f.root-servers.net) in 26 ms
+
+endurofun.eu.		86400	IN	NS	lilith.ns.cloudflare.com.
+endurofun.eu.		86400	IN	NS	byron.ns.cloudflare.com.
+CS7NL1V9TGTKJ2D4IPJVDFM81OHCDD0C.eu. 600 IN NSEC3 1 1 0 - CS7O73FD8I0TP1G4PJBDUI5OA3BJS55J  NS SOA RRSIG DNSKEY NSEC3PARAM TYPE65534
+CS7NL1V9TGTKJ2D4IPJVDFM81OHCDD0C.eu. 600 IN RRSIG NSEC3 8 2 600 20260725123429 20260718122333 5046 eu. EH8YeKgF2xz8NRJt5qe0Tkk/LeoghPeia8qTqA+CIqyO0sF8Z1TybNAt XXKGIPjZ3om5hTKYHBiqcG8KdKIyQG1UrIEsgm8bJks8nSVc07xMu7oq JocMtEii6crQO7rQBAxfY/CqCAOW854bZ2TylQnZLHx9rH1vX6AeK8/u txU=
+EPPIRQLFQ9UT6EOAI24A14GBMSRL16UT.eu. 600 IN NSEC3 1 1 0 - EPPMRF9SDHV1Q11C9E98HGDJU4C49UQ7  NS DS RRSIG
+EPPIRQLFQ9UT6EOAI24A14GBMSRL16UT.eu. 600 IN RRSIG NSEC3 8 2 600 20260727002355 20260719234217 5046 eu. WP/BkxMqcdru4vNBZm5ywGIMUIprTeAZUw8YNwPmY/PBMlMSt6urz0Kq grJhVUkrROmYyQ5WdldPoONCTFmK16dbuUkkDMEdkGACAq275ABpb+wS OAq65Me1suRFCv42vpAXDm3CyDfmhIELhKloR8JGyYnYvHBxY0Zj94Hj Isk=
+;; Received 616 bytes from 149.38.1.26#53(be.dns.eu) in 54 ms
+
+endurofun.eu.		86400	IN	NS	byron.ns.cloudflare.com.
+endurofun.eu.		86400	IN	NS	lilith.ns.cloudflare.com.
+;; Received 99 bytes from 172.64.34.143#53(lilith.ns.cloudflare.com) in 25 ms
+

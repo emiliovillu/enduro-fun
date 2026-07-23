@@ -1,0 +1,45 @@
+=== GET https://enduro-fun.pages.dev/ ===
+HTTP/2 200
+content-type: text/html; charset=utf-8
+server: cloudflare
+<title>EnduroFun</title>
+
+=== GET https://enduro-fun.pages.dev/en/ ===
+HTTP/2 200
+<title>EnduroFun</title>  body contains "Home"
+
+=== GET https://enduro-fun.pages.dev/es/ ===
+HTTP/2 200
+<title>EnduroFun</title>  body contains "Inicio"
+
+=== GET https://enduro-fun.pages.dev/de/ ===
+HTTP/2 200
+<title>EnduroFun</title>  body contains "Home" (DE nav label observed same as EN in this build, not part of T0.3 scope)
+
+=== GET https://enduro-fun.pages.dev/favicon.ico ===
+HTTP/2 200
+content-type: image/vnd.microsoft.icon
+
+=== Live content matches current HEAD (c97c789) ===
+GET /en/about/ contains "BMW 1300 GS" (TD.12, committed 4753e96) -> found
+GET /en/about/ img src contains "our-story.avif" (T1.2, committed 91a5637, latest app commit) -> found
+=> confirms the currently-served Pages deployment corresponds to the current tip of main, i.e. recent pushes to main did trigger successful rebuilds.
+
+=== dig +trace endurofun.eu NS (delegation from EURid root) ===
+endurofun.eu.  86400 IN NS lilith.ns.cloudflare.com.
+endurofun.eu.  86400 IN NS byron.ns.cloudflare.com.
+(received from y.dns.eu, then confirmed authoritative by byron.ns.cloudflare.com itself)
+
+=== dig @byron.ns.cloudflare.com endurofun.eu A (asking Cloudflare's own NS directly) ===
+172.67.210.233
+104.21.75.34
+(Cloudflare anycast IPs - the zone itself is configured in Cloudflare, proxied)
+
+=== dig endurofun.eu A (system default resolver, public propagation) ===
+88.222.222.38
+84.32.84.247
+(still Hostinger IPs - public resolver caches / global propagation not yet fully reflecting the NS delegation, consistent with Cloudflare dashboard showing zone as not-yet-Active)
+
+=== curl -I https://endurofun.eu/ (expected: NOT yet serving the site) ===
+HTTP/2 200 (Hostinger parked-domain page, title "Parked Domain name on Hostinger DNS system")
+=> Confirms domain does NOT yet serve the EnduroFun site - correctly still pending, Custom Domain not added to Cloudflare Pages project (blocked by Cloudflare's internal zone-active check).

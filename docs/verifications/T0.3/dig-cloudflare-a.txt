@@ -1,0 +1,23 @@
+
+; <<>> DiG 9.10.6 <<>> @byron.ns.cloudflare.com endurofun.eu A
+; (3 servers found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 60242
+;; flags: qr aa rd; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;endurofun.eu.			IN	A
+
+;; ANSWER SECTION:
+endurofun.eu.		300	IN	A	172.67.210.233
+endurofun.eu.		300	IN	A	104.21.75.34
+
+;; Query time: 70 msec
+;; SERVER: 162.159.44.67#53(162.159.44.67)
+;; WHEN: Thu Jul 23 19:32:59 CEST 2026
+;; MSG SIZE  rcvd: 73
+

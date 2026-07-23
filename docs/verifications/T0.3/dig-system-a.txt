@@ -1,0 +1,21 @@
+
+; <<>> DiG 9.10.6 <<>> endurofun.eu A
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 15177
+;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 512
+;; QUESTION SECTION:
+;endurofun.eu.			IN	A
+
+;; ANSWER SECTION:
+endurofun.eu.		245	IN	A	188.114.97.5
+endurofun.eu.		245	IN	A	188.114.96.5
+
+;; Query time: 11 msec
+;; SERVER: 46.6.113.34#53(46.6.113.34)
+;; WHEN: Thu Jul 23 19:32:59 CEST 2026
+;; MSG SIZE  rcvd: 73
+

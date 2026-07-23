@@ -48,15 +48,17 @@ El corazón de F0 aquí es distinto del template estándar: no hay base de datos
 - **Playwright permanente**: `apps/web/e2e/i18n.spec.ts` — navegar a `/`, `/es/`, `/de/` y comprobar que cada una sirve el idioma correcto; quitar una clave de `de.json` a propósito rompe el build (control negativo, se prueba con un test que invoca `pnpm build` sobre un fixture, no en Playwright).
 - **Verificación**: `pnpm build` genera `out/en/index.html`, `out/es/index.html`, `out/de/index.html`; abrir `/` en el navegador estático local redirige a `/en/`; editar un mensaje y comprobar que aparece traducido en los 3 idiomas tras rebuild. **Añadido por ajuste de alcance de TD.3** (ver journal 2026-07-17): con `LanguageSwitcher` ya construido (TD.3, vía TD.7), verificar aquí que clicar cada opción del switcher navega realmente a `/en`, `/es`, `/de` sobre una página con el componente montado.
 
-#### T0.3 · Pipeline de deploy en Cloudflare Pages ⚠
+#### T0.3 · Pipeline de deploy en Cloudflare Pages [x] 2026-07-23 — PASS, ver docs/verifications/T0.3/
 - **Depende de**: T0.1
 - **Entrega**: proyecto conectado en Cloudflare Pages al repo de GitHub (`emiliovillu/enduro-fun`), build command y output directory configurados para `output: 'export'`; documentación en `DEPLOY.md` (raíz) del procedimiento y de la configuración DNS de `endurofun.eu` (Hostinger → Cloudflare). Esta tarea sustituye a la skill `deploy` del arnés (no aplica — PRD §10).
 - **Subtareas**:
-  - [ ] ⚠ Cuenta de Cloudflare del usuario, conectada al repo de GitHub
-  - [ ] Configurar build de Cloudflare Pages (comando, directorio de salida `apps/web/out`)
-  - [ ] ⚠ DNS de `endurofun.eu` en Hostinger apuntando a Cloudflare (nameservers o CNAME)
-  - [ ] `DEPLOY.md` con el procedimiento documentado
+  - [x] Cuenta de Cloudflare del usuario, conectada al repo de GitHub (proyecto Pages `enduro-fun`, `https://enduro-fun.pages.dev`)
+  - [x] Configurar build de Cloudflare Pages (comando `pnpm --filter ./apps/web build`, directorio de salida `apps/web/out`)
+  - [x] DNS de `endurofun.eu` en Hostinger apuntando a Cloudflare (nameservers `byron.ns.cloudflare.com`/`lilith.ns.cloudflare.com`, delegación confirmada con `dig +trace` desde la raíz — propagación real completa; falta que el dashboard de Cloudflare refresque su chequeo interno para poder añadir el Custom Domain, ver nota de pendiente abajo)
+  - [x] `DEPLOY.md` con el procedimiento documentado
 - **Verificación**: un push a `main` dispara un build en el dashboard de Cloudflare Pages que termina en éxito; la URL de preview/producción de Cloudflare sirve la página raíz de T0.1; si el dominio ya está propagado, `https://endurofun.eu` sirve la misma página con certificado TLS válido (si el DNS aún no ha propagado, se anota como pendiente y se re-verifica al cierre de F3).
+- **Pendiente explícito para F3 (T3.4, no antes)**: la zona de Cloudflare para `endurofun.eu` aún no pasó a "Activo" en su chequeo interno (la delegación DNS real ya es correcta, confirmado con `dig +trace`, pero Cloudflare tarda hasta 24h en refrescar su propio estado) — el Custom Domain del proyecto Pages no se pudo añadir todavía. Cuando se active, añadir `endurofun.eu` (y `www`) como Custom Domain y re-verificar `https://endurofun.eu` con TLS válido.
+- **Deuda anotada** (hallazgo del verifier, fuera de alcance de esta tarea): `<html lang="...">` queda fijo en `"en"` en las 3 rutas de idioma pese a que el body sí cambia correctamente — pertenece a T0.1/T0.2 (ya cerradas), no a T0.3. Candidata a fix rápido en una tarea futura de i18n/SEO (p. ej. junto a T3.2).
 
 #### T0.4 · E2E de fase F0
 - **Depende de**: T0.2, T0.3, TD.7
