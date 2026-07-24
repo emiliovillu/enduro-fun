@@ -18,12 +18,24 @@ import { cn } from '@/lib/utils';
 // hover volvía a reanudar en vez de pausar) — descartado, un solo mecanismo
 // de pausa sin ambigüedad.
 //
-// Fotos reales (2026-07-24, petición directa del usuario): 5 fotos elegidas
-// a mano entre las 122 reales de Gallery (`apps/web/public/gallery/`,
-// mismo pipeline AVIF — no se duplican ficheros, se referencian los mismos
+// Fotos reales (2026-07-24, petición directa del usuario): elegidas a mano
+// entre las 122 reales de Gallery (`apps/web/public/gallery/`, mismo
+// pipeline AVIF — no se duplican ficheros, se referencian los mismos
 // `gallery-XXX.avif`), variadas a propósito (paisaje icónico, acción en
 // grupo, acción individual) en vez de una tanda consecutiva.
-const GALLERY_PHOTO_INDEXES = [1, 19, 43, 55, 121];
+//
+// 2026-07-25 — 5 fotos más (petición directa del usuario): con exactamente
+// 5 tarjetas y la clase `grow` de abajo, en viewports anchos (≥1700px
+// aprox., 5 × 340px < ancho del contenedor) las 5 se reparten TODO el ancho
+// disponible sin overflow — el track queda sin nada que desplazar, así que
+// el autoplay cambiaba `activeIndex`/los dots pero el `scrollTo()` no movía
+// nada visible (bug real reportado por el usuario: "las 5 mismas fotos,
+// pero no se mueven"). Con 10 tarjetas, 10 × 340px = 3400px supera
+// cualquier ancho de viewport razonable — `grow` deja de tener sobrante que
+// repartir, el track queda con overflow real y el desplazamiento del
+// autoplay vuelve a ser visible. Fix es el CONTENIDO (más tarjetas), no la
+// lógica del carrusel — el mecanismo de scroll ya era correcto.
+const GALLERY_PHOTO_INDEXES = [1, 19, 43, 55, 121, 17, 29, 45, 61, 113];
 const SLIDE_COUNT = GALLERY_PHOTO_INDEXES.length;
 const AUTOPLAY_MS = 4000;
 

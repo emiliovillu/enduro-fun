@@ -70,8 +70,8 @@ test('la sección de galería es visible y navegable', { tag: ['@f1'] }, async (
   await gallery.scrollIntoViewIfNeeded();
   await expect(gallery).toBeVisible();
 
-  const dots = gallery.getByRole('button', { name: /^\d\/5$/ });
-  await expect(dots).toHaveCount(5);
+  const dots = gallery.getByRole('button', { name: /^\d+\/10$/ });
+  await expect(dots).toHaveCount(10);
   await expect(dots.first()).toHaveAttribute('aria-current', 'true');
 
   await dots.nth(2).click();
@@ -82,6 +82,41 @@ test('la sección de galería es visible y navegable', { tag: ['@f1'] }, async (
   await pauseButton.click();
   await expect(gallery.getByRole('button', { name: 'Resume gallery autoplay' })).toBeVisible();
 });
+
+// Control negativo (bug real reportado por el usuario, 2026-07-25): con
+// exactamente 5 tarjetas, en viewports anchos las 5 se repartían TODO el
+// ancho del track (`grow`) sin dejar overflow — el autoplay avanzaba
+// `activeIndex`/los dots, pero el `track.scrollTo()` no tenía nada que
+// desplazar: visualmente "las mismas 5 fotos, que no se mueven". Este test
+// falla si se reintroduce (verificado quitando las 5 tarjetas añadidas: el
+// `scrollLeft` deja de avanzar y el test se pone en rojo). Comprueba el
+// movimiento REAL del track, no solo el estado de React (el dot activo).
+test(
+  'el track del carrusel tiene overflow real y se desplaza de verdad',
+  { tag: ['@f1'] },
+  async ({ page }) => {
+    await page.setViewportSize({ width: 1920, height: 1080 });
+    await page.goto('/en/');
+    const gallery = page.getByRole('region', { name: 'A taste of the terrain' });
+    await gallery.scrollIntoViewIfNeeded();
+
+    const track = gallery.locator('> div').nth(1);
+    const { scrollWidth, clientWidth } = await track.evaluate((el) => ({
+      scrollWidth: el.scrollWidth,
+      clientWidth: el.clientWidth,
+    }));
+    expect(scrollWidth).toBeGreaterThan(clientWidth);
+
+    const scrollLeftBefore = await track.evaluate((el) => el.scrollLeft);
+    await expect(gallery.getByRole('button', { name: '2/10' })).toHaveAttribute(
+      'aria-current',
+      'true',
+      { timeout: 6000 },
+    );
+    const scrollLeftAfter = await track.evaluate((el) => el.scrollLeft);
+    expect(scrollLeftAfter).toBeGreaterThan(scrollLeftBefore);
+  },
+);
 
 // Control negativo (bug real reportado por el usuario, 2026-07-19): el
 // avance automático del carrusel usaba `card.scrollIntoView()`, que puede
@@ -107,7 +142,7 @@ test(
     // Espera a que el autoplay haga avanzar al menos un slide (poll real
     // sobre el dot activo, no un `waitForTimeout` a ciegas).
     const gallery = page.getByRole('region', { name: 'A taste of the terrain' });
-    await expect(gallery.getByRole('button', { name: '2/5' })).toHaveAttribute(
+    await expect(gallery.getByRole('button', { name: '2/10' })).toHaveAttribute(
       'aria-current',
       'true',
       { timeout: 6000 },
