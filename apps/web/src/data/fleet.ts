@@ -73,9 +73,16 @@ export const FLEET: FleetBike[] = RAW_FLEET.map((bike) => FleetBikeSchema.parse(
 //   final, para que el rotado quede horneado en los píxeles sin metadato de
 //   rotación que arrastrar. El centrado por defecto (`50% 50%`) deja el
 //   "7"/logo Husqvarna bien encuadrados, sin ajuste de posición.
+// - `bmw-1300-gs.avif` (2026-07-24, ~89KB): foto de almacén aportada por el
+//   usuario, con tag EXIF de orientación (a diferencia de `te-300.avif`) —
+//   `sharp(...).rotate()` sin argumentos auto-orienta correctamente, sin el
+//   incidente de doble rotación de arriba. La proporción nativa de la foto
+//   (4284×5712) ya coincide con el 1050×1400 de las otras dos, así que el
+//   `resize(fit: 'cover')` no recorta nada; centrado por defecto.
 const FLEET_IMAGES: Partial<Record<FleetBike['id'], string>> = {
   'norden-901': 'url(/fleet/norden-901.avif) 50% 80% / cover no-repeat',
   'te-300': 'url(/fleet/te-300.avif) center/cover no-repeat',
+  'bmw-1300-gs': 'url(/fleet/bmw-1300-gs.avif) center/cover no-repeat',
 };
 
 export function fleetImageSlot(id: FleetBike['id']): string | undefined {
