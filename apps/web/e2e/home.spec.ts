@@ -17,6 +17,29 @@ test('el hero, tagline y CTAs de Home son visibles', { tag: ['@f1'] }, async ({ 
   await expect(page.getByRole('link', { name: 'Get in touch' })).toBeVisible();
 });
 
+// 2026-07-25 — vídeo real del hero (`HomeHeroVideo`, sustituye el
+// placeholder). Muted/loop son atributos estáticos comprobables por
+// selector; el autoplay real depende de un `.play()` disparado en el
+// cliente tras montar (no un atributo `autoPlay` estático, ver
+// `home-hero-video.tsx`), así que se comprueba esperando a que
+// `currentTime` avance — un `paused === false` a secas no distingue "nunca
+// arrancó" de "arrancó y avanza".
+test(
+  'el vídeo del hero reproduce en autoplay, silenciado y en bucle',
+  { tag: ['@f1'] },
+  async ({ page }) => {
+    await page.goto('/en/');
+    const video = page.locator('video');
+    await expect(video).toHaveAttribute('muted', '');
+    await expect(video).toHaveAttribute('loop', '');
+    await expect(video).toHaveAttribute('poster', '/hero/home-hero-poster.avif');
+
+    await expect
+      .poll(() => video.evaluate((el: HTMLVideoElement) => el.currentTime), { timeout: 10_000 })
+      .toBeGreaterThan(0);
+  },
+);
+
 test('el CTA "View packages" apunta a /en/packages/', { tag: ['@f1'] }, async ({ page }) => {
   await page.goto('/en/');
   const cta = page.getByRole('link', { name: 'View packages' });

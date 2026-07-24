@@ -14,18 +14,19 @@ import { REVIEWS } from '@/data/reviews';
 import { getMessages } from '@/i18n/messages';
 import { localeHref } from '@/lib/utils';
 
+import { HomeHeroVideo } from './home-hero-video';
 import { HomePhotoCarousel } from './home-photo-carousel';
 
 // Home real (T1.1, F1) — reemplaza el placeholder de F0. Mockup: Claude
 // Design "EnduroFun Pages", `variants/HomeVariantA.jsx` (Variante Cinemática,
 // PRD §6.4).
 //
-// Placeholder de foto/vídeo del hero: NO existe una primitiva del DS para
-// esto (`Photo` en el mockup es un helper del sandbox de Claude Design, no
-// un componente real) — se construye aquí, local a la página (no en
-// `components/ui/`, no es una primitiva reusable todavía), con un div de
-// fondo tokenizado (mismo criterio que `PackageCard`'s
-// `from-charcoal-700 to-charcoal-900`) + texto indicando el placeholder.
+// Vídeo del hero: `HomeHeroVideo` (2026-07-25, ver ese fichero para el
+// pipeline completo) sustituye el placeholder tokenizado original. Sigue sin
+// existir una primitiva del DS para esto (`Photo` en el mockup es un helper
+// del sandbox de Claude Design, no un componente real) — client component
+// local a la página, no en `components/ui/`, mismo criterio que
+// `HomePhotoCarousel`.
 // El scrim usa `bg-gradient-scrim`, que YA existe como utilidad tokenizada
 // (`--gradient-scrim` en globals.css, namespace `background-image-*` →
 // `bg-gradient-*`) — va de transparente (arriba) a oscuro (abajo), que es
@@ -48,14 +49,7 @@ export default async function LocaleHomePage({ params }: { params: Promise<{ loc
   return (
     <main>
       <section className="relative h-190 overflow-hidden">
-        <div
-          className="absolute inset-0 flex items-center justify-center bg-linear-to-br from-charcoal-700 to-charcoal-900"
-          aria-hidden="true"
-        >
-          <span className="font-mono text-caption text-text-on-dark-secondary">
-            Photo/video placeholder
-          </span>
-        </div>
+        <HomeHeroVideo />
         <div className="absolute inset-0 bg-gradient-scrim" aria-hidden="true" />
         <Header
           active="home"
