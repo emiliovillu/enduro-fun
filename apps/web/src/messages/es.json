@@ -38,7 +38,8 @@
       "eyebrow": "Galería",
       "title": "Una muestra del terreno",
       "pauseLabel": "Pausar el pase automático de la galería",
-      "playLabel": "Reanudar el pase automático de la galería"
+      "playLabel": "Reanudar el pase automático de la galería",
+      "photoAltTemplate": "Foto de ruta de enduro {n}"
     },
     "findUs": {
       "eyebrow": "Encuéntranos",

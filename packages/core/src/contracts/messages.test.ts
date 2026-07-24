@@ -42,6 +42,7 @@ const validMessages = {
       title: 'A taste of the terrain',
       pauseLabel: 'Pause gallery autoplay',
       playLabel: 'Resume gallery autoplay',
+      photoAltTemplate: 'Enduro trail photo {n}',
     },
     findUs: {
       eyebrow: 'Find us',

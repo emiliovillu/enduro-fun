@@ -1,31 +1,42 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 import { Icon } from '@/components/ui/icon';
 import { cn } from '@/lib/utils';
 
-// T1.5 — carrusel de fotos placeholder (sin fotos reales todavía, mismo
-// criterio tokenizado que el hero de Home / "Our story" de About). Client
-// component local a la página (no una primitiva de `components/ui/` — solo
-// tiene un consumidor hoy, mismo criterio que el placeholder del hero de
-// T1.1). Autoplay pedido explícitamente por el usuario, con las
-// salvaguardas de accesibilidad que exige WCAG 2.2.2 (contenido que se
-// mueve solo más de 5s necesita un control de pausa visible) y
-// `prefers-reduced-motion` (nunca autoplay si el usuario lo ha desactivado a
-// nivel de sistema). El único control de pausa es el botón explícito — se
-// probó también pausar en hover/focus, pero eso competía con el propio
-// click del botón (el hover ya ponía `playing=false` antes de que el click
-// lo alternara, así que un click en el botón durante hover volvía a
-// reanudar en vez de pausar) — descartado, un solo mecanismo de pausa sin
-// ambigüedad.
-const SLIDE_COUNT = 5;
+// T1.5 — carrusel de fotos. Client component local a la página (no una
+// primitiva de `components/ui/` — solo tiene un consumidor hoy, mismo
+// criterio que el placeholder del hero de T1.1). Autoplay pedido
+// explícitamente por el usuario, con las salvaguardas de accesibilidad que
+// exige WCAG 2.2.2 (contenido que se mueve solo más de 5s necesita un
+// control de pausa visible) y `prefers-reduced-motion` (nunca autoplay si el
+// usuario lo ha desactivado a nivel de sistema). El único control de pausa
+// es el botón explícito — se probó también pausar en hover/focus, pero eso
+// competía con el propio click del botón (el hover ya ponía `playing=false`
+// antes de que el click lo alternara, así que un click en el botón durante
+// hover volvía a reanudar en vez de pausar) — descartado, un solo mecanismo
+// de pausa sin ambigüedad.
+//
+// Fotos reales (2026-07-24, petición directa del usuario): 5 fotos elegidas
+// a mano entre las 122 reales de Gallery (`apps/web/public/gallery/`,
+// mismo pipeline AVIF — no se duplican ficheros, se referencian los mismos
+// `gallery-XXX.avif`), variadas a propósito (paisaje icónico, acción en
+// grupo, acción individual) en vez de una tanda consecutiva.
+const GALLERY_PHOTO_INDEXES = [1, 19, 43, 55, 121];
+const SLIDE_COUNT = GALLERY_PHOTO_INDEXES.length;
 const AUTOPLAY_MS = 4000;
+
+function photoSrc(index: number): string {
+  return `/gallery/gallery-${String(index).padStart(3, '0')}.avif`;
+}
 
 interface HomePhotoCarouselProps {
   eyebrow: string;
   title: string;
   pauseLabel: string;
   playLabel: string;
+  photoAltTemplate: string;
 }
 
 export function HomePhotoCarousel({
@@ -33,6 +44,7 @@ export function HomePhotoCarousel({
   title,
   pauseLabel,
   playLabel,
+  photoAltTemplate,
 }: HomePhotoCarouselProps) {
   const trackRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -104,13 +116,12 @@ export function HomePhotoCarousel({
         className="mt-8 flex h-100 overflow-x-auto [scroll-snap-type:x_mandatory] [&::-webkit-scrollbar]:hidden"
         style={{ scrollbarWidth: 'none' }}
       >
-        {Array.from({ length: SLIDE_COUNT }, (_, index) => (
+        {GALLERY_PHOTO_INDEXES.map((photoIndex, index) => (
           <div
-            key={index}
+            key={photoIndex}
             ref={(el) => {
               cardRefs.current[index] = el;
             }}
-            aria-hidden="true"
             // `grow shrink-0 basis-85`: bug real reportado por el usuario
             // (el último slide no llegaba al borde derecho de la sección en
             // viewports anchos, donde 5 × 340px no cubre el ancho
@@ -119,11 +130,16 @@ export function HomePhotoCarousel({
             // llegan al borde sin hueco; `shrink-0` conserva el
             // comportamiento de scroll cuando el contenedor es más
             // estrecho que 5 tarjetas (móvil).
-            className="flex h-full grow shrink-0 basis-85 items-end bg-linear-to-br from-charcoal-700 to-charcoal-900 p-4 [scroll-snap-align:start]"
+            className="relative flex h-full grow shrink-0 basis-85 items-end overflow-hidden bg-linear-to-br from-charcoal-700 to-charcoal-900 [scroll-snap-align:start]"
           >
-            <span className="font-mono text-caption text-text-on-dark-secondary">
-              Photo placeholder — route {index + 1}
-            </span>
+            <Image
+              src={photoSrc(photoIndex)}
+              alt={photoAltTemplate.replace('{n}', String(photoIndex))}
+              fill
+              sizes="340px"
+              className="object-cover"
+              loading={index === 0 ? undefined : 'lazy'}
+            />
           </div>
         ))}
       </div>

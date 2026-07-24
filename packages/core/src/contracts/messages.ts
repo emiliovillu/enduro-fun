@@ -82,6 +82,7 @@ export const MessagesSchema = z.object({
       title: z.string().min(1),
       pauseLabel: z.string().min(1),
       playLabel: z.string().min(1),
+      photoAltTemplate: z.string().min(1),
     }),
     findUs: z.object({
       eyebrow: z.string().min(1),

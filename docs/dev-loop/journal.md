@@ -523,3 +523,11 @@
 - Pipeline `sharp`/AVIF idéntico (`rotate()` + `resize(1050×1400, cover)` + `avif({quality:50, effort:6})`) → `apps/web/public/fleet/bmw-1300-gs.avif` (~89KB). A diferencia del incidente de `te-300.avif`, esta foto SÍ traía tag EXIF de orientación, así que `.rotate()` sin argumentos auto-orientó correctamente sin el problema de doble rotación documentado en `fleet.ts`. La proporción nativa de la foto ya coincidía exactamente con el 1050×1400 de las otras 2, así que no hizo falta ajustar posición de crop.
 - Verificado visualmente con capturas Playwright ad hoc en `/en/about`, `/es/about`, `/de/about` — la card se integra bien junto a las otras 2. `pnpm gate` verde.
 - Deuda: ninguna nueva.
+
+## 2026-07-24 · 5 fotos reales en el carrusel de Home (T1.5)
+- El usuario pidió sustituir las 5 tarjetas placeholder del carrusel de Home ("A taste of the terrain") por fotos reales, dejando la elección a mi criterio ("las que tú quieras"). Mismo patrón de cambio de alcance menor que TD.12/T1.2: fix directo sin ciclo implementer/verifier.
+- Elegidas 5 fotos variadas de las 122 de Gallery (contact sheet generado con `sharp` para revisar 21 muestras antes de decidir): `gallery-001` (Caminito del Rey, paisaje icónico), `gallery-019` (2 riders junto a cascada), `gallery-043` (foto de grupo en cima), `gallery-055` (2 riders sobre valle), `gallery-121` (rider en solitario). Se referencian los ficheros YA existentes de `apps/web/public/gallery/` — sin duplicar ni recodificar, mismo criterio de no duplicar assets.
+- `home-photo-carousel.tsx`: `<Image fill>` (next/image, `unoptimized: true` del proyecto) sustituye el placeholder tokenizado; se quitó el `aria-hidden` de cada slide porque ahora son fotos con contenido real (alt descriptivo), no relleno decorativo.
+- Nueva clave `home.gallery.photoAltTemplate` en los 3 `messages/*.json` + `MessagesSchema`/`messages.test.ts` (`packages/core/src/contracts/messages.ts`) — el lint cazó el olvido inicial (tipo `error` sin actualizar el contrato Zod, no solo el JSON).
+- Verificado visualmente con capturas Playwright ad hoc en `/en/`, `/es/`, `/de/` — las 5 fotos se ven bien encuadradas en el filmstrip (proporción de card 340×400 ≈ 0.85, la mayoría de las fotos de Gallery son 825×1100 ≈ 0.75, cover crop sin problema). `pnpm gate` + `pnpm test:e2e` (53/53) verdes.
+- Deuda: ninguna nueva.

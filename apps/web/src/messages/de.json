@@ -38,7 +38,8 @@
       "eyebrow": "Galerie",
       "title": "Ein Vorgeschmack auf das Gelände",
       "pauseLabel": "Automatische Wiedergabe der Galerie pausieren",
-      "playLabel": "Automatische Wiedergabe der Galerie fortsetzen"
+      "playLabel": "Automatische Wiedergabe der Galerie fortsetzen",
+      "photoAltTemplate": "Enduro-Trail-Foto {n}"
     },
     "findUs": {
       "eyebrow": "Finde uns",

@@ -108,6 +108,7 @@ export default async function LocaleHomePage({ params }: { params: Promise<{ loc
         title={messages.home.gallery.title}
         pauseLabel={messages.home.gallery.pauseLabel}
         playLabel={messages.home.gallery.playLabel}
+        photoAltTemplate={messages.home.gallery.photoAltTemplate}
       />
 
       <section className="mx-auto max-w-[var(--container-max)] px-5 py-24 sm:px-8">
