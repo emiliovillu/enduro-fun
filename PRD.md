@@ -96,7 +96,7 @@ El enduro tourism en Andalucía es un nicho creciente, impulsado por el clima fa
 | D4 | Reviews con datos inventados en v1 | Textos de ejemplo creíbles; el cliente aportará reviews reales para sustituirlos más adelante (no hay integración con Google Places/Reviews API) |
 | D5 | Deploy en Cloudflare Pages | Dominio `endurofun.eu` registrado en Hostinger; DNS apunta a Cloudflare. La skill `deploy` del arnés (VPS+Docker+Caddy) **no se usa** en este proyecto |
 | D6 | Vídeos/fotos como contenido principal del hero | Placeholders en v1, preparados para contenido real del cliente |
-| D7 | Solo Instagram como red social | `@endurofun_oficial` enlazado en el footer |
+| D7 | Solo Instagram como red social | `@endurofun.eu` enlazado en el footer |
 | D8 | Google Maps embebido | Iframe del endpoint público de Google (sin API key, sin cuenta de Google Cloud) para mostrar la ubicación de Álora, Málaga — decisión actualizada en T1.3 (ver §9.1), ya no requiere prerequisito externo |
 | D9 | Licencia AGPL-3.0, repo público | github.com/emiliovillu/enduro-fun |
 | D10 | Paquetes con precios orientativos | Los precios mostrados son de partida; el texto invita a pedir una oferta personalizada |
@@ -256,4 +256,4 @@ No se integra en v1 (ver D4, no-objetivo). Si se aborda en el futuro, sustituye 
 7. La web es **responsive** y usable en móvil, tablet y desktop.
 8. El **deploy automático** desde push a `main` en Cloudflare Pages funciona sin intervención manual.
 9. **SEO básico**: `hreflang` correcto entre los 3 idiomas, `sitemap.xml` multilingüe, meta descriptions por página e idioma.
-10. El enlace de **Instagram** en el footer lleva al perfil `@endurofun_oficial`.
+10. El enlace de **Instagram** en el footer lleva al perfil `@endurofun.eu`.

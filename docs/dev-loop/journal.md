@@ -576,3 +576,11 @@
 - Sin pases de review — 2 líneas de diff, cero lógica nueva, mecanismo ya probado en el commit anterior.
 - `pnpm gate` + `pnpm test:e2e` (55/55) verdes.
 - Deuda anotada: —
+
+## 2026-07-25 · Actualizado el handle de Instagram del footer (TD.3)
+- El usuario pidió cambiar el link y el texto de Instagram de `@endurofun_oficial` a `@endurofun.eu` — dato real de negocio (el perfil cambió), no un rediseño.
+- Cambiado `href` y texto visible en `apps/web/src/components/ui/footer.tsx`. PRD.md actualizado en 2 sitios (§D7 tabla de decisiones, §14.10 criterio de éxito) para que el documento siga siendo cierto.
+- **Deuda anotada**: el espejo de solo-lectura `docs/design-system/components/navigation/Footer.jsx` sigue con el handle antiguo — regla dura del proyecto es no tocarlo a mano; se sincronizará cuando se actualice el proyecto de Claude Design y se regenere con `DesignSync` (candidato natural: la próxima tarea que ya vaya a tocar el DS de navegación).
+- Sin tests que dependieran del texto exacto (`grep` en `apps/web/e2e/` confirmó cero referencias a Instagram/el handle).
+- `pnpm gate` + `pnpm test:e2e` (55/55) verdes. Confirmado en el HTML servido (`curl` local) que el nuevo handle llega al DOM renderizado.
+- Deuda anotada: sincronizar `Footer.jsx` del espejo del DS (ver arriba).

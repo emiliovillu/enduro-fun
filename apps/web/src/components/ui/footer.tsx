@@ -110,11 +110,11 @@ export function Footer({
             {columnLabels.follow}
           </p>
           <a
-            href="https://www.instagram.com/endurofun_oficial"
+            href="https://www.instagram.com/endurofun.eu"
             className="flex items-center gap-2 text-small text-text-on-dark-secondary transition-colors duration-150 ease-standard hover:text-text-on-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
           >
             <Icon name="instagram" size={18} />
-            @endurofun_oficial
+            @endurofun.eu
           </a>
         </div>
       </div>
