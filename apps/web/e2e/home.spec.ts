@@ -52,16 +52,20 @@ test('el CTA "Get in touch" apunta a /en/contact/', { tag: ['@f1'] }, async ({ p
   await expect(cta).toHaveAttribute('href', '/en/contact/');
 });
 
-test('la preview de packages y reviews renderiza', { tag: ['@f1'] }, async ({ page }) => {
+test('la preview de packages y flota renderiza', { tag: ['@f1'] }, async ({ page }) => {
   await page.goto('/en/');
 
   await expect(page.getByRole('heading', { name: 'Getaway' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Full Adventure' })).toBeVisible();
   await expect(page.getByText('Most popular')).toBeVisible();
 
-  await expect(page.getByText('Marcus')).toBeVisible();
-  await expect(page.getByText('James')).toBeVisible();
-  await expect(page.getByText('Sophie')).toBeVisible();
+  // 2026-07-25: la sección de preview de Reviews se sustituye por "Our
+  // Fleet" (mismos datos/cards que About, ver planning.md T1.1) — Reviews
+  // sigue teniendo su propia página dedicada (/reviews, T2.2), solo se
+  // quita la preview de Home.
+  await expect(page.getByRole('heading', { name: 'Husqvarna TE 300' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Husqvarna Norden 901' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'BMW 1300 GS' })).toBeVisible();
 });
 
 test('la sección de galería es visible y navegable', { tag: ['@f1'] }, async ({ page }) => {

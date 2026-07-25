@@ -30,10 +30,6 @@
       "durationTemplate": "{nights} nights · {days} route days",
       "ctaLabel": "Enquire"
     },
-    "reviews": {
-      "eyebrow": "Reviews",
-      "title": "From riders who've been"
-    },
     "gallery": {
       "eyebrow": "Gallery",
       "title": "A taste of the terrain",

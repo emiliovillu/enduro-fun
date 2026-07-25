@@ -30,10 +30,6 @@
       "durationTemplate": "{nights} Nächte · {days} Routentage",
       "ctaLabel": "Anfragen"
     },
-    "reviews": {
-      "eyebrow": "Bewertungen",
-      "title": "Von Fahrern, die schon dort waren"
-    },
     "gallery": {
       "eyebrow": "Galerie",
       "title": "Ein Vorgeschmack auf das Gelände",

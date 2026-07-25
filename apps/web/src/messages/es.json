@@ -30,10 +30,6 @@
       "durationTemplate": "{nights} noches · {days} días de ruta",
       "ctaLabel": "Consultar"
     },
-    "reviews": {
-      "eyebrow": "Opiniones",
-      "title": "De quienes ya han venido"
-    },
     "gallery": {
       "eyebrow": "Galería",
       "title": "Una muestra del terreno",

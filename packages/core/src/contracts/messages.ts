@@ -73,10 +73,11 @@ export const MessagesSchema = z.object({
       durationTemplate: z.string().min(1),
       ctaLabel: z.string().min(1),
     }),
-    reviews: z.object({
-      eyebrow: z.string().min(1),
-      title: z.string().min(1),
-    }),
+    // `reviews` (eyebrow/título de la sección de reviews de Home) eliminado
+    // 2026-07-25 (petición directa del usuario): la sección se sustituye
+    // por "Nuestra flota", que reusa `about.fleet.{eyebrow,title}` tal cual
+    // (mismo criterio de reuso cross-página que `home.packages.*` en
+    // `/packages`) — sin clave nueva.
     gallery: z.object({
       eyebrow: z.string().min(1),
       title: z.string().min(1),
@@ -157,8 +158,9 @@ export const MessagesSchema = z.object({
     note: z.string().min(1),
   }),
   // T2.2 (F2, Página Reviews): mismo patrón que `packages` arriba — copy
-  // propio de la página (eyebrow/h1/intro), distinto de `home.reviews`
-  // (eyebrow/título de la SECCIÓN de preview en Home, texto más corto).
+  // propio de la página (eyebrow/h1/intro). Home ya NO tiene una sección de
+  // preview de reviews (sustituida por "Nuestra flota", 2026-07-25, ver
+  // nota junto a `home.gallery` arriba) — este grupo es solo de `/reviews`.
   reviews: z.object({
     eyebrow: z.string().min(1),
     title: z.string().min(1),

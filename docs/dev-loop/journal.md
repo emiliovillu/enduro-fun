@@ -584,3 +584,13 @@
 - Sin tests que dependieran del texto exacto (`grep` en `apps/web/e2e/` confirmó cero referencias a Instagram/el handle).
 - `pnpm gate` + `pnpm test:e2e` (55/55) verdes. Confirmado en el HTML servido (`curl` local) que el nuevo handle llega al DOM renderizado.
 - Deuda anotada: sincronizar `Footer.jsx` del espejo del DS (ver arriba).
+
+## 2026-07-25 · Sección Reviews de Home sustituida por Nuestra flota (T1.1)
+- El usuario pidió quitar la preview de Reviews de la Home y poner en su lugar la sección "Nuestra flota" ya existente en About, con las mismas cards y fotos (no una versión nueva).
+- Reuso completo, cero datos nuevos: `FLEET`/`fleetCategoryLabel`/`fleetImageSlot` de `@/data/fleet` + `FleetCard` de `components/ui/`, cableados en `page.tsx` exactamente igual que en `about/page.tsx`. El copy (eyebrow/título) reusa `messages.about.fleet.*` directamente — mismo criterio de reuso cross-página que ya usa `/packages` con `messages.home.packages.*` (documentado en su propio comentario), no una clave `home.fleet` nueva y redundante.
+- **Limpieza deliberada, no dejada como deuda**: `messages.home.reviews` (eyebrow/título de la sección eliminada) quedaba huérfano — se retiró del `MessagesSchema` (`packages/core/src/contracts/messages.ts`), de los 3 `apps/web/src/messages/*.json` y del fixture de `messages.test.ts`. La página `/reviews` dedicada (T2.2, con su propio grupo `messages.reviews`, distinto de `home.reviews`) no se toca — sigue sirviendo 200, verificado con `curl`.
+- `apps/web/e2e/home.spec.ts`: el test que comprobaba los nombres de reviews en Home ("Marcus"/"James"/"Sophie") ahora comprueba los nombres de las 3 `FleetCard` (Husqvarna TE 300/Norden 901/BMW 1300 GS) — único test que rompía tras el cambio, detectado por el propio gate/e2e antes de cerrar.
+- Verificado visualmente en `/en/`, `/es/`, `/de/` — la sección se ve idéntica a la de About, con las mismas 3 fotos reales.
+- Sin pases de `code-review`/`simplify`/`ds-reviewer` — reuso puro de componentes/datos ya probados (`FleetCard` cerrado en TD.12), sin lógica nueva; el typecheck ya cazó cualquier referencia rota a la clave de mensajes eliminada.
+- `pnpm gate` + `pnpm test:e2e` (55/55) verdes.
+- Deuda anotada: —

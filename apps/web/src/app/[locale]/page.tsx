@@ -2,20 +2,20 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { Locale } from '@app/core/contracts';
 import { Button } from '@/components/ui/button';
+import { FleetCard } from '@/components/ui/fleet-card';
 import { Footer } from '@/components/ui/footer';
 import { Header } from '@/components/ui/header';
 import { Icon } from '@/components/ui/icon';
 import { MapEmbed } from '@/components/ui/map-embed';
 import { PackageCard } from '@/components/ui/package-card';
-import { ReviewCard } from '@/components/ui/review-card';
 import { SectionHeading } from '@/components/ui/section-heading';
+import { FLEET, fleetCategoryLabel, fleetImageSlot } from '@/data/fleet';
 import {
   CENTERED_PACKAGE_ID,
   HIGHLIGHTED_PACKAGE_ID,
   PACKAGES,
   packageImageSlot,
 } from '@/data/packages';
-import { REVIEWS } from '@/data/reviews';
 import { getMessages } from '@/i18n/messages';
 import { localeHref } from '@/lib/utils';
 
@@ -38,10 +38,23 @@ import { HomePhotoCarousel } from './home-photo-carousel';
 // exactamente la dirección que necesita el contenido del hero anclado al
 // fondo: no hizo falta el escape hatch `var(--token)` porque el token
 // existente ya encaja tal cual.
+//
+// Sección "Nuestra flota" (2026-07-25, petición directa del usuario:
+// sustituye la preview de Reviews que había aquí) — reusa TAL CUAL los
+// mismos datos/componente/fotos de la sección homónima de About (TD.12):
+// `FLEET`/`fleetCategoryLabel`/`fleetImageSlot` de `@/data/fleet` y
+// `FleetCard` de `components/ui/`, sin duplicar ni un dato. El copy
+// (eyebrow/título) reusa `messages.about.fleet.{eyebrow,title}` — mismo
+// criterio de reuso cross-página ya establecido por
+// `messages.home.packages.*` en `/packages` (ver ese comentario). La
+// preview de Reviews que ocupaba este hueco se elimina de Home (la página
+// `/reviews` dedicada, T2.2, sigue intacta) — `messages.home.reviews`
+// queda sin consumidor y se retira del contrato (ver `messages.ts`).
 export default async function LocaleHomePage({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
   const messages = getMessages(locale);
   const priceFormatter = new Intl.NumberFormat(locale);
+  const fleetCategoryLabels = fleetCategoryLabel(messages.about.fleet.categories);
   const navLabels = {
     home: messages.nav.home,
     gallery: messages.nav.gallery,
@@ -161,23 +174,20 @@ export default async function LocaleHomePage({ params }: { params: Promise<{ loc
       <section className="bg-bg-inverse py-24">
         <div className="mx-auto max-w-[var(--container-max)] px-5 sm:px-8">
           <SectionHeading
-            eyebrow={messages.home.reviews.eyebrow}
-            title={messages.home.reviews.title}
+            eyebrow={messages.about.fleet.eyebrow}
+            title={messages.about.fleet.title}
             align="left"
             light
           />
-          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {/* Preview: solo las 3 primeras de `REVIEWS` (T2.2 amplió el
-                array a 6 para la página dedicada `/reviews` — Home conserva
-                su grid original de 1 fila/3 columnas, el resto vive solo en
-                esa página). */}
-            {REVIEWS.slice(0, 3).map((review) => (
-              <ReviewCard
-                key={review.id}
-                name={review.name}
-                country={review.country}
-                rating={review.rating}
-                text={review.text[locale]}
+          <div className="mt-10 grid items-center gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {FLEET.map((bike) => (
+              <FleetCard
+                key={bike.id}
+                name={bike.name}
+                displacementCc={bike.displacementCc}
+                categoryLabel={fleetCategoryLabels[bike.category]}
+                description={bike.description[locale]}
+                imageSlot={fleetImageSlot(bike.id)}
               />
             ))}
           </div>
