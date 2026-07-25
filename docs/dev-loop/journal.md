@@ -569,3 +569,10 @@
 - Sin pases de `code-review`/`simplify`/`ds-reviewer` — mismo criterio que las tandas de fotos anteriores de hoy (T1.5, TD.12): contenido/datos puros, mecanismo `imageSlot` ya existente y probado, sin lógica nueva.
 - `pnpm gate` + `pnpm test:e2e` (55/55) verdes.
 - Deuda anotada: —
+
+## 2026-07-25 · Mismas fotos en la preview de Packages de Home (T1.1)
+- El usuario pidió replicar en la Home el mismo tratamiento de fotos de T2.1 (Packages). Cambio trivial: `packageImageSlot()` ya existía (creado en la tarea anterior de esta misma sesión) — solo hacía falta importarlo y pasar la prop `imageSlot` en `page.tsx`, mismo patrón exacto que `/packages/page.tsx`.
+- Verificado visualmente en `/en/` — las 3 cards de la preview de Home muestran las mismas fotos que la página dedicada.
+- Sin pases de review — 2 líneas de diff, cero lógica nueva, mecanismo ya probado en el commit anterior.
+- `pnpm gate` + `pnpm test:e2e` (55/55) verdes.
+- Deuda anotada: —

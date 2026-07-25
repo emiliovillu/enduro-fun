@@ -9,7 +9,12 @@ import { MapEmbed } from '@/components/ui/map-embed';
 import { PackageCard } from '@/components/ui/package-card';
 import { ReviewCard } from '@/components/ui/review-card';
 import { SectionHeading } from '@/components/ui/section-heading';
-import { CENTERED_PACKAGE_ID, HIGHLIGHTED_PACKAGE_ID, PACKAGES } from '@/data/packages';
+import {
+  CENTERED_PACKAGE_ID,
+  HIGHLIGHTED_PACKAGE_ID,
+  PACKAGES,
+  packageImageSlot,
+} from '@/data/packages';
 import { REVIEWS } from '@/data/reviews';
 import { getMessages } from '@/i18n/messages';
 import { localeHref } from '@/lib/utils';
@@ -135,6 +140,7 @@ export default async function LocaleHomePage({ params }: { params: Promise<{ loc
                 }
                 ctaLabel={messages.home.packages.ctaLabel}
                 ctaHref={localeHref(locale, 'contact')}
+                imageSlot={packageImageSlot(pkg.id)}
               />
             );
 
