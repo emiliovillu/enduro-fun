@@ -123,6 +123,28 @@ const RAW_PACKAGES: Package[] = [
 
 export const PACKAGES: Package[] = RAW_PACKAGES.map((pkg) => PackageSchema.parse(pkg));
 
+// Fotos reales (2026-07-25, petición directa del usuario), mismo criterio
+// que `fleetImageSlot` de `fleet.ts`: reusa ficheros YA existentes de
+// `apps/web/public/gallery/` (sin duplicar assets) vía el escape hatch
+// `imageSlot` (string CSS `background`) de `PackageCard` — no es un dato de
+// dominio, no vive en `PackageSchema`.
+// - `own-bike` → `gallery-097.avif`: almacén de la empresa (fila de motos
+//   guardadas en la nave), pedido explícito del usuario para el paquete de
+//   "trae tu propia moto" (almacenamiento/taller).
+// - `getaway` → `gallery-049.avif`: 2 pilotos en ruta por un sendero verde
+//   (acción real, no posado).
+// - `full-adventure` → `gallery-033.avif`: grupo de pilotos en ruta, parada
+//   con vistas doradas al atardecer.
+const PACKAGE_IMAGES: Partial<Record<Package['id'], string>> = {
+  'own-bike': 'url(/gallery/gallery-097.avif) center/cover no-repeat',
+  getaway: 'url(/gallery/gallery-049.avif) center/cover no-repeat',
+  'full-adventure': 'url(/gallery/gallery-033.avif) center/cover no-repeat',
+};
+
+export function packageImageSlot(id: Package['id']): string | undefined {
+  return PACKAGE_IMAGES[id];
+}
+
 // Paquete "destacado" en la preview de Home (mockup: badge "Most popular"
 // sobre Full Adventure) — decisión de presentación de la PÁGINA, no del
 // contrato de dominio (`Package` no tiene un campo `highlight`).

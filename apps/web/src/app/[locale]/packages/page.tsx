@@ -3,7 +3,12 @@ import { Footer } from '@/components/ui/footer';
 import { Header } from '@/components/ui/header';
 import { PackageCard } from '@/components/ui/package-card';
 import { SectionHeading } from '@/components/ui/section-heading';
-import { CENTERED_PACKAGE_ID, HIGHLIGHTED_PACKAGE_ID, PACKAGES } from '@/data/packages';
+import {
+  CENTERED_PACKAGE_ID,
+  HIGHLIGHTED_PACKAGE_ID,
+  PACKAGES,
+  packageImageSlot,
+} from '@/data/packages';
 import { getMessages } from '@/i18n/messages';
 import { localeHref } from '@/lib/utils';
 
@@ -81,6 +86,7 @@ export default async function PackagesPage({ params }: { params: Promise<{ local
                 }
                 ctaLabel={home.packages.ctaLabel}
                 ctaHref={localeHref(locale, 'contact')}
+                imageSlot={packageImageSlot(pkg.id)}
               />
             );
 

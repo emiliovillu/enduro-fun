@@ -560,3 +560,12 @@
 - Sin pases de `code-review`/`simplify`/`ds-reviewer` — no hay diff de lógica, solo re-generación de los 2 assets binarios y actualización del comentario que documenta la ventana de recorte.
 - `pnpm gate` + `pnpm test:e2e` (55/55) verdes.
 - Deuda anotada: —
+
+## 2026-07-25 · Fotos reales en las 3 cards de Packages (T2.1)
+- El usuario pidió fotos reales para las 3 `PackageCard` de `/packages`: para "Ride your own bike" una que mostrara el almacén de la empresa, y para los otros 2 paquetes ("Getaway"/"Full Adventure") fotos con pilotos en ruta.
+- Reutilizado el mismo mecanismo `imageSlot` que ya usa `FleetCard` (About, TD.12) — `packageImageSlot()` nuevo en `packages.ts`, mismo patrón que `fleetImageSlot()`. Fotos elegidas de las 122 de Gallery, sin solapar con las ya usadas en el carrusel de Home (1,19,43,55,121,17,29,45,61,113) para variedad entre páginas: `gallery-097` (fila de motos en la nave — almacén), `gallery-049` (2 pilotos en sendero verde), `gallery-033` (grupo de pilotos, parada con vistas doradas).
+- Sin cambios de contrato (`PackageSchema` no toca `imageSlot`, mismo criterio que `FleetBikeSchema`/`fleetImageSlot` — es presentación, no dominio).
+- Verificado visualmente en los 3 idiomas — capturas completas de la página con las 3 cards.
+- Sin pases de `code-review`/`simplify`/`ds-reviewer` — mismo criterio que las tandas de fotos anteriores de hoy (T1.5, TD.12): contenido/datos puros, mecanismo `imageSlot` ya existente y probado, sin lógica nueva.
+- `pnpm gate` + `pnpm test:e2e` (55/55) verdes.
+- Deuda anotada: —
