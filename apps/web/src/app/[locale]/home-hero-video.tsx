@@ -7,15 +7,18 @@ import { useEffect, useRef } from 'react';
 // (mismo criterio que `HomePhotoCarousel` — un solo consumidor hoy).
 //
 // Origen: clip vertical (9:16) de ~2:30, 135MB, aportado por el usuario.
-// Recortado a los primeros 42s (el resto de la toma incluye un tramo de
-// interior/taller fuera de marca para un hero de marketing) y re-encuadrado
-// a 16:9 (`crop=1080:608:0:750` — el offset vertical 750 se eligió tras
-// comparar varios candidatos contra fotogramas de muestra de todo el clip:
-// capta la acción real sin quedarse solo con cielo, mejor que un crop
-// centrado a ciegas). Recodificado con `ffmpeg`/libx264 (854×480, sin pista
-// de audio — el autoplay no la necesita y ahorra peso, crf 30, faststart)
-// a `public/hero/home-hero.mp4`, ~6.8MB (desde 135MB, -95%, mismo espíritu
-// de compresión agresiva que el pipeline AVIF de las fotos). Poster
+// Recortado a `[4.8s, 46.8s]` del original (petición 2026-07-25: el clip
+// fuente abre con una animación de logo grande y centrado que se disuelve
+// del todo hacia t≈4.8s — verificado fotograma a fotograma; a partir de ahí
+// solo queda el watermark pequeño y persistente de esquina, que SÍ se deja,
+// no es al que se refería el usuario) y re-encuadrado a 16:9
+// (`crop=1080:608:0:750` — el offset vertical 750 se eligió tras comparar
+// varios candidatos contra fotogramas de muestra de todo el clip: capta la
+// acción real sin quedarse solo con cielo, mejor que un crop centrado a
+// ciegas). Recodificado con `ffmpeg`/libx264 (854×480, sin pista de audio —
+// el autoplay no la necesita y ahorra peso, crf 30, faststart) a
+// `public/hero/home-hero.mp4`, ~6.9MB (desde 135MB, -95%, mismo espíritu de
+// compresión agresiva que el pipeline AVIF de las fotos). Poster
 // (`home-hero-poster.avif`) generado con el mismo pipeline `sharp` que el
 // resto del sitio, a partir de un fotograma del propio clip ya recodificado.
 //

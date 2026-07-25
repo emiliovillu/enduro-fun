@@ -551,3 +551,12 @@
 - Sin pases de `code-review`/`simplify`/`ds-reviewer` completos — cambio de contenido + test proporcional, mismo criterio que la 1ª tanda de 5 fotos (T1.5, 2026-07-24), riesgo bajo, sin lógica nueva (el mecanismo de scroll ya existía y era correcto).
 - `pnpm gate` + `pnpm test:e2e` (55/55) verdes.
 - Deuda anotada: —
+
+## 2026-07-25 · Recorte del vídeo del hero para saltar el logo de intro (T1.1)
+- El usuario pidió que el vídeo del hero empezara justo después de que desapareciera el logo de EnduroFun del clip original (una animación de logo grande y centrado al inicio, distinta del watermark pequeño de esquina que aparece durante todo el clip y que SÍ se deja).
+- Localizado el punto exacto por inspección fotograma a fotograma (pasos de 0.5s primero, luego 0.2s cerca de la transición): la animación se disuelve del todo hacia `t≈4.8s` del clip original. A partir de ahí el frame ya está limpio (comprobado con capturas de muestra hasta t=41s del nuevo recorte, sin más apariciones del logo grande).
+- Regenerado `home-hero.mp4`/`home-hero-poster.avif` con el mismo pipeline de la tarea anterior (mismo día) pero `-ss 4.8` en vez de `-ss 0`, mismos 42s de duración total, mismo crop `1080:608:0:750` y mismo bitrate — el nuevo poster se extrajo de un fotograma del clip YA re-cortado (no reutiliza el anterior, que arrancaba en un punto distinto de la acción).
+- Verificado visualmente con capturas Playwright en desktop (1440px) y mobile (390px, viewport de iPhone) — el hero arranca directamente con paisaje/acción, sin ningún resto del logo de intro en ninguno de los dos.
+- Sin pases de `code-review`/`simplify`/`ds-reviewer` — no hay diff de lógica, solo re-generación de los 2 assets binarios y actualización del comentario que documenta la ventana de recorte.
+- `pnpm gate` + `pnpm test:e2e` (55/55) verdes.
+- Deuda anotada: —
