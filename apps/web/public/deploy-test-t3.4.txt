@@ -1,0 +1,4 @@
+T3.4 automatic-deploy verification marker (push -> Cloudflare Pages, criterio de exito PRD #8).
+Not linked from any page; not part of the sitemap; harmless static asset.
+Pushed by: verifier subagent, fresh context, commit ac60713 + this one.
+Timestamp (UTC): 2026-08-02T21:56:16Z
