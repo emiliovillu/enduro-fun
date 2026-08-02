@@ -17,6 +17,7 @@ import {
   packageImageSlot,
 } from '@/data/packages';
 import { getMessages } from '@/i18n/messages';
+import type { NavKey } from '@/lib/nav-links';
 import { localeHref } from '@/lib/utils';
 
 import { HomeHeroVideo } from './home-hero-video';
@@ -52,6 +53,7 @@ import { HomePhotoCarousel } from './home-photo-carousel';
 // queda sin consumidor y se retira del contrato (ver `messages.ts`).
 export default async function LocaleHomePage({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
+  const active: NavKey = 'home';
   const messages = getMessages(locale);
   const priceFormatter = new Intl.NumberFormat(locale);
   const fleetCategoryLabels = fleetCategoryLabel(messages.about.fleet.categories);
@@ -70,7 +72,7 @@ export default async function LocaleHomePage({ params }: { params: Promise<{ loc
         <HomeHeroVideo />
         <div className="absolute inset-0 bg-gradient-scrim" aria-hidden="true" />
         <Header
-          active="home"
+          active={active}
           transparent
           activeLocale={locale}
           labels={navLabels}
@@ -214,6 +216,7 @@ export default async function LocaleHomePage({ params }: { params: Promise<{ loc
       </section>
 
       <Footer
+        active={active}
         activeLocale={locale}
         labels={navLabels}
         columnLabels={{

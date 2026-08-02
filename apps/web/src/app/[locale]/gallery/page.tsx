@@ -3,6 +3,7 @@ import { Footer } from '@/components/ui/footer';
 import { Header } from '@/components/ui/header';
 import { SectionHeading } from '@/components/ui/section-heading';
 import { getMessages } from '@/i18n/messages';
+import type { NavKey } from '@/lib/nav-links';
 
 import { GalleryGrid } from './gallery-grid';
 
@@ -16,6 +17,7 @@ import { GalleryGrid } from './gallery-grid';
 // implementarlas).
 export default async function GalleryPage({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
+  const active: NavKey = 'gallery';
   const messages = getMessages(locale);
   const navLabels = {
     home: messages.nav.home,
@@ -30,7 +32,7 @@ export default async function GalleryPage({ params }: { params: Promise<{ locale
   return (
     <main>
       <Header
-        active="gallery"
+        active={active}
         activeLocale={locale}
         labels={navLabels}
         menuOpenLabel={messages.nav.menuOpen}
@@ -53,6 +55,7 @@ export default async function GalleryPage({ params }: { params: Promise<{ locale
       </section>
 
       <Footer
+        active={active}
         activeLocale={locale}
         labels={navLabels}
         columnLabels={{

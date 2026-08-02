@@ -4,6 +4,7 @@ import { useEffect, useId, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { NAV_LINKS, navKeyToSlug, type NavKey, type NavLabels } from '@/lib/nav-links';
 import { cn, localeHref } from '@/lib/utils';
 
 import { Button } from './button';
@@ -62,18 +63,6 @@ import { LanguageSwitcher, type LocaleCode } from './language-switcher';
 //   reusarse como `<img>` normal). `alt=""` + `aria-hidden`: el nombre
 //   "EnduroFun" ya está en el texto adyacente, el icono es puramente
 //   decorativo (evita que un lector de pantalla anuncie el link dos veces).
-const NAV_LINKS = [
-  { key: 'home', slug: '' },
-  { key: 'gallery', slug: 'gallery' },
-  { key: 'packages', slug: 'packages' },
-  { key: 'about', slug: 'about' },
-  { key: 'contact', slug: 'contact' },
-  { key: 'reviews', slug: 'reviews' },
-] as const;
-
-type NavKey = (typeof NAV_LINKS)[number]['key'];
-type NavLabels = Record<NavKey, string>;
-
 interface HeaderProps extends React.ComponentProps<'header'> {
   active?: NavKey;
   transparent?: boolean;
@@ -95,6 +84,7 @@ export function Header({
 }: HeaderProps) {
   const [open, setOpen] = useState(false);
   const panelId = useId();
+  const currentSlug = navKeyToSlug(active);
 
   // Cierra el panel con Escape (el botón hamburguesa ya lo cierra con su
   // propio toggle) — sin esto, un usuario de teclado que abre el menú no
@@ -158,7 +148,7 @@ export function Header({
       </nav>
 
       <div className="hidden items-center gap-4 lg:flex">
-        <LanguageSwitcher activeLocale={activeLocale} dark />
+        <LanguageSwitcher activeLocale={activeLocale} currentSlug={currentSlug} dark />
         {/* Link, no <a>: el CTA de contacto es navegación interna (T0.2 —
             eslint-plugin-next `no-html-link-for-pages` empezó a marcar
             hrefs de un solo segmento como este tras introducir la ruta
@@ -246,7 +236,7 @@ export function Header({
           ))}
         </nav>
         <div className="flex flex-col gap-4">
-          <LanguageSwitcher activeLocale={activeLocale} dark />
+          <LanguageSwitcher activeLocale={activeLocale} currentSlug={currentSlug} dark />
           <Button
             size="sm"
             variant="primary"
@@ -263,4 +253,4 @@ export function Header({
   );
 }
 
-export type { HeaderProps, NavKey, NavLabels };
+export type { HeaderProps };

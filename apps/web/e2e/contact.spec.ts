@@ -111,3 +111,26 @@ test(
     await expect(page.getByRole('button', { name: 'Send message' })).toBeVisible();
   },
 );
+
+// Fix post-T1.4 (bug real encontrado por el verifier): el LanguageSwitcher
+// construía siempre `/${code}/` (raíz del locale), ignorando la página
+// actual — cambiar de idioma desde Contact aterrizaba en Home en vez de en
+// Contact. Control negativo: revertir el fix en `language-switcher.tsx` pone
+// este test en ROJO (URL final `/es/` en vez de `/es/contact/`).
+test(
+  'el LanguageSwitcher cambia de idioma conservando la página (Contact)',
+  { tag: ['@f1'] },
+  async ({ page }) => {
+    await page.goto('/en/contact/');
+    const switcher = page.getByRole('navigation', { name: 'Language' }).first();
+
+    await switcher.getByRole('link', { name: 'ES' }).click();
+    await expect(page).toHaveURL(/\/es\/contact\/?$/);
+    await expect(page.getByRole('heading', { level: 1 })).toContainText(
+      'Pide un presupuesto personalizado',
+    );
+
+    await switcher.getByRole('link', { name: 'DE' }).click();
+    await expect(page).toHaveURL(/\/de\/contact\/?$/);
+  },
+);

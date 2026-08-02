@@ -1,9 +1,9 @@
 import Link from 'next/link';
 
+import { navKeyToSlug, type NavKey, type NavLabels } from '@/lib/nav-links';
 import { cn, localeHref } from '@/lib/utils';
 
 import { Icon } from './icon';
-import type { NavLabels } from './header';
 import { LanguageSwitcher, type LocaleCode } from './language-switcher';
 
 // Espejo: docs/design-system/components/navigation/Footer.jsx — blurb de
@@ -42,6 +42,7 @@ const COMPANY_LINKS = [
 ] as const;
 
 interface FooterProps extends React.ComponentProps<'footer'> {
+  active?: NavKey;
   activeLocale?: LocaleCode;
   labels: NavLabels;
   columnLabels: { explore: string; company: string; follow: string };
@@ -75,6 +76,7 @@ function FooterColumn({
 }
 
 export function Footer({
+  active,
   activeLocale,
   labels,
   columnLabels,
@@ -82,6 +84,7 @@ export function Footer({
   className,
   ...props
 }: FooterProps) {
+  const currentSlug = navKeyToSlug(active);
   const exploreLinks = EXPLORE_LINKS.map((link) => ({
     label: labels[link.key],
     href: localeHref(activeLocale, link.slug),
@@ -121,7 +124,7 @@ export function Footer({
 
       <div className="mx-auto mt-10 flex max-w-[var(--container-max)] flex-wrap items-center justify-between gap-4 border-t border-white/10 pt-5">
         <span className="text-caption">© 2026 EnduroFun. Álora, Málaga.</span>
-        <LanguageSwitcher activeLocale={activeLocale} dark />
+        <LanguageSwitcher activeLocale={activeLocale} currentSlug={currentSlug} dark />
       </div>
     </footer>
   );

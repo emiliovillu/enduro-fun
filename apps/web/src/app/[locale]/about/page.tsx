@@ -8,6 +8,7 @@ import { Icon } from '@/components/ui/icon';
 import { SectionHeading } from '@/components/ui/section-heading';
 import { FLEET, fleetCategoryLabel, fleetImageSlot } from '@/data/fleet';
 import { getMessages } from '@/i18n/messages';
+import type { NavKey } from '@/lib/nav-links';
 
 // About real (T1.2, F1). Mockup acordado con el usuario al iniciar esta
 // tarea (no existía mockup previo en Claude Design — regla 7 del planning):
@@ -59,6 +60,7 @@ import { getMessages } from '@/i18n/messages';
 // de esa moto también.
 export default async function AboutPage({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
+  const active: NavKey = 'about';
   const messages = getMessages(locale);
   const navLabels = {
     home: messages.nav.home,
@@ -88,7 +90,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
   return (
     <main>
       <Header
-        active="about"
+        active={active}
         activeLocale={locale}
         labels={navLabels}
         menuOpenLabel={messages.nav.menuOpen}
@@ -168,6 +170,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
       </section>
 
       <Footer
+        active={active}
         activeLocale={locale}
         labels={navLabels}
         columnLabels={{

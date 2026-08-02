@@ -132,3 +132,26 @@ test(
     await expect(page.getByText('Trail & Abenteuer')).toHaveCount(2);
   },
 );
+
+// Fix post-T1.4 (bug real encontrado por el verifier): el LanguageSwitcher
+// construía siempre `/${code}/` (raíz del locale), ignorando la página
+// actual — cambiar de idioma desde About aterrizaba en Home en vez de en
+// About. Control negativo: revertir el fix en `language-switcher.tsx` pone
+// este test en ROJO (URL final `/es/` en vez de `/es/about/`).
+test(
+  'el LanguageSwitcher cambia de idioma conservando la página (About)',
+  { tag: ['@f1'] },
+  async ({ page }) => {
+    await page.goto('/en/about/');
+    const switcher = page.getByRole('navigation', { name: 'Language' }).first();
+
+    await switcher.getByRole('link', { name: 'ES' }).click();
+    await expect(page).toHaveURL(/\/es\/about\/?$/);
+    await expect(page.getByRole('heading', { level: 1 })).toContainText(
+      'Conocimiento local, rutas de verdad',
+    );
+
+    await switcher.getByRole('link', { name: 'DE' }).click();
+    await expect(page).toHaveURL(/\/de\/about\/?$/);
+  },
+);

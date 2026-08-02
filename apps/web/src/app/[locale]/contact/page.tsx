@@ -4,6 +4,7 @@ import { Header } from '@/components/ui/header';
 import { MapEmbed } from '@/components/ui/map-embed';
 import { SectionHeading } from '@/components/ui/section-heading';
 import { getMessages } from '@/i18n/messages';
+import type { NavKey } from '@/lib/nav-links';
 
 import { ContactForm } from './contact-form';
 
@@ -26,6 +27,7 @@ import { ContactForm } from './contact-form';
 // resueltos.
 export default async function ContactPage({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
+  const active: NavKey = 'contact';
   const messages = getMessages(locale);
   const navLabels = {
     home: messages.nav.home,
@@ -40,7 +42,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
   return (
     <main>
       <Header
-        active="contact"
+        active={active}
         activeLocale={locale}
         labels={navLabels}
         menuOpenLabel={messages.nav.menuOpen}
@@ -64,6 +66,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
       </section>
 
       <Footer
+        active={active}
         activeLocale={locale}
         labels={navLabels}
         columnLabels={{

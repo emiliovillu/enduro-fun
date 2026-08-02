@@ -1,4 +1,4 @@
-import { cn } from '@/lib/utils';
+import { cn, localeHref } from '@/lib/utils';
 
 // Espejo: docs/design-system/components/navigation/LanguageSwitcher.jsx —
 // pill de 3 vías EN/ES/DE.
@@ -7,13 +7,19 @@ import { cn } from '@/lib/utils';
 // el espejo modela el switcher con `onChange` (estado en memoria, SPA de
 // Claude Design). Este proyecto es una web estática con i18n por RUTA
 // (`/en`, `/es`, `/de` — PRD/planning): la traducción fiel NO es "misma
-// página con handler", son 3 enlaces reales `<a href="/en">`. TD.3 (esta
-// tarea) va ANTES de T0.2, que es quien genera esas rutas — por eso aquí
-// SOLO se construyen el marcado y los hrefs correctos; la detección de
-// "en qué locale estoy ahora mismo" (usePathname + resaltar el activo) es
-// lógica de i18n que no existe todavía y NO se inventa: se deja como prop
-// opcional `activeLocale` para que la página que sí conozca la ruta actual
-// (tarea de T0.2 en adelante) la resalte sin tocar este componente.
+// página con handler", son 3 enlaces reales `<a href="/en">`.
+//
+// **Fix post-T1.4 (bug real encontrado por el verifier al cerrar el E2E de
+// F1)**: cada link apuntaba SIEMPRE a la raíz del locale (`/${code}/`),
+// ignorando en qué página estaba el usuario — cambiar de idioma desde
+// `/en/about/` aterrizaba en `/es/` (Home) en vez de `/es/about/`. La
+// detección de "en qué página estoy" YA EXISTE (a diferencia de lo que
+// documentaba una versión anterior de este comentario): `Header`/`Footer`
+// conocen su página vía la prop `active`/`NavKey` y ahora la bajan hasta
+// aquí como `currentSlug`, que se usa con `localeHref` (mismo helper que ya
+// usan `Header`/`Footer` para su propio nav) para construir el href
+// correcto por locale. Sin `currentSlug` (showcase de `/design-system`),
+// cae a la raíz del locale — mismo comportamiento previo.
 const LOCALES = [
   { code: 'en', label: 'EN' },
   { code: 'es', label: 'ES' },
@@ -24,11 +30,14 @@ type LocaleCode = (typeof LOCALES)[number]['code'];
 
 interface LanguageSwitcherProps extends Omit<React.ComponentProps<'nav'>, 'aria-label'> {
   activeLocale?: LocaleCode;
+  /** Slug de la página actual (sin locale), p. ej. `"about"`. Vacío/`undefined` = raíz. */
+  currentSlug?: string;
   dark?: boolean;
 }
 
 export function LanguageSwitcher({
   activeLocale,
+  currentSlug = '',
   dark = false,
   className,
   ...props
@@ -54,7 +63,7 @@ export function LanguageSwitcher({
             // `out/<locale>/index.html`, y sin barra final un host sin
             // servidor (Cloudflare Pages) puede no garantizar el 301
             // implícito `/en` → `/en/`, dando 404 en producción real.
-            href={`/${code}/`}
+            href={localeHref(code, currentSlug)}
             aria-current={isActive ? 'true' : undefined}
             className={cn(
               'font-display rounded-pill px-3 py-1.5 text-caption transition-colors duration-150 ease-standard focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring',

@@ -10,6 +10,7 @@ import {
   packageImageSlot,
 } from '@/data/packages';
 import { getMessages } from '@/i18n/messages';
+import type { NavKey } from '@/lib/nav-links';
 import { localeHref } from '@/lib/utils';
 
 // Packages real (T2.1, F2). Mockup: `docs/mockups/packages.html`, creado y
@@ -34,6 +35,7 @@ import { localeHref } from '@/lib/utils';
 // `mostPopular` en dos sitios que tendrían que mantenerse sincronizados.
 export default async function PackagesPage({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
+  const active: NavKey = 'packages';
   const messages = getMessages(locale);
   const priceFormatter = new Intl.NumberFormat(locale);
   const navLabels = {
@@ -49,7 +51,7 @@ export default async function PackagesPage({ params }: { params: Promise<{ local
   return (
     <main>
       <Header
-        active="packages"
+        active={active}
         activeLocale={locale}
         labels={navLabels}
         menuOpenLabel={messages.nav.menuOpen}
@@ -105,6 +107,7 @@ export default async function PackagesPage({ params }: { params: Promise<{ local
       </section>
 
       <Footer
+        active={active}
         activeLocale={locale}
         labels={navLabels}
         columnLabels={{

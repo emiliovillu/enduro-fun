@@ -5,6 +5,7 @@ import { ReviewCard } from '@/components/ui/review-card';
 import { SectionHeading } from '@/components/ui/section-heading';
 import { REVIEWS } from '@/data/reviews';
 import { getMessages } from '@/i18n/messages';
+import type { NavKey } from '@/lib/nav-links';
 
 // Reviews real (T2.2, F2). Mockup: `docs/mockups/reviews.html`, creado y
 // aprobado por el usuario al iniciar esta tarea (6 reviews, grid de 3
@@ -26,6 +27,7 @@ import { getMessages } from '@/i18n/messages';
 // traducen (son datos, no copy) — solo `text` es `LocalizedTextSchema`.
 export default async function ReviewsPage({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
+  const active: NavKey = 'reviews';
   const messages = getMessages(locale);
   const navLabels = {
     home: messages.nav.home,
@@ -40,7 +42,7 @@ export default async function ReviewsPage({ params }: { params: Promise<{ locale
   return (
     <main>
       <Header
-        active="reviews"
+        active={active}
         activeLocale={locale}
         labels={navLabels}
         menuOpenLabel={messages.nav.menuOpen}
@@ -67,6 +69,7 @@ export default async function ReviewsPage({ params }: { params: Promise<{ locale
       </section>
 
       <Footer
+        active={active}
         activeLocale={locale}
         labels={navLabels}
         columnLabels={{
