@@ -1,0 +1,9 @@
+=== /en/packages (PackageCard) ===
+Getaway '4 nights . 3 route days': avg bg (133, 132, 72) -> contrast 1.90:1 (umbral AA 4.5:1)
+Full Adventure '6 nights . 4 route days': avg bg (105, 100, 85) -> contrast 2.89:1 (umbral AA 4.5:1)
+Ride your own bike 'Storage . Transport . Workshop': avg bg (139, 118, 107) -> contrast 2.09:1 (umbral AA 4.5:1)
+
+=== /en/about (FleetCard) ===
+Husqvarna TE 300 '300cc': avg bg (98, 63, 53) -> contrast 4.50:1 (umbral AA 4.5:1)
+Husqvarna Norden 901 '901cc': avg bg (88, 89, 84) -> contrast 3.45:1 (umbral AA 4.5:1)
+BMW 1300 GS '1300cc': avg bg (92, 83, 75) -> contrast 3.67:1 (umbral AA 4.5:1)

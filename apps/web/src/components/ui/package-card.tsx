@@ -82,10 +82,15 @@ export function PackageCard({
         </div>
       ) : null}
       <div
-        className="flex h-45 items-end bg-linear-to-br from-charcoal-700 to-charcoal-900 p-4"
+        className="relative flex h-45 items-end bg-linear-to-br from-charcoal-700 to-charcoal-900 p-4"
         style={imageSlot ? { background: imageSlot } : undefined}
       >
-        <span className="font-mono text-caption text-text-on-dark-secondary">{subtitle}</span>
+        {imageSlot ? (
+          <div className="absolute inset-0 bg-gradient-scrim" aria-hidden="true" />
+        ) : null}
+        <span className="relative font-mono text-caption text-text-on-dark-secondary">
+          {subtitle}
+        </span>
       </div>
       <div className="flex flex-1 flex-col gap-3.5 p-6">
         <h3 className="m-0 text-h3">{name}</h3>

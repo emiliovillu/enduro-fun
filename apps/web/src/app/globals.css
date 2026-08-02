@@ -75,7 +75,7 @@
     var(--orange-500) 55%,
     var(--red-600) 100%
   );
-  --gradient-scrim: linear-gradient(180deg, rgba(28, 28, 30, 0) 0%, rgba(28, 28, 30, 0.75) 100%);
+  --gradient-scrim: linear-gradient(180deg, rgba(28, 28, 30, 0) 0%, rgba(28, 28, 30, 0.85) 100%);
   --success: #3f7d4f;
   --warning: var(--amber-500);
   --danger: #b3261e;
