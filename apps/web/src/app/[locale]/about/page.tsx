@@ -1,4 +1,5 @@
 import type { Locale } from '@app/core/contracts';
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { FleetCard } from '@/components/ui/fleet-card';
@@ -9,6 +10,7 @@ import { SectionHeading } from '@/components/ui/section-heading';
 import { FLEET, fleetCategoryLabel, fleetImageSlot } from '@/data/fleet';
 import { getMessages } from '@/i18n/messages';
 import type { NavKey } from '@/lib/nav-links';
+import { buildPageMetadata } from '@/lib/seo';
 
 // About real (T1.2, F1). Mockup acordado con el usuario al iniciar esta
 // tarea (no existía mockup previo en Claude Design — regla 7 del planning):
@@ -58,6 +60,16 @@ import type { NavKey } from '@/lib/nav-links';
 // (peticiones directas del usuario 2026-07-23) — BMW 1300 GS sigue con el
 // degradado de fallback tokenizado de `FleetCard` hasta que haya foto real
 // de esa moto también.
+// T3.2 — slug `'about'` (ver `NAV_LINKS`).
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return buildPageMetadata(locale, 'about', getMessages(locale).about);
+}
+
 export default async function AboutPage({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
   const active: NavKey = 'about';

@@ -41,6 +41,9 @@
       "eyebrow": "Finde uns",
       "title": "Zuhause in Álora, Málaga",
       "text": "20 Minuten vom Flughafen Málaga entfernt, am Rand einiger der besten Enduro-Gebiete der Provinz."
+    },
+    "meta": {
+      "description": "Mehrtägige geführte Enduro-Touren durch die abwechslungsreichsten Gelände Málagas, mit Basis in Álora. Motorrad, Unterkunft und Ortskenntnis inklusive."
     }
   },
   "about": {
@@ -92,18 +95,27 @@
         "label": "Erfahren",
         "text": "Sicher auf technischem Gelände — Routen können auf Anfrage um anspruchsvollere Abschnitte angepasst werden."
       }
+    },
+    "meta": {
+      "description": "Lernen Sie EnduroFun kennen: einheimische Fahrer und Guides, die mehrtägige Enduro-Touren durch die Provinz Málaga anbieten, mit Basis in Álora."
     }
   },
   "packages": {
     "eyebrow": "Pakete",
     "title": "Drei Arten zu fahren",
     "intro": "Mehrtägige geführte Enduro-Touren durch das abwechslungsreichste Gelände Málagas — Motorrad, Unterkunft und lokales Wissen inklusive.",
-    "note": "An den Routentagen sind Adventure-Bike-Optionen verfügbar. Wir beraten dich außerdem persönlich und erstellen dir ein individuelles Angebot — kontaktiere uns und sag uns, wonach du suchst."
+    "note": "An den Routentagen sind Adventure-Bike-Optionen verfügbar. Wir beraten dich außerdem persönlich und erstellen dir ein individuelles Angebot — kontaktiere uns und sag uns, wonach du suchst.",
+    "meta": {
+      "description": "Drei mehrtägige Enduro-Pakete rund um Álora, Málaga — Motorrad und Unterkunft inklusive, individuelles Angebot auf Anfrage."
+    }
   },
   "reviews": {
     "eyebrow": "Bewertungen",
     "title": "Von Fahrern, die schon dort waren",
-    "intro": "Echte Reisen, echtes Gelände — das sagen Fahrer nach einer Woche auf den Trails rund um Álora."
+    "intro": "Echte Reisen, echtes Gelände — das sagen Fahrer nach einer Woche auf den Trails rund um Álora.",
+    "meta": {
+      "description": "Das sagen unsere Kunden über ihre geführten Enduro-Touren mit EnduroFun in der Provinz Málaga."
+    }
   },
   "contact": {
     "eyebrow": "Kontakt",
@@ -123,6 +135,9 @@
     "findUs": {
       "eyebrow": "Finde uns",
       "text": "Zuhause in Álora, im Herzen der Provinz Málaga — die Routen starten im Ort und erreichen die wildesten Trails in kurzer Fahrt."
+    },
+    "meta": {
+      "description": "Kontaktieren Sie EnduroFun, um Ihre geführte Enduro-Tour in der Nähe von Álora, Málaga zu planen — fragen Sie nach einem individuellen Angebot."
     }
   },
   "gallery": {
@@ -133,6 +148,9 @@
     "loadingLabel": "Weitere Fotos werden geladen",
     "lightboxCloseLabel": "Bildansicht schließen",
     "lightboxPrevLabel": "Vorheriges Foto",
-    "lightboxNextLabel": "Nächstes Foto"
+    "lightboxNextLabel": "Nächstes Foto",
+    "meta": {
+      "description": "Fotos von den geführten Enduro-Touren von EnduroFun durch die Pfade und Gelände der Provinz Málaga."
+    }
   }
 }

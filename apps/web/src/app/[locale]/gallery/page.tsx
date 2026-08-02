@@ -1,9 +1,11 @@
 import type { Locale } from '@app/core/contracts';
+import type { Metadata } from 'next';
 import { Footer } from '@/components/ui/footer';
 import { Header } from '@/components/ui/header';
 import { SectionHeading } from '@/components/ui/section-heading';
 import { getMessages } from '@/i18n/messages';
 import type { NavKey } from '@/lib/nav-links';
+import { buildPageMetadata } from '@/lib/seo';
 
 import { GalleryGrid } from './gallery-grid';
 
@@ -15,6 +17,16 @@ import { GalleryGrid } from './gallery-grid';
 // directamente con el usuario en la conversación (regla 7 del planning:
 // páginas nuevas sin mockup se acuerdan con el usuario antes de
 // implementarlas).
+// T3.2 — slug `'gallery'` (ver `NAV_LINKS`).
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return buildPageMetadata(locale, 'gallery', getMessages(locale).gallery);
+}
+
 export default async function GalleryPage({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
   const active: NavKey = 'gallery';

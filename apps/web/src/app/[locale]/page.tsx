@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import type { Locale } from '@app/core/contracts';
@@ -18,6 +19,7 @@ import {
 } from '@/data/packages';
 import { getMessages } from '@/i18n/messages';
 import type { NavKey } from '@/lib/nav-links';
+import { buildPageMetadata } from '@/lib/seo';
 import { localeHref } from '@/lib/utils';
 
 import { HomeHeroVideo } from './home-hero-video';
@@ -51,6 +53,20 @@ import { HomePhotoCarousel } from './home-photo-carousel';
 // preview de Reviews que ocupaba este hueco se elimina de Home (la página
 // `/reviews` dedicada, T2.2, sigue intacta) — `messages.home.reviews`
 // queda sin consumidor y se retira del contrato (ver `messages.ts`).
+// T3.2 — Home es el slug vacío (`''`, ver `NAV_LINKS` en `lib/nav-links.ts`
+// y `localeHref`): `buildPageMetadata` resuelve la raíz de cada locale
+// (`https://endurofun.eu/en/`, `/es/`, `/de/`) y lee `title`/`meta.description`
+// del `messages` ya cargado para este locale — mismo dato que pinta la
+// página, nunca un string paralelo hardcodeado.
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return buildPageMetadata(locale, '', getMessages(locale).home);
+}
+
 export default async function LocaleHomePage({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
   const active: NavKey = 'home';

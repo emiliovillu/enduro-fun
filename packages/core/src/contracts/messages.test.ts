@@ -45,6 +45,9 @@ const validMessages = {
       title: 'Based in Álora, Málaga',
       text: '20 minutes from Málaga airport.',
     },
+    meta: {
+      description: 'Multi-day guided enduro routes through Málaga, based in Álora.',
+    },
   },
   about: {
     eyebrow: 'About',
@@ -75,17 +78,26 @@ const validMessages = {
       intermediate: { label: 'Intermediate', text: 'Some enduro/off-road experience.' },
       advanced: { label: 'Advanced', text: 'Confident on technical terrain.' },
     },
+    meta: {
+      description: 'Meet EnduroFun, local riders and guides based in Álora.',
+    },
   },
   packages: {
     eyebrow: 'Packages',
     title: 'Two ways to ride',
     intro: "Multi-day guided enduro routes through Málaga's most varied terrain.",
     note: 'Adventure bike options available on route days.',
+    meta: {
+      description: 'Multi-day enduro packages around Álora, Málaga.',
+    },
   },
   reviews: {
     eyebrow: 'Reviews',
     title: "From riders who've been",
     intro: 'Real trips, real terrain.',
+    meta: {
+      description: 'What riders say about their guided enduro trips with EnduroFun.',
+    },
   },
   contact: {
     eyebrow: 'Contact',
@@ -106,6 +118,9 @@ const validMessages = {
       eyebrow: 'Find us',
       text: 'Based in Álora, in the heart of the province of Málaga.',
     },
+    meta: {
+      description: 'Get in touch with EnduroFun to plan your guided enduro trip.',
+    },
   },
   gallery: {
     eyebrow: 'Gallery',
@@ -116,6 +131,9 @@ const validMessages = {
     lightboxCloseLabel: 'Close image viewer',
     lightboxPrevLabel: 'Previous photo',
     lightboxNextLabel: 'Next photo',
+    meta: {
+      description: "Photos from EnduroFun's guided enduro routes.",
+    },
   },
 };
 
@@ -223,6 +241,21 @@ describe('MessagesSchema', () => {
     const result = MessagesSchema.safeParse({
       ...validMessages,
       gallery: galleryWithoutNextLabel,
+    });
+    expect(result.success).toBe(false);
+  });
+
+  // T3.2 (meta descriptions/hreflang/sitemap): `meta.description` es
+  // obligatorio en las 6 páginas — un solo namespace representativo
+  // (`packages`) basta para probar el patrón; el control negativo real de
+  // build (falta una clave en un idioma completo) vive en
+  // `apps/web/src/i18n/messages.build-negative.test.ts`, mismo criterio que
+  // el resto de claves de este esquema.
+  it('rechaza si falta la clave packages.meta.description (control negativo, T3.2)', () => {
+    const { meta: _meta, ...packagesWithoutMeta } = validMessages.packages;
+    const result = MessagesSchema.safeParse({
+      ...validMessages,
+      packages: packagesWithoutMeta,
     });
     expect(result.success).toBe(false);
   });

@@ -1,0 +1,4 @@
+Total <url> entries: 18
+Expected URL set size: 18
+Seen URL set size: 18
+VALIDATION OK: well-formed, 18 unique URLs, all hreflang sets correct, no missing/extra.

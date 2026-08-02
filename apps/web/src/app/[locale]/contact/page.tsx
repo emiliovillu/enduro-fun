@@ -1,10 +1,12 @@
 import type { Locale } from '@app/core/contracts';
+import type { Metadata } from 'next';
 import { Footer } from '@/components/ui/footer';
 import { Header } from '@/components/ui/header';
 import { MapEmbed } from '@/components/ui/map-embed';
 import { SectionHeading } from '@/components/ui/section-heading';
 import { getMessages } from '@/i18n/messages';
 import type { NavKey } from '@/lib/nav-links';
+import { buildPageMetadata } from '@/lib/seo';
 
 import { ContactForm } from './contact-form';
 
@@ -25,6 +27,16 @@ import { ContactForm } from './contact-form';
 // `[verificar]` de PRD §9.1) y endpoint real de Formspree (claim completado
 // por el usuario, ver `contact-form.tsx`) — ambos prerequisitos ⚠ de T1.3
 // resueltos.
+// T3.2 — slug `'contact'` (ver `NAV_LINKS`).
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return buildPageMetadata(locale, 'contact', getMessages(locale).contact);
+}
+
 export default async function ContactPage({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
   const active: NavKey = 'contact';

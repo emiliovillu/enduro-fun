@@ -1,4 +1,5 @@
 import type { Locale } from '@app/core/contracts';
+import type { Metadata } from 'next';
 import { Footer } from '@/components/ui/footer';
 import { Header } from '@/components/ui/header';
 import { ReviewCard } from '@/components/ui/review-card';
@@ -6,6 +7,7 @@ import { SectionHeading } from '@/components/ui/section-heading';
 import { REVIEWS } from '@/data/reviews';
 import { getMessages } from '@/i18n/messages';
 import type { NavKey } from '@/lib/nav-links';
+import { buildPageMetadata } from '@/lib/seo';
 
 // Reviews real (T2.2, F2). Mockup: `docs/mockups/reviews.html`, creado y
 // aprobado por el usuario al iniciar esta tarea (6 reviews, grid de 3
@@ -25,6 +27,16 @@ import type { NavKey } from '@/lib/nav-links';
 // T2.2) — distinto de `messages.home.reviews` (eyebrow/título de la sección
 // de preview en Home, texto más corto). Nombre/país de cada review NO se
 // traducen (son datos, no copy) — solo `text` es `LocalizedTextSchema`.
+// T3.2 — slug `'reviews'` (ver `NAV_LINKS`).
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return buildPageMetadata(locale, 'reviews', getMessages(locale).reviews);
+}
+
 export default async function ReviewsPage({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
   const active: NavKey = 'reviews';

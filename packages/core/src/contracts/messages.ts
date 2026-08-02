@@ -90,6 +90,17 @@ export const MessagesSchema = z.object({
       title: z.string().min(1),
       text: z.string().min(1),
     }),
+    // T3.2 (F3, meta tags): `meta.description` es el copy de
+    // `<meta name="description">`/OG para esta página+idioma —
+    // deliberadamente distinto de `home.subtitle` (el párrafo del hero,
+    // pensado para verse en pantalla, no para un snippet de buscador con
+    // límite práctico ~155-160 caracteres). Mismo sub-objeto `meta.*` en
+    // TODAS las páginas (`about`/`packages`/`reviews`/`contact`/`gallery`
+    // abajo) — un solo lugar donde el `generateMetadata` de cada página lee
+    // la descripción sin ambigüedad con el resto del copy de esa página.
+    meta: z.object({
+      description: z.string().min(1),
+    }),
   }),
   // T1.2 (F1, Página About): grupo nuevo, mismo patrón que `home` — cada
   // sección de la página (intro, historia, diferenciadores, niveles de
@@ -144,6 +155,10 @@ export const MessagesSchema = z.object({
       intermediate: z.object({ label: z.string().min(1), text: z.string().min(1) }),
       advanced: z.object({ label: z.string().min(1), text: z.string().min(1) }),
     }),
+    // T3.2: ver comentario junto a `home.meta` arriba.
+    meta: z.object({
+      description: z.string().min(1),
+    }),
   }),
   // T2.1 (F2, Página Packages): grupo nuevo con SOLO el copy propio de esta
   // página (eyebrow/título/intro del h1 + nota de Adventure Bike/oferta
@@ -156,6 +171,10 @@ export const MessagesSchema = z.object({
     title: z.string().min(1),
     intro: z.string().min(1),
     note: z.string().min(1),
+    // T3.2: ver comentario junto a `home.meta` arriba.
+    meta: z.object({
+      description: z.string().min(1),
+    }),
   }),
   // T2.2 (F2, Página Reviews): mismo patrón que `packages` arriba — copy
   // propio de la página (eyebrow/h1/intro). Home ya NO tiene una sección de
@@ -165,6 +184,10 @@ export const MessagesSchema = z.object({
     eyebrow: z.string().min(1),
     title: z.string().min(1),
     intro: z.string().min(1),
+    // T3.2: ver comentario junto a `home.meta` arriba.
+    meta: z.object({
+      description: z.string().min(1),
+    }),
   }),
   // T1.3 (F1, Página Contact): copy propio de la página — intro invitando a
   // pedir presupuesto personalizado, labels/placeholders de los 3 campos del
@@ -190,6 +213,10 @@ export const MessagesSchema = z.object({
       eyebrow: z.string().min(1),
       text: z.string().min(1),
     }),
+    // T3.2: ver comentario junto a `home.meta` arriba.
+    meta: z.object({
+      description: z.string().min(1),
+    }),
   }),
   // Hotfix (petición directa del usuario): página /gallery, grid de 5
   // columnas con scroll infinito sobre las fotos reales subidas por el
@@ -212,6 +239,10 @@ export const MessagesSchema = z.object({
     // patrón que lightboxCloseLabel (aria-label del botón, sin texto visible).
     lightboxPrevLabel: z.string().min(1),
     lightboxNextLabel: z.string().min(1),
+    // T3.2: ver comentario junto a `home.meta` arriba.
+    meta: z.object({
+      description: z.string().min(1),
+    }),
   }),
 });
 
