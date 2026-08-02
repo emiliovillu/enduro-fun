@@ -39,6 +39,7 @@
     "knip": "^5.66.4",
     "lefthook": "^1.13.6",
     "prettier": "^3.6.2",
+    "sharp": "^0.35.3",
     "typescript": "catalog:",
     "typescript-eslint": "^8.46.4",
     "vitest": "catalog:"

@@ -70,15 +70,15 @@ borres los marcadores**: el gate (`readme:status:check`) falla sin ellos.
 
 <!-- STATUS-TABLE:BEGIN — generado por `pnpm readme:status`, no editar a mano -->
 
-**25 de 29 tareas cerradas (86 %).**
+**26 de 29 tareas cerradas (90 %).**
 
-| Fase                        | Qué entrega                                                                                                                                                                                            | Estado         |
-| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------- |
-| **F0** · Fundaciones        | Monorepo con export estático operativo, i18n estático (EN/ES/DE) funcionando, y pipeline de Cloudflare Pages desplegando en cada push a `main`                                                         | ✅ Completa    |
-| **TD** · Design system      | `/design-system` muestra tokens y componentes fieles a "EnduroFun Design System" (Claude Design), lint de adherencia activo y skill frontend actualizada — se ejecuta tras T0.1, antes de continuar F0 | ✅ Completa    |
-| **F1** · Contenido base     | Home + About + Contact navegables en los 3 idiomas, formulario de contacto entregando a Formspree y mapa de Álora visible                                                                              | ✅ Completa    |
-| **F2** · Paquetes y reviews | Packages + Reviews completas en los 3 idiomas; el escaparate de las 5 páginas está completo                                                                                                            | ✅ Completa    |
-| **F3** · Pulido y SEO       | `hreflang`/sitemap multilingüe correctos y Lighthouse móvil > 90 en todas las páginas                                                                                                                  | ⬜ No empezada |
+| Fase                        | Qué entrega                                                                                                                                                                                            | Estado      |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------- |
+| **F0** · Fundaciones        | Monorepo con export estático operativo, i18n estático (EN/ES/DE) funcionando, y pipeline de Cloudflare Pages desplegando en cada push a `main`                                                         | ✅ Completa |
+| **TD** · Design system      | `/design-system` muestra tokens y componentes fieles a "EnduroFun Design System" (Claude Design), lint de adherencia activo y skill frontend actualizada — se ejecuta tras T0.1, antes de continuar F0 | ✅ Completa |
+| **F1** · Contenido base     | Home + About + Contact navegables en los 3 idiomas, formulario de contacto entregando a Formspree y mapa de Álora visible                                                                              | ✅ Completa |
+| **F2** · Paquetes y reviews | Packages + Reviews completas en los 3 idiomas; el escaparate de las 5 páginas está completo                                                                                                            | ✅ Completa |
+| **F3** · Pulido y SEO       | `hreflang`/sitemap multilingüe correctos y Lighthouse móvil > 90 en todas las páginas                                                                                                                  | 🔨 1/4      |
 
 <!-- STATUS-TABLE:END -->
 

@@ -1,0 +1,3 @@
+before interaction, gallery-113 requested: 0
+after scrollIntoView of carousel section, gallery-113 requested: 0
+after clicking dot 10/10, gallery-113 requested: 1 [ { u: '/gallery/gallery-113.avif', t: 1785694472738 } ]

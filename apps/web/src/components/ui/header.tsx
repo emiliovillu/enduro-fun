@@ -55,14 +55,16 @@ import { LanguageSwitcher, type LocaleCode } from './language-switcher';
 //   reutiliza `labels.contact` (mismo copy que el link de nav "Contact").
 // - Icono de marca junto al wordmark (hotfix, petición directa del usuario
 //   tras ver el favicon nuevo — "me ha gustado mucho, ponlo justo después
-//   del texto EnduroFun"): `public/brand-mark.png`, el mismo mark del
+//   del texto EnduroFun"): `public/brand-mark.avif`, el mismo mark del
 //   casco/bandera recortado del logo provisto que ya usa el favicon
-//   (`apps/web/src/app/icon.png`) — un recorte cuadrado a 128px para que se
-//   vea nítido a los ~28px que ocupa aquí, no el fichero de favicon en sí
-//   (ese es un archivo especial de convención de Next, no pensado para
-//   reusarse como `<img>` normal). `alt=""` + `aria-hidden`: el nombre
-//   "EnduroFun" ya está en el texto adyacente, el icono es puramente
-//   decorativo (evita que un lector de pantalla anuncie el link dos veces).
+//   (`apps/web/src/app/icon.png`) — no el fichero de favicon en sí (ese es
+//   un archivo especial de convención de Next, no pensado para reusarse
+//   como `<img>` normal). `alt=""` + `aria-hidden`: el nombre "EnduroFun"
+//   ya está en el texto adyacente, el icono es puramente decorativo (evita
+//   que un lector de pantalla anuncie el link dos veces). T3.1: recodificado
+//   de PNG 128px a AVIF 64px (Lighthouse móvil flagged 128px como
+//   sobredimensionado para los ~28px CSS que ocupa aquí — 64px cubre DPR
+//   ~2.3 de sobra).
 interface HeaderProps extends React.ComponentProps<'header'> {
   active?: NavKey;
   transparent?: boolean;
@@ -123,7 +125,7 @@ export function Header({
         className="font-display inline-flex items-center gap-2 text-h4 text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
       >
         EnduroFun
-        <Image src="/brand-mark.png" alt="" width={28} height={28} aria-hidden="true" />
+        <Image src="/brand-mark.avif" alt="" width={28} height={28} aria-hidden="true" />
       </Link>
 
       {/* >= lg: el layout original en una sola fila, sin cambios. < lg: nav

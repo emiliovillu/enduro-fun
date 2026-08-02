@@ -41,7 +41,24 @@ export default defineConfig({
     // Con `trailingSlash: true` cada ruta YA es una carpeta con su propio
     // `index.html` (`out/en/index.html`…), así que `serve` estático plano
     // basta sin flags especiales; `-n` desactiva el prompt de analítica.
-    command: 'pnpm build && npx --yes serve out -p 3100 -n',
+    //
+    // `e2e/fixtures/serve.json` (T3.1): `serve-handler@6` (dependencia
+    // transitiva de `serve`) resuelve el Content-Type con `mime-types@2.1.18`,
+    // que fija `mime-db@~1.33.0` (2019, anterior al registro IANA de AVIF) —
+    // sirve TODO `.avif` sin `Content-Type` alguno. Auditado con `curl -sv`:
+    // confirmado en runtime, no es una suposición. Esto no afecta a estos E2E
+    // (Chromium igualmente decodifica/renderiza AVIF por sniffing de
+    // contenido), pero SÍ producía falsos "no es un formato moderno" en
+    // Lighthouse al auditar el `out/` servido así (ver
+    // `docs/verifications/T3.1/`) — Cloudflare Pages (producción real) no
+    // tiene este problema, es un defecto propio de esta herramienta de
+    // serving LOCAL. Por eso el fixture vive en `e2e/` (nunca en `public/`,
+    // que se copia tal cual al artefacto de producción real) y se copia a
+    // `out/serve.json` (donde `serve` lo busca) solo como parte de este
+    // comando de test — el export de producción que sube a Cloudflare Pages
+    // nunca lo contiene.
+    command:
+      'pnpm build && cp e2e/fixtures/serve.json out/serve.json && npx --yes serve out -p 3100 -n',
     port: 3100,
     reuseExistingServer: !process.env.CI,
     timeout: 120_000, // build completo + arranque de `serve`, antes tardaba <5s con next dev

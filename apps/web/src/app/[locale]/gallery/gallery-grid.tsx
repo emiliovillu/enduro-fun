@@ -9,9 +9,31 @@ import { Lightbox } from '@/components/ui/lightbox';
 // con scroll infinito sobre las fotos reales subidas por el usuario
 // (apps/web/public/gallery/gallery-001.avif … gallery-122.avif — AVIF,
 // redimensionadas a 1100px de lado mayor y recomprimidas: ~438MB de
-// originales a ~10MB en total, servidas tal cual porque `output: 'export'`
-// no tiene la Image Optimization API de Next). Client component local a la
-// página (un solo consumidor, mismo criterio que `HomePhotoCarousel`).
+// originales a ~10MB en total). `output: 'export'` no tiene la Image
+// Optimization API de Next (`images.unoptimized: true`), así que no hay
+// `srcset` automático: cada `<Image>` descarga el fichero que se le pasa a
+// `src` TAL CUAL, sin generar variantes de tamaño por su cuenta.
+//
+// T3.1 (ronda 2) — dos ficheros por foto, no uno: el grid pinta una
+// MINIATURA `fill` de apenas ~178-240px CSS (según viewport), pero la MISMA
+// foto se reusaba después ampliada a pantalla casi completa en el
+// `Lightbox` al hacer click — servir el fichero completo de 1100px para
+// pintar una miniatura desperdiciaba ~2MB en la carga inicial (Lighthouse
+// `image-delivery-insight`, score 0). Ahora:
+//   - `gallery/thumbs/gallery-XXX.avif` (240px de ancho, quality 45,
+//     generado por `scripts/optimize-images.mjs`): EXCLUSIVO del `<Image
+//     fill>` del grid — `photoThumbSrc()`.
+//   - `gallery/gallery-XXX.avif` (1100px de lado mayor, sin tocar): el
+//     original de siempre, EXCLUSIVO del `src` del `Lightbox` ampliado —
+//     `photoFullSrc()`.
+// Las 122 fotos tienen su miniatura en `thumbs/`, incluidas las 10
+// reusadas por `HomePhotoCarousel` y `gallery-049` (fondo CSS de
+// Packages): aunque su fichero "completo" ya está recomprimido por la
+// tanda anterior de T3.1, sigue siendo demasiado grande para la caja del
+// GRID de Gallery — el fichero completo de esas 11 solo se sirve al
+// `Lightbox` (`photoFullSrc`), nunca al grid.
+// Client component local a la página (un solo consumidor, mismo criterio
+// que `HomePhotoCarousel`).
 //
 // Mecanismo de scroll infinito: no hay backend que paginar (sitio estático)
 // — un `IntersectionObserver` sobre un sentinel al final del grid dispara
@@ -32,8 +54,12 @@ const INITIAL_COUNT = 25;
 const BATCH_SIZE = 15;
 const SIMULATED_LOAD_MS = 700;
 
-function photoSrc(index: number): string {
+function photoFullSrc(index: number): string {
   return `/gallery/gallery-${String(index + 1).padStart(3, '0')}.avif`;
+}
+
+function photoThumbSrc(index: number): string {
+  return `/gallery/thumbs/gallery-${String(index + 1).padStart(3, '0')}.avif`;
 }
 
 interface GalleryGridProps {
@@ -108,7 +134,7 @@ export function GalleryGrid({
             className="relative aspect-square overflow-hidden rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
           >
             <Image
-              src={photoSrc(index)}
+              src={photoThumbSrc(index)}
               alt={photoAltTemplate.replace('{n}', String(index + 1))}
               fill
               sizes="(min-width: 1024px) 20vw, (min-width: 640px) 33vw, 50vw"
@@ -124,7 +150,7 @@ export function GalleryGrid({
         onOpenChange={(next) => {
           if (!next) setOpenIndex(null);
         }}
-        src={photoSrc(openIndex ?? 0)}
+        src={photoFullSrc(openIndex ?? 0)}
         alt={photoAltTemplate.replace('{n}', String((openIndex ?? 0) + 1))}
         closeLabel={lightboxCloseLabel}
         // TD.13 — navegación anterior/siguiente: sin wrap-around. Los límites

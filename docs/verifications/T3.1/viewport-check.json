@@ -1,0 +1,95 @@
+{
+  "vh": 844,
+  "docHeight": 5916,
+  "imgs": [
+    {
+      "src": "http://localhost:4173/brand-mark.avif",
+      "loading": "lazy",
+      "top": 24,
+      "bottom": 52,
+      "withinViewport": true
+    },
+    {
+      "src": "http://localhost:4173/logo.avif",
+      "loading": "auto",
+      "top": 155,
+      "bottom": 251,
+      "withinViewport": true
+    },
+    {
+      "src": "http://localhost:4173/gallery/gallery-001.avif",
+      "loading": "lazy",
+      "top": 911,
+      "bottom": 1311,
+      "withinViewport": false
+    },
+    {
+      "src": "http://localhost:4173/gallery/gallery-019.avif",
+      "loading": "lazy",
+      "top": 911,
+      "bottom": 1311,
+      "withinViewport": false
+    },
+    {
+      "src": "http://localhost:4173/gallery/gallery-043.avif",
+      "loading": "lazy",
+      "top": 911,
+      "bottom": 1311,
+      "withinViewport": false
+    },
+    {
+      "src": "http://localhost:4173/gallery/gallery-055.avif",
+      "loading": "lazy",
+      "top": 911,
+      "bottom": 1311,
+      "withinViewport": false
+    },
+    {
+      "src": "http://localhost:4173/gallery/gallery-121.avif",
+      "loading": "lazy",
+      "top": 911,
+      "bottom": 1311,
+      "withinViewport": false
+    },
+    {
+      "src": "http://localhost:4173/gallery/gallery-017.avif",
+      "loading": "lazy",
+      "top": 911,
+      "bottom": 1311,
+      "withinViewport": false
+    },
+    {
+      "src": "http://localhost:4173/gallery/gallery-029.avif",
+      "loading": "lazy",
+      "top": 911,
+      "bottom": 1311,
+      "withinViewport": false
+    },
+    {
+      "src": "http://localhost:4173/gallery/gallery-045.avif",
+      "loading": "lazy",
+      "top": 911,
+      "bottom": 1311,
+      "withinViewport": false
+    },
+    {
+      "src": "http://localhost:4173/gallery/gallery-061.avif",
+      "loading": "lazy",
+      "top": 911,
+      "bottom": 1311,
+      "withinViewport": false
+    },
+    {
+      "src": "http://localhost:4173/gallery/gallery-113.avif",
+      "loading": "lazy",
+      "top": 911,
+      "bottom": 1311,
+      "withinViewport": false
+    }
+  ],
+  "videoInfo": {
+    "src": "http://localhost:4173/hero/home-hero.mp4",
+    "preload": "metadata",
+    "top": 0
+  }
+}

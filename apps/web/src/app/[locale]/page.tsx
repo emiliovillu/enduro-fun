@@ -87,10 +87,10 @@ export default async function LocaleHomePage({ params }: { params: Promise<{ loc
               petición del usuario: fuera el badge Álora·Málaga, logo más
               cerca del título) */}
           <Image
-            src="/logo.png"
+            src="/logo.avif"
             alt="EnduroFun"
-            width={620}
-            height={400}
+            width={220}
+            height={142}
             className="-mb-2 h-24 w-auto sm:h-32"
             priority
           />

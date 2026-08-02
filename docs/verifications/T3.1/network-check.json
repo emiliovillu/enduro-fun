@@ -1,0 +1,92 @@
+{
+  "homeHeroAtLoad": [
+    {
+      "url": "http://localhost:4173/logo.avif",
+      "dt": 11
+    },
+    {
+      "url": "http://localhost:4173/hero/home-hero-poster.avif",
+      "dt": 12
+    },
+    {
+      "url": "http://localhost:4173/hero/home-hero.mp4",
+      "dt": 19
+    },
+    {
+      "url": "http://localhost:4173/gallery/gallery-049.avif",
+      "dt": 27
+    },
+    {
+      "url": "http://localhost:4173/gallery/gallery-033.avif",
+      "dt": 28
+    },
+    {
+      "url": "http://localhost:4173/gallery/gallery-097.avif",
+      "dt": 28
+    },
+    {
+      "url": "http://localhost:4173/fleet/te-300.avif",
+      "dt": 28
+    },
+    {
+      "url": "http://localhost:4173/fleet/norden-901.avif",
+      "dt": 28
+    },
+    {
+      "url": "http://localhost:4173/fleet/bmw-1300-gs.avif",
+      "dt": 28
+    },
+    {
+      "url": "http://localhost:4173/brand-mark.avif",
+      "dt": 66
+    },
+    {
+      "url": "http://localhost:4173/gallery/gallery-001.avif",
+      "dt": 66
+    },
+    {
+      "url": "http://localhost:4173/gallery/gallery-019.avif",
+      "dt": 66
+    },
+    {
+      "url": "http://localhost:4173/gallery/gallery-043.avif",
+      "dt": 66
+    },
+    {
+      "url": "http://localhost:4173/gallery/gallery-055.avif",
+      "dt": 66
+    },
+    {
+      "url": "http://localhost:4173/gallery/gallery-121.avif",
+      "dt": 66
+    },
+    {
+      "url": "http://localhost:4173/gallery/gallery-017.avif",
+      "dt": 66
+    },
+    {
+      "url": "http://localhost:4173/hero/home-hero.mp4",
+      "dt": 92
+    }
+  ],
+  "homeCarousel": {
+    "beforeScroll": [
+      "http://localhost:4173/gallery/gallery-049.avif",
+      "http://localhost:4173/gallery/gallery-033.avif",
+      "http://localhost:4173/gallery/gallery-097.avif",
+      "http://localhost:4173/gallery/gallery-001.avif",
+      "http://localhost:4173/gallery/gallery-019.avif",
+      "http://localhost:4173/gallery/gallery-043.avif",
+      "http://localhost:4173/gallery/gallery-055.avif",
+      "http://localhost:4173/gallery/gallery-121.avif",
+      "http://localhost:4173/gallery/gallery-017.avif"
+    ],
+    "afterScrollCount": 9
+  },
+  "gallery": {
+    "beforeScrollCount": 25,
+    "beforeScrollMax": 25,
+    "afterScrollCount": 122,
+    "afterScrollMax": 122
+  }
+}

@@ -24,6 +24,16 @@ import { cn } from '@/lib/utils';
 // `gallery-XXX.avif`), variadas a propósito (paisaje icónico, acción en
 // grupo, acción individual) en vez de una tanda consecutiva.
 //
+// T3.1 (optimización de imágenes): estas 10 fotos son las únicas de Gallery
+// que se recodificaron a un tamaño más ajustado (384px de ancho, antes
+// ~825-1100px) para satisfacer el audit "oversized images" de Lighthouse
+// móvil en la caja fija de 340px de este carrusel — ver
+// `scripts/optimize-images.mjs` para el porqué exacto (fórmula real de la
+// insight `image-delivery-insight`) y el trade-off asumido: al reusarse TAL
+// CUAL en el grid/lightbox de Gallery (mismo criterio "sin duplicar
+// ficheros" de arriba), estas 10 fotos concretas (de 122) se ven algo menos
+// nítidas que el resto al ampliarse en el lightbox.
+//
 // 2026-07-25 — 5 fotos más (petición directa del usuario): con exactamente
 // 5 tarjetas y la clase `grow` de abajo, en viewports anchos (≥1700px
 // aprox., 5 × 340px < ancho del contenedor) las 5 se reparten TODO el ancho
