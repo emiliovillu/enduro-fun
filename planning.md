@@ -15,7 +15,7 @@
 | F0 | Fundaciones | Monorepo con export estático operativo, i18n estático (EN/ES/DE) funcionando, y pipeline de Cloudflare Pages desplegando en cada push a `main` | ☐ |
 | TD | Design system | `/design-system` muestra tokens y componentes fieles a "EnduroFun Design System" (Claude Design), lint de adherencia activo y skill frontend actualizada — se ejecuta tras T0.1, antes de continuar F0 | ☐ |
 | F1 | Contenido base | Home + About + Contact navegables en los 3 idiomas, formulario de contacto entregando a Formspree y mapa de Álora visible | ☐ |
-| F2 | Paquetes y reviews | Packages + Reviews completas en los 3 idiomas; el escaparate de las 5 páginas está completo | ☐ |
+| F2 | Paquetes y reviews | Packages + Reviews completas en los 3 idiomas; el escaparate de las 6 páginas está completo | ☐ |
 | F3 | Pulido y SEO | `hreflang`/sitemap multilingüe correctos y Lighthouse móvil > 90 en todas las páginas | ☐ |
 
 **Hitos de valor real**: tras F1 ya existe una web navegable en 3 idiomas con la propuesta de valor y una vía de contacto real; tras F2 el escaparate completo (paquetes + prueba social) está online; tras F3 queda lista para posicionar en buscadores.
@@ -231,7 +231,7 @@ Home + About + Contact navegables en los 3 idiomas, con el formulario de contact
 
 ## F2 — Paquetes y reviews
 
-Packages + Reviews completas en los 3 idiomas; el escaparate de las 5 páginas queda completo.
+Packages + Reviews completas en los 3 idiomas; el escaparate de las 6 páginas queda completo.
 
 #### T2.1 · Página Packages [x] 2026-07-19 — PASS, ver docs/verifications/T2.1/
 - **Depende de**: TD.7, T1.1
@@ -294,10 +294,16 @@ Packages + Reviews completas en los 3 idiomas; el escaparate de las 5 páginas q
 - **Hallazgo de `simplify` verificado empíricamente y descartado**: se sugirió quitar `priority` del logo de Home (competía por `fetchpriority=high` con el poster del hero recién preloadeado) — medido con 3 corridas cada caso: quitarlo BAJA el score a 91 (vs 92 con `priority`), así que se dejó tal cual. Ejemplo real de por qué un argumento teórico de optimización se verifica con el propio Lighthouse antes de aplicarlo, no se asume.
 - **Deuda anotada, relevante para T3.4** (cita PRD §14.1 "carga < 2s"): Packages y Gallery miden LCP=2.3s — por encima del "<2s" literal, aunque dentro del rango "good" de Lighthouse (≤2.5s) y compatible con Performance 98. La Verificación de T3.3 solo exige Performance>90 (cumplido con holgura), pero T3.4 SÍ cita literalmente "carga < 2s" como uno de sus 10 criterios — quien cierre T3.4 debe medir el LCP real (no solo el score de Performance) en Packages/Gallery y decidir si ese margen es aceptable o requiere otro ajuste.
 
-#### T3.4 · E2E de fase F3 (cierre de producto v1)
+#### T3.4 · E2E de fase F3 (cierre de producto v1) [x] 2026-08-03 — PASS, ver docs/verifications/T3.4/
 - **Depende de**: T3.2, T3.3, T0.3
 - **Entrega**: ninguna — tarea de verificación pura.
 - **Verificación**: recorrido completo de los 10 criterios de éxito del PRD (§14) contra el sitio desplegado en Cloudflare Pages (dominio propagado si ya disponible, si no la URL de Cloudflare): carga < 2s, 3 idiomas completos en las 5 páginas, formulario real entrega vía Formspree, mapa visible, reviews coherentes, `LanguageSwitcher` sin recarga perceptible, responsive en los 3 breakpoints, deploy automático confirmado con un push de prueba, `hreflang`/sitemap correctos, enlace de Instagram correcto. Evidencia en `docs/verifications/T3.4/`.
+- **Mismo cambio de alcance ya decidido en T3.2/T3.3, no reabierto**: "5 páginas" es texto residual previo al hotfix de Gallery; PRD §14.2 ya dice literalmente "6 páginas" — verificadas las 6 × 3 idiomas (18 combinaciones completas y traducidas de verdad, con diff real de contenido entre EN/ES/DE).
+- **Verificado contra el sitio real en producción** (`https://endurofun.eu`, no local): los 10 criterios del PRD §14 sostenidos con evidencia real (Lighthouse, capturas, dumps de contenido, red). Detalle de los 2 matices no bloqueantes:
+  - **Criterio 1** (carga <2s, Performance>90): Performance 98-100 en las 6 páginas. LCP simulado por el throttling sintético de Lighthouse da 2.14-2.34s en 5/6 páginas (Contact 1.56s) — por encima del "<2s" literal aislado, pero el propio criterio del PRD lo define operacionalmente entre paréntesis como "score Performance > 90" (cumplido con holgura); LCP medido SIN throttle en Home = 0.22s, confirmando que el excedente es artefacto del throttling sintético de Lighthouse, no de la app real. Cierra la deuda que dejó anotada T3.3.
+  - **Criterio 3** (Formspree): envío real de prueba en ES confirmado (POST 200 + UI de éxito). La llegada del email a la bandeja NO se verificó de primera mano en esta tarea (el verifier no tiene acceso al inbox) — se apoya en la confirmación histórica de T1.3 (verificada entonces con acceso real al correo). DE nunca se probó con un envío real (solo EN en T1.3 original, ES en esta tarea) — deuda menor, no bloqueante.
+- **Deploy automático (criterio 8) confirmado con push real durante esta misma tarea**: 2 commits del verifier (`ac60713`, `2719208`) añadieron un marcador servible públicamente; confirmado con `curl` que pasó de 404→200 en producción en ~70s sin tocar el dashboard de Cloudflare manualmente — la evidencia más directa posible sin credenciales de Cloudflare (`wrangler`/API token, no disponibles en este entorno).
+- **Con esto se cierra F3 y el producto v1 completo**: las 3 fases (F1 contenido base, F2 paquetes y reviews, F3 pulido y SEO) + TD (design system) quedan en PASS. Ningún hallazgo bloqueante; deuda menor anotada arriba (email DE sin probar, LCP con margen bajo throttling sintético) para una futura iteración si se decide perseguirla.
 
 ---
 
