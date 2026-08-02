@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { preload } from 'react-dom';
 import type { Locale } from '@app/core/contracts';
 import { Button } from '@/components/ui/button';
 import { FleetCard } from '@/components/ui/fleet-card';
@@ -67,7 +68,28 @@ export async function generateMetadata({
   return buildPageMetadata(locale, '', getMessages(locale).home);
 }
 
+// T3.3 — el LCP real de Home es el `<video>` del hero (`HomeHeroVideo`),
+// pintado con su `poster` mientras el vídeo arranca (Lighthouse móvil,
+// `lcp-breakdown-insight`). El audit `lcp-discovery-insight` pedía
+// "fetchpriority=high should be applied" — pero `fetchpriority` NO es un
+// atributo válido de `<video>` en el spec HTML (solo `img`/`link`/`script`;
+// verificado, no asumido), así que ponerlo en la etiqueta no haría nada. El
+// fix correcto y documentado (web.dev, "Video performance") es precargar el
+// `poster` como imagen vía `preload` de `react-dom` — esto es un Server Component
+// (SSG, `output: 'export'`), así que la llamada se resuelve en build time y
+// el `<link rel="preload" as="image" fetchpriority="high">` queda embebido
+// en el HTML estático real, no solo en un hidrate tardío del cliente.
+//
+// El literal vive AQUÍ (no en `home-hero-video.tsx`, que es `'use client'`):
+// se descubrió en esta misma tarea que un export de un módulo `'use client'`
+// se convierte en una "client reference" opaca al importarse desde un
+// Server Component (compilador RSC) — pasarle ESO a `preload` no
+// hace nada (falla en silencio, sin el `<link>` esperado en el HTML). Bajar
+// el string real por prop es el patrón correcto.
+const HERO_POSTER_SRC = '/hero/home-hero-poster.avif';
+
 export default async function LocaleHomePage({ params }: { params: Promise<{ locale: Locale }> }) {
+  preload(HERO_POSTER_SRC, { as: 'image', fetchPriority: 'high' });
   const { locale } = await params;
   const active: NavKey = 'home';
   const messages = getMessages(locale);
@@ -85,7 +107,7 @@ export default async function LocaleHomePage({ params }: { params: Promise<{ loc
   return (
     <main>
       <section className="relative h-190 overflow-hidden">
-        <HomeHeroVideo />
+        <HomeHeroVideo poster={HERO_POSTER_SRC} />
         <div className="absolute inset-0 bg-gradient-scrim" aria-hidden="true" />
         <Header
           active={active}

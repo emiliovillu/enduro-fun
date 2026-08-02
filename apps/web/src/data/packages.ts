@@ -135,14 +135,24 @@ export const PACKAGES: Package[] = RAW_PACKAGES.map((pkg) => PackageSchema.parse
 //   (acción real, no posado).
 // - `full-adventure` → `gallery-033.avif`: grupo de pilotos en ruta, parada
 //   con vistas doradas al atardecer.
-const PACKAGE_IMAGES: Partial<Record<Package['id'], string>> = {
-  'own-bike': 'url(/gallery/gallery-097.avif) center/cover no-repeat',
-  getaway: 'url(/gallery/gallery-049.avif) center/cover no-repeat',
-  'full-adventure': 'url(/gallery/gallery-033.avif) center/cover no-repeat',
+const PACKAGE_IMAGE_URLS: Partial<Record<Package['id'], string>> = {
+  'own-bike': '/gallery/gallery-097.avif',
+  getaway: '/gallery/gallery-049.avif',
+  'full-adventure': '/gallery/gallery-033.avif',
 };
 
+// T3.3 — URL cruda (sin envolver en `url(...) center/cover no-repeat`),
+// separada de `packageImageSlot` para que `packages/page.tsx` pueda
+// precargar con `ReactDOM.preload({ as: 'image' })` el mismo fichero que
+// pinta el fondo de la 1ª card (LCP de esa página, Lighthouse móvil) sin
+// duplicar el literal ni parsear el shorthand CSS.
+export function packageImageUrl(id: Package['id'] | undefined): string | undefined {
+  return id ? PACKAGE_IMAGE_URLS[id] : undefined;
+}
+
 export function packageImageSlot(id: Package['id']): string | undefined {
-  return PACKAGE_IMAGES[id];
+  const url = packageImageUrl(id);
+  return url ? `url(${url}) center/cover no-repeat` : undefined;
 }
 
 // Paquete "destacado" en la preview de Home (mockup: badge "Most popular"

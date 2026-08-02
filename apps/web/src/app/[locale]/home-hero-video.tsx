@@ -37,7 +37,16 @@ import { useEffect, useRef } from 'react';
 // candidato a extraer un hook `useReducedMotion()` compartido, no aplicado
 // aquí porque tocaría 2 componentes ya cerrados y verificados, fuera de
 // alcance de este cambio.
-export function HomeHeroVideo() {
+// T3.3 — `poster` ahora llega como prop en vez de literal interno: `page.tsx`
+// necesita el string real para `ReactDOM.preload`, y un export de este
+// módulo `'use client'` no sirve para eso (ver el razonamiento completo en
+// `page.tsx`, junto al `HERO_POSTER_SRC` que ahora es la fuente de verdad;
+// `frontend/references/architecture.md` §2.1 documenta la regla general).
+interface HomeHeroVideoProps {
+  poster: string;
+}
+
+export function HomeHeroVideo({ poster }: HomeHeroVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -58,7 +67,7 @@ export function HomeHeroVideo() {
     <video
       ref={videoRef}
       className="absolute inset-0 size-full object-cover"
-      poster="/hero/home-hero-poster.avif"
+      poster={poster}
       muted
       loop
       playsInline

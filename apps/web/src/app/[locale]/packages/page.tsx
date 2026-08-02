@@ -1,5 +1,6 @@
 import type { Locale } from '@app/core/contracts';
 import type { Metadata } from 'next';
+import { preload } from 'react-dom';
 import { Footer } from '@/components/ui/footer';
 import { Header } from '@/components/ui/header';
 import { PackageCard } from '@/components/ui/package-card';
@@ -9,6 +10,7 @@ import {
   HIGHLIGHTED_PACKAGE_ID,
   PACKAGES,
   packageImageSlot,
+  packageImageUrl,
 } from '@/data/packages';
 import { getMessages } from '@/i18n/messages';
 import type { NavKey } from '@/lib/nav-links';
@@ -45,7 +47,24 @@ export async function generateMetadata({
   return buildPageMetadata(locale, 'packages', getMessages(locale).packages);
 }
 
+// T3.3 — el grid es `grid-cols-1` en móvil (breakpoint que audita
+// Lighthouse), así que `PACKAGES[0]` (Getaway, `gallery-049.avif`) es
+// siempre la 1ª card visible = el LCP real de esta página. Es un fondo CSS
+// (`background: url(...)`, escape hatch de `PackageCard`, ver ese fichero),
+// así que el preload scanner del navegador NO lo descubre hasta parsear/
+// aplicar el CSS (`lcp-discovery-insight`/`lcp-breakdown-insight` de
+// Lighthouse lo confirmaban: "fetchpriority=high should be applied" +
+// >1.4s de `resourceLoadDelay`) — `fetchpriority` tampoco es aplicable a un
+// `background-image`, no existe tal atributo para CSS. El fix estándar
+// (web.dev) es precargar la URL explícitamente vía `preload` de `react-dom`,
+// que en este Server Component (SSG) se resuelve en build time y queda como
+// `<link rel="preload" as="image" fetchpriority="high">` en el HTML estático.
+const LCP_PACKAGE_IMAGE_URL = packageImageUrl(PACKAGES[0]?.id);
+
 export default async function PackagesPage({ params }: { params: Promise<{ locale: Locale }> }) {
+  if (LCP_PACKAGE_IMAGE_URL) {
+    preload(LCP_PACKAGE_IMAGE_URL, { as: 'image', fetchPriority: 'high' });
+  }
   const { locale } = await params;
   const active: NavKey = 'packages';
   const messages = getMessages(locale);
