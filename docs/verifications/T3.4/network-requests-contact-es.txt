@@ -1,0 +1,7 @@
+[44332.728] POST https://maps.googleapis.com/$rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService/GetPlaceWidgetMetadata (XHR) 200
+[44332.729] POST https://places.googleapis.com/$rpc/google.maps.places.v1.Places/GetPlace (XHR) 200
+[44330.2464] POST https://formspree.io/f/mykrjbra (Fetch) 200
+[44332.758] POST https://maps.googleapis.com/$rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService/GetPlaceWidgetMetadata (XHR) 200
+[44332.759] POST https://places.googleapis.com/$rpc/google.maps.places.v1.Places/GetPlace (XHR) 200
+[44332.788] POST https://maps.googleapis.com/$rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService/GetPlaceWidgetMetadata (XHR) 200
+[44332.789] POST https://places.googleapis.com/$rpc/google.maps.places.v1.Places/GetPlace (XHR) 200

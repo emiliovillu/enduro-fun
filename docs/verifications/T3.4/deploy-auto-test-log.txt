@@ -1,0 +1,22 @@
+Deploy automation test (criterio de éxito PRD #8) — log
+
+Commit 1: ac60713 (docs/verifications/T3.4/deploy-test-marker.txt — NOT servable, docs/ isn't part of the static export)
+  Push completed: 2026-08-02T21:55:28Z
+
+Commit 2: 2719208 (apps/web/public/deploy-test-t3.4.txt — servable, part of apps/web/public static export)
+  Push completed: 2026-08-02T21:56:38Z
+
+Polling https://endurofun.eu/deploy-test-t3.4.txt every 15s:
+  21:56:47Z -> 404
+  21:57:02Z -> 404
+  21:57:17Z -> 404
+  21:57:33Z -> 404
+  21:57:48Z -> 200  <-- PROPAGATED (~70s after push completed)
+
+Body served matches the file committed in 2719208 verbatim.
+
+Conclusion: push to main propagated to the live custom domain (https://endurofun.eu)
+in ~70s with zero manual Cloudflare dashboard intervention. This is indirect
+confirmation via the served site (no Cloudflare API token / wrangler credentials
+available in this environment to query the Pages deployment log directly), which
+is the evidence the task brief specified as acceptable.

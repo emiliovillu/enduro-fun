@@ -1,0 +1,29 @@
+=== hreflang tags on /en/packages/ ===
+<link rel="alternate" hrefLang="en" href="https://endurofun.eu/en/packages/"/>
+<link rel="alternate" hrefLang="es" href="https://endurofun.eu/es/packages/"/>
+<link rel="alternate" hrefLang="de" href="https://endurofun.eu/de/packages/"/>
+
+=== hreflang tags on /es/packages/ ===
+<link rel="alternate" hrefLang="en" href="https://endurofun.eu/en/packages/"/>
+<link rel="alternate" hrefLang="es" href="https://endurofun.eu/es/packages/"/>
+<link rel="alternate" hrefLang="de" href="https://endurofun.eu/de/packages/"/>
+
+=== meta description per page/lang spot checks ===
+en/ -> <meta name="description" content="Multi-day guided enduro routes through Málaga&#x27;s most varied terrain, based in Álora. Bike, accommodation and local knowledge included."/>
+en/gallery/ -> <meta name="description" content="Photos from EnduroFun&#x27;s guided enduro routes across the trails and terrain of the province of Málaga."/>
+en/packages/ -> <meta name="description" content="Three multi-day enduro packages around Álora, Málaga — bike and accommodation included, with a custom offer available on request."/>
+en/about/ -> <meta name="description" content="Meet EnduroFun: local riders and guides running multi-day enduro tours across the province of Málaga, based in Álora."/>
+en/contact/ -> <meta name="description" content="Get in touch with EnduroFun to plan your guided enduro trip near Álora, Málaga — ask us for a personalised offer."/>
+en/reviews/ -> <meta name="description" content="What riders say about their guided enduro trips with EnduroFun in the province of Málaga."/>
+es/ -> <meta name="description" content="Rutas de enduro guiadas de varios días por los terrenos más variados de Málaga, con base en Álora. Moto, alojamiento y conocimiento local incluidos."/>
+es/gallery/ -> <meta name="description" content="Fotos de las rutas de enduro guiadas de EnduroFun por los senderos y terrenos de la provincia de Málaga."/>
+es/packages/ -> <meta name="description" content="Tres paquetes de enduro de varios días en Álora, Málaga — moto y alojamiento incluidos, con oferta personalizada bajo petición."/>
+es/about/ -> <meta name="description" content="Conoce EnduroFun: guías y riders locales que organizan rutas de enduro de varios días por la provincia de Málaga, con base en Álora."/>
+es/contact/ -> <meta name="description" content="Contacta con EnduroFun para organizar tu ruta de enduro guiada cerca de Álora, Málaga — pide tu oferta personalizada."/>
+es/reviews/ -> <meta name="description" content="Lo que dicen nuestros clientes sobre sus rutas de enduro guiadas con EnduroFun en la provincia de Málaga."/>
+de/ -> <meta name="description" content="Mehrtägige geführte Enduro-Touren durch die abwechslungsreichsten Gelände Málagas, mit Basis in Álora. Motorrad, Unterkunft und Ortskenntnis inklusive."/>
+de/gallery/ -> <meta name="description" content="Fotos von den geführten Enduro-Touren von EnduroFun durch die Pfade und Gelände der Provinz Málaga."/>
+de/packages/ -> <meta name="description" content="Drei mehrtägige Enduro-Pakete rund um Álora, Málaga — Motorrad und Unterkunft inklusive, individuelles Angebot auf Anfrage."/>
+de/about/ -> <meta name="description" content="Lernen Sie EnduroFun kennen: einheimische Fahrer und Guides, die mehrtägige Enduro-Touren durch die Provinz Málaga anbieten, mit Basis in Álora."/>
+de/contact/ -> <meta name="description" content="Kontaktieren Sie EnduroFun, um Ihre geführte Enduro-Tour in der Nähe von Álora, Málaga zu planen — fragen Sie nach einem individuellen Angebot."/>
+de/reviews/ -> <meta name="description" content="Das sagen unsere Kunden über ihre geführten Enduro-Touren mit EnduroFun in der Provinz Málaga."/>
