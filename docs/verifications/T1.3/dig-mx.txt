@@ -1,0 +1,2 @@
+5 mx1.hostinger.com.
+10 mx2.hostinger.com.
