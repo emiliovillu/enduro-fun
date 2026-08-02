@@ -1,0 +1,4 @@
+T3.4 deploy automation test marker
+Pushed by: verifier subagent (fresh context)
+Timestamp (UTC): 2026-08-02T21:55:14Z
+Purpose: confirm push to main -> Cloudflare Pages auto-deploy -> live on https://endurofun.eu without manual dashboard intervention (PRD criterio 8).
