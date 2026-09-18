@@ -676,3 +676,10 @@
 - `pnpm gate` verde.
 - **Con esto, `planning.md` queda en 29/29 tareas PASS — F0, TD, F1, F2 y F3 cerradas. Fin del producto v1 de EnduroFun.**
 - **Deuda total heredada, sin resolver, para una futura iteración si se decide perseguirla**: (1) email de Formspree en alemán nunca se probó con un envío real (solo EN históricamente, ES en esta tarea). (2) LCP con margen ajustado bajo throttling sintético de Lighthouse en Packages/Gallery (no bajo condiciones reales, ver criterio 1 arriba). (3) 2 tests intermitentes de `gallery.spec.ts` bajo contención de workers en paralelo (heredada desde T1.4, causa raíz aún sin investigar). (4) mirror de solo lectura `docs/design-system/tokens/colors.css` desactualizado en `--gradient-scrim` (real 0.85, mirror sigue en 0.75, heredada de T2.3). (5) no existe test permanente de "presupuesto de bytes" de imágenes (heredada de T3.1/T3.3).
+
+## 2026-09-18 · hotfix de copy (fuera de planning) — combustible fuera del paquete Escapada
+
+- Petición directa del usuario (captura aportada): en el paquete de 1290 € ("Escapada"/Getaway) el feature "Moto, combustible y guía local incluidos" pasa a "Moto y guía local incluidos". Quitado también en EN (`fuel`) y DE (`Kraftstoff`) para no dejar las 3 locales inconsistentes — el motivo (no anunciar el combustible) aplica igual a los tres idiomas.
+- Fuente única de verdad: `apps/web/src/data/packages.ts` (feature del paquete `getaway`); se propaga solo a la preview de Home y a la página Packages en EN/ES/DE. Assert del e2e `packages.spec.ts:18` actualizado al copy nuevo (no un debilitamiento: el copy cambió).
+- `pnpm gate` verde · `pnpm test:e2e` 64 passed · Commit: `2ac47bd` · pushed a main (pre-push typecheck verde). Coste: $0.
+- No es tarea de planning: sin `[x]` que marcar ni report de verifier.
