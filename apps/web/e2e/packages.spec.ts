@@ -15,7 +15,7 @@ test('/en/packages muestra las 2 cards completas en inglés', { tag: ['@f2'] }, 
   await expect(getaway).toContainText('From 1,290 €');
   await expect(getaway).toContainText('4 nights, breakfast included');
   await expect(getaway).toContainText('3 days of guided route on a Husqvarna enduro bike');
-  await expect(getaway).toContainText('Bike, fuel and local guide included');
+  await expect(getaway).toContainText('Bike and local guide included');
 
   const fullAdventure = page.getByRole('heading', { name: 'Full Adventure' }).locator('..');
   await expect(fullAdventure).toContainText('From 1,690 €');

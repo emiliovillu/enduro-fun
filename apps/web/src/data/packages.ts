@@ -37,9 +37,9 @@ const RAW_PACKAGES: Package[] = [
         de: '3 Tage geführte Route auf einer Husqvarna-Enduromaschine',
       },
       {
-        en: 'Bike, fuel and local guide included',
-        es: 'Moto, combustible y guía local incluidos',
-        de: 'Motorrad, Kraftstoff und örtlicher Guide inklusive',
+        en: 'Bike and local guide included',
+        es: 'Moto y guía local incluidos',
+        de: 'Motorrad und örtlicher Guide inklusive',
       },
     ],
   },
